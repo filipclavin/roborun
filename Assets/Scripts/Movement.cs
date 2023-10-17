@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     private int desiredLane = 1;
     public float laneDistance = 4f;
     
+    public Rigidbody rb;
+    
     
     public GameObject mesh;
     
