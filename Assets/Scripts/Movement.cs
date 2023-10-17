@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -47,24 +48,7 @@ public class Movement : MonoBehaviour
        }
        
        
-       if(input.controller.Movement.Right.triggered && controller.isGrounded)
-       {
-           desiredLane ++;
-           if(desiredLane == 3)
-           {
-               desiredLane = 2;
-           }
-           
-       }
-       
-       if(input.controller.Movement.Left.triggered && controller.isGrounded )
-       {
-           desiredLane --;
-           if(desiredLane == -1)
-           {
-               desiredLane = 0;
-           }
-       }
+     
        
        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
        if(desiredLane == 0)
@@ -87,6 +71,30 @@ public class Movement : MonoBehaviour
          }
          
        
+    }
+
+
+    private void LateUpdate()
+    {
+        if(input.controller.Movement.Right.triggered && controller.isGrounded)
+        {
+            desiredLane ++;
+            if(desiredLane == 3)
+            {
+                desiredLane = 2;
+            }
+           
+        }
+       
+        if(input.controller.Movement.Left.triggered && controller.isGrounded )
+        {
+            desiredLane --;
+            if(desiredLane == -1)
+            {
+                desiredLane = 0;
+            }
+        }
+        
     }
 
     private void FixedUpdate()
