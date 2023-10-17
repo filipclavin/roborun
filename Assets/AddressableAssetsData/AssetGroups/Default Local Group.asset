@@ -17,13 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4129552679d186d44b92a8404bfa8f16
   m_SerializeEntries:
-  - m_GUID: c169cd7a50cfa734e92185e6a108e6c1
-    m_Address: Collectable
+  - m_GUID: 779722bbecc95a543973a7c7afed6988
+    m_Address: Obstacle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb7a6a0f82e58bd4e8212b5b89dce1c9
-    m_Address: Obstacle
+  - m_GUID: 53fa28422cca4d842a0e07c7287e401d
+    m_Address: Collectable
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
