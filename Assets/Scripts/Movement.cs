@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private GameObject mesh;
     [SerializeField] private InputManager input;
-
+    [Space]
     [Header("Movement")]
     [SerializeField] private float forwardSpeed = 10f;
     [SerializeField] private float jumpForce = 10f;
