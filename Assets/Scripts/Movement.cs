@@ -16,8 +16,9 @@ public class Movement : MonoBehaviour
     
     private bool isSliding = false;
     private float lastTapTime = 0f;
-    public float doubleTapTimeThreshold = 0.3f;
     public GameObject mesh;
+    
+    private float directionTimer = 1f;
     
     
     public InputManager input;
@@ -30,10 +31,13 @@ public class Movement : MonoBehaviour
     
     void Update()
     {
+       
+        
        direction.z = forwardSpeed;
-
+    
        if(input.controller.Movement.Jump.triggered && controller.isGrounded)
        {
+           
             direction.y = -1;
                Jump();
        }
@@ -50,15 +54,16 @@ public class Movement : MonoBehaviour
            {
                desiredLane = 2;
            }
+           
        }
        
-       if(input.controller.Movement.Left.triggered && controller.isGrounded)
+       if(input.controller.Movement.Left.triggered && controller.isGrounded )
        {
            desiredLane --;
-              if(desiredLane == -1)
-              {
-                desiredLane = 0;
-              }
+           if(desiredLane == -1)
+           {
+               desiredLane = 0;
+           }
        }
        
        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
@@ -75,24 +80,11 @@ public class Movement : MonoBehaviour
        
        
        
-       if (input.controller.Movement.Slide.triggered)
-       {
-           // Check for a double tap
-           float timeSinceLastTap = Time.time - lastTapTime;
-           lastTapTime = Time.time;
-
-           if (timeSinceLastTap <= doubleTapTimeThreshold && controller.isGrounded)
-           {
-               if (!isSliding)
-               {
-                   Slide();
-               }
-           }
-           else
-           {
-               isSliding = false;
-           }
-       }
+         if(input.controller.Movement.Slide.triggered)
+         {
+             Slide();
+             StartCoroutine(SlideTimer());
+         }
          
        
     }
@@ -118,4 +110,7 @@ public class Movement : MonoBehaviour
         controller.height = 2f;
         mesh.transform.localScale = new Vector3(1, 1, 1);
     }
+    
+    
+    
 }
