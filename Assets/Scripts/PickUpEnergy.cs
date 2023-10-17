@@ -11,6 +11,7 @@ public class PickUpEnergy : MonoBehaviour
 		var playerScore = other.GetComponent<PlayerScore>();
 		if (playerScore)
 		{
+			GetComponent<MeshRenderer>().enabled = false;
 			playerScore.AddScore(scoreValue);
 			Debug.Log("Score");
 			

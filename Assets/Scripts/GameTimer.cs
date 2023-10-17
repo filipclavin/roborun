@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
+	private PlayerScore player;
+	private float leadingScore;
     [SerializeField] private float gameLength = 100f;
-	[SerializeField] private PlayerScore playerOne;
-	[SerializeField] private PlayerScore playerTwo;
 
-	private void Update()
+    private void Start()
+    {
+        player = FindAnyObjectByType<PlayerScore>();
+    }
+
+    private void Update()
 	{
 		gameLength -= Time.deltaTime;
 
@@ -20,20 +23,16 @@ public class GameTimer : MonoBehaviour
 
 	private void CheckingScore()
 	{ 
-		if (playerOne.CurrentScore != playerTwo.CurrentScore)
+		if (player.CurrentScore < leadingScore)
 		{
-			EndGame();
+			// Change leading score
 		}
-		else
-		{
-			// Draw, Overtime????
-		}
+		EndGame();
 	}
 
 	private void EndGame()
 	{
-		PlayerScore winningPlayer = playerOne.CurrentScore > playerTwo.CurrentScore ? playerOne : playerTwo;
 
-		Debug.Log(winningPlayer.gameObject.name + "is the winner of this session");
+		Debug.Log("You got " + player.scoreValue + " and it is a new highscore!");
 	}
 }
