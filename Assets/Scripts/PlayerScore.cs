@@ -1,10 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using System;
 using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
 {
     public int CurrentScore { get; private set; }
+    
+    public int scoreValue;
+
+    private void Update()
+    {
+        scoreValue = CurrentScore;
+    }
 
     public void AddScore(int score)
     {
