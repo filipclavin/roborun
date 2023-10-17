@@ -13,10 +13,6 @@ public class PickUpEnergy : MonoBehaviour
 		{
 			GetComponent<MeshRenderer>().enabled = false;
 			playerScore.AddScore(scoreValue);
-			Debug.Log("Score");
-			
 		}
 	}
-
-	
 }
