@@ -1229,8 +1229,8 @@ MonoBehaviour:
     type: 3}
   _spawnDistance: 27.42
   _playerTransform: {fileID: 233644006}
-  _maxSpawnInterval: 1
-  _minSpawnInterval: 2
+  _minSpawnInterval: 1
+  _maxSpawnInterval: 2
   _laneWidth: 2
 --- !u!4 &2013302523
 Transform:
