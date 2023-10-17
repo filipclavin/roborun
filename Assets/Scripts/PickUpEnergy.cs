@@ -8,8 +8,7 @@ public class PickUpEnergy : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		PlayerScore playerScore = collision.gameObject.GetComponent<PlayerScore>();
-		if (playerScore != null)
+		if (collision.gameObject.TryGetComponent<PlayerScore>(out var playerScore))
 		{
 			playerScore.AddScore(scoreValue);
 		}

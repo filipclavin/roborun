@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private int currentScore;
-
+    public int CurrentScore { get; private set; }
 
     public void AddScore(int score)
     {
-        currentScore += score;
+        CurrentScore += score;
     }
 }

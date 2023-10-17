@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] private float gameLength = 100f;
+	[SerializeField] private PlayerScore playerOne;
+	[SerializeField] private PlayerScore playerTwo;
 
 	private void Update()
 	{
@@ -12,7 +14,26 @@ public class GameTimer : MonoBehaviour
 
 		if (gameLength <= 0)
 		{
-			// player with most score win
+			CheckingScore();
 		}
+	}
+
+	private void CheckingScore()
+	{ 
+		if (playerOne.CurrentScore != playerTwo.CurrentScore)
+		{
+			EndGame();
+		}
+		else
+		{
+			// Draw, Overtime????
+		}
+	}
+
+	private void EndGame()
+	{
+		PlayerScore winningPlayer = playerOne.CurrentScore > playerTwo.CurrentScore ? playerOne : playerTwo;
+
+		Debug.Log(winningPlayer.gameObject.name + "is the winner of this session");
 	}
 }
