@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private int desiredLane = 1;
     private bool isJumping = false;
+    private bool isSliding = false;
 
     private void Update()
     {
@@ -49,7 +50,7 @@ public class Movement : MonoBehaviour
 
         LaneMovement();
 
-        if (input.controller.Movement.Slide.triggered)
+        if (input.controller.Movement.Slide.triggered && controller.isGrounded)
         {
             Slide();
             StartCoroutine(SlideTimer());
@@ -60,13 +61,14 @@ public class Movement : MonoBehaviour
     {
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
-        if (desiredLane == 0)
+        switch (desiredLane)
         {
-            targetPosition += Vector3.left * laneDistance;
-        }
-        else if (desiredLane == 2)
-        {
-            targetPosition += Vector3.right * laneDistance;
+            case 0:
+                targetPosition += Vector3.left * laneDistance;
+                break;
+            case 2:
+                targetPosition += Vector3.right * laneDistance;
+                break;
         }
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime);
@@ -87,16 +89,15 @@ public class Movement : MonoBehaviour
 
     private void LaneMovement()
     {
-        if (isJumping == false)
+        if (isJumping) return;
+
+        if (input.controller.Movement.Right.triggered && controller.isGrounded)
         {
-            if (input.controller.Movement.Right.triggered && controller.isGrounded)
-            {
-                desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
-            }
-            else if (input.controller.Movement.Left.triggered && controller.isGrounded)
-            {
-                desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
-            }
+            desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
+        }
+        else if (input.controller.Movement.Left.triggered && controller.isGrounded)
+        {
+            desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
         }
     }
 }
