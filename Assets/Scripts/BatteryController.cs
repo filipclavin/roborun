@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BatteryController : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class BatteryController : MonoBehaviour
     [SerializeField] private float invisTime = 1.5f;
 
     [Header("TempUI")]
-    [SerializeField] private Text batteryText;
+    [SerializeField] private TMP_Text batteryText;
 
     private void Start()
     {

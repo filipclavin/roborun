@@ -1,7 +1,7 @@
 
 using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class PlayerScore : MonoBehaviour
 
 
     [Header("TempUI")]
-    [SerializeField] private Text batteryText;
+    [SerializeField] private TMP_Text batteryText;
 
 
     private void Update()
