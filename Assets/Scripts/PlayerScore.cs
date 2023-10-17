@@ -11,15 +11,15 @@ public class PlayerScore : MonoBehaviour
 
 
     [Header("TempUI")]
-    [SerializeField] private TMP_Text batteryText;
+    [SerializeField] private TMP_Text scoreText;
 
 
     private void Update()
     {
         scoreValue = CurrentScore;
-        if (batteryText != null) // Remove when we implement new UI
+        if (scoreText != null) // Remove when we implement new UI
         {
-            batteryText.text = "Score " + CurrentScore;
+            scoreText.text = "Score " + CurrentScore;
         }
     }
 

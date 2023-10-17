@@ -26,7 +26,7 @@ public class BatteryController : MonoBehaviour
         
         if (batteryText != null ) // Remove when we implement new UI
         {
-            batteryText.text = "Battery " + currentBattery;
+            batteryText.text = "Battery " + Mathf.RoundToInt(currentBattery);
         }
     }
 

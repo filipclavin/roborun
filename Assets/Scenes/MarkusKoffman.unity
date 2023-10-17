@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -650, y: 478}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79635283
 MonoBehaviour:
@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 650, y: 478}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313606456
 MonoBehaviour:
@@ -1010,11 +1010,21 @@ PrefabInstance:
       propertyPath: input
       value: 
       objectReference: {fileID: 1305087771}
+    - target: {fileID: 2247841374525567009, guid: 259502ae521852b47a8e0adfe564972c,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 79635283}
     - target: {fileID: 3723285402034756664, guid: 259502ae521852b47a8e0adfe564972c,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5534995821759759871, guid: 259502ae521852b47a8e0adfe564972c,
+        type: 3}
+      propertyPath: batteryText
+      value: 
+      objectReference: {fileID: 313606456}
     - target: {fileID: 7515597324888976290, guid: 259502ae521852b47a8e0adfe564972c,
         type: 3}
       propertyPath: m_LocalPosition.x
