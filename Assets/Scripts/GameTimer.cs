@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
-    [SerializeField] private float gameLength = 100f;
-	[SerializeField] private PlayerScore player;
+	private PlayerScore player;
 	private float leadingScore;
+    [SerializeField] private float gameLength = 100f;
 
-	private void Update()
+    private void Start()
+    {
+        player = FindAnyObjectByType<PlayerScore>();
+    }
+
+    private void Update()
 	{
 		gameLength -= Time.deltaTime;
 
