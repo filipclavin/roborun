@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
            targetPosition += Vector3.right * laneDistance;
        }
        
-       transform.position = Vector3.Lerp(transform.position, targetPosition, 80 * Time.fixedDeltaTime);
+       transform.position = Vector3.Lerp(transform.position, targetPosition, 1 * Time.fixedDeltaTime);
        
        
        
