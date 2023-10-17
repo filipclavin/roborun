@@ -225,6 +225,7 @@ MonoBehaviour:
   jumpForce: 10
   gravity: -20
   laneDistance: 2
+  rb: {fileID: 0}
   mesh: {fileID: 233644002}
   input: {fileID: 1305087771}
 --- !u!143 &233644008
