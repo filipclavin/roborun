@@ -39,8 +39,6 @@ public class Movement : MonoBehaviour
        }
        
        
-       
-       
        if(input.controller.Movement.Right.triggered && controller.isGrounded)
        {
            desiredLane ++;
@@ -95,9 +93,7 @@ public class Movement : MonoBehaviour
     private void Slide()
     {
         controller.height = 1f;
-       // controller.center = new Vector3(0, 0.5f, 0);
-       
-       mesh.transform.localScale = new Vector3(1, 0.5f, 1);
+        mesh.transform.localScale = new Vector3(1, 0.5f, 1);
     }
     private IEnumerator SlideTimer()
     {
