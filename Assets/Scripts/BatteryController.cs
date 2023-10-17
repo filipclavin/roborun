@@ -8,8 +8,7 @@ public class BatteryController : MonoBehaviour
     private float maxBattery;
 
     [Header("Drain values")]
-    [SerializeField] private float currentBatteryDrain = 0.10f;
-    [SerializeField] private float batteryDrainAdditive = 0.05f;
+    [SerializeField] private float currentBatteryDrain = 0.50f;
     [SerializeField] private float invisTime = 1.5f;
 
     private void Start()
@@ -39,4 +38,5 @@ public class BatteryController : MonoBehaviour
             // Game over
         }
     }
+
 }

@@ -15,16 +15,16 @@ public class PickUpEnergy : MonoBehaviour
     {
 		playerScore = FindAnyObjectByType<PlayerScore>();
 		meshRenderer = GetComponent<MeshRenderer>();
-        batteryController = GetComponent<BatteryController>();
+        batteryController = playerScore.GetComponent<BatteryController>();
     }
 
     private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-            meshRenderer.enabled = false;
 			playerScore.AddScore(scoreValue);
 			batteryController.ChargeBattery(scoreValue);
+            meshRenderer.enabled = false;
 		}
 	}
 }

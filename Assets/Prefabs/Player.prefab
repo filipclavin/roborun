@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1987463215507889838}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,6 @@ MonoBehaviour:
   gravity: -20
   laneDistance: 2
   rb: {fileID: 1987463215507889838}
-  doubleTapTimeThreshold: 0.3
   mesh: {fileID: 3723285402034756664}
   input: {fileID: 0}
 --- !u!114 &2247841374525567009
@@ -161,7 +160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBattery: 100
   currentBatteryDrain: 0.1
-  batteryDrainAdditive: 0.05
   invisTime: 1.5
 --- !u!54 &1987463215507889838
 Rigidbody:
