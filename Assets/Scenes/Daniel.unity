@@ -138,9 +138,10 @@ GameObject:
   - component: {fileID: 233644007}
   - component: {fileID: 233644009}
   - component: {fileID: 233644010}
+  - component: {fileID: 233644011}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,12 +223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d137ea826c0c664c97de87137346b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 233644008}
   forwardSpeed: 10
   jumpForce: 10
   gravity: -20
   laneDistance: 2
   rb: {fileID: 233644010}
-  doubleTapTimeThreshold: 0.3
   mesh: {fileID: 233644002}
   input: {fileID: 1305087771}
 --- !u!143 &233644008
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 0
+  scoreText: {fileID: 0}
 --- !u!54 &233644010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -296,6 +298,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &233644011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233644002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2708f8e085063748be81edbefb85561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBattery: 100
+  currentBatteryDrain: 0.5
+  invisTime: 1.5
+  batteryText: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
