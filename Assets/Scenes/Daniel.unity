@@ -224,13 +224,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 233644008}
+  mesh: {fileID: 233644002}
+  input: {fileID: 1305087771}
   forwardSpeed: 10
   jumpForce: 10
   gravity: -20
   laneDistance: 2
-  rb: {fileID: 233644010}
-  mesh: {fileID: 233644002}
-  input: {fileID: 1305087771}
+  laneSpeed: 10
 --- !u!143 &233644008
 CharacterController:
   m_ObjectHideFlags: 0
