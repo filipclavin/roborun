@@ -152,28 +152,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""57e14a66-2832-4447-8204-37f4b5af83fb"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Slide"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""605abae7-1452-421f-8e75-0160139c4545"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Slide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
