@@ -1268,12 +1268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466bf97fd81f0804c83c592eb26fb662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabToSpawn: {fileID: 2525765248542346299, guid: eb7a6a0f82e58bd4e8212b5b89dce1c9,
-    type: 3}
-  _spawnDistance: 10
   _playerTransform: {fileID: 233644006}
+  _spawnDistance: 10
   _minSpawnInterval: 1
   _maxSpawnInterval: 2
+  _spawnHeights:
+  - 0.5
+  - 1
   _laneWidth: 2
   addressables: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!4 &2013302523

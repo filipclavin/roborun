@@ -4,10 +4,11 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float _spawnDistance;
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private float _spawnDistance;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
+    [SerializeField] private float[] _spawnHeights;
     [SerializeField] private float _laneWidth;
     [SerializeField] private AllAdressables addressables;
 
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
             Random.Range(0f, 1f) < 1 / 3f ? -_laneWidth :
                 Random.Range(0f, 1f) < 2 / 3f ? 0 :
                     _laneWidth,
-            0,
+            _spawnHeights[Random.Range(0, _spawnHeights.Length)],
             _playerTransform.position.z + _spawnDistance
         );
 
