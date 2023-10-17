@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BatteryController : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class BatteryController : MonoBehaviour
     [SerializeField] private float currentBatteryDrain = 0.50f;
     [SerializeField] private float invisTime = 1.5f;
 
+    [Header("TempUI")]
+    [SerializeField] private Text batteryText;
+
     private void Start()
     {
         maxBattery = currentBattery;
@@ -19,6 +23,11 @@ public class BatteryController : MonoBehaviour
     private void FixedUpdate()
     {
         BatteryDrain(currentBatteryDrain);
+        
+        if (batteryText != null ) // Remove when we implement new UI
+        {
+            batteryText.text = "Battery " + currentBattery;
+        }
     }
 
     public void ChargeBattery(float rechargeValue)
