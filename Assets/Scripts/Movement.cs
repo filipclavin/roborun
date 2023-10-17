@@ -14,7 +14,9 @@ public class Movement : MonoBehaviour
     
     public Rigidbody rb;
     
-    
+    private bool isSliding = false;
+    private float lastTapTime = 0f;
+    public float doubleTapTimeThreshold = 0.3f;
     public GameObject mesh;
     
     
@@ -73,11 +75,24 @@ public class Movement : MonoBehaviour
        
        
        
-         if(input.controller.Movement.Slide.triggered)
-         {
-             Slide();
-                StartCoroutine(SlideTimer());
-         }
+       if (input.controller.Movement.Slide.triggered)
+       {
+           // Check for a double tap
+           float timeSinceLastTap = Time.time - lastTapTime;
+           lastTapTime = Time.time;
+
+           if (timeSinceLastTap <= doubleTapTimeThreshold && controller.isGrounded)
+           {
+               if (!isSliding)
+               {
+                   Slide();
+               }
+           }
+           else
+           {
+               isSliding = false;
+           }
+       }
          
        
     }
