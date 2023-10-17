@@ -14,8 +14,11 @@ public class Movement : MonoBehaviour
     
     public Rigidbody rb;
     
-    
+    private bool isSliding = false;
+    private float lastTapTime = 0f;
     public GameObject mesh;
+    
+    private float directionTimer = 1f;
     
     
     public InputManager input;
@@ -28,10 +31,13 @@ public class Movement : MonoBehaviour
     
     void Update()
     {
+       
+        
        direction.z = forwardSpeed;
-
+    
        if(input.controller.Movement.Jump.triggered && controller.isGrounded)
        {
+           
             direction.y = -1;
                Jump();
        }
@@ -48,15 +54,16 @@ public class Movement : MonoBehaviour
            {
                desiredLane = 2;
            }
+           
        }
        
-       if(input.controller.Movement.Left.triggered && controller.isGrounded)
+       if(input.controller.Movement.Left.triggered && controller.isGrounded )
        {
            desiredLane --;
-              if(desiredLane == -1)
-              {
-                desiredLane = 0;
-              }
+           if(desiredLane == -1)
+           {
+               desiredLane = 0;
+           }
        }
        
        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
@@ -69,14 +76,14 @@ public class Movement : MonoBehaviour
            targetPosition += Vector3.right * laneDistance;
        }
        
-       transform.position = Vector3.Lerp(transform.position, targetPosition, 80 * Time.fixedDeltaTime);
+       transform.position = Vector3.Lerp(transform.position, targetPosition, 1 * Time.fixedDeltaTime);
        
        
        
          if(input.controller.Movement.Slide.triggered)
          {
              Slide();
-                StartCoroutine(SlideTimer());
+             StartCoroutine(SlideTimer());
          }
          
        
@@ -103,4 +110,7 @@ public class Movement : MonoBehaviour
         controller.height = 2f;
         mesh.transform.localScale = new Vector3(1, 1, 1);
     }
+    
+    
+    
 }

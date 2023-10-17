@@ -5,18 +5,26 @@ using UnityEngine;
 
 public class PickUpEnergy : MonoBehaviour
 {
+	private PlayerScore playerScore;
+	private MeshRenderer meshRenderer;
+	private BatteryController batteryController;
+
 	[SerializeField] private int scoreValue;
-	private void OnTriggerEnter(Collider other)
+
+    private void Start()
+    {
+		playerScore = FindAnyObjectByType<PlayerScore>();
+		meshRenderer = GetComponent<MeshRenderer>();
+        batteryController = playerScore.GetComponent<BatteryController>();
+    }
+
+    private void OnTriggerEnter(Collider other)
 	{
-		var playerScore = other.GetComponent<PlayerScore>();
-		if (playerScore)
+		if (other.gameObject.CompareTag("Player"))
 		{
-			GetComponent<MeshRenderer>().enabled = false;
 			playerScore.AddScore(scoreValue);
-			Debug.Log("Score");
-			
+			batteryController.ChargeBattery(scoreValue);
+            meshRenderer.enabled = false;
 		}
 	}
-
-	
 }

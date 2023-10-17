@@ -57,7 +57,7 @@
                 {
                     "name": "",
                     "id": "9acc85de-424a-4b86-9825-5f2ad528a30f",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -79,7 +79,7 @@
                 {
                     "name": "",
                     "id": "8627cb1c-94f1-4568-883e-fb2537d0d879",
-                    "path": "<Gamepad>/dpad/right",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -99,37 +99,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "ed121197-472c-4c3d-9b65-52449e14138b",
+                    "name": "One Modifier",
+                    "id": "6e0284f7-73aa-450e-a271-6897596d3587",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "60e45c66-b62b-45c5-bcd4-26012164e26e",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "42da27c4-a800-4210-8638-a205589d4d14",
+                    "name": "binding",
+                    "id": "2ebc883f-906b-42ce-9bfe-598ac12cbc9a",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Slide",
+                    "action": "Jump",
                     "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2d7a103-1b1c-46b8-acc3-b9f8848b63af",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Slide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         }
