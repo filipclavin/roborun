@@ -1,6 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.ResourceManagement.AsyncOperations;
+
+public struct Spawnable
+{
+    public GameObject prefab;
+    public float[] spawnHeights;
+
+    public Spawnable(GameObject prefab, float[] spawnHeights)
+    {
+        this.prefab = prefab;
+        this.spawnHeights = spawnHeights;
+    }
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _maxSpawnInterval;
     [SerializeField] private float[] _spawnHeights;
     [SerializeField] private float _laneWidth;
-    [SerializeField] private AllAdressables addressables;
+    [SerializeField] private GameData _gameData;
 
-    private List<GameObject> _prefabs = new();
+    private List<Spawnable> _spawnables = new();
     private List<GameObject> _spawnedObjects = new();
     private float _timer = 0;
     private float _nextSpawnInterval;
@@ -27,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_prefabs.Count == 0) return;
+        if (_spawnables.Count == 0) return;
 
         _timer += Time.deltaTime;
 
@@ -51,6 +62,8 @@ public class GameManager : MonoBehaviour
             objectsBehindPlayer.ForEach(obj => Destroy(obj));
         }
 
+        Spawnable randomSpawnable = _spawnables[Random.Range(0, _spawnables.Count)];
+
         // If random number is less than 1/3, spawn on left lane
         // If random number is less than 2/3, spawn on middle lane
         // Otherwise, spawn on right lane
@@ -58,13 +71,13 @@ public class GameManager : MonoBehaviour
             Random.Range(0f, 1f) < 1 / 3f ? -_laneWidth :
                 Random.Range(0f, 1f) < 2 / 3f ? 0 :
                     _laneWidth,
-            _spawnHeights[Random.Range(0, _spawnHeights.Length)],
+            randomSpawnable.spawnHeights[Random.Range(0, randomSpawnable.spawnHeights.Length)],
             _playerTransform.position.z + _spawnDistance
         );
 
         _spawnedObjects.Add(
             Instantiate(
-                _prefabs[Random.Range(0, _prefabs.Count)],
+                randomSpawnable.prefab,
                 spawnPosition,
                 Quaternion.identity
             )
@@ -73,17 +86,18 @@ public class GameManager : MonoBehaviour
 
     void LoadAdressables()
     {
-        AsyncOperationHandle obstacleHandle = addressables.obstaclePrefab.LoadAssetAsync<GameObject>();
-        obstacleHandle.Completed += handle =>
-        {
-            _prefabs.Add((GameObject)handle.Result);
-        };
 
-        AsyncOperationHandle collectionHandle = addressables.collectablePrefab.LoadAssetAsync<GameObject>();
-        collectionHandle.Completed += handle =>
+        foreach (SpawnableAddressable item in _gameData.spawnables)
         {
-            _prefabs.Add((GameObject)handle.Result);
-        };
+            item.prefabAddressable.LoadAssetAsync<GameObject>().Completed += handle =>
+            {
+                _spawnables.Add(new Spawnable()
+                {
+                    prefab = handle.Result,
+                    spawnHeights = item.spawnHeights
+                });
+            };
+        }
 
     }
 }
