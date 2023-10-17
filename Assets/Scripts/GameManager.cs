@@ -1,28 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefabToSpawn;
     [SerializeField] private float _spawnDistance;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
     [SerializeField] private float _laneWidth;
+    [SerializeField] private AllAdressables addressables;
 
-    private List<GameObject> _spawnedObjects = new List<GameObject>();
+    private List<GameObject> _prefabs = new();
+    private List<GameObject> _spawnedObjects = new();
     private float _timer = 0;
     private float _nextSpawnInterval;
 
     // Start is called before the first frame update
     void Start()
     {
+        LoadAdressables();
         _nextSpawnInterval = Random.Range(_minSpawnInterval, _maxSpawnInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_prefabs.Count == 0) return;
+
         _timer += Time.deltaTime;
 
         if (_timer > _nextSpawnInterval)
@@ -58,10 +63,26 @@ public class GameManager : MonoBehaviour
 
         _spawnedObjects.Add(
             Instantiate(
-                _prefabToSpawn,
+                _prefabs[Random.Range(0, _prefabs.Count)],
                 spawnPosition,
                 Quaternion.identity
             )
         );
+    }
+
+    void LoadAdressables()
+    {
+        AsyncOperationHandle obstacleHandle = addressables.obstaclePrefab.LoadAssetAsync<GameObject>();
+        obstacleHandle.Completed += handle =>
+        {
+            _prefabs.Add((GameObject)handle.Result);
+        };
+
+        AsyncOperationHandle collectionHandle = addressables.collectablePrefab.LoadAssetAsync<GameObject>();
+        collectionHandle.Completed += handle =>
+        {
+            _prefabs.Add((GameObject)handle.Result);
+        };
+
     }
 }

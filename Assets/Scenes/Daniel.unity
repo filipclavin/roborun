@@ -1275,6 +1275,7 @@ MonoBehaviour:
   _minSpawnInterval: 1
   _maxSpawnInterval: 2
   _laneWidth: 2
+  addressables: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!4 &2013302523
 Transform:
   m_ObjectHideFlags: 0
