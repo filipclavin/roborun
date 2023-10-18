@@ -17,7 +17,7 @@ public class BatteryController : MonoBehaviour
     [SerializeField] private float currentBattery = 100;
     [SerializeField] private float invisTime = 1.5f;
 
-    [Header("Drain values")]
+    [Header("Charge values")]
     [SerializeField] private float batteryCharge = 0.50f;
 
     [Header("TempUI")]
@@ -60,16 +60,23 @@ public class BatteryController : MonoBehaviour
         if (invisActive == false)
         {
             BatteryDrain(drain);
-            StartCoroutine(ChangeColorOnHit());
+            StartCoroutine(ChangeColorOnHit(invisTime));
+            invisActive = true;
         }
     }
 
-    private IEnumerator ChangeColorOnHit()
+    private IEnumerator ChangeColorOnHit(float seconds)
     {
-        meshRenderer.material.color = hitColor;
-        yield return new WaitForSeconds(0.2f);
-        meshRenderer.material.color = defaultColor;
-        yield return new WaitForSeconds(0.1f);
+        float blinkingTime = 0f;
+        while (blinkingTime < seconds)
+        {
+            meshRenderer.material.color = hitColor;
+            yield return new WaitForSeconds(0.3f);
+            meshRenderer.material.color = defaultColor;
+            yield return new WaitForSeconds(0.2f);
+            blinkingTime += 0.2f;
+        }
+        invisActive = false;
     }
 
     private void BatteryDrain(float drain)
