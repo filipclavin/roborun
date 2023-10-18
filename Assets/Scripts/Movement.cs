@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
 
     private void Slide()
     {
-        player.transform.position = new Vector3(rb.position.x, -0.5f, rb.position.z);
+        player.transform.position = new Vector3(rb.position.x, rb.position.y -.5f, rb.position.z);
         player.transform.localScale = new Vector3(1, 0.5f, 1);
     }
 
