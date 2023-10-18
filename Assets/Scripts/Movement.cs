@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public float forwardSpeed = 10f;
     public float jumpForce = 10f;
     public float gravity = -20f;
+    public float slideTime = 1f;
     [SerializeField] private float laneDistance = 4f;
     [SerializeField] private float laneSwitchSpeed = 10f;
     
@@ -43,9 +44,10 @@ public class Movement : MonoBehaviour
     {
         rb.velocity = new Vector3(0, rb.velocity.y, forwardSpeed);
 
-        if (input.controller.Movement.Jump.triggered && isGrounded && isSliding == false)
+        if (input.controller.Movement.Jump.triggered && isGrounded )
         {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            player.transform.localScale = Vector3.one;
         }
 
         LaneMovement();
@@ -54,7 +56,6 @@ public class Movement : MonoBehaviour
         {
             Slide();
             StartCoroutine(SlideTimer());
-            isSliding = true;
         }
     }
 
@@ -83,7 +84,7 @@ public class Movement : MonoBehaviour
 
     private IEnumerator SlideTimer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(slideTime);
         // var transformLocalPosition = rb.transform.localPosition;
         // transformLocalPosition.y = 0f;
         player.transform.localScale = Vector3.one;
