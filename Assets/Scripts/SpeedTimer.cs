@@ -29,6 +29,8 @@ public class SpeedTimer : MonoBehaviour
 
         while (speedTimer % 10 < Time.deltaTime && movement.forwardSpeed is < 30 and >= 20)
         {
+            movement.jumpForce = 30;
+            movement.gravity = -30;
             movement.forwardSpeed += speedBoost;
             break;
         }

@@ -12,8 +12,8 @@ public class Movement : MonoBehaviour
     [Space]
     [Header("Movement")]
     public float forwardSpeed = 10f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float gravity = -20f;
+    public float jumpForce = 10f;
+    public float gravity = -20f;
     [SerializeField] private float laneDistance = 4f;
     [SerializeField] private float laneSwitchSpeed = 10f;
     
@@ -93,11 +93,11 @@ public class Movement : MonoBehaviour
     private void LaneMovement()
     {
 
-        if (input.controller.Movement.Right.triggered && isGrounded && isSliding == false)
+        if (input.controller.Movement.Right.triggered )
         {
             desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
         }
-        else if (input.controller.Movement.Left.triggered && isGrounded && isSliding == false)
+        else if (input.controller.Movement.Left.triggered )
         {
             desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
         }
