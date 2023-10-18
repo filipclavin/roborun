@@ -93,11 +93,11 @@ public class Movement : MonoBehaviour
     private void LaneMovement()
     {
 
-        if (input.controller.Movement.Right.triggered && isGrounded && isSliding == false)
+        if (input.controller.Movement.Right.triggered )
         {
             desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
         }
-        else if (input.controller.Movement.Left.triggered && isGrounded && isSliding == false)
+        else if (input.controller.Movement.Left.triggered )
         {
             desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
         }
