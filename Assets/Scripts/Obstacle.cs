@@ -14,16 +14,11 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     { 
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Debug.Log("Damage taken " + hit);
-        if (hit.gameObject.CompareTag("Player"))
+        Debug.Log("Damage taken " + collision);
+        if (collision.gameObject.CompareTag("Player"))
         {
             batteryController.BatteryDrain(drainValue);
             gameObject.SetActive(false);
         }        
-        
     }
 }
