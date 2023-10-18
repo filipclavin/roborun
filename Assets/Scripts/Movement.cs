@@ -31,29 +31,20 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        GroundCheck();
         Physics.gravity = new Vector3(0, gravity, 0);
+        GroundCheck();
         HandleInput();
         MoveCharacter();
     }
-
-    private void FixedUpdate()
-    {
-        //controller.Move(direction * Time.fixedDeltaTime);
-    }
+    
 
     private void HandleInput()
     {
         rb.velocity = new Vector3(0, rb.velocity.y, forwardSpeed);
 
-        if (input.controller.Movement.Jump.triggered && isGrounded)
+        if (input.controller.Movement.Jump.triggered && isGrounded && isSliding == false)
         {
-           // isJumping = true;
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-        }
-        else
-        {
-            //isJumping = false;
         }
 
         LaneMovement();
@@ -62,6 +53,7 @@ public class Movement : MonoBehaviour
         {
             Slide();
             StartCoroutine(SlideTimer());
+            isSliding = true;
         }
     }
 
@@ -84,26 +76,28 @@ public class Movement : MonoBehaviour
 
     private void Slide()
     {
-        player.transform.localPosition = new Vector3(0, -0.5f, 0);
+        var transformLocalPosition = player.transform.localPosition;
+        transformLocalPosition.y = -0.5f;
         player.transform.localScale = new Vector3(1, 0.5f, 1);
     }
 
     private IEnumerator SlideTimer()
     {
         yield return new WaitForSeconds(1f);
-        player.transform.localPosition = Vector3.zero;
+        var transformLocalPosition = player.transform.localPosition;
+        transformLocalPosition.y = 0;
         player.transform.localScale = Vector3.one;
+        isSliding = false;
     }
 
     private void LaneMovement()
     {
-        if (isJumping) return;
 
-        if (input.controller.Movement.Right.triggered && isGrounded)
+        if (input.controller.Movement.Right.triggered && isGrounded && isSliding == false)
         {
             desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
         }
-        else if (input.controller.Movement.Left.triggered && isGrounded)
+        else if (input.controller.Movement.Left.triggered && isGrounded && isSliding == false)
         {
             desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
         }
