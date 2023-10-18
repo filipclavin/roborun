@@ -230,6 +230,7 @@ MonoBehaviour:
   forwardSpeed: 10
   jumpForce: 20
   gravity: -20
+  slideTime: 1
   laneDistance: 2
   laneSwitchSpeed: 10
 --- !u!114 &233644009
@@ -1200,7 +1201,7 @@ Transform:
   m_GameObject: {fileID: 1531236642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3936, y: -1, z: -800.97}
+  m_LocalPosition: {x: 1.3936, y: -1, z: -52}
   m_LocalScale: {x: 0.50884, y: 1, z: 8.8624}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1393,7 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 233644006}
-  _spawnDistance: 20
+  _spawnDistance: 40
   _minSpawnInterval: 2
   _maxSpawnInterval: 1
   _spawnHeights:
