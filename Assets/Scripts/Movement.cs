@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float laneDistance = 4f;
     [SerializeField] private float laneSwitchSpeed = 10f;
     
+    
     private Vector3 direction;
     private int desiredLane = 1;
     private bool isJumping = false;
@@ -76,16 +77,15 @@ public class Movement : MonoBehaviour
 
     private void Slide()
     {
-        var transformLocalPosition = player.transform.localPosition;
-        transformLocalPosition.y = -0.5f;
+        player.transform.position = new Vector3(rb.position.x, -0.5f, rb.position.z);
         player.transform.localScale = new Vector3(1, 0.5f, 1);
     }
 
     private IEnumerator SlideTimer()
     {
         yield return new WaitForSeconds(1f);
-        var transformLocalPosition = player.transform.localPosition;
-        transformLocalPosition.y = 0;
+        // var transformLocalPosition = rb.transform.localPosition;
+        // transformLocalPosition.y = 0f;
         player.transform.localScale = Vector3.one;
         isSliding = false;
     }
