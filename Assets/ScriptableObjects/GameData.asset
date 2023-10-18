@@ -21,6 +21,7 @@ MonoBehaviour:
     spawnHeights:
     - 0.5
     - 1.5
+    allowedLanes: -1
   - prefabAddressable:
       m_AssetGUID: 53fa28422cca4d842a0e07c7287e401d
       m_SubObjectName: 
@@ -29,3 +30,4 @@ MonoBehaviour:
     spawnHeights:
     - 0.5
     - 2.5
+    allowedLanes: -1
