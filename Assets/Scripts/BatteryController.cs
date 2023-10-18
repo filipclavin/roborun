@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BatteryController : MonoBehaviour
 {
+    private GameTimer gameTimer;
+
     [SerializeField] private float currentBattery = 100;
     private float maxBattery;
 
@@ -17,16 +19,20 @@ public class BatteryController : MonoBehaviour
 
     private void Start()
     {
+        gameTimer = FindAnyObjectByType<GameTimer>();
         maxBattery = currentBattery;
     }
 
     private void FixedUpdate()
     {
-        BatteryDrain(currentBatteryDrain);
-        
-        if (batteryText != null ) // Remove when we implement new UI
+        if (gameTimer.goingOn)
         {
-            batteryText.text = "Battery " + Mathf.RoundToInt(currentBattery);
+            BatteryDrain(currentBatteryDrain);
+        
+            if (batteryText != null ) // Remove when we implement new UI
+            {
+                batteryText.text = "Battery " + Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
+            }
         }
     }
 
@@ -41,10 +47,13 @@ public class BatteryController : MonoBehaviour
 
     public void BatteryDrain(float drain)
     {
-        currentBattery -= drain;
+        if (currentBattery > 0)
+        {
+            currentBattery -= drain;
+        }
         if (currentBattery <= 0)
         {
-            // Game over
+            gameTimer.EndGame();
         }
     }
 
