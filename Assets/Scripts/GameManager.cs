@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _spawnDistance;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
-    [SerializeField] private float[] _spawnHeights;
     [SerializeField] private float _laneWidth;
     [SerializeField] private GameData _gameData;
 
@@ -99,8 +98,6 @@ public class GameManager : MonoBehaviour
 
         foreach (SpawnableAddressable item in _gameData.spawnables)
         {
-            Debug.Log(item.allowedLanes == (Lanes.Middle | Lanes.Right));
-
             item.prefabAddressable.LoadAssetAsync<GameObject>().Completed += handle =>
             {
                 _spawnables.Add(new Spawnable()
