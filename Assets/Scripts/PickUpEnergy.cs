@@ -23,8 +23,10 @@ public class PickUpEnergy : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			playerScore.AddScore(scoreValue);
-			batteryController.ChargeBattery(batteryValue);
+			if (batteryController.ChargeBattery(batteryValue) == true)
+			{
+				playerScore.AddScore(scoreValue);
+			}
             meshRenderer.enabled = false;
 		}
 	}
