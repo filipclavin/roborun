@@ -1147,6 +1147,16 @@ PrefabInstance:
       objectReference: {fileID: 1305087771}
     - target: {fileID: 1369942188780635530, guid: 259502ae521852b47a8e0adfe564972c,
         type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2052228977}
+    - target: {fileID: 1369942188780635530, guid: 259502ae521852b47a8e0adfe564972c,
+        type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369942188780635530, guid: 259502ae521852b47a8e0adfe564972c,
+        type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 863340330}
@@ -1816,6 +1826,12 @@ MonoBehaviour:
   gameLength: 100
   tempHighScore: {fileID: 190825722}
   goingOn: 1
+--- !u!1 &2052228977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3723285402034756664, guid: 259502ae521852b47a8e0adfe564972c,
+    type: 3}
+  m_PrefabInstance: {fileID: 685612055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
