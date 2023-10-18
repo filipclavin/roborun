@@ -6,9 +6,11 @@ public class Obstacle : MonoBehaviour
 {
     private BatteryController batteryController;
     [SerializeField] private int drainValue;
+    private BoxCollider boxCollider;
 
     private void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
         batteryController = FindAnyObjectByType<BatteryController>();
     }
 
@@ -18,7 +20,7 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             batteryController.BatteryDrain(drainValue);
-            gameObject.SetActive(false);
+            boxCollider.enabled = false;
         }        
     }
 }
