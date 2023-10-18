@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private InputManager input;
     [Space]
     [Header("Movement")]
-    [SerializeField] private float forwardSpeed = 10f;
+    public float forwardSpeed = 10f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float gravity = -20f;
     [SerializeField] private float laneDistance = 4f;
