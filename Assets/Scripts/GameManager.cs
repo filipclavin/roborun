@@ -5,11 +5,13 @@ public struct Spawnable
 {
     public GameObject prefab;
     public float[] spawnHeights;
+    public Lanes allowedLanes;
 
-    public Spawnable(GameObject prefab, float[] spawnHeights)
+    public Spawnable(GameObject prefab, float[] spawnHeights, Lanes allowedLanes)
     {
         this.prefab = prefab;
         this.spawnHeights = spawnHeights;
+        this.allowedLanes = allowedLanes;
     }
 }
 
@@ -19,7 +21,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _spawnDistance;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
-    [SerializeField] private float[] _spawnHeights;
     [SerializeField] private float _laneWidth;
     [SerializeField] private GameData _gameData;
 
@@ -64,13 +65,21 @@ public class GameManager : MonoBehaviour
 
         Spawnable randomSpawnable = _spawnables[Random.Range(0, _spawnables.Count)];
 
-        // If random number is less than 1/3, spawn on left lane
-        // If random number is less than 2/3, spawn on middle lane
-        // Otherwise, spawn on right lane
+        if (randomSpawnable.allowedLanes == 0) return;
+
+        float[] xPositions = randomSpawnable.allowedLanes switch
+        {
+            Lanes.Left => new float[] { -_laneWidth },
+            Lanes.Middle => new float[] { 0 },
+            Lanes.Right => new float[] { _laneWidth },
+            Lanes.Left | Lanes.Middle => new float[] { -_laneWidth, 0 },
+            Lanes.Left | Lanes.Right => new float[] { -_laneWidth, _laneWidth },
+            Lanes.Middle | Lanes.Right => new float[] { 0, _laneWidth },
+            _ => new float[] { -_laneWidth, 0, _laneWidth }
+        };
+
         Vector3 spawnPosition = new(
-            Random.Range(0f, 1f) < 1 / 3f ? -_laneWidth :
-                Random.Range(0f, 1f) < 2 / 3f ? 0 :
-                    _laneWidth,
+            xPositions[Random.Range(0, xPositions.Length)],
             randomSpawnable.spawnHeights[Random.Range(0, randomSpawnable.spawnHeights.Length)],
             _playerTransform.position.z + _spawnDistance
         );
@@ -94,7 +103,8 @@ public class GameManager : MonoBehaviour
                 _spawnables.Add(new Spawnable()
                 {
                     prefab = handle.Result,
-                    spawnHeights = item.spawnHeights
+                    spawnHeights = item.spawnHeights,
+                    allowedLanes = item.allowedLanes
                 });
             };
         }
