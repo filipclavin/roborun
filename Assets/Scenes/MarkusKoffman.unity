@@ -1145,6 +1145,11 @@ PrefabInstance:
       propertyPath: input
       value: 
       objectReference: {fileID: 1305087771}
+    - target: {fileID: 576165794652265186, guid: 259502ae521852b47a8e0adfe564972c,
+        type: 3}
+      propertyPath: forwardSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1369942188780635530, guid: 259502ae521852b47a8e0adfe564972c,
         type: 3}
       propertyPath: input
@@ -1190,6 +1195,11 @@ PrefabInstance:
       propertyPath: batteryText
       value: 
       objectReference: {fileID: 313606456}
+    - target: {fileID: 6552195705915303970, guid: 259502ae521852b47a8e0adfe564972c,
+        type: 3}
+      propertyPath: speedBoost
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7515597324888976290, guid: 259502ae521852b47a8e0adfe564972c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1796,7 +1806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466bf97fd81f0804c83c592eb26fb662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
+  _playerTransform: {fileID: 1543400331}
   _spawnDistance: 10
   _minSpawnInterval: 1
   _maxSpawnInterval: 2
