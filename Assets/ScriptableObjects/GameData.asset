@@ -22,7 +22,7 @@ MonoBehaviour:
     - 0.5
     - 1.5
   - prefabAddressable:
-      m_AssetGUID: 53fa28422cca4d842a0e07c7287e401d
+      m_AssetGUID: be888ec596d26054e8b9f0f9ee6298eb
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

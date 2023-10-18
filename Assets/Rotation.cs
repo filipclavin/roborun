@@ -5,17 +5,28 @@ using UnityEngine;
 public class Rotation : MonoBehaviour
 {
     public float rotationSpeed = 100f;
+    public float fixedZRotation = 15f;
 
-    //public Transform battery;
     void Start()
     {
-        
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, 30);
+        // Initialize the rotation to the current rotation.
     }
 
-    // Update is called once per frames
     void Update()
     {
-        
+        // Get the current rotation.
+        Quaternion currentRotation = transform.rotation;
+
+        // Lock the Z rotation to the fixed value.
+        currentRotation.z = fixedZRotation;
+
+        // Calculate the new rotation only around the Y-axis.
+        Quaternion yRotation = Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
+
+        // Combine the new Y rotation with the locked Z rotation.
+        Quaternion newRotation = yRotation * currentRotation;
+
+        // Apply the new rotation to the object.
+        transform.rotation = newRotation;
     }
 }
