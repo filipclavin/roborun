@@ -79,9 +79,6 @@ public class GameManager : MonoBehaviour
             _ => new float[] { -_laneWidth, 0, _laneWidth }
         };
 
-        // If random number is less than 1/3, spawn on left lane
-        // If random number is less than 2/3, spawn on middle lane
-        // Otherwise, spawn on right lane
         Vector3 spawnPosition = new(
             xPositions[Random.Range(0, xPositions.Length)],
             randomSpawnable.spawnHeights[Random.Range(0, randomSpawnable.spawnHeights.Length)],
