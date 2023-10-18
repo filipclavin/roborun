@@ -286,9 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2708f8e085063748be81edbefb85561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitColor: {r: 0, g: 0, b: 0, a: 0}
   currentBattery: 100
-  currentBatteryDrain: 0.5
   invisTime: 1.5
+  batteryCharge: 0.5
   batteryText: {fileID: 0}
 --- !u!114 &233644012
 MonoBehaviour:
@@ -1201,7 +1202,7 @@ Transform:
   m_GameObject: {fileID: 1531236642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3936, y: -1, z: -52}
+  m_LocalPosition: {x: 1.3936, y: -1, z: -34}
   m_LocalScale: {x: 0.50884, y: 1, z: 8.8624}
   m_ConstrainProportionsScale: 0
   m_Children: []
