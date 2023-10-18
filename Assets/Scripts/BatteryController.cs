@@ -57,4 +57,9 @@ public class BatteryController : MonoBehaviour
         }
     }
 
+    public void ObstacleHit(float drain)
+    {
+        BatteryDrain(drain);
+    }
+
 }

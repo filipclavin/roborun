@@ -16,9 +16,9 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     { 
-        Debug.Log("Damage taken " + collision);
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Damage taken " + collision);
             batteryController.BatteryDrain(drainValue);
             boxCollider.enabled = false;
         }        
