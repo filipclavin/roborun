@@ -1,34 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpeedTimer : MonoBehaviour
 {
     public float speedTimer = 0;
+    public float speedBoost = 2.5f;
     private Movement movement;
     
     void Start()
     {
         movement = GetComponent<Movement>();    
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         speedTimer += 1 * Time.deltaTime;
-
-
-        // if (!(movement.forwardSpeed <= 20)) return;
-        // if (speedTimer % 5 < Time.deltaTime)
-        // {
-        //     movement.forwardSpeed += 2;
-        // }
         
-        while (speedTimer % 5 < Time.deltaTime)
+        SpeedBoostTimer();
+        
+    }
+
+    private void SpeedBoostTimer()
+    {
+        while (speedTimer % 5 < Time.deltaTime && movement.forwardSpeed < 20)
         {
-            movement.forwardSpeed += 2;
+            movement.forwardSpeed += speedBoost;
             break;
         }
 
+        while (speedTimer % 10 < Time.deltaTime && movement.forwardSpeed is < 30 and >= 20)
+        {
+            movement.forwardSpeed += speedBoost;
+            break;
+        }
     }
 }
