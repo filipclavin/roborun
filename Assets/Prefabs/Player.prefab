@@ -126,13 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d137ea826c0c664c97de87137346b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  mesh: {fileID: 3723285402034756664}
+  input: {fileID: 0}
   forwardSpeed: 10
   jumpForce: 10
   gravity: -20
   laneDistance: 2
-  rb: {fileID: 1987463215507889838}
-  mesh: {fileID: 3723285402034756664}
-  input: {fileID: 0}
+  laneSwitchSpeed: 10
 --- !u!114 &2247841374525567009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 0
+  scoreText: {fileID: 0}
 --- !u!114 &5534995821759759871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +163,7 @@ MonoBehaviour:
   currentBattery: 100
   currentBatteryDrain: 0.1
   invisTime: 1.5
+  batteryText: {fileID: 0}
 --- !u!54 &1987463215507889838
 Rigidbody:
   m_ObjectHideFlags: 0
