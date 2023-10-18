@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 233644002}
   input: {fileID: 1305087771}
-  forwardSpeed: 0
+  forwardSpeed: 10
   jumpForce: 20
   gravity: -20
   laneDistance: 2
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedTimer: 0
-  speedBoost: 0
+  speedBoost: 2
 --- !u!136 &233644013
 CapsuleCollider:
   m_ObjectHideFlags: 0
