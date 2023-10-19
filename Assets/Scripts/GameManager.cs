@@ -111,7 +111,9 @@ public class GameManager : MonoBehaviour
 
     void DestroyPassed()
     {
-        foreach (GameObject item in _spawnedObjects)
+        List<GameObject> _objectsBehindPlayer = _spawnedObjects.FindAll(item => Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < -_despawnDistance);
+
+        foreach (GameObject item in _objectsBehindPlayer)
         {
             if (Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < -_despawnDistance)
             {
