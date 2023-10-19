@@ -103,7 +103,7 @@ public class BatteryController : MonoBehaviour
         if (currentBattery <= 0)
         {
             currentBattery = 0;
-            gameTimer.EndGame();
+            gameTimer.EndGame(false);
         }
         TempUI.Instance.UpdateBatteryBar(currentBattery);
     }

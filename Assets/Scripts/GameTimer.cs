@@ -19,20 +19,27 @@ public class GameTimer : MonoBehaviour
         if (goingOn)
         {
             gameLength -= Time.deltaTime;
+            TempUI.Instance.UpdateTimer(gameLength);
 
-            if (gameLength <= 0)
+			if (gameLength <= 0)
             {
-                EndGame();
+                EndGame(true);
             }
         }
     }
 
-    public void EndGame()
+    public void EndGame(bool won)
     {
         goingOn = false;
         TempUI.Instance.UpdateHighScore(player.scoreValue);
-        Debug.Log("You got " + player.scoreValue + " and it is a new highscore!");
-        TempUI.Instance.GameOver();
         Time.timeScale = 0;
+        if (won)
+        {
+            TempUI.Instance.Victory(player.scoreValue);
+        }
+        else
+        {
+            TempUI.Instance.GameOver();
+        }
     }
 }
