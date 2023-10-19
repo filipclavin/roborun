@@ -38,7 +38,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f3df4afbab7623b46b0c7fa8a5384335
-    m_Address: Assets/Prefabs/Container Variant.prefab
+    m_Address: Assets/Prefabs/ContainerNotJumpable.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9a47018b7af3574dbac4f9c0b9c3527
+    m_Address: Assets/Prefabs/ContainerJumpable.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
