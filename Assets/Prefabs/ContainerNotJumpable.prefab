@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58618a1ce02457f44a37818d1918487f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drainValue: 60
+  drainValue: 40
 --- !u!1001 &2270162253517198826
 PrefabInstance:
   m_ObjectHideFlags: 0
