@@ -9,6 +9,7 @@ public class PickUpEnergy : MonoBehaviour
 	private MeshRenderer meshRenderer;
 	private BatteryController batteryController;
 
+	[SerializeField] private bool needFullEnergy = true;
 	[SerializeField] private int scoreValue;
     [SerializeField] private int batteryValue;
 
@@ -23,9 +24,11 @@ public class PickUpEnergy : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			playerScore.AddScore(scoreValue);
-			batteryController.ChargeBattery(batteryValue);
-            meshRenderer.enabled = false;
+			if (batteryController.ChargeBattery(batteryValue) == true || needFullEnergy == false)
+			{
+				playerScore.AddScore(scoreValue);
+			}
+			gameObject.SetActive(false);
 		}
 	}
 }

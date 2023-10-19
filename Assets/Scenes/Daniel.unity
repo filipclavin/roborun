@@ -230,6 +230,7 @@ MonoBehaviour:
   forwardSpeed: 10
   jumpForce: 20
   gravity: -20
+  slideTime: 1
   laneDistance: 2
   laneSwitchSpeed: 10
 --- !u!114 &233644009
@@ -245,7 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 0
-  scoreText: {fileID: 0}
 --- !u!54 &233644010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -280,15 +280,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233644002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2708f8e085063748be81edbefb85561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitColor: {r: 0, g: 0, b: 0, a: 0}
   currentBattery: 100
-  currentBatteryDrain: 0.5
   invisTime: 1.5
-  batteryText: {fileID: 0}
+  batteryCharge: 0.5
 --- !u!114 &233644012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1200,7 @@ Transform:
   m_GameObject: {fileID: 1531236642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3936, y: -1, z: -800.97}
+  m_LocalPosition: {x: 1.3936, y: -1, z: -34}
   m_LocalScale: {x: 0.50884, y: 1, z: 8.8624}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1301,6 +1301,68 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1927415815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927415816}
+  m_Layer: 0
+  m_Name: End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1927415816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927415815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: -17.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1941527012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1941527013}
+  m_Layer: 0
+  m_Name: Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1941527013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941527012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2013302521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,12 +1393,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 233644006}
-  _spawnDistance: 20
+  _roadTransform: {fileID: 1531236648}
+  _spawnDistance: 40
+  _despawnDistance: 20
   _minSpawnInterval: 2
   _maxSpawnInterval: 1
-  _spawnHeights:
-  - 0.5
-  - 1
   _laneWidth: 2
   _gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!4 &2013302523
@@ -1365,3 +1426,5 @@ SceneRoots:
   - {fileID: 233644006}
   - {fileID: 1305087772}
   - {fileID: 1531236648}
+  - {fileID: 1927415816}
+  - {fileID: 1941527013}

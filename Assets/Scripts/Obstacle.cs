@@ -10,17 +10,16 @@ public class Obstacle : MonoBehaviour
 
     private void Start()
     {
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = transform.parent.GetComponent<BoxCollider>();
         batteryController = FindAnyObjectByType<BatteryController>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    { 
-        if (collision.gameObject.CompareTag("Player"))
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Damage taken " + collision);
-            batteryController.BatteryDrain(drainValue);
+            batteryController.ObstacleHit(drainValue);
             boxCollider.enabled = false;
-        }        
+        }         
     }
 }

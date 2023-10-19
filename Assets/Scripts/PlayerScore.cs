@@ -10,17 +10,10 @@ public class PlayerScore : MonoBehaviour
     public int scoreValue;
 
 
-    [Header("TempUI")]
-    [SerializeField] private TMP_Text scoreText;
-
-
     private void Update()
     {
         scoreValue = CurrentScore;
-        if (scoreText != null) // Remove when we implement new UI
-        {
-            scoreText.text = "Score " + CurrentScore;
-        }
+        TempUI.Instance.UpdateScore(scoreValue);
     }
 
     public void AddScore(int score)
