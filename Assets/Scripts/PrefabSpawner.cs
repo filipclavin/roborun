@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class GameManager : MonoBehaviour
+public class PrefabSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Transform _roadTransform;
