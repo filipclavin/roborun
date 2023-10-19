@@ -14,20 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizedSpawnables:
   - prefabAddressable:
-      m_AssetGUID: 
+      m_AssetGUID: f3df4afbab7623b46b0c7fa8a5384335
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    spawnHeights: []
-    allowedLanes: 0
-  _minSpawnInterval: 0
-  _maxSpawnInterval: 0
+    spawnHeights:
+    - 0
+    allowedLanes: -1
+  - prefabAddressable:
+      m_AssetGUID: e9a47018b7af3574dbac4f9c0b9c3527
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    spawnHeights:
+    - 0
+    allowedLanes: -1
+  _minSpawnInterval: 1
+  _maxSpawnInterval: 2
   fixedSpawnables:
   - prefabAddressable:
-      m_AssetGUID: 
+      m_AssetGUID: be888ec596d26054e8b9f0f9ee6298eb
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    spawnHeights: []
-    allowedLanes: 0
-    spawnInterval: 0
+    spawnHeights:
+    - 0
+    - 2
+    allowedLanes: -1
+    spawnInterval: 10
