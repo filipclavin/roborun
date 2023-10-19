@@ -21,44 +21,34 @@ public class BatteryController : MonoBehaviour
     [Header("Charge values")]
     [SerializeField] private float batteryCharge = 0.50f;
 
-    [Header("TempUI")]
-    [SerializeField] private Slider batteryBar;
-    private TMP_Text batteryText;
+
 
     private void Start()
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
-        if (batteryBar != null)
-        {
-            batteryText = batteryBar.gameObject.GetComponentInChildren<TMP_Text>();
-            maxBattery = currentBattery;
-            batteryBar.maxValue = 0;
-            batteryBar.maxValue = maxBattery;
-            UpdateBatteryBar();
-        }
         meshRenderer = GetComponent<MeshRenderer>();
         defaultColor = meshRenderer.material.color;
+        maxBattery = currentBattery;
+        TempUI.Instance.StartUI(currentBattery, maxBattery);
     }
 
     private void FixedUpdate()
     {
-        if (gameTimer.goingOn)
-        {
-            ChargeBattery(batteryCharge);
-        }
+        ChargeBattery(batteryCharge);
     }
 
     public bool ChargeBattery(float rechargeValue)
     {
-        currentBattery += rechargeValue;
-        if (currentBattery > maxBattery)
+        if (gameTimer.goingOn)
         {
-            currentBattery = maxBattery;
-            return true;
-        }
-        else
-        {
-            UpdateBatteryBar();
+            currentBattery += rechargeValue;
+            if (currentBattery > maxBattery)
+            {
+                currentBattery = maxBattery;
+                TempUI.Instance.UpdateBatteryBar(currentBattery);
+                return true;
+            }
+            TempUI.Instance.UpdateBatteryBar(currentBattery);
         }
         return false;
     }
@@ -76,13 +66,15 @@ public class BatteryController : MonoBehaviour
     private IEnumerator ChangeColorOnHit(float seconds)
     {
         float blinkingTime = 0f;
+        float blinkOne = 0.3f;
+        float blinkTwo = 0.2f;
         while (blinkingTime < seconds)
         {
             meshRenderer.material.color = hitColor;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(blinkOne);
             meshRenderer.material.color = defaultColor;
-            yield return new WaitForSeconds(0.2f);
-            blinkingTime += 0.2f;
+            yield return new WaitForSeconds(blinkTwo);
+            blinkingTime += blinkOne + blinkTwo;
         }
         invisActive = false;
     }
@@ -92,20 +84,10 @@ public class BatteryController : MonoBehaviour
         currentBattery -= drain;
         if (currentBattery <= 0)
         {
+            currentBattery = 0;
             gameTimer.EndGame();
         }
-        else
-        {
-            UpdateBatteryBar();
-        }
+        TempUI.Instance.UpdateBatteryBar(currentBattery);
     }
 
-    private void UpdateBatteryBar()
-    {
-        if (batteryBar != null)
-        {
-            batteryBar.value = currentBattery;
-            batteryText.text = Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
-        }
-    }
 }
