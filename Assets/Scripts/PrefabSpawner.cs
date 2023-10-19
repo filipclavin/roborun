@@ -27,7 +27,6 @@ public class PrefabSpawner : MonoBehaviour
     {
         if (_gameData.randomizedSpawnables.Length > 0)
         {
-            Debug.Log("Random");
             _randomTimer += Time.deltaTime;
 
             if (_randomTimer >= _nextRandomSpawnInterval)
@@ -41,7 +40,6 @@ public class PrefabSpawner : MonoBehaviour
 
         if (_gameData.fixedSpawnables.Length > 0)
         {
-            Debug.Log("Fixed");
             TrySpawnFixed();
             DestroyPassed();
         }
