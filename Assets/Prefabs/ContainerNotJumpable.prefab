@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58618a1ce02457f44a37818d1918487f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drainValue: 60
+  drainValue: 40
 --- !u!1001 &2270162253517198826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ PrefabInstance:
     - target: {fileID: 8086381034909085188, guid: 969441178156c134ab3b398e1ae62570,
         type: 3}
       propertyPath: m_Name
-      value: Container Variant
+      value: ContainerNotJumpable
       objectReference: {fileID: 0}
     - target: {fileID: 8895532964059182270, guid: 969441178156c134ab3b398e1ae62570,
         type: 3}

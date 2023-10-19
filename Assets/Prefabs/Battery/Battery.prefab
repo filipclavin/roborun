@@ -272,8 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a127e52959a02499a47050491cf70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 0
-  batteryValue: 20
+  needFullEnergy: 1
+  scoreValue: 600
+  batteryValue: 100
 --- !u!64 &8183810149840761765
 MeshCollider:
   m_ObjectHideFlags: 0
