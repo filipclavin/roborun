@@ -11,15 +11,23 @@ public enum Lanes
 }
 
 [Serializable]
-public class SpawnableAddressable
+public class GameObjectAssetReference : AssetReferenceT<GameObject>
 {
-    public AssetReferenceT<GameObject> prefabAddressable;
-    public float[] spawnHeights;
-    public Lanes allowedLanes;
+    public GameObjectAssetReference(string guid) : base(guid) { }
 }
 
 [Serializable]
-public class FixedSpawnableAddressable : SpawnableAddressable
+public class Spawnable
+{
+    public GameObjectAssetReference prefabAddressable;
+    public float[] spawnHeights = new float[0];
+    public Lanes allowedLanes;
+
+    [NonSerialized] public float timer;
+}
+
+[Serializable]
+public class FixedSpawnable : Spawnable
 {
     public float spawnInterval;
 }
@@ -28,10 +36,10 @@ public class FixedSpawnableAddressable : SpawnableAddressable
 public class GameData : ScriptableObject
 {
     [Header("Random")]
-    public SpawnableAddressable[] randomizedSpawnables;
+    public Spawnable[] randomizedSpawnables = new Spawnable[0];
     public float _minSpawnInterval;
     public float _maxSpawnInterval;
 
     [Header("Fixed")]
-    public FixedSpawnableAddressable[] fixedSpawnables;
+    public FixedSpawnable[] fixedSpawnables;
 }
