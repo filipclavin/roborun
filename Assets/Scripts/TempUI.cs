@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class TempUI : MonoBehaviour
 {
     private readonly string leadingScoreKey = "Highscore";
+    private string sceneName;
     private TMP_Text batteryText;
     [SerializeField] private Slider batteryBar;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text tempHighScore;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private string sceneName;
 
     private static TempUI instance;
     public static TempUI Instance { get { return instance; } set { instance = value; } }
@@ -25,6 +25,7 @@ public class TempUI : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
     private void DeleteScore() // If we wanna reset score
