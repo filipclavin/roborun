@@ -12,7 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa10f0aada94a0d4c87cf17afbc5efaa, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  randomizedSpawnables: []
-  _minSpawnInterval: 1
-  _maxSpawnInterval: 2
-  fixedSpawnables: []
+  randomizedSpawnables:
+  - prefabAddressable:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights: []
+    allowedLanes: 0
+  _minSpawnInterval: 0
+  _maxSpawnInterval: 0
+  fixedSpawnables:
+  - prefabAddressable:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights: []
+    allowedLanes: 0
+    spawnInterval: 0
