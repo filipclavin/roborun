@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 0
-  scoreText: {fileID: 0}
 --- !u!54 &233644010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -290,7 +289,6 @@ MonoBehaviour:
   currentBattery: 100
   invisTime: 1.5
   batteryCharge: 0.5
-  batteryText: {fileID: 0}
 --- !u!114 &233644012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,12 +1393,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 233644006}
+  _roadTransform: {fileID: 1531236648}
   _spawnDistance: 40
+  _despawnDistance: 20
   _minSpawnInterval: 2
   _maxSpawnInterval: 1
-  _spawnHeights:
-  - 0.5
-  - 1
   _laneWidth: 2
   _gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!4 &2013302523

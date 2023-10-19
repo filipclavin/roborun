@@ -18,7 +18,9 @@ public struct Spawnable
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Transform _roadTransform;
     [SerializeField] private float _spawnDistance;
+    [SerializeField] private float _despawnDistance;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
     [SerializeField] private float _laneWidth;
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
     void DestroyAndSpawn()
     {
         List<GameObject> objectsBehindPlayer = _spawnedObjects.FindAll(
-            obj => Vector3.Dot(_playerTransform.forward, obj.transform.position - _playerTransform.position) < 0
+            obj => Vector3.Dot(_playerTransform.forward, obj.transform.position - _playerTransform.position) < -_despawnDistance
         );
 
         if (objectsBehindPlayer.Count > 0)
@@ -88,7 +90,8 @@ public class GameManager : MonoBehaviour
             Instantiate(
                 randomSpawnable.prefab,
                 spawnPosition,
-                Quaternion.identity
+                Quaternion.identity,
+                _roadTransform
             )
         );
     }
