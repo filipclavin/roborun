@@ -94,6 +94,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8673444105253497656}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 721557753b8e3e6429c70a058c1468d6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5073612073446965895}
   m_SourcePrefab: {fileID: 100100000, guid: 721557753b8e3e6429c70a058c1468d6, type: 3}
 --- !u!1 &6640974909409080455 stripped
 GameObject:
@@ -113,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a127e52959a02499a47050491cf70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needFullEnergy: 1
   scoreValue: 200
   batteryValue: 0
 --- !u!95 &8454038705332992331
@@ -159,3 +164,16 @@ CapsuleCollider:
   m_Height: 32.664948
   m_Direction: 1
   m_Center: {x: 0, y: 4.0285716, z: 0}
+--- !u!114 &5073612073446965895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640974909409080455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8158ed0f95d59c44d98ecbb0fc3e8ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
