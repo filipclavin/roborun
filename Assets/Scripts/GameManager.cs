@@ -6,11 +6,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Transform _roadTransform;
-    [SerializeField] private float _spawnDistance;
-    [SerializeField] private float _despawnDistance;
     [SerializeField] private float _laneWidth;
     [SerializeField] private GameData _gameData;
 
+    private List<Spawnable> _allSpawnables = new();
     private List<GameObject> _spawnedObjects = new();
     private float _randomTimer = 0f;
     private float _nextRandomSpawnInterval;
@@ -19,6 +18,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _nextRandomSpawnInterval = Random.Range(_gameData._minSpawnInterval, _gameData._maxSpawnInterval);
+        _allSpawnables.AddRange(_gameData.randomizedSpawnables);
+        _allSpawnables.AddRange(_gameData.fixedSpawnables);
     }
 
     // Update is called once per frame
@@ -62,7 +63,11 @@ public class GameManager : MonoBehaviour
             spawnPosition,
             Quaternion.identity,
             _roadTransform
-        ).Completed += handle => _spawnedObjects.Add(handle.Result);
+        ).Completed += handle =>
+        {
+            handle.Result.AddComponent<SpawnableDataContainer>().spawnable = randomSpawnable;
+            _spawnedObjects.Add(handle.Result);
+        };
     }
 
     void TrySpawnFixed()
@@ -84,7 +89,11 @@ public class GameManager : MonoBehaviour
                     spawnPosition,
                     Quaternion.identity,
                     _roadTransform
-                ).Completed += handle => _spawnedObjects.Add(handle.Result);
+                ).Completed += handle =>
+                {
+                    handle.Result.AddComponent<SpawnableDataContainer>().spawnable = fixedSpawnable;
+                    _spawnedObjects.Add(handle.Result);
+                };
             }
         }
     }
@@ -105,21 +114,20 @@ public class GameManager : MonoBehaviour
         return new Vector3(
             xPositions[Random.Range(0, xPositions.Length)],
             spawnable.spawnHeights[Random.Range(0, spawnable.spawnHeights.Length)],
-            _playerTransform.position.z + _spawnDistance
+            _playerTransform.position.z + spawnable._spawnDistance
         );
     }
 
     void DestroyPassed()
     {
-        List<GameObject> _objectsBehindPlayer = _spawnedObjects.FindAll(item => Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < -_despawnDistance);
+        List<GameObject> _objectsBehindPlayer = _spawnedObjects.FindAll(
+            item => Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < item.GetComponent<SpawnableDataContainer>().spawnable._despawnDistance
+        );
 
         foreach (GameObject item in _objectsBehindPlayer)
         {
-            if (Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < -_despawnDistance)
-            {
-                _spawnedObjects.Remove(item);
-                Destroy(item);
-            }
+            _spawnedObjects.Remove(item);
+            Destroy(item);
         }
     }
 }
