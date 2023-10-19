@@ -3097,6 +3097,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 361607438767776778, guid: 0252316b572c17142aedab6b7c1dc0eb,
+        type: 3}
+      propertyPath: batteryCharge
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1336288020270748396, guid: 0252316b572c17142aedab6b7c1dc0eb,
         type: 3}
       propertyPath: input
