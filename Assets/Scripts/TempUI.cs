@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TempUI : MonoBehaviour
@@ -10,6 +11,7 @@ public class TempUI : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text tempHighScore;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private string sceneName;
 
     private static TempUI instance;
     public static TempUI Instance { get { return instance; } set { instance = value; } }
@@ -28,6 +30,11 @@ public class TempUI : MonoBehaviour
     private void DeleteScore() // If we wanna reset score
     {
         PlayerPrefs.DeleteKey(leadingScoreKey);
+    }
+
+    public void ReloadScene() //Needs change to match addressables
+    {
+        //SceneManager.LoadScene(sceneName);
     }
 
     public void StartUI(float currentBattery, float maxBattery)
