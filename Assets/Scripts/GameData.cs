@@ -21,7 +21,9 @@ public class Spawnable
 {
     public GameObjectAssetReference prefabAddressable;
     public float[] spawnHeights = new float[0];
-    public Lanes allowedLanes;
+    public Lanes allowedLanes = Lanes.Left | Lanes.Middle | Lanes.Right;
+    public float _spawnDistance = 50;
+    public float _despawnDistance = 20;
 
     [NonSerialized] public float timer;
 }
@@ -41,5 +43,5 @@ public class GameData : ScriptableObject
     public float _maxSpawnInterval;
 
     [Header("Fixed")]
-    public FixedSpawnable[] fixedSpawnables;
+    public FixedSpawnable[] fixedSpawnables = new FixedSpawnable[0];
 }
