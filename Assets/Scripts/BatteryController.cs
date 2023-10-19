@@ -21,23 +21,15 @@ public class BatteryController : MonoBehaviour
     [Header("Charge values")]
     [SerializeField] private float batteryCharge = 0.50f;
 
-    [Header("TempUI")]
-    [SerializeField] private Slider batteryBar;
-    private TMP_Text batteryText;
+
 
     private void Start()
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
-        if (batteryBar != null)
-        {
-            batteryText = batteryBar.gameObject.GetComponentInChildren<TMP_Text>();
-            maxBattery = currentBattery;
-            batteryBar.maxValue = 0;
-            batteryBar.maxValue = maxBattery;
-            UpdateBatteryBar();
-        }
         meshRenderer = GetComponent<MeshRenderer>();
         defaultColor = meshRenderer.material.color;
+        maxBattery = currentBattery;
+        TempUI.Instance.StartUI(currentBattery, maxBattery);
     }
 
     private void FixedUpdate()
@@ -53,10 +45,10 @@ public class BatteryController : MonoBehaviour
             if (currentBattery > maxBattery)
             {
                 currentBattery = maxBattery;
-                UpdateBatteryBar();
+                TempUI.Instance.UpdateBatteryBar(currentBattery);
                 return true;
             }
-            UpdateBatteryBar();
+            TempUI.Instance.UpdateBatteryBar(currentBattery);
         }
         return false;
     }
@@ -95,15 +87,7 @@ public class BatteryController : MonoBehaviour
             currentBattery = 0;
             gameTimer.EndGame();
         }
-        UpdateBatteryBar();
+        TempUI.Instance.UpdateBatteryBar(currentBattery);
     }
 
-    private void UpdateBatteryBar()
-    {
-        if (batteryBar != null)
-        {
-            batteryBar.value = currentBattery;
-            batteryText.text = "Battery: " + Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
-        }
-    }
 }
