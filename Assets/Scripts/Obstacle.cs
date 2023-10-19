@@ -18,7 +18,6 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Damage taken " + other);
             batteryController.ObstacleHit(drainValue);
             boxCollider.enabled = false;
         }         

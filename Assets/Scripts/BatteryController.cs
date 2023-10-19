@@ -58,16 +58,17 @@ public class BatteryController : MonoBehaviour
         if (invisActive == false)
         {
             BatteryDrain(drain);
-            StartCoroutine(ChangeColorOnHit(invisTime));
-            invisActive = true;
+            StartCoroutine(InvisTime(invisTime));
         }
     }
 
-    private IEnumerator ChangeColorOnHit(float seconds)
+    private IEnumerator InvisTime(float seconds)
     {
         float blinkingTime = 0f;
         float blinkOne = 0.3f;
         float blinkTwo = 0.2f;
+
+        invisActive = true;
         while (blinkingTime < seconds)
         {
             meshRenderer.material.color = hitColor;
