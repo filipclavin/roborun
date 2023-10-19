@@ -34,7 +34,7 @@ public class TempUI : MonoBehaviour
 
     public void ReloadScene() //Needs change to match addressables
     {
-        //SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void StartUI(float currentBattery, float maxBattery)

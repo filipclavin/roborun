@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BatteryController : MonoBehaviour
 {
     private GameTimer gameTimer;
-    private MeshRenderer meshRenderer;
+    private MeshRenderer[] meshRenderers;
     private Color defaultColor;
 
 
@@ -26,8 +26,8 @@ public class BatteryController : MonoBehaviour
     private void Start()
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        defaultColor = meshRenderer.material.color;
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        defaultColor = Color.white;
         maxBattery = currentBattery;
         TempUI.Instance.StartUI(currentBattery, maxBattery);
     }
@@ -71,9 +71,17 @@ public class BatteryController : MonoBehaviour
         invisActive = true;
         while (blinkingTime < seconds)
         {
-            meshRenderer.material.color = hitColor;
+            foreach (MeshRenderer mesh in meshRenderers)
+            {
+                mesh.material.color = hitColor;
+            }
+
             yield return new WaitForSeconds(blinkOne);
-            meshRenderer.material.color = defaultColor;
+
+            foreach (MeshRenderer mesh in meshRenderers)
+            {
+                mesh.material.color = defaultColor;
+            }
             yield return new WaitForSeconds(blinkTwo);
             blinkingTime += blinkOne + blinkTwo;
         }
