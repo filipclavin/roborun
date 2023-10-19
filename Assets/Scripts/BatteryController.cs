@@ -42,22 +42,20 @@ public class BatteryController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameTimer.goingOn)
-        {
-            ChargeBattery(batteryCharge);
-        }
+        ChargeBattery(batteryCharge);
     }
 
     public bool ChargeBattery(float rechargeValue)
     {
-        currentBattery += rechargeValue;
-        if (currentBattery > maxBattery)
+        if (gameTimer.goingOn)
         {
-            currentBattery = maxBattery;
-            return true;
-        }
-        else
-        {
+            currentBattery += rechargeValue;
+            if (currentBattery > maxBattery)
+            {
+                currentBattery = maxBattery;
+                UpdateBatteryBar();
+                return true;
+            }
             UpdateBatteryBar();
         }
         return false;
@@ -76,13 +74,15 @@ public class BatteryController : MonoBehaviour
     private IEnumerator ChangeColorOnHit(float seconds)
     {
         float blinkingTime = 0f;
+        float blinkOne = 0.3f;
+        float blinkTwo = 0.2f;
         while (blinkingTime < seconds)
         {
             meshRenderer.material.color = hitColor;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(blinkOne);
             meshRenderer.material.color = defaultColor;
-            yield return new WaitForSeconds(0.2f);
-            blinkingTime += 0.2f;
+            yield return new WaitForSeconds(blinkTwo);
+            blinkingTime += blinkOne + blinkTwo;
         }
         invisActive = false;
     }
@@ -92,12 +92,10 @@ public class BatteryController : MonoBehaviour
         currentBattery -= drain;
         if (currentBattery <= 0)
         {
+            currentBattery = 0;
             gameTimer.EndGame();
         }
-        else
-        {
-            UpdateBatteryBar();
-        }
+        UpdateBatteryBar();
     }
 
     private void UpdateBatteryBar()
@@ -105,7 +103,7 @@ public class BatteryController : MonoBehaviour
         if (batteryBar != null)
         {
             batteryBar.value = currentBattery;
-            batteryText.text = Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
+            batteryText.text = "Battery: " + Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
         }
     }
 }
