@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BatteryController : MonoBehaviour
 {
@@ -15,18 +16,26 @@ public class BatteryController : MonoBehaviour
 
     [SerializeField] private Color hitColor;
     [SerializeField] private float currentBattery = 100;
-    [SerializeField] private float invisTime = 1.5f;
+    [SerializeField] private float invisTime = 1f;
 
     [Header("Charge values")]
     [SerializeField] private float batteryCharge = 0.50f;
 
     [Header("TempUI")]
-    [SerializeField] private TMP_Text batteryText;
+    [SerializeField] private Slider batteryBar;
+    private TMP_Text batteryText;
 
     private void Start()
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
-        maxBattery = currentBattery;
+        if (batteryBar != null)
+        {
+            batteryText = batteryBar.gameObject.GetComponentInChildren<TMP_Text>();
+            maxBattery = currentBattery;
+            batteryBar.maxValue = 0;
+            batteryBar.maxValue = maxBattery;
+            UpdateBatteryBar();
+        }
         meshRenderer = GetComponent<MeshRenderer>();
         defaultColor = meshRenderer.material.color;
     }
@@ -36,11 +45,6 @@ public class BatteryController : MonoBehaviour
         if (gameTimer.goingOn)
         {
             ChargeBattery(batteryCharge);
-        
-            if (batteryText != null ) // Remove when we implement new UI
-            {
-                batteryText.text = "Battery " + Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
-            }
         }
     }
 
@@ -51,6 +55,10 @@ public class BatteryController : MonoBehaviour
         {
             currentBattery = maxBattery;
             return true;
+        }
+        else
+        {
+            UpdateBatteryBar();
         }
         return false;
     }
@@ -85,6 +93,19 @@ public class BatteryController : MonoBehaviour
         if (currentBattery <= 0)
         {
             gameTimer.EndGame();
+        }
+        else
+        {
+            UpdateBatteryBar();
+        }
+    }
+
+    private void UpdateBatteryBar()
+    {
+        if (batteryBar != null)
+        {
+            batteryBar.value = currentBattery;
+            batteryText.text = Mathf.RoundToInt(currentBattery) + "/" + maxBattery;
         }
     }
 }

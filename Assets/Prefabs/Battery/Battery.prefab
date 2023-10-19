@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 0
-  batteryValue: 0
+  batteryValue: 20
 --- !u!64 &8183810149840761765
 MeshCollider:
   m_ObjectHideFlags: 0
