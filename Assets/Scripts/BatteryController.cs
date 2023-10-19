@@ -32,6 +32,15 @@ public class BatteryController : MonoBehaviour
         TempUI.Instance.StartUI(currentBattery, maxBattery);
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        foreach (MeshRenderer mesh in meshRenderers)
+        {
+            mesh.material.color = defaultColor;
+        }
+    }
+
     private void FixedUpdate()
     {
         ChargeBattery(batteryCharge);
