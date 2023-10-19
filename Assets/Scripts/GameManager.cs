@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         if (_randomizedSpawnables.Count > 0)
         {
+            Debug.Log("Random");
             _randomTimer += Time.deltaTime;
 
             if (_randomTimer >= _nextRandomSpawnInterval)
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
 
         if (_fixedSpawnables.Count > 0)
         {
+            Debug.Log("Fixed");
             TrySpawnFixed();
             DestroyPassed();
         }
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour
 
             fixedSpawnable.timer += Time.deltaTime;
 
-            if (fixedSpawnable.timer >= fixedSpawnable.spawnInterval * 1000)
+            if (fixedSpawnable.timer >= fixedSpawnable.spawnInterval)
             {
                 fixedSpawnable.timer = 0f;
 
@@ -159,7 +161,7 @@ public class GameManager : MonoBehaviour
             };
         }
 
-        foreach (FixedSpawnableAddressable item in _gameData.randomizedSpawnables)
+        foreach (FixedSpawnableAddressable item in _gameData.fixedSpawnables)
         {
             item.prefabAddressable.LoadAssetAsync<GameObject>().Completed += handle =>
             {
