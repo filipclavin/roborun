@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +9,7 @@ public class TempUI : MonoBehaviour
     [SerializeField] private Slider batteryBar;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text tempHighScore;
+    [SerializeField] private GameObject gameOverPanel;
 
     private static TempUI instance;
     public static TempUI Instance { get { return instance; } set { instance = value; } }
@@ -24,6 +23,11 @@ public class TempUI : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void DeleteScore() // If we wanna reset score
+    {
+        PlayerPrefs.DeleteKey(leadingScoreKey);
     }
 
     public void StartUI(float currentBattery, float maxBattery)
@@ -65,5 +69,10 @@ public class TempUI : MonoBehaviour
         {
             tempHighScore.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
     }
 }

@@ -33,10 +33,6 @@ public class GameTimer : MonoBehaviour
 		goingOn = false;
 		TempUI.Instance.UpdateHighScore(player.scoreValue);
 		Debug.Log("You got " + player.scoreValue + " and it is a new highscore!");
-	}
-
-	private void DeleteScore()
-	{
-		PlayerPrefs.DeleteKey("Highscore");
+		TempUI.Instance.GameOver();
 	}
 }
