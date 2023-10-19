@@ -1,24 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Spawnable : SpawnableAddressable
-{
-    public GameObject prefab;
-
-    public Spawnable()
-    {
-    }
-}
-
-public class FixedSpawnable : FixedSpawnableAddressable
-{
-    public GameObject prefab;
-    public float timer = 0f;
-
-    public FixedSpawnable()
-    {
-    }
-}
+using UnityEngine.AddressableAssets;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,8 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _laneWidth;
     [SerializeField] private GameData _gameData;
 
-    private List<Spawnable> _randomizedSpawnables = new();
-    private List<FixedSpawnable> _fixedSpawnables = new();
     private List<GameObject> _spawnedObjects = new();
     private float _randomTimer = 0f;
     private float _nextRandomSpawnInterval;
@@ -38,15 +18,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadAdressables();
         _nextRandomSpawnInterval = Random.Range(_gameData._minSpawnInterval, _gameData._maxSpawnInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_randomizedSpawnables.Count > 0)
+        if (_gameData.randomizedSpawnables.Length > 0)
         {
+            Debug.Log("Random");
             _randomTimer += Time.deltaTime;
 
             if (_randomTimer >= _nextRandomSpawnInterval)
@@ -58,8 +38,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (_fixedSpawnables.Count > 0)
+        if (_gameData.fixedSpawnables.Length > 0)
         {
+            Debug.Log("Fixed");
             TrySpawnFixed();
             DestroyPassed();
         }
@@ -68,50 +49,47 @@ public class GameManager : MonoBehaviour
 
     void SpawnRandom()
     {
+        Spawnable[] randomizedSpawnables = _gameData.randomizedSpawnables;
 
-        Spawnable randomSpawnable = _randomizedSpawnables[Random.Range(0, _randomizedSpawnables.Count)];
+        Spawnable randomSpawnable = randomizedSpawnables[Random.Range(0, randomizedSpawnables.Length)];
 
         if (randomSpawnable.allowedLanes == 0) return;
 
         Vector3 spawnPosition = GenerateSpawnPosition(randomSpawnable);
 
-        _spawnedObjects.Add(
-            Instantiate(
-                randomSpawnable.prefab,
-                spawnPosition,
-                Quaternion.identity,
-                _roadTransform
-            )
-        );
+        Addressables.InstantiateAsync(
+            randomSpawnable.prefabAddressable,
+            spawnPosition,
+            Quaternion.identity,
+            _roadTransform
+        ).Completed += handle => _spawnedObjects.Add(handle.Result);
     }
 
     void TrySpawnFixed()
     {
-        foreach (FixedSpawnable fixedSpawnable in _fixedSpawnables)
+        foreach (FixedSpawnable fixedSpawnable in _gameData.fixedSpawnables)
         {
             if (fixedSpawnable.allowedLanes == 0) return;
 
             fixedSpawnable.timer += Time.deltaTime;
 
-            if (fixedSpawnable.timer >= fixedSpawnable.spawnInterval * 1000)
+            if (fixedSpawnable.timer >= fixedSpawnable.spawnInterval)
             {
                 fixedSpawnable.timer = 0f;
 
                 Vector3 spawnPosition = GenerateSpawnPosition(fixedSpawnable);
 
-                _spawnedObjects.Add(
-                    Instantiate(
-                        fixedSpawnable.prefab,
-                        spawnPosition,
-                        Quaternion.identity,
-                        _roadTransform
-                    )
-                );
+                Addressables.InstantiateAsync(
+                    fixedSpawnable.prefabAddressable,
+                    spawnPosition,
+                    Quaternion.identity,
+                    _roadTransform
+                ).Completed += handle => _spawnedObjects.Add(handle.Result);
             }
         }
     }
 
-    Vector3 GenerateSpawnPosition(SpawnableAddressable spawnable)
+    Vector3 GenerateSpawnPosition(Spawnable spawnable)
     {
         float[] xPositions = spawnable.allowedLanes switch
         {
@@ -140,37 +118,6 @@ public class GameManager : MonoBehaviour
                 _spawnedObjects.Remove(item);
                 Destroy(item);
             }
-        }
-    }
-
-    void LoadAdressables()
-    {
-
-        foreach (SpawnableAddressable item in _gameData.randomizedSpawnables)
-        {
-            item.prefabAddressable.LoadAssetAsync<GameObject>().Completed += handle =>
-            {
-                _randomizedSpawnables.Add(new Spawnable()
-                {
-                    prefab = handle.Result,
-                    spawnHeights = item.spawnHeights,
-                    allowedLanes = item.allowedLanes
-                });
-            };
-        }
-
-        foreach (FixedSpawnableAddressable item in _gameData.randomizedSpawnables)
-        {
-            item.prefabAddressable.LoadAssetAsync<GameObject>().Completed += handle =>
-            {
-                _fixedSpawnables.Add(new FixedSpawnable()
-                {
-                    prefab = handle.Result,
-                    spawnHeights = item.spawnHeights,
-                    allowedLanes = item.allowedLanes,
-                    spawnInterval = item.spawnInterval
-                });
-            };
         }
     }
 }
