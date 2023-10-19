@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50e2a66b6c3b5c4297da0dc883cfb6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: MarkusKoffman
+  gameScene: DemoScene
 --- !u!114 &1517384981
 MonoBehaviour:
   m_ObjectHideFlags: 0
