@@ -200,6 +200,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60862083}
   m_CullTransparentMesh: 1
+--- !u!1 &63705759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63705760}
+  m_Layer: 0
+  m_Name: Road
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63705760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63705759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3936, y: -1, z: -7.819458}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1531236648}
+  - {fileID: 537338153}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &79635281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,12 +1480,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537338147}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3936, y: -1, z: 193.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 201.01945}
   m_LocalScale: {x: 0.50884, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 63705760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618093482
 GameObject:
@@ -2381,12 +2414,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531236642}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3936, y: -1, z: -7.819458}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.50884, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 63705760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550699349
 GameObject:
@@ -3064,11 +3097,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 361607438767776778, guid: 0252316b572c17142aedab6b7c1dc0eb,
-        type: 3}
-      propertyPath: batteryCharge
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1336288020270748396, guid: 0252316b572c17142aedab6b7c1dc0eb,
         type: 3}
       propertyPath: input
@@ -3241,7 +3269,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _roadTransform
       value: 
-      objectReference: {fileID: 1531236648}
+      objectReference: {fileID: 63705760}
     - target: {fileID: 8459419589974535972, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _spawnDistance
@@ -3272,7 +3300,6 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1903189948651679481}
   - {fileID: 1305087772}
-  - {fileID: 1531236648}
-  - {fileID: 537338153}
+  - {fileID: 63705760}
   - {fileID: 618093485}
   - {fileID: 384076481425040187}
