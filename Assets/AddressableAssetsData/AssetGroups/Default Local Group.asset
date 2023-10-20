@@ -77,6 +77,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d39b8cbf5305d11469538ab0a6c9c13d
+    m_Address: Assets/Prefabs/Obsticles/Stair_L.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b26c8f39813af8d468d81218446e29a4
+    m_Address: Assets/Prefabs/Obsticles/Stair_R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66c867c21e5f7c644ba98a580d8ea7ba
+    m_Address: Assets/Prefabs/Obsticles/NoJump_M,R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 97700dd045bd3ac4e9f66af41c7cef9b, type: 2}
   m_SchemaSet:
