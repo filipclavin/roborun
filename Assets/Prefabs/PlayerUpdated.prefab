@@ -428,7 +428,6 @@ GameObject:
   - component: {fileID: 8180754287742194122}
   - component: {fileID: 361607438767776778}
   - component: {fileID: 6140884958443583518}
-  - component: {fileID: 6500351848256706792}
   - component: {fileID: 1336288020270748396}
   m_Layer: 0
   m_Name: PlayerUpdated
@@ -541,20 +540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 0
---- !u!114 &6500351848256706792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3387263516292131583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5cf610d6d8fc54c91c3f6596f53483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedTimer: 0
-  speedBoost: 2.5
 --- !u!114 &1336288020270748396
 MonoBehaviour:
   m_ObjectHideFlags: 0
