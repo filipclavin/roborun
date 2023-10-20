@@ -40,7 +40,7 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     spawnHeights:
     - 0
-    - 2
+    - 3
     allowedLanes: -1
     _spawnDistance: 50
     _despawnDistance: 20
@@ -64,7 +64,7 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     spawnHeights:
     - 0
-    - 2
+    - 3
     allowedLanes: -1
     _spawnDistance: 50
     _despawnDistance: 2

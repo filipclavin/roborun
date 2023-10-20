@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     private PlayerScore player;
-    [SerializeField] private float gameLength = 100f;
+    public float gameLength = 100f;
 
 
     public bool goingOn = true;
