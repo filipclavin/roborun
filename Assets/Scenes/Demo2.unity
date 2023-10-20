@@ -619,10 +619,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1018f674fba97ed49a9117681431a07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
   batteryBar: {fileID: 1550699350}
   scoreText: {fileID: 79635283}
-  tempHighScore: {fileID: 190825722}
+  highScoreText: {fileID: 0}
+  timerText: {fileID: 0}
+  victoryText: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  victoryPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
