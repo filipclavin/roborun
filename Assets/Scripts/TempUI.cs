@@ -39,7 +39,7 @@ public class TempUI : MonoBehaviour
 
 	private void Update()
 	{
-        if (input.controller.Movement.Pause.triggered)
+        if (input.controller.Movement.Pause.triggered && !gameOverPanel.activeSelf && !victoryPanel.activeSelf)
         {
             Pause();
         }
