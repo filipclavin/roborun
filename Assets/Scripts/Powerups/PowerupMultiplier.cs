@@ -13,7 +13,7 @@ public class PowerupMultiplier : Powerup
         {
             playerScore.multipler /= multiplier;
             StopCoroutine(PowerUpActive());
-            PowerUpActive();
+            StartCoroutine(PowerUpActive());
         }
         else
         {
