@@ -38,7 +38,7 @@ public class Move : MonoBehaviour
     private void SpeedBoostTimer()
     {
         if(timeScale >= maxTimeScale) return;
-        Time.timeScale = Mathf.Log(speedBoost * gameTimer + .1f) +1;
+        Time.timeScale = Mathf.Max(Mathf.Log(speedBoost * gameTimer + .1f) + 1, 1);
     }
 
 }

@@ -113,8 +113,28 @@ MonoBehaviour:
     allowedLanes: 2
     _spawnDistance: 100
     _despawnDistance: 2
-  _minSpawnInterval: 0.7
-  _maxSpawnInterval: 1
+  - prefabAddressable:
+      m_AssetGUID: d39b8cbf5305d11469538ab0a6c9c13d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights:
+    - -1
+    allowedLanes: 6
+    _spawnDistance: 100
+    _despawnDistance: 2
+  - prefabAddressable:
+      m_AssetGUID: b26c8f39813af8d468d81218446e29a4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    spawnHeights:
+    - -1
+    allowedLanes: 3
+    _spawnDistance: 100
+    _despawnDistance: 2
+  _minSpawnInterval: 3
+  _maxSpawnInterval: 4
   fixedSpawnables:
   - prefabAddressable:
       m_AssetGUID: be888ec596d26054e8b9f0f9ee6298eb
@@ -127,7 +147,7 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 100
     _despawnDistance: 2
-    spawnInterval: 8
+    spawnInterval: 25
   - prefabAddressable:
       m_AssetGUID: 7995b761caac07544943585db33a4ddc
       m_SubObjectName: 
@@ -139,7 +159,7 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 100
     _despawnDistance: 2
-    spawnInterval: 10
+    spawnInterval: 20
   - prefabAddressable:
       m_AssetGUID: dc22fc0ce62c1624eb6c9b332ac69f72
       m_SubObjectName: 
