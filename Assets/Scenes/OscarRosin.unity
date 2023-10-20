@@ -337,8 +337,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8158ed0f95d59c44d98ecbb0fc3e8ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 600
-  _gameManager: {fileID: 1871045359}
+  speed: 5
+  gameTimer: 0
+  speedBoostTimes: []
+  speedBoost: 2.5
+  timeScale: 0
+  maxTimeScale: 5
 --- !u!1 &79635281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,12 +5081,6 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
---- !u!1 &1871045359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6893433109066577899, guid: 80357b9c443e9e64fb82058973cf9b5a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1903189948651679481}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1898727827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6024,7 +6022,7 @@ PrefabInstance:
     - target: {fileID: 1336288020270748396, guid: 0252316b572c17142aedab6b7c1dc0eb,
         type: 3}
       propertyPath: gravity
-      value: -30
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1336288020270748396, guid: 0252316b572c17142aedab6b7c1dc0eb,
         type: 3}
