@@ -29,38 +29,7 @@ public class Move : MonoBehaviour
         SpeedBoostTimer();
         MoveForward();
     }
-
-    // private void SpeedBoostTimer()
-    // {
-    //     if (gameTimer % speedBoostTimes.ElementAt(0) < Time.deltaTime && timeScale < 2f)
-    //     {
-    //         Time.timeScale += speedBoost;
-    //     }
-    //
-    //     if (gameTimer % speedBoostTimes.ElementAt(1) < Time.deltaTime && timeScale is < 3f and >= 2f)
-    //     {
-    //         Time.timeScale += speedBoost;
-    //     }
-    //     
-    // }
     
-    // private void SpeedBoostTimer()
-    // {
-    //     if (gameTimer % speedBoostTimes.ElementAt(0) < Time.deltaTime && speed < 20)
-    //     {
-    //         speed += speedBoost;
-    //     }
-    //
-    //     if (gameTimer % speedBoostTimes.ElementAt(1) < Time.deltaTime && speed is < 30 and >= 20)
-    //     {
-    //         speed += speedBoost;
-    //     }
-    //     if (gameTimer % speedBoostTimes.ElementAt(2) < Time.deltaTime && speed is < 40 and >= 30)
-    //     {
-    //         speed += speedBoost;
-    //     }
-    //     
-    // }
     private void MoveForward()
     {
         transform.Translate(Vector3.back * (speed * Time.deltaTime));
