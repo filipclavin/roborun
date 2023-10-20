@@ -18,7 +18,7 @@ public class GameTimer : MonoBehaviour
     {
         if (goingOn)
         {
-            gameLength -= Time.deltaTime;
+            gameLength -= Time.deltaTime / Time.timeScale;
             TempUI.Instance.UpdateTimer(gameLength);
 
 			if (gameLength <= 0)
