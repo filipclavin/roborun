@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] private float _baseSpeed = 10f;
-    [SerializeField] private float _maxSpeed = 20f;
+    [SerializeField] private float _speedScalar = 10f;
+    [SerializeField] private float _maxVectorMagnitude = .5f;
     [SerializeField] private GameObject _gameManager;
     private GameTimer _timer;
     
@@ -17,7 +17,13 @@ public class Move : MonoBehaviour
     // Update is called once per framess
     void Update()
     {
-        Vector3 moveVector = Vector3.back * (_baseSpeed * Time.deltaTime) / _timer.gameLength;
+        Vector3 moveVector = Vector3.back * (_speedScalar * Time.deltaTime) / _timer.gameLength;
+        Debug.Log(moveVector.magnitude);
+
+        if (moveVector.magnitude > _maxVectorMagnitude)
+        {
+            moveVector = moveVector.normalized * _maxVectorMagnitude;
+        }
         gameObject.transform.position += moveVector;
     }
 }
