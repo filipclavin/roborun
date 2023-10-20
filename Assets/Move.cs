@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    [Header("Settings")]
     public float speed = 10f;
+    [Header("Recourses")]
     [SerializeField] private GameObject _gameManager;
     private GameTimer _timer;
     

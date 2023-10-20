@@ -4,10 +4,13 @@ using UnityEngine.AddressableAssets;
 
 public class PrefabSpawner : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
-    [SerializeField] private Transform _roadTransform;
+    [Header("Settings")]
     [SerializeField] private float _laneWidth;
     [SerializeField] private GameData _gameData;
+    [Header("Refrences")]
+    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Transform _roadTransform;
+
 
     private List<Spawnable> _allSpawnables = new();
     private List<GameObject> _spawnedObjects = new();
