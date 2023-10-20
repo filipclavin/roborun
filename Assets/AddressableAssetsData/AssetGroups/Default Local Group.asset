@@ -33,12 +33,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f3df4afbab7623b46b0c7fa8a5384335
-    m_Address: Assets/Prefabs/ContainerNotJumpable.prefab
+    m_Address: Assets/Prefabs/Obsticles/ContainerNotJumpable.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e9a47018b7af3574dbac4f9c0b9c3527
-    m_Address: Assets/Prefabs/ContainerJumpable.prefab
+    m_Address: Assets/Prefabs/Obsticles/ContainerJumpable.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -48,7 +48,27 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9941643a5d7a4374daea73859f24f95f
-    m_Address: Assets/Prefabs/ContainerSlide.prefab
+    m_Address: Assets/Prefabs/Obsticles/ContainerSlide.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7995b761caac07544943585db33a4ddc
+    m_Address: Assets/Prefabs/PowerUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e16f53a8c56cffe4db9df9e7d98810a6
+    m_Address: Assets/Prefabs/Obsticles/Jump_M,R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fb148452f8596149a610ac51411b763
+    m_Address: Assets/Prefabs/Obsticles/NoJump_L,R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a1c44c35dd34b64588299beec66b832
+    m_Address: Assets/Prefabs/Obsticles/Jump_L,R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

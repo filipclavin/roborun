@@ -9,15 +9,17 @@ public class PlayerScore : MonoBehaviour
     
     public int scoreValue;
 
+    [NonSerialized] public int multipler = 1;
+
 
     private void Update()
     {
         scoreValue = CurrentScore;
-        TempUI.Instance.UpdateScore(scoreValue);
     }
 
     public void AddScore(int score)
     {
-        CurrentScore += score;
+        CurrentScore += score * multipler;
+        TempUI.Instance.UpdateScore(CurrentScore);
     }
 }
