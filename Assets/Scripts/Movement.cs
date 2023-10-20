@@ -46,10 +46,13 @@ public class Movement : MonoBehaviour
 
         if (input.controller.Movement.Jump.triggered && isGrounded )
         {
-            animator.SetTrigger("Jump");
+          animator.SetBool("isJumping", true);
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             player.transform.localScale = Vector3.one;
         }
+        else if(isGrounded)
+            animator.SetBool("isJumping", false);
+        
 
         LaneMovement();
 
