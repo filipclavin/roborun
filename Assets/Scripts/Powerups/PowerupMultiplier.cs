@@ -9,6 +9,10 @@ public class PowerupMultiplier : Powerup
     protected override IEnumerator PowerUpActive()
     {
         PlayerScore playerScore = FindAnyObjectByType<PlayerScore>();
+        if (playerScore.multipler == multiplier)
+        {
+            StopCoroutine(PowerUpActive());
+        }
         playerScore.multipler *= multiplier;
         yield return new WaitForSeconds(duration);
         playerScore.multipler /= multiplier;
