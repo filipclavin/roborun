@@ -336,8 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8158ed0f95d59c44d98ecbb0fc3e8ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedScalar: 600
-  _maxVectorMagnitude: 0.5
+  speed: 600
   _gameManager: {fileID: 1871045359}
 --- !u!1 &79635281
 GameObject:
