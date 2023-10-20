@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a127e52959a02499a47050491cf70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needFullEnergy: 1
+  needFullEnergy: 0
   scoreValue: 200
   batteryValue: 0
 --- !u!95 &8454038705332992331
