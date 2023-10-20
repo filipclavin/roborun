@@ -72,6 +72,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91de545d9c93f7b48a2dd203bf35e191
+    m_Address: Assets/Prefabs/Obsticles/NoJump_L,M.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 97700dd045bd3ac4e9f66af41c7cef9b, type: 2}
   m_SchemaSet:
