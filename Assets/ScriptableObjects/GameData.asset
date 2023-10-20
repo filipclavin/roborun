@@ -21,7 +21,7 @@ MonoBehaviour:
     spawnHeights:
     - -1
     allowedLanes: 5
-    _spawnDistance: 50
+    _spawnDistance: 100
     _despawnDistance: 2
   - prefabAddressable:
       m_AssetGUID: e9a47018b7af3574dbac4f9c0b9c3527
@@ -31,7 +31,7 @@ MonoBehaviour:
     spawnHeights:
     - -1
     allowedLanes: -1
-    _spawnDistance: 50
+    _spawnDistance: 100
     _despawnDistance: 2
   - prefabAddressable:
       m_AssetGUID: dc22fc0ce62c1624eb6c9b332ac69f72
@@ -42,7 +42,7 @@ MonoBehaviour:
     - 0
     - 3
     allowedLanes: -1
-    _spawnDistance: 50
+    _spawnDistance: 100
     _despawnDistance: 2
   - prefabAddressable:
       m_AssetGUID: 9941643a5d7a4374daea73859f24f95f
@@ -52,7 +52,7 @@ MonoBehaviour:
     spawnHeights:
     - 1
     allowedLanes: -1
-    _spawnDistance: 50
+    _spawnDistance: 100
     _despawnDistance: 2
   _minSpawnInterval: 0.5
   _maxSpawnInterval: 1
@@ -66,6 +66,6 @@ MonoBehaviour:
     - 0
     - 3
     allowedLanes: -1
-    _spawnDistance: 50
+    _spawnDistance: 100
     _despawnDistance: 2
     spawnInterval: 8
