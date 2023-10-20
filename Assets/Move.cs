@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public float speed = 10f;
+    [SerializeField] private float _baseSpeed = 10f;
+    [SerializeField] private float _maxSpeed = 20f;
     [SerializeField] private GameObject _gameManager;
     private GameTimer _timer;
     
@@ -16,6 +17,7 @@ public class Move : MonoBehaviour
     // Update is called once per framess
     void Update()
     {
-        gameObject.transform.position += Vector3.back * (speed * Time.deltaTime) / _timer.gameLength;
+        Vector3 moveVector = Vector3.back * (_baseSpeed * Time.deltaTime) / _timer.gameLength;
+        gameObject.transform.position += moveVector;
     }
 }
