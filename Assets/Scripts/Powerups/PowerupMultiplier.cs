@@ -11,10 +11,15 @@ public class PowerupMultiplier : Powerup
         PlayerScore playerScore = FindAnyObjectByType<PlayerScore>();
         if (playerScore.multipler == multiplier)
         {
+            playerScore.multipler /= multiplier;
             StopCoroutine(PowerUpActive());
+            StartCoroutine(PowerUpActive());
         }
-        playerScore.multipler *= multiplier;
-        yield return new WaitForSeconds(duration);
-        playerScore.multipler /= multiplier;
+        else
+        {
+            playerScore.multipler *= multiplier;
+            yield return new WaitForSeconds(duration);
+            playerScore.multipler /= multiplier;
+        }
     }
 }
