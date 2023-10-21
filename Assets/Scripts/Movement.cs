@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject player;
-    [SerializeField] private InputManager input;
     private Rigidbody rb;
     [Space]
     [Header("Movement")]
@@ -23,44 +22,28 @@ public class Movement : MonoBehaviour
     private int desiredLane = 1;
     private bool isJumping = false;
     private bool isSliding = false;
+    
+    
 
 
     private void Start()
     {
-        
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        
         Physics.gravity = new Vector3(0, gravity, 0);
         GroundCheck();
-        HandleInput();
+        MoveForward();
         MoveCharacter();
     }
-    
 
-    private void HandleInput()
+    private void MoveForward()
     {
         rb.velocity = new Vector3(0, rb.velocity.y, forwardSpeed);
-
-        if (input.controller.Movement.Jump.triggered && isGrounded )
-        {
-          animator.SetBool("isJumping", true);
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-            player.transform.localScale = Vector3.one;
-        }
-        else if(isGrounded)
-            animator.SetBool("isJumping", false);
         
-
-        LaneMovement();
-
-        if (input.controller.Movement.Slide.triggered && isGrounded)
-        {
-            Slide();
-            StartCoroutine(SlideTimer());
-        }
     }
 
     private void MoveCharacter()
@@ -77,37 +60,50 @@ public class Movement : MonoBehaviour
                 break;
         }
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
     }
 
-    private void Slide()
+    public void LaneTurn(InputAction.CallbackContext context)
     {
-        player.transform.position = new Vector3(rb.position.x, rb.position.y -.5f, rb.position.z);
-        player.transform.localScale = new Vector3(1, 0.5f, 1);
-    }
-
-    private IEnumerator SlideTimer()
-    {
-        yield return new WaitForSeconds(slideTime);
-        // var transformLocalPosition = rb.transform.localPosition;
-        // transformLocalPosition.y = 0f;
-        player.transform.localScale = Vector3.one;
-        isSliding = false;
-    }
-
-    private void LaneMovement()
-    {
-
-        if (input.controller.Movement.Right.triggered )
+        if (context.performed)
         {
-            desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
-        }
-        else if (input.controller.Movement.Left.triggered )
-        {
-            desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
+            if (context.ReadValue<float>() > 0)
+            {
+                desiredLane = Mathf.Clamp(desiredLane + 1, 0, 2);
+            }
+            else if (context.ReadValue<float>() < 0)
+            {
+                desiredLane = Mathf.Clamp(desiredLane - 1, 0, 2);
+            }
         }
     }
-    
+    [SerializeField] private float jumpTimeScale = 1f;
+
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded)
+        {
+            jumpTimeScale = Time.timeScale;
+
+            isJumping = true;
+
+            var velocity = rb.velocity;
+            velocity = new Vector3(velocity.x, 0, velocity.z);
+            rb.velocity = velocity;
+
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isIdle", false);
+            animator.speed = 1 / Time.timeScale;
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isJumping", false);
+        }
+    }
 
     private bool isGrounded;
     void GroundCheck()

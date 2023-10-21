@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class Move : MonoBehaviour
 {
@@ -8,10 +9,10 @@ public class Move : MonoBehaviour
     [Space]
     [Header("Speed Boost")]
     public float gameTimer = 0;
-    public List<float> speedBoostTimes = new List<float>();
     public float speedBoost = 2.5f;
     public float timeScale;
     public float maxTimeScale = 5f;
+    
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class Move : MonoBehaviour
     private void FixedUpdate()
     {
         gameTimer += 1 * Time.deltaTime / Time.timeScale;
+        
         SpeedBoostTimer();
         MoveForward();
     }
@@ -40,5 +42,7 @@ public class Move : MonoBehaviour
         if(timeScale >= maxTimeScale) return;
         Time.timeScale = Mathf.Max(Mathf.Log(speedBoost * gameTimer + .1f) + 1, 1);
     }
+
+   
 
 }

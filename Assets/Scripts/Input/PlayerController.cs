@@ -31,7 +31,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""name"": ""Left"",
                     ""type"": ""Value"",
                     ""id"": ""9e8634ef-a278-4a07-8fcf-347a0389ab09"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -80,6 +80,15 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""a1dbdc39-60d8-41ae-9479-5f7d9b10cc00"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -225,6 +234,39 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""025cc77b-2a70-411f-b8f4-ee7af01a5a73"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bcd78c58-a296-4d61-a68f-6a30aedbda70"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8dde732f-78a8-4807-a204-175e3b8cef5d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -239,6 +281,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         m_Movement_Slide = m_Movement.FindAction("Slide", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Pause = m_Movement.FindAction("Pause", throwIfNotFound: true);
+        m_Movement_Turn = m_Movement.FindAction("Turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,6 +349,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Slide;
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_Pause;
+    private readonly InputAction m_Movement_Turn;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
@@ -316,6 +360,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         public InputAction @Slide => m_Wrapper.m_Movement_Slide;
         public InputAction @Move => m_Wrapper.m_Movement_Move;
         public InputAction @Pause => m_Wrapper.m_Movement_Pause;
+        public InputAction @Turn => m_Wrapper.m_Movement_Turn;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -343,6 +388,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Turn.started += instance.OnTurn;
+            @Turn.performed += instance.OnTurn;
+            @Turn.canceled += instance.OnTurn;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -365,6 +413,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Turn.started -= instance.OnTurn;
+            @Turn.performed -= instance.OnTurn;
+            @Turn.canceled -= instance.OnTurn;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -390,5 +441,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         void OnSlide(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
     }
 }
