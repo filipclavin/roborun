@@ -77,22 +77,19 @@ public class Movement : MonoBehaviour
             }
         }
     }
-    [SerializeField] private float jumpTimeScale = 1f;
 
 
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded)
         {
-            jumpTimeScale = Time.timeScale;
-
             isJumping = true;
-
+            
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
 
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+           rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             
             animator.SetBool("isJumping", true);
             animator.SetBool("isIdle", false);
