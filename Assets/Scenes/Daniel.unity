@@ -342,7 +342,7 @@ MonoBehaviour:
   - 5
   - 10
   - 15
-  speedBoost: 0
+  speedBoost: 0.1
   timeScale: 0
   maxTimeScale: 5
 --- !u!1 &79635281
@@ -3840,6 +3840,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1159172573}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eacdacaf2b20acd489b3e7c2851227aa,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1159172580}
   m_SourcePrefab: {fileID: 100100000, guid: eacdacaf2b20acd489b3e7c2851227aa, type: 3}
 --- !u!1 &1159172572 stripped
 GameObject:
@@ -3866,7 +3870,7 @@ MonoBehaviour:
   gravity: -30
   slideTime: 1
   laneDistance: 2
-  laneSwitchSpeed: 10
+  laneSwitchSpeed: 5
   animator: {fileID: 1159172578}
 --- !u!114 &1159172574
 MonoBehaviour:
@@ -3945,7 +3949,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!95 &1159172578
 Animator:
@@ -3968,6 +3972,89 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1159172580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159172572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c679bbc5a77349449a5d617ff18befad,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e8634ef-a278-4a07-8fcf-347a0389ab09
+    m_ActionName: Movement/Left[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 89430964-348b-455b-ae8a-6d649d3ed235
+    m_ActionName: Movement/Right[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159172573}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9016fa71-afab-416e-9472-551fdd688c2b
+    m_ActionName: Movement/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0132c862-84f1-4ee1-9c00-787c5b181a7f
+    m_ActionName: Movement/Slide[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bef150de-9632-41c4-a39d-104f013fadb3
+    m_ActionName: Movement/Move[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc264992-4f17-4685-b093-bb61c5cce4bc
+    m_ActionName: Movement/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159172573}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: LaneTurn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a1dbdc39-60d8-41ae-9479-5f7d9b10cc00
+    m_ActionName: Movement/Turn[/Keyboard/a,/Keyboard/d]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Movement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &1220994268
 PrefabInstance:
   m_ObjectHideFlags: 0
