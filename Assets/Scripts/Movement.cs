@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+//Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
 {
     [Header("Movement")]
@@ -10,13 +10,16 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float gravity = -20f;
     [SerializeField]
-    private float laneWidth = 2f; 
-    [SerializeField]
     private float laneSwitchSpeed = 10f;
+    [Space]
     [SerializeField]
     private Animator animator;
+    [Space]
+    [Header("Lanes")]
     [SerializeField]
     private int numberOfLanes = 5;
+    [SerializeField]
+    private float laneWidth = 2f; 
     private int desiredLane;
 
     private PlayerInput playerInput;
@@ -29,7 +32,6 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         playerInput.actions["Slide"].performed += Slide;
