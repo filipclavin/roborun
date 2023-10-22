@@ -1,16 +1,25 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TempUI : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     private readonly string leadingScoreKey = "Highscore";
     private string sceneName;
     private TMP_Text batteryText;
+    private GameTimer gameTimer;
 
+    [SerializeField] private PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
+
+    [Header("Buttons")]
+    [SerializeField] private GameObject startGameButton;
+	[SerializeField] private GameObject exitGameButton;
+
+
 	[Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
@@ -22,8 +31,8 @@ public class TempUI : MonoBehaviour
 	[SerializeField] private GameObject victoryPanel;
 	[SerializeField] private GameObject pausePanel;
 
-	private static TempUI instance;
-    public static TempUI Instance { get { return instance; } set { instance = value; } }
+	private static UIManager instance;
+    public static UIManager Instance { get { return instance; } set { instance = value; } }
     private void Awake()
     {
         if (Instance == null)
@@ -36,6 +45,12 @@ public class TempUI : MonoBehaviour
         }
         sceneName = SceneManager.GetActiveScene().name;
     }
+
+	private void Start()
+	{
+		gameTimer = FindAnyObjectByType<GameTimer>();
+		OpenMenu();
+	}
 
 	private void Update()
 	{
@@ -50,7 +65,31 @@ public class TempUI : MonoBehaviour
         PlayerPrefs.DeleteKey(leadingScoreKey);
     }
 
-    public void StartUI(float currentBattery, float maxBattery)
+    public void OpenMenu()
+    {
+        startGameButton.SetActive(true);
+		exitGameButton.SetActive(true);
+    }
+
+
+	public void LoadGame()
+	{
+		gameTimer.StartGame();
+        gameDirector.Play();
+
+		startGameButton.SetActive(false);
+		exitGameButton.SetActive(false);
+	}
+
+	public void ExitGame()
+	{
+        #if UNITY_EDITOR
+		    UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+		    Application.Quit();
+	}
+
+	public void StartUI(float currentBattery, float maxBattery)
     {
         if (batteryBar != null)
         {

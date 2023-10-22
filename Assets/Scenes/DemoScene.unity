@@ -336,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8158ed0f95d59c44d98ecbb0fc3e8ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  gameTimer: 0
+  speed: 5
+  gameTime: 0
   speedBoostTimes: []
   speedBoost: 2.5
   timeScale: 1
@@ -895,11 +895,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 313850921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1018f674fba97ed49a9117681431a07d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2afc1e44a0c1bfa48a62d018513c66b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDirector: {fileID: 724477839}
   input: {fileID: 1305087771}
   batteryBar: {fileID: 1550699350}
+  startGameButton: {fileID: 1483920373}
+  exitGameButton: {fileID: 1475571904}
   scoreText: {fileID: 79635283}
   highScoreText: {fileID: 190825722}
   timerText: {fileID: 2017282626}
@@ -994,8 +997,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08728896, y: -0.012990296, z: -0.009274902, w: 0.9960552}
-  m_LocalPosition: {x: 10.985002, y: 8.754982, z: -5.230772}
+  m_LocalRotation: {x: -0, y: -0.9940956, z: 0.1085076, w: 0}
+  m_LocalPosition: {x: 10.993002, y: 7.0379825, z: 3.2192283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1237,7 +1240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 313850926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
         m_MethodName: ReloadScene
         m_Mode: 1
@@ -1457,7 +1460,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 20
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -1921,7 +1924,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 313850926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
         m_MethodName: Continue
         m_Mode: 1
@@ -2879,19 +2882,29 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 2366627516758717624, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
     value: {fileID: 330585548}
+  - key: {fileID: 1224260308930989185, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 564195187}
+  - key: {fileID: -6987680534952154383, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 79635281}
+  - key: {fileID: 3442653277663681268, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 190825720}
+  - key: {fileID: -1181109240860781128, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 2017282625}
   m_ExposedReferences:
     m_References:
     - 0878a8ed34c92ec45be34ed3724a454d: {fileID: 400746446}
     - a5ac6ead69d41e74ba8be10291281eff: {fileID: 926792508}
     - 8f59bfb661166eb4c955f7ca27f058a9: {fileID: 330585543}
     - 127c13f53b3691044b70c831eb267f2e: {fileID: 564195189}
+    - f49a8c3a81299a842bc99df1b51d849b: {fileID: 190825720}
+    - 7c63bdd66e649ac409ee4ac67d5c1568: {fileID: 2017282625}
 --- !u!4 &724477840
 Transform:
   m_ObjectHideFlags: 0
@@ -3121,7 +3134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 313850926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
         m_MethodName: ReloadScene
         m_Mode: 1
@@ -3592,14 +3605,13 @@ GameObject:
   m_Component:
   - component: {fileID: 926792509}
   - component: {fileID: 926792508}
-  - component: {fileID: 926792510}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &926792508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3655,25 +3667,6 @@ Transform:
   - {fileID: 763670699}
   m_Father: {fileID: 1314897891}
   m_LocalEulerAnglesHint: {x: 12.459, y: -180, z: 0}
---- !u!320 &926792510
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926792507}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 2366627516758717624, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1001 &1026583627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4685,7 +4678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1475571905
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4750,8 +4743,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 313850926}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -4818,7 +4811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1483920374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4883,8 +4876,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 313850926}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -6385,7 +6378,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 313850926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
         m_MethodName: ReloadScene
         m_Mode: 1
@@ -7214,6 +7207,11 @@ PrefabInstance:
     - target: {fileID: 1514883210555952127, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
+      propertyPath: goingOn
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,

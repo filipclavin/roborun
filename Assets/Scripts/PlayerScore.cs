@@ -20,6 +20,6 @@ public class PlayerScore : MonoBehaviour
     public void AddScore(int score)
     {
         CurrentScore += score * multipler;
-        TempUI.Instance.UpdateScore(CurrentScore);
+        UIManager.Instance.UpdateScore(CurrentScore);
     }
 }

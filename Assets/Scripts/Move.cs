@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    private GameTimer gameTimer;
     [Header("Settings")] public float speed = 10f;
     [Space]
     [Header("Speed Boost")]
-    public float gameTimer = 0;
+    public float gameTime = 0;
     public List<float> speedBoostTimes = new List<float>();
     public float speedBoost = 2.5f;
     public float timeScale;
@@ -15,6 +16,7 @@ public class Move : MonoBehaviour
 
     void Start()
     {
+        gameTimer = FindAnyObjectByType<GameTimer>();
     }
 
     // Update is called once per frames
@@ -25,20 +27,26 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        gameTimer += 1 * Time.deltaTime / Time.timeScale;
-        SpeedBoostTimer();
-        MoveForward();
+        if (gameTimer.goingOn)
+        {
+            gameTime += 1 * Time.deltaTime / Time.timeScale;
+            SpeedBoostTimer();
+            MoveForward();
+        }
     }
     
     private void MoveForward()
     {
-        transform.Translate(Vector3.back * (speed * Time.deltaTime));
+        if (gameTimer.goingOn)
+        {
+            transform.Translate(Vector3.back * (speed * Time.deltaTime));
+        }
     }
 
     private void SpeedBoostTimer()
     {
         if(timeScale >= maxTimeScale) return;
-        Time.timeScale = Mathf.Max(Mathf.Log(speedBoost * gameTimer + .1f) + 1, 1);
+        Time.timeScale = Mathf.Max(Mathf.Log(speedBoost * gameTime + .1f) + 1, 1);
     }
 
 }

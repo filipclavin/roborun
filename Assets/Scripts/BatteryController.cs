@@ -29,7 +29,7 @@ public class BatteryController : MonoBehaviour
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
         defaultColor = Color.white;
         maxBattery = currentBattery;
-        TempUI.Instance.StartUI(currentBattery, maxBattery);
+        UIManager.Instance.StartUI(currentBattery, maxBattery);
     }
 
     private void OnDisable()
@@ -54,10 +54,10 @@ public class BatteryController : MonoBehaviour
             if (currentBattery >= maxBattery)
             {
                 currentBattery = maxBattery;
-                TempUI.Instance.UpdateBatteryBar(currentBattery);
+                UIManager.Instance.UpdateBatteryBar(currentBattery);
                 return true;
             }
-            TempUI.Instance.UpdateBatteryBar(currentBattery);
+            UIManager.Instance.UpdateBatteryBar(currentBattery);
         }
         return false;
     }
@@ -105,7 +105,7 @@ public class BatteryController : MonoBehaviour
             currentBattery = 0;
             gameTimer.EndGame(false);
         }
-        TempUI.Instance.UpdateBatteryBar(currentBattery);
+        UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
 
 }

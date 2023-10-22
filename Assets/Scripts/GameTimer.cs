@@ -3,14 +3,13 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     private PlayerScore player;
+
     public float gameLength = 100f;
-
-
-    public bool goingOn = true;
+    public bool goingOn = false;
 
     private void Start()
     {
-        TempUI.Instance.UpdateHighScore(0);
+        UIManager.Instance.UpdateHighScore(0);
         player = FindAnyObjectByType<PlayerScore>();
     }
 
@@ -19,7 +18,7 @@ public class GameTimer : MonoBehaviour
         if (goingOn)
         {
             gameLength -= Time.deltaTime / Time.timeScale;
-            TempUI.Instance.UpdateTimer(gameLength);
+            UIManager.Instance.UpdateTimer(gameLength);
 
 			if (gameLength <= 0)
             {
@@ -28,18 +27,23 @@ public class GameTimer : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        goingOn = true;
+    }
+
     public void EndGame(bool won)
     {
         goingOn = false;
-        TempUI.Instance.UpdateHighScore(player.scoreValue);
+        UIManager.Instance.UpdateHighScore(player.scoreValue);
         Time.timeScale = 0;
         if (won)
         {
-            TempUI.Instance.Victory(player.scoreValue);
+            UIManager.Instance.Victory(player.scoreValue);
         }
         else
         {
-            TempUI.Instance.GameOver();
+            UIManager.Instance.GameOver();
         }
     }
 }
