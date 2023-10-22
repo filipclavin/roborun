@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
     private bool isJumping = false;
     private bool isSliding = false;
     
-    
+    private UIManager uiManager;
 
 
     private void Start()
@@ -60,7 +60,11 @@ public class Movement : MonoBehaviour
                 break;
         }
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
+        if (Time.timeScale != 0)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
+        }
+
     }
 
     public void LaneTurn(InputAction.CallbackContext context)

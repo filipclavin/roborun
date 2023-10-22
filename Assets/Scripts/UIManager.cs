@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     private TMP_Text batteryText;
     private GameTimer gameTimer;
 
-    [SerializeField] private PlayableDirector gameDirector;
+    [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
 
