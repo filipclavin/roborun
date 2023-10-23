@@ -6,24 +6,6 @@
             "id": "aa6a4db0-ade6-4e87-b27c-6c217323d56a",
             "actions": [
                 {
-                    "name": "Left",
-                    "type": "Value",
-                    "id": "9e8634ef-a278-4a07-8fcf-347a0389ab09",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Right",
-                    "type": "Value",
-                    "id": "89430964-348b-455b-ae8a-6d649d3ed235",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "9016fa71-afab-416e-9472-551fdd688c2b",
@@ -70,50 +52,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "b98dd8ca-4f56-48da-9023-2ddcee3bc9d3",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9acc85de-424a-4b86-9825-5f2ad528a30f",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "53f1a21b-52af-4d69-97f6-4ee527451774",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8627cb1c-94f1-4568-883e-fb2537d0d879",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "0797319f-4afb-4c2d-bb47-bc6c8fe80e07",

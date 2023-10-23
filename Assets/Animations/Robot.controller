@@ -63,7 +63,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Running Slide
+  m_Name: Slide
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
@@ -78,7 +78,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 905a3416e2e2bc546a214fdc131bf2fa, type: 2}
+  m_Motion: {fileID: 7400000, guid: e2edd06d0180cae4e84d9b72de75b287, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
