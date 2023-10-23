@@ -1,16 +1,24 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 //Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
 {
+    
+    private GameTimer gameTimer;
+    private PlayerInput playerInput;
+    private Rigidbody rb;
+    private Vector3 direction;
+    private bool isJumping = false;
+    private bool isSliding = false;
+    
     [Header("Movement")]
     [Space]
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float gravity = -20f;
     [SerializeField] private float laneSwitchSpeed = 10f;
     [Space]
+    [Header("Animations & Effects")]
     [SerializeField] private Animator animator;
     [SerializeField] private List<ParticleSystem> dust;
     [Space]
@@ -20,14 +28,7 @@ public class Movement : MonoBehaviour
     private int desiredLane;
     [SerializeField] private float groundDistance;
     
-    private GameTimer gameTimer;
-    private PlayerInput playerInput;
-    private Rigidbody rb;
-
-    private Vector3 direction;
-
-    private bool isJumping = false;
-    private bool isSliding = false;
+    
 
     private void Start()
     {
@@ -55,7 +56,7 @@ public class Movement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        if (gameTimer.gameTimer > 0)
+        if (gameTimer.goingOn)
         {
             Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
         
@@ -81,7 +82,7 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && gameTimer.gameTimer > 0)
+        if (context.performed && isGrounded && gameTimer.goingOn)
         {
             
             var velocity = rb.velocity;
@@ -102,7 +103,6 @@ public class Movement : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
-           
             isGrounded = true;
         }
         else
@@ -114,7 +114,7 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && gameTimer.gameTimer > 0)
+        if (context.performed && isGrounded && gameTimer.goingOn)
         {
             isSliding = true;
         }
@@ -126,7 +126,7 @@ public class Movement : MonoBehaviour
 
     private void Animations()
     {
-        if (gameTimer.gameTimer <= 0)
+        if (gameTimer.goingOn == false)
         {
             animator.SetBool("IsIdle", true);
         }
@@ -144,7 +144,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
         }
-        else if(gameTimer.gameTimer > 3)
+        else if(gameTimer.goingOn)
         {
             dust.ForEach(p => p.Play());
             animator.SetBool("IsIdle", false);
