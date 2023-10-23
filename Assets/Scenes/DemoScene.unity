@@ -337,11 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  gameTime: 0
-  speedBoostTimes: []
-  speedBoost: 0.25
-  timeScale: 1
-  maxTimeScale: 5
+  gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!1 &79635281
 GameObject:
   m_ObjectHideFlags: 0
@@ -7300,6 +7296,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
+      propertyPath: _gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce,
+        type: 2}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
       propertyPath: gameLength
       value: 60
       objectReference: {fileID: 0}
@@ -7308,6 +7310,11 @@ PrefabInstance:
       propertyPath: tempHighScore
       value: 
       objectReference: {fileID: 190825722}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
+      propertyPath: _timeScaleMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6893433109066577899, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: m_Name
