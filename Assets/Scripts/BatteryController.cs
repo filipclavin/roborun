@@ -134,6 +134,8 @@ public class BatteryController : MonoBehaviour
     {
         foreach (MeshRenderer mesh in meshRenderers)
         {
+            if (mesh == battteryMeshRenderer) continue;
+
             mesh.material.color = color;
         }
 
@@ -141,6 +143,8 @@ public class BatteryController : MonoBehaviour
 
         foreach (MeshRenderer mesh in meshRenderers)
         {
+            if (mesh == battteryMeshRenderer) continue;
+
             mesh.material.color = defaultColor;
         }
     }
