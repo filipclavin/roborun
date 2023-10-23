@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -65,12 +66,18 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.DeleteKey(leadingScoreKey);
     }
 
+    private IEnumerator EnablePause()
+    {
+        yield return new WaitForSeconds((float) gameDirector.playableAsset.duration);
+        input.enabled = true;
+    }
+
     public void OpenMenu()
     {
         startGameButton.SetActive(true);
 		exitGameButton.SetActive(true);
+        input.enabled = false;
     }
-
 
 	public void LoadGame()
 	{
@@ -79,7 +86,8 @@ public class UIManager : MonoBehaviour
 
 		startGameButton.SetActive(false);
 		exitGameButton.SetActive(false);
-	}
+        StartCoroutine(EnablePause());
+    }
 
 	public void ExitGame()
 	{
