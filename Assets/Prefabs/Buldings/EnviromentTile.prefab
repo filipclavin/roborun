@@ -4218,7 +4218,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3948695f705f8b94bbe37864069287d0,
         type: 3}
       propertyPath: m_Name
-      value: BuildingsGP1_3L (12)
+      value: BuildingsGP1_3R (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
