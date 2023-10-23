@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,10 @@ public class UIManager : MonoBehaviour
     private string sceneName;
     private TMP_Text batteryText;
     private GameTimer gameTimer;
+    private bool playedAnimation = false;
+    private DontDestroy dontDestroy;
 
+    [SerializeField] private CinemachineVirtualCamera gameplayCamera;
     [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
@@ -46,9 +50,11 @@ public class UIManager : MonoBehaviour
         }
         sceneName = SceneManager.GetActiveScene().name;
     }
-
+    
 	private void Start()
 	{
+        dontDestroy = DontDestroy.Instance;
+        playedAnimation = dontDestroy.skipMainMenu;
 		gameTimer = FindAnyObjectByType<GameTimer>();
 		OpenMenu();
 	}
@@ -61,14 +67,32 @@ public class UIManager : MonoBehaviour
         }
 	}
 
-	private void DeleteScore() // If we wanna reset score
+    private void SkipMainMenu()
+    {
+        startGameButton.SetActive(false);
+        exitGameButton.SetActive(false);
+
+        scoreText.gameObject.SetActive(true);
+        highScoreText.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
+        victoryText.gameObject.SetActive(true);
+        batteryBar.gameObject.SetActive(true);
+
+        gameplayCamera.gameObject.SetActive(true);
+        input.enabled = true;
+        gameTimer.StartGame();
+    }
+
+    private void DeleteScore() // If we wanna reset score
     {
         PlayerPrefs.DeleteKey(leadingScoreKey);
     }
 
-    private IEnumerator EnablePause()
+    private IEnumerator IntroAnimation()
     {
+        gameDirector.Play();
         yield return new WaitForSeconds((float) gameDirector.playableAsset.duration);
+        dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
 
@@ -77,16 +101,18 @@ public class UIManager : MonoBehaviour
         startGameButton.SetActive(true);
 		exitGameButton.SetActive(true);
         input.enabled = false;
+        if (playedAnimation)
+        {
+            SkipMainMenu();
+        }
     }
 
 	public void LoadGame()
 	{
 		gameTimer.StartGame();
-        gameDirector.Play();
-
 		startGameButton.SetActive(false);
 		exitGameButton.SetActive(false);
-        StartCoroutine(EnablePause());
+        StartCoroutine(IntroAnimation()); 
     }
 
 	public void ExitGame()
@@ -105,6 +131,7 @@ public class UIManager : MonoBehaviour
             maxBattery = currentBattery;
             batteryBar.maxValue = 0;
             batteryBar.maxValue = maxBattery;
+            UpdateScore(0);
         }
     }
 
@@ -121,7 +148,7 @@ public class UIManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score " + scoreValue;
+            scoreText.text = "Score: " + scoreValue;
         }
     }
 
@@ -175,6 +202,6 @@ public class UIManager : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(sceneName);
-		Time.timeScale = 1f;
+        Time.timeScale = 1f;
 	}
 }
