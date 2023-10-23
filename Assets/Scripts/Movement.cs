@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 //Script Made By Daniel Alvarado
@@ -5,24 +6,19 @@ public class Movement : MonoBehaviour
 {
     [Header("Movement")]
     [Space]
-    [SerializeField]
-    private float jumpForce = 10f;
-    [SerializeField]
-    private float gravity = -20f;
-    [SerializeField]
-    private float laneSwitchSpeed = 10f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float gravity = -20f;
+    [SerializeField] private float laneSwitchSpeed = 10f;
     [Space]
-    [SerializeField]
-    private Animator animator;
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private List<ParticleSystem> dust;
     [Space]
     [Header("Lanes")]
-    [SerializeField]
-    private int numberOfLanes = 5;
-    [SerializeField]
-    private float laneWidth = 2f; 
+    [SerializeField] private int numberOfLanes = 5;
+    [SerializeField] private float laneWidth = 2f; 
     private int desiredLane;
-    [SerializeField]
-    private float groundDistance;
+    [SerializeField] private float groundDistance;
     private PlayerInput playerInput;
     private Rigidbody rb;
 
@@ -33,6 +29,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        dust.ForEach(p => p.Play());
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         playerInput.actions["Slide"].performed += Slide;
@@ -78,11 +75,17 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
+            
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            
+        }
+        else
+        {
+           
         }
     }
 
@@ -95,10 +98,12 @@ public class Movement : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
+           
             isGrounded = true;
         }
         else
         {
+            
             isGrounded = false;
         }
     }
@@ -119,6 +124,7 @@ public class Movement : MonoBehaviour
     {
         if (rb.velocity.y > 0)
         {
+            dust.ForEach(p => p.Stop());
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
@@ -131,6 +137,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            dust.ForEach(p => p.Play());
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
