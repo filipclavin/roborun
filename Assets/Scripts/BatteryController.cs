@@ -12,6 +12,14 @@ public class BatteryController : MonoBehaviour
 
     private float maxBattery;
 
+    [Header("Visual Battery")]
+    private float batteryDamagedPercent;
+    private readonly int batteryDamageDivide = 3;
+    private MeshRenderer battteryMeshRenderer;
+    [SerializeField] private Transform visualBattery;
+    [SerializeField] private Material healthyMaterial;
+    [SerializeField] private Material damagedMaterial;
+    [Space]
     [SerializeField] private Color hitColor;
     [SerializeField] private float currentBattery = 100;
     [SerializeField] private float damageInvis = 1f;
@@ -25,8 +33,10 @@ public class BatteryController : MonoBehaviour
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        battteryMeshRenderer = visualBattery.GetComponentInChildren<MeshRenderer>();
         defaultColor = Color.white;
         maxBattery = currentBattery;
+        batteryDamagedPercent = maxBattery / batteryDamageDivide;
         UIManager.Instance.StartUI(currentBattery, maxBattery);
     }
 
@@ -50,6 +60,19 @@ public class BatteryController : MonoBehaviour
                 invisTimer = 0;
                 invisActive = false;
             }
+        }
+    }
+
+    private void ChangeVisualBattery()
+    {
+        visualBattery.localScale = new Vector3(visualBattery.localScale.x, currentBattery / maxBattery, visualBattery.localScale.z);
+        if (currentBattery < batteryDamagedPercent)
+        {
+            battteryMeshRenderer.material = damagedMaterial;
+        }
+        else
+        {
+            battteryMeshRenderer.material = healthyMaterial;
         }
     }
 
@@ -104,6 +127,7 @@ public class BatteryController : MonoBehaviour
             currentBattery = 0;
             gameTimer.EndGame(false);
         }
+        ChangeVisualBattery();
         UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
     private IEnumerator ChangeColor(Color color, float duration)

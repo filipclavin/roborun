@@ -37,13 +37,17 @@ public class FixedSpawnable : Spawnable
 [CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
 public class GameData : ScriptableObject
 {
-    [Header("Random")]
     public Spawnable[] randomizedSpawnables = new Spawnable[0];
     public float _minSpawnInterval;
     public float _maxSpawnInterval;
 
-    [Header("Fixed")]
+    [Space]
+
     public FixedSpawnable[] fixedSpawnables = new FixedSpawnable[0];
+
+    [Space]
+
+    public string roadTileTag;
 
     [NonSerialized] public float scaledDeltaTime;
 }
