@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -9,8 +10,6 @@ public class PrefabSpawner : MonoBehaviour
     [SerializeField] private GameData _gameData;
     [Header("Refrences")]
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private Transform _roadTransform;
-
 
     private List<Spawnable> _allSpawnables = new();
     private List<GameObject> _spawnedObjects = new();
@@ -59,11 +58,16 @@ public class PrefabSpawner : MonoBehaviour
 
         Vector3 spawnPosition = GenerateSpawnPosition(randomSpawnable);
 
+        Transform roadTile = GameObject.FindGameObjectsWithTag(_gameData.roadTileTag)
+            .Select(obj => obj.transform)
+            .OrderBy(tra => (spawnPosition - tra.position).magnitude)
+            .First();
+
         Addressables.InstantiateAsync(
             randomSpawnable.prefabAddressable,
             spawnPosition,
             Quaternion.identity,
-            _roadTransform
+            roadTile
         ).Completed += handle =>
         {
             handle.Result.AddComponent<SpawnableDataContainer>().spawnable = randomSpawnable;
@@ -85,11 +89,16 @@ public class PrefabSpawner : MonoBehaviour
 
                 Vector3 spawnPosition = GenerateSpawnPosition(fixedSpawnable);
 
+                Transform roadTile = GameObject.FindGameObjectsWithTag(_gameData.roadTileTag)
+                    .Select(obj => obj.transform)
+                    .OrderBy(tra => (spawnPosition - tra.position).magnitude)
+                    .First();
+
                 Addressables.InstantiateAsync(
                     fixedSpawnable.prefabAddressable,
                     spawnPosition,
                     Quaternion.identity,
-                    _roadTransform
+                    roadTile
                 ).Completed += handle =>
                 {
                     handle.Result.AddComponent<SpawnableDataContainer>().spawnable = fixedSpawnable;
