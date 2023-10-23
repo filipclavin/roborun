@@ -337,11 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  gameTime: 0
-  speedBoostTimes: []
-  speedBoost: 0.25
-  timeScale: 1
-  maxTimeScale: 5
+  gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!1 &79635281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973171738656800266, guid: 3e1996b6741ccb24d8cf866d7bc121a7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.88
       objectReference: {fileID: 0}
     - target: {fileID: 5793665621265949221, guid: 3e1996b6741ccb24d8cf866d7bc121a7,
         type: 3}
@@ -5007,6 +5008,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483920373}
   m_CullTransparentMesh: 1
+--- !u!1001 &1497255500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.005926
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7126062
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -62.308388
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Name
+      value: Asset_Car
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c8ca2897ab556c458f7735e48361bfe, type: 3}
 --- !u!1 &1550699349
 GameObject:
   m_ObjectHideFlags: 0
@@ -7306,6 +7375,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
+      propertyPath: _gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce,
+        type: 2}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
       propertyPath: gameLength
       value: 60
       objectReference: {fileID: 0}
@@ -7314,6 +7389,11 @@ PrefabInstance:
       propertyPath: tempHighScore
       value: 
       objectReference: {fileID: 190825722}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
+      propertyPath: _timeScaleMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6893433109066577899, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: m_Name
@@ -7492,3 +7572,5 @@ SceneRoots:
   - {fileID: 618093485}
   - {fileID: 384076481425040187}
   - {fileID: 207058255}
+  - {fileID: 724477840}
+  - {fileID: 1497255500}

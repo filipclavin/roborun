@@ -14,43 +14,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizedSpawnables:
   - prefabAddressable:
-      m_AssetGUID: e9a47018b7af3574dbac4f9c0b9c3527
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 1
-    spawnHeights:
-    - -1
-    allowedLanes: -1
-    _spawnDistance: 100
-    _despawnDistance: 2
-  - prefabAddressable:
-      m_AssetGUID: e9a47018b7af3574dbac4f9c0b9c3527
+      m_AssetGUID: c9d3c888a64776643ad9c70145ca4bad
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     spawnHeights:
-    - -1
+    - -0.23
     allowedLanes: -1
     _spawnDistance: 100
     _despawnDistance: 2
   - prefabAddressable:
-      m_AssetGUID: e9a47018b7af3574dbac4f9c0b9c3527
+      m_AssetGUID: c9d3c888a64776643ad9c70145ca4bad
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 1
+      m_EditorAssetChanged: 0
     spawnHeights:
-    - -1
-    allowedLanes: 2
+    - -0.23
+    allowedLanes: -1
     _spawnDistance: 100
     _despawnDistance: 2
   - prefabAddressable:
-      m_AssetGUID: e9a47018b7af3574dbac4f9c0b9c3527
+      m_AssetGUID: c9d3c888a64776643ad9c70145ca4bad
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 1
+      m_EditorAssetChanged: 0
     spawnHeights:
-    - -1
-    allowedLanes: 2
+    - -0.23
+    allowedLanes: 3
+    _spawnDistance: 100
+    _despawnDistance: 2
+  - prefabAddressable:
+      m_AssetGUID: c9d3c888a64776643ad9c70145ca4bad
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights:
+    - -0.23
+    allowedLanes: 6
     _spawnDistance: 100
     _despawnDistance: 2
   - prefabAddressable:

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameTimer : MonoBehaviour
@@ -5,7 +6,11 @@ public class GameTimer : MonoBehaviour
     private PlayerScore player;
 
     public float gameLength = 100f;
+    public float gameTimer = 0f;
     public bool goingOn = false;
+
+    [SerializeField] private GameData _gameData;
+    [SerializeField] private float _timeScaleMultiplier = 1f;
 
     private void Start()
     {
@@ -17,10 +22,12 @@ public class GameTimer : MonoBehaviour
     {
         if (goingOn)
         {
-            gameLength -= Time.deltaTime / Time.timeScale;
-            UIManager.Instance.UpdateTimer(gameLength);
+            gameTimer += Time.deltaTime;
+            UIManager.Instance.UpdateTimer(gameLength - gameTimer);
 
-			if (gameLength <= 0)
+            _gameData.scaledDeltaTime = Time.deltaTime * Mathf.Max(Mathf.Log(_timeScaleMultiplier * gameTimer + 1f), 1);
+
+			if (gameTimer >= gameLength)
             {
                 EndGame(true);
             }

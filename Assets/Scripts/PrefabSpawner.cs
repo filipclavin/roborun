@@ -30,7 +30,7 @@ public class PrefabSpawner : MonoBehaviour
     {
         if (_gameData.randomizedSpawnables.Length > 0)
         {
-            _randomTimer += Time.deltaTime;
+            _randomTimer += _gameData.scaledDeltaTime;
 
             if (_randomTimer >= _nextRandomSpawnInterval)
             {
@@ -77,7 +77,7 @@ public class PrefabSpawner : MonoBehaviour
         {
             if (fixedSpawnable.allowedLanes == 0) return;
 
-            fixedSpawnable.timer += Time.deltaTime;
+            fixedSpawnable.timer += _gameData.scaledDeltaTime;
 
             if (fixedSpawnable.timer >= fixedSpawnable.spawnInterval)
             {
