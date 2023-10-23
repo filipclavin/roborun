@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameTimer : MonoBehaviour
@@ -24,8 +25,7 @@ public class GameTimer : MonoBehaviour
             gameTimer += Time.deltaTime;
             UIManager.Instance.UpdateTimer(gameLength - gameTimer);
 
-            Debug.Log($"Log({_timeScaleMultiplier} * {gameTimer} + 0.1) + 1 = " + (Mathf.Log(_timeScaleMultiplier * gameTimer + 0.1f) + 1f).ToString());
-            _gameData.scaledDeltaTime = Time.deltaTime; // * Mathf.Log(_timeScaleMultiplier * gameTimer + 0.1f) + 1f;
+            _gameData.scaledDeltaTime = Time.deltaTime * Mathf.Max(Mathf.Log(_timeScaleMultiplier * gameTimer + 1f), 1);
 
 			if (gameTimer >= gameLength)
             {
