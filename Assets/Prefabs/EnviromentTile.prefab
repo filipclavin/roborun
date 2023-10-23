@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 277340582904339698}
   - component: {fileID: 117594153345396215}
+  - component: {fileID: 4823889772434061163}
   m_Layer: 0
   m_Name: EnviromentTile
   m_TagString: Untagged
@@ -129,6 +130,20 @@ MonoBehaviour:
   startPoint: {fileID: 3598948412447146804}
   endPoint: {fileID: 2480229756477322193}
   obstacles: []
+--- !u!114 &4823889772434061163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5793665621265949221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8158ed0f95d59c44d98ecbb0fc3e8ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
 --- !u!1 &7734627762484702381
 GameObject:
   m_ObjectHideFlags: 0
