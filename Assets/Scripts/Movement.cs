@@ -21,7 +21,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float laneWidth = 2f; 
     private int desiredLane;
-
+    [SerializeField]
+    private float groundDistance;
     private PlayerInput playerInput;
     private Rigidbody rb;
 
@@ -89,10 +90,10 @@ public class Movement : MonoBehaviour
     void GroundCheck()
     {
         RaycastHit hit;
-        float distance = 1f;
+        
         Vector3 dir = new Vector3(0, -1);
 
-        if (Physics.Raycast(transform.position, dir, out hit, distance))
+        if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
             isGrounded = true;
         }
