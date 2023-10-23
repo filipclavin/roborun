@@ -304,7 +304,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 271646766}
   - {fileID: 537338153}
   - {fileID: 1225835827}
   - {fileID: 368917570}
@@ -776,80 +775,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &271646765
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 63705760}
-    m_Modifications:
-    - target: {fileID: 3878223686039288130, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_Name
-      value: CarJump
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 100.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c9d3c888a64776643ad9c70145ca4bad, type: 3}
---- !u!4 &271646766 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4510890805045552120, guid: c9d3c888a64776643ad9c70145ca4bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 271646765}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313850921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +1141,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4973171738656800266, guid: 3e1996b6741ccb24d8cf866d7bc121a7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5793665621265949221, guid: 3e1996b6741ccb24d8cf866d7bc121a7,
         type: 3}
       propertyPath: m_Name
@@ -1315,8 +1245,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
+      - m_Target: {fileID: 313850926}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ReloadScene
         m_Mode: 1
         m_Arguments:
@@ -1999,8 +1929,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
+      - m_Target: {fileID: 313850926}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
@@ -2972,6 +2902,8 @@ PlayableDirector:
     value: {fileID: 190825720}
   - key: {fileID: -1181109240860781128, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
     value: {fileID: 2017282625}
+  - key: {fileID: 5135421805658333964, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 1550699349}
   m_ExposedReferences:
     m_References:
     - 0878a8ed34c92ec45be34ed3724a454d: {fileID: 400746446}
@@ -3209,8 +3141,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
+      - m_Target: {fileID: 313850926}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ReloadScene
         m_Mode: 1
         m_Arguments:
@@ -5001,6 +4933,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483920373}
   m_CullTransparentMesh: 1
+--- !u!1001 &1497255500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.005926
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7126062
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -62.308388
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Name
+      value: Asset_Car
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c8ca2897ab556c458f7735e48361bfe, type: 3}
 --- !u!1 &1550699349
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,8 +6453,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TempUI, Assembly-CSharp
+      - m_Target: {fileID: 313850926}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ReloadScene
         m_Mode: 1
         m_Arguments:
@@ -7486,3 +7486,4 @@ SceneRoots:
   - {fileID: 618093485}
   - {fileID: 384076481425040187}
   - {fileID: 724477840}
+  - {fileID: 1497255500}
