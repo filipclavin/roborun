@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 //Script Made By Daniel Alvarado
@@ -11,7 +12,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float laneSwitchSpeed = 10f;
     [Space]
     [SerializeField] private Animator animator;
-
     [SerializeField] private List<ParticleSystem> dust;
     [Space]
     [Header("Lanes")]
@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float laneWidth = 2f; 
     private int desiredLane;
     [SerializeField] private float groundDistance;
+    
+    private GameTimer gameTimer;
     private PlayerInput playerInput;
     private Rigidbody rb;
 
@@ -29,6 +31,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        gameTimer = FindAnyObjectByType<GameTimer>();
         dust.ForEach(p => p.Play());
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
@@ -43,6 +46,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        
         Animations();
         Physics.gravity = new Vector3(0, gravity, 0);
         GroundCheck();
@@ -51,17 +55,21 @@ public class Movement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
-        
-        float lanePosition = (desiredLane - (numberOfLanes - 1) / 2.0f) * laneWidth;
-
-        targetPosition += transform.right * lanePosition;
-
-        if (Time.timeScale != 0)
+        if (gameTimer.gameTimer > 0)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
+            Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
+        
+            float lanePosition = (desiredLane - (numberOfLanes - 1) / 2.0f) * laneWidth;
+
+            targetPosition += transform.right * lanePosition;
+
+            if (Time.timeScale != 0)
+            {
+                transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
+            }
         }
     }
+
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
@@ -73,7 +81,7 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && gameTimer.gameTimer > 0)
         {
             
             var velocity = rb.velocity;
@@ -82,10 +90,6 @@ public class Movement : MonoBehaviour
 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             
-        }
-        else
-        {
-           
         }
     }
 
@@ -110,7 +114,7 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && gameTimer.gameTimer > 0)
         {
             isSliding = true;
         }
@@ -122,6 +126,11 @@ public class Movement : MonoBehaviour
 
     private void Animations()
     {
+        if (gameTimer.gameTimer <= 0)
+        {
+            animator.SetBool("IsIdle", true);
+        }
+        
         if (rb.velocity.y > 0)
         {
             dust.ForEach(p => p.Stop());
@@ -135,9 +144,10 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
         }
-        else
+        else if(gameTimer.gameTimer > 3)
         {
             dust.ForEach(p => p.Play());
+            animator.SetBool("IsIdle", false);
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
