@@ -6238,6 +6238,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
+      propertyPath: movingSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
+        type: 3}
       propertyPath: tilesToPreSpawn
       value: 3
       objectReference: {fileID: 0}

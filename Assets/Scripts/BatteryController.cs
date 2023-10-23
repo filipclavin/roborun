@@ -1,22 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BatteryController : MonoBehaviour
 {
     private GameTimer gameTimer;
     private MeshRenderer[] meshRenderers;
     private Color defaultColor;
-
-
     private bool invisActive = false;
+    private float invisTimer = 0;
+    private float invisDuration = 0;
+
     private float maxBattery;
 
     [SerializeField] private Color hitColor;
     [SerializeField] private float currentBattery = 100;
-    [SerializeField] private float invisTime = 1f;
+    [SerializeField] private float damageInvis = 1f;
 
     [Header("Charge values")]
     [SerializeField] private float batteryCharge = 0.50f;
@@ -44,6 +42,15 @@ public class BatteryController : MonoBehaviour
     private void FixedUpdate()
     {
         ChargeBattery(batteryCharge);
+        if (invisActive)
+        {
+            invisTimer += Time.fixedDeltaTime;
+            if (invisTimer >= invisDuration)
+            {
+                invisTimer = 0;
+                invisActive = false;
+            }
+        }
     }
 
     public bool ChargeBattery(float rechargeValue)
@@ -67,7 +74,7 @@ public class BatteryController : MonoBehaviour
         if (invisActive == false)
         {
             BatteryDrain(drain);
-            StartCoroutine(InvisTime(invisTime));
+            StartCoroutine(InvisTime(damageInvis));
         }
     }
 
@@ -80,17 +87,9 @@ public class BatteryController : MonoBehaviour
         invisActive = true;
         while (blinkingTime < seconds)
         {
-            foreach (MeshRenderer mesh in meshRenderers)
-            {
-                mesh.material.color = hitColor;
-            }
-
+            ChangeColors(hitColor, blinkOne);
             yield return new WaitForSeconds(blinkOne);
-
-            foreach (MeshRenderer mesh in meshRenderers)
-            {
-                mesh.material.color = defaultColor;
-            }
+            ChangeColors(defaultColor, blinkTwo);
             yield return new WaitForSeconds(blinkTwo);
             blinkingTime += blinkOne + blinkTwo;
         }
@@ -107,5 +106,36 @@ public class BatteryController : MonoBehaviour
         }
         UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
+    private IEnumerator ChangeColor(Color color, float duration)
+    {
+        foreach (MeshRenderer mesh in meshRenderers)
+        {
+            mesh.material.color = color;
+        }
 
+        yield return new WaitForSeconds(duration);
+
+        foreach (MeshRenderer mesh in meshRenderers)
+        {
+            mesh.material.color = defaultColor;
+        }
+    }
+
+    public void ChangeColors(Color color, float duration)
+    {
+        StartCoroutine(ChangeColor(color, duration));
+    }
+
+    public void SetInvis(float duration)
+    {
+        if (invisActive)
+        {
+            invisTimer = 0;
+        }
+        else
+        {
+            invisActive = true;   
+        }
+        invisDuration = duration;
+    }
 }
