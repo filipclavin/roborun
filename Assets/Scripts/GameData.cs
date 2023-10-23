@@ -44,4 +44,6 @@ public class GameData : ScriptableObject
 
     [Header("Fixed")]
     public FixedSpawnable[] fixedSpawnables = new FixedSpawnable[0];
+
+    [NonSerialized] public float scaledDeltaTime;
 }

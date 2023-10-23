@@ -5,7 +5,11 @@ public class GameTimer : MonoBehaviour
     private PlayerScore player;
 
     public float gameLength = 100f;
+    public float gameTimer = 0f;
     public bool goingOn = false;
+
+    [SerializeField] private GameData _gameData;
+    [SerializeField] private float _timeScaleMultiplier = 1f;
 
     private void Start()
     {
@@ -17,10 +21,13 @@ public class GameTimer : MonoBehaviour
     {
         if (goingOn)
         {
-            gameLength -= Time.deltaTime / Time.timeScale;
-            UIManager.Instance.UpdateTimer(gameLength);
+            gameTimer += Time.deltaTime;
+            UIManager.Instance.UpdateTimer(gameLength - gameTimer);
 
-			if (gameLength <= 0)
+            Debug.Log($"Log({_timeScaleMultiplier} * {gameTimer} + 0.1) + 1 = " + (Mathf.Log(_timeScaleMultiplier * gameTimer + 0.1f) + 1f).ToString());
+            _gameData.scaledDeltaTime = Time.deltaTime; // * Mathf.Log(_timeScaleMultiplier * gameTimer + 0.1f) + 1f;
+
+			if (gameTimer >= gameLength)
             {
                 EndGame(true);
             }
