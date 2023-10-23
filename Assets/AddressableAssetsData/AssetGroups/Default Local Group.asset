@@ -37,18 +37,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9a47018b7af3574dbac4f9c0b9c3527
-    m_Address: Assets/Prefabs/Obsticles/ContainerJumpable.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dc22fc0ce62c1624eb6c9b332ac69f72
     m_Address: Assets/Prefabs/Tincan.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9941643a5d7a4374daea73859f24f95f
-    m_Address: Assets/Prefabs/Obsticles/ContainerSlide.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -89,6 +79,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 66c867c21e5f7c644ba98a580d8ea7ba
     m_Address: Assets/Prefabs/Obsticles/NoJump_M,R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9d3c888a64776643ad9c70145ca4bad
+    m_Address: Assets/Prefabs/Obsticles/CarJump.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
