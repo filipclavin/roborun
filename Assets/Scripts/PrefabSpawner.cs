@@ -116,7 +116,7 @@ public class PrefabSpawner : MonoBehaviour
             xPositions[Random.Range(0, xPositions.Length)],
             spawnable.spawnHeights[Random.Range(0, spawnable.spawnHeights.Length)],
             _playerTransform.position.z + spawnable._spawnDistance
-        );
+        ); 
     }
 
     void DestroyPassed()
