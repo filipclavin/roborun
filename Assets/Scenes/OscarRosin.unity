@@ -339,7 +339,7 @@ MonoBehaviour:
   speed: 10
   gameTime: 0
   speedBoostTimes: []
-  speedBoost: 0.1
+  speedBoost: 0.25
   timeScale: 1
   maxTimeScale: 5
 --- !u!1 &79635281
@@ -7046,6 +7046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: forwardSpeed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336288020270748396, guid: 0252316b572c17142aedab6b7c1dc0eb,
+        type: 3}
+      propertyPath: numberOfLanes
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1788569986380238071, guid: 0252316b572c17142aedab6b7c1dc0eb,
         type: 3}
