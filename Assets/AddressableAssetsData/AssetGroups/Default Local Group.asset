@@ -87,6 +87,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ace467d261e48847ae860fcc128fb39
+    m_Address: Assets/Prefabs/Pickups/PowerUpInvis.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 97700dd045bd3ac4e9f66af41c7cef9b, type: 2}
   m_SchemaSet:
