@@ -10,13 +10,16 @@ public class BatteryController : MonoBehaviour
     private bool invisActive = false;
     private float invisTimer = 0;
     private float invisDuration = 0;
+    private float batteryAnimTimePassed = 0f;
+    private bool updatingVisualBattery = false;
+    private float batteryLastFrame = -1f;
 
     private float maxBattery;
 
     [Header("Visual Battery")]
     private float batteryDamagedPercent;
     private readonly int batteryDamageDivide = 3;
-    private MeshRenderer battteryMeshRenderer;
+    private MeshRenderer batteryMeshRenderer;
     [SerializeField] private Transform visualBattery;
     [SerializeField] private Material healthyMaterial;
     [SerializeField] private Material damagedMaterial;
@@ -24,6 +27,7 @@ public class BatteryController : MonoBehaviour
     [SerializeField] private Color hitColor;
     [SerializeField] private float currentBattery = 100;
     [SerializeField] private float damageInvis = 1f;
+    [SerializeField] private float batteryAnimTime;
 
     [Header("Charge values")]
     [SerializeField] private float batteryCharge = 0.50f;
@@ -34,7 +38,7 @@ public class BatteryController : MonoBehaviour
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
-        battteryMeshRenderer = visualBattery.GetComponentInChildren<MeshRenderer>();
+        batteryMeshRenderer = visualBattery.GetComponentInChildren<MeshRenderer>();
         foreach (MeshRenderer renderer in meshRenderers)
         {
             defaultColor.Add(renderer.material.color);
@@ -42,6 +46,7 @@ public class BatteryController : MonoBehaviour
         maxBattery = currentBattery;
         batteryDamagedPercent = maxBattery / batteryDamageDivide;
         UIManager.Instance.StartUI(currentBattery, maxBattery);
+        UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
 
     private void OnDisable()
@@ -56,7 +61,7 @@ public class BatteryController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChargeBattery(batteryCharge);
+        //ChargeBattery(batteryCharge);
         if (invisActive)
         {
             invisTimer += Time.fixedDeltaTime;
@@ -68,17 +73,47 @@ public class BatteryController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (batteryLastFrame != -1f && batteryLastFrame != currentBattery)
+        {
+            ChangeVisualBattery();
+        }
+
+        if (updatingVisualBattery)
+        {
+            TransitionBatteryScale();
+        }
+
+        batteryLastFrame = currentBattery;
+    }
+
+    private void TransitionBatteryScale()
+    {
+        Vector3 targetScale = new Vector3(visualBattery.localScale.x, currentBattery / maxBattery, visualBattery.localScale.z);
+        visualBattery.transform.localScale = Vector3.Slerp(visualBattery.localScale, targetScale, batteryAnimTimePassed / batteryAnimTime);
+
+        if (batteryAnimTimePassed >= batteryAnimTime) {
+            updatingVisualBattery = false;
+        } else
+        {
+            batteryAnimTimePassed += Time.deltaTime;
+        }
+    }
+
     private void ChangeVisualBattery()
     {
-        visualBattery.localScale = new Vector3(visualBattery.localScale.x, currentBattery / maxBattery, visualBattery.localScale.z);
         if (currentBattery < batteryDamagedPercent)
         {
-            battteryMeshRenderer.material = damagedMaterial;
+            batteryMeshRenderer.material = damagedMaterial;
         }
         else
         {
-            battteryMeshRenderer.material = healthyMaterial;
+            batteryMeshRenderer.material = healthyMaterial;
         }
+
+        batteryAnimTimePassed = 0f;
+        updatingVisualBattery = true;
     }
 
     public bool ChargeBattery(float rechargeValue)
@@ -138,7 +173,6 @@ public class BatteryController : MonoBehaviour
             currentBattery = 0;
             gameTimer.EndGame(false);
         }
-        ChangeVisualBattery();
         UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
     private IEnumerator ChangeColor(Color color, float duration)

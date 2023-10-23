@@ -7504,6 +7504,16 @@ PrefabInstance:
       objectReference: {fileID: 911402249}
     - target: {fileID: 361607438767776778, guid: 0252316b572c17142aedab6b7c1dc0eb,
         type: 3}
+      propertyPath: currentBattery
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 361607438767776778, guid: 0252316b572c17142aedab6b7c1dc0eb,
+        type: 3}
+      propertyPath: batteryAnimTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 361607438767776778, guid: 0252316b572c17142aedab6b7c1dc0eb,
+        type: 3}
       propertyPath: damagedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ad90f9bd95132044ab530a9b68ebce6e, type: 2}
