@@ -28,24 +28,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             ""id"": ""aa6a4db0-ade6-4e87-b27c-6c217323d56a"",
             ""actions"": [
                 {
-                    ""name"": ""Left"",
-                    ""type"": ""Value"",
-                    ""id"": ""9e8634ef-a278-4a07-8fcf-347a0389ab09"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Right"",
-                    ""type"": ""Value"",
-                    ""id"": ""89430964-348b-455b-ae8a-6d649d3ed235"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""9016fa71-afab-416e-9472-551fdd688c2b"",
@@ -80,53 +62,18 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""a1dbdc39-60d8-41ae-9479-5f7d9b10cc00"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""b98dd8ca-4f56-48da-9023-2ddcee3bc9d3"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9acc85de-424a-4b86-9825-5f2ad528a30f"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""53f1a21b-52af-4d69-97f6-4ee527451774"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8627cb1c-94f1-4568-883e-fb2537d0d879"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""0797319f-4afb-4c2d-bb47-bc6c8fe80e07"",
@@ -225,6 +172,39 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""025cc77b-2a70-411f-b8f4-ee7af01a5a73"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bcd78c58-a296-4d61-a68f-6a30aedbda70"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8dde732f-78a8-4807-a204-175e3b8cef5d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -233,12 +213,11 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
 }");
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Left = m_Movement.FindAction("Left", throwIfNotFound: true);
-        m_Movement_Right = m_Movement.FindAction("Right", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Slide = m_Movement.FindAction("Slide", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Pause = m_Movement.FindAction("Pause", throwIfNotFound: true);
+        m_Movement_Turn = m_Movement.FindAction("Turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -300,22 +279,20 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     // Movement
     private readonly InputActionMap m_Movement;
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
-    private readonly InputAction m_Movement_Left;
-    private readonly InputAction m_Movement_Right;
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Slide;
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_Pause;
+    private readonly InputAction m_Movement_Turn;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
         public MovementActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Left => m_Wrapper.m_Movement_Left;
-        public InputAction @Right => m_Wrapper.m_Movement_Right;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Slide => m_Wrapper.m_Movement_Slide;
         public InputAction @Move => m_Wrapper.m_Movement_Move;
         public InputAction @Pause => m_Wrapper.m_Movement_Pause;
+        public InputAction @Turn => m_Wrapper.m_Movement_Turn;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -325,12 +302,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MovementActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MovementActionsCallbackInterfaces.Add(instance);
-            @Left.started += instance.OnLeft;
-            @Left.performed += instance.OnLeft;
-            @Left.canceled += instance.OnLeft;
-            @Right.started += instance.OnRight;
-            @Right.performed += instance.OnRight;
-            @Right.canceled += instance.OnRight;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -343,16 +314,13 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Turn.started += instance.OnTurn;
+            @Turn.performed += instance.OnTurn;
+            @Turn.canceled += instance.OnTurn;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
         {
-            @Left.started -= instance.OnLeft;
-            @Left.performed -= instance.OnLeft;
-            @Left.canceled -= instance.OnLeft;
-            @Right.started -= instance.OnRight;
-            @Right.performed -= instance.OnRight;
-            @Right.canceled -= instance.OnRight;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -365,6 +333,9 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Turn.started -= instance.OnTurn;
+            @Turn.performed -= instance.OnTurn;
+            @Turn.canceled -= instance.OnTurn;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -384,11 +355,10 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     public MovementActions @Movement => new MovementActions(this);
     public interface IMovementActions
     {
-        void OnLeft(InputAction.CallbackContext context);
-        void OnRight(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
     }
 }

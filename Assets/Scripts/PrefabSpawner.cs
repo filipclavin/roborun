@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -9,8 +10,6 @@ public class PrefabSpawner : MonoBehaviour
     [SerializeField] private GameData _gameData;
     [Header("Refrences")]
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private Transform _roadTransform;
-
 
     private List<Spawnable> _allSpawnables = new();
     private List<GameObject> _spawnedObjects = new();
@@ -30,7 +29,7 @@ public class PrefabSpawner : MonoBehaviour
     {
         if (_gameData.randomizedSpawnables.Length > 0)
         {
-            _randomTimer += Time.deltaTime;
+            _randomTimer += _gameData.scaledDeltaTime;
 
             if (_randomTimer >= _nextRandomSpawnInterval)
             {
@@ -59,11 +58,16 @@ public class PrefabSpawner : MonoBehaviour
 
         Vector3 spawnPosition = GenerateSpawnPosition(randomSpawnable);
 
+        Transform roadTile = GameObject.FindGameObjectsWithTag(_gameData.roadTileTag)
+            .Select(obj => obj.transform)
+            .OrderBy(tra => (spawnPosition - tra.position).magnitude)
+            .First();
+
         Addressables.InstantiateAsync(
             randomSpawnable.prefabAddressable,
             spawnPosition,
             Quaternion.identity,
-            _roadTransform
+            roadTile
         ).Completed += handle =>
         {
             handle.Result.AddComponent<SpawnableDataContainer>().spawnable = randomSpawnable;
@@ -77,7 +81,7 @@ public class PrefabSpawner : MonoBehaviour
         {
             if (fixedSpawnable.allowedLanes == 0) return;
 
-            fixedSpawnable.timer += Time.deltaTime;
+            fixedSpawnable.timer += _gameData.scaledDeltaTime;
 
             if (fixedSpawnable.timer >= fixedSpawnable.spawnInterval)
             {
@@ -85,11 +89,16 @@ public class PrefabSpawner : MonoBehaviour
 
                 Vector3 spawnPosition = GenerateSpawnPosition(fixedSpawnable);
 
+                Transform roadTile = GameObject.FindGameObjectsWithTag(_gameData.roadTileTag)
+                    .Select(obj => obj.transform)
+                    .OrderBy(tra => (spawnPosition - tra.position).magnitude)
+                    .First();
+
                 Addressables.InstantiateAsync(
                     fixedSpawnable.prefabAddressable,
                     spawnPosition,
                     Quaternion.identity,
-                    _roadTransform
+                    roadTile
                 ).Completed += handle =>
                 {
                     handle.Result.AddComponent<SpawnableDataContainer>().spawnable = fixedSpawnable;
@@ -116,7 +125,7 @@ public class PrefabSpawner : MonoBehaviour
             xPositions[Random.Range(0, xPositions.Length)],
             spawnable.spawnHeights[Random.Range(0, spawnable.spawnHeights.Length)],
             _playerTransform.position.z + spawnable._spawnDistance
-        );
+        ); 
     }
 
     void DestroyPassed()
