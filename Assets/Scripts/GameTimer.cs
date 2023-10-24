@@ -36,6 +36,7 @@ public class GameTimer : MonoBehaviour
 
     public void StartGame()
     {
+        gameTimer = 0f;
         goingOn = true;
     }
 
