@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     private bool isSliding = false;
     private Collider playerCollider;
     [Header("Effects")]
-    public ParticleSystem lightning;
+    public List<ParticleSystem> effects;
     public VisualEffect dustEffect;
     
     [Header("Movement")]

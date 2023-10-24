@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
+using System.Linq;
 using UnityEngine;
 
 public class PickUpEnergy : MonoBehaviour
@@ -25,13 +24,17 @@ public class PickUpEnergy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player"))
-		{ 
-			movement.lightning.Play();
+		{
 			if (batteryController.ChargeBattery(batteryValue) == true || needFullEnergy == false)
 			{
 				playerScore.AddScore(scoreValue);
 			}
 			gameObject.SetActive(false);
+			
+			if(gameObject.CompareTag("Battery"))
+				movement.effects.ElementAt(0).Play();
+			if(gameObject.CompareTag("TinCan"))
+				movement.effects.ElementAt(1).Play();
 		}
 	}
 }
