@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,7 +17,8 @@ public class UIManager : MonoBehaviour
     private bool playedAnimation = false;
     private DontDestroy dontDestroy;
     private List<TMP_Text> scoreTexts = new List<TMP_Text>();
-
+    
+    [SerializeField] private GameObjectAssetReference scoreTextPrefab;
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
     [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
@@ -68,6 +70,16 @@ public class UIManager : MonoBehaviour
             Pause();
         }
 	}
+
+    private void OnApplicationQuit()
+    {
+        for (int i = 0; i < scoreTexts.Count; i++)
+        {
+            TMP_Text item = scoreTexts[i];
+            scoreTexts.Remove(item);
+            Destroy(item);
+        }
+    }
 
     private void SkipMainMenu()
     {
@@ -207,27 +219,12 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
 	}
 
-    public void SpawnPickupText(float scoreValue)
+    public void SpawnPickupText(float scoreValue, Transform scoreTransform)
     {
-        TMP_Text scoreText = FindInactiveText();
-        if (scoreText == null)
-        {
-            TMP_Text text = Instantiate(scoreText, transform);
-            scoreTexts.Add(text);
-
-        }
-        scoreText.text = scoreValue.ToString();
-    }
-
-    private TMP_Text FindInactiveText()
-    {
-        foreach (TMP_Text text in scoreTexts)
-        {
-            if (text.gameObject.activeSelf == false)
-            {
-                return text;
-            }
-        }
-        return null;
+        var test = Addressables.InstantiateAsync(
+            scoreTextPrefab,
+            scoreTransform
+        );
+        // = scoreValue.ToString();
     }
 }
