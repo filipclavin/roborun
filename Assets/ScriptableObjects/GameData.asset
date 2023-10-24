@@ -117,7 +117,7 @@ MonoBehaviour:
   _maxSpawnInterval: 11
   fixedSpawnables:
   - prefabAddressable:
-      m_AssetGUID: be888ec596d26054e8b9f0f9ee6298eb
+      m_AssetGUID: bc7680f4169fd364f968118211bf2998
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

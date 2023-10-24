@@ -5,6 +5,7 @@ using UnityEngine.ProBuilder;
 
 public class Move : MonoBehaviour
 {
+   
     private GameTimer gameTimer;
     public float speed = 10f;
 
@@ -12,6 +13,7 @@ public class Move : MonoBehaviour
 
     void Start()
     {
+       
         gameTimer = FindAnyObjectByType<GameTimer>();
     }
 

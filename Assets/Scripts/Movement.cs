@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     private bool isJumping = false;
     private bool isSliding = false;
     private Collider playerCollider;
+    [Header("Effects")]
+    public ParticleSystem lightning;
     public VisualEffect dustEffect;
     
     [Header("Movement")]
@@ -106,10 +108,14 @@ public class Movement : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
+            Debug.Log("Grounded");
             isGrounded = true;
+            dustEffect.Play();
         }
         else
         {
+            Debug.Log("NotGrounded");
+            dustEffect.Stop();
             isGrounded = false;
         }
     }
@@ -118,10 +124,12 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
+            
             isSliding = true;
         }
         else
         {
+           
             isSliding = false;
         }
     }
@@ -138,7 +146,6 @@ public class Movement : MonoBehaviour
         if (rb.velocity.y > 0)
         {
             isRunning = false;
-            dustEffect.Stop();
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
