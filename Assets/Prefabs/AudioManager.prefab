@@ -52,8 +52,8 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 1
   - name: StepSound
-    clip: {fileID: 8300000, guid: f812399221404bb4ab0d86d957603d2f, type: 3}
+    clip: {fileID: 8300000, guid: a2ad911917295ca4c8ae6b20b6e0891e, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.5
     source: {fileID: 0}
     loop: 0
