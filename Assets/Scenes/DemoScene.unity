@@ -3066,6 +3066,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
+      propertyPath: gravity
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
       propertyPath: laneWidth
       value: 3
       objectReference: {fileID: 0}
