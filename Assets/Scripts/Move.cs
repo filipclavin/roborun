@@ -15,14 +15,14 @@ public class Move : MonoBehaviour
         gameTimer = FindAnyObjectByType<GameTimer>();
     }
 
-    private void FixedUpdate()
+    
+    private void Update()
     {
         if (gameTimer.goingOn)
         {
             MoveForward();
         }
     }
-    
     private void MoveForward()
     {
         transform.Translate(Vector3.back * (speed * gameData.scaledDeltaTime));
