@@ -92,6 +92,56 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43e17600ee4c6be409b5d640c8379892
+    m_Address: Assets/Prefabs/CurvedObstacles/CarJump 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07b2c88f4e2c45d438df6fda51d5fe2d
+    m_Address: Assets/Prefabs/CurvedObstacles/ContainerNotJumpable 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f4044b820ecc1f84fb192eeb23e3dc36
+    m_Address: Assets/Prefabs/CurvedObstacles/Jump_L,M 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e33ac85a49d220247869d3f8ea83bd77
+    m_Address: Assets/Prefabs/CurvedObstacles/Jump_L,R 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc9bea80dbd547349bb439259d360744
+    m_Address: Assets/Prefabs/CurvedObstacles/Jump_M,R 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cfa335dcc5e42c4cad6411ef068782c
+    m_Address: Assets/Prefabs/CurvedObstacles/Stair_L 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42cd3a39cc700c141956068f8417b644
+    m_Address: Assets/Prefabs/CurvedObstacles/Stair_R 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b36b276660bf204f9d6c9acad3f737a
+    m_Address: Assets/Prefabs/CurvedPickups/PowerUpMult 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10b57476695e3904abc0ee7e866a749a
+    m_Address: Assets/Prefabs/CurvedPickups/Tincan 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a12c39ea1c2fde49b0aa06f18780c66
+    m_Address: Assets/Prefabs/Pickups/TincanBig.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 97700dd045bd3ac4e9f66af41c7cef9b, type: 2}
   m_SchemaSet:

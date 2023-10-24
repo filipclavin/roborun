@@ -1,38 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 //Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
 {
-    [Header("Movement")]
-    [Space]
-    [SerializeField]
-    private float jumpForce = 10f;
-    [SerializeField]
-    private float gravity = -20f;
-    [SerializeField]
-    private float laneSwitchSpeed = 10f;
-    [Space]
-    [SerializeField]
-    private Animator animator;
-    [Space]
-    [Header("Lanes")]
-    [SerializeField]
-    private int numberOfLanes = 5;
-    [SerializeField]
-    private float laneWidth = 2f; 
-    private int desiredLane;
-    [SerializeField]
-    private float groundDistance;
+    
+    private GameTimer gameTimer;
     private PlayerInput playerInput;
     private Rigidbody rb;
-
     private Vector3 direction;
-
     private bool isJumping = false;
     private bool isSliding = false;
+    
+    [Header("Movement")]
+    [Space]
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float gravity = -20f;
+    [SerializeField] private float laneSwitchSpeed = 10f;
+    [Space]
+    [Header("Animations & Effects")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private List<ParticleSystem> dust;
+    [Space]
+    [Header("Lanes")]
+    [SerializeField] private int numberOfLanes = 5;
+    [SerializeField] private float laneWidth = 2f; 
+    private int desiredLane;
+    [SerializeField] private float groundDistance;
+    
+    
 
     private void Start()
     {
+        gameTimer = FindAnyObjectByType<GameTimer>();
+        dust.ForEach(p => p.Play());
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         playerInput.actions["Slide"].performed += Slide;
@@ -46,6 +47,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        
         Animations();
         Physics.gravity = new Vector3(0, gravity, 0);
         GroundCheck();
@@ -54,17 +56,21 @@ public class Movement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
-        
-        float lanePosition = (desiredLane - (numberOfLanes - 1) / 2.0f) * laneWidth;
-
-        targetPosition += transform.right * lanePosition;
-
-        if (Time.timeScale != 0)
+        if (gameTimer.goingOn)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
+            Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
+        
+            float lanePosition = (desiredLane - (numberOfLanes - 1) / 2.0f) * laneWidth;
+
+            targetPosition += transform.right * lanePosition;
+
+            if (Time.timeScale != 0)
+            {
+                transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
+            }
         }
     }
+
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
@@ -76,13 +82,15 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && gameTimer.goingOn)
         {
+            
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            
         }
     }
 
@@ -99,13 +107,14 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            
             isGrounded = false;
         }
     }
 
     public void Slide(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && gameTimer.goingOn)
         {
             isSliding = true;
         }
@@ -117,8 +126,14 @@ public class Movement : MonoBehaviour
 
     private void Animations()
     {
+        if (gameTimer.goingOn == false)
+        {
+            animator.SetBool("IsIdle", true);
+        }
+        
         if (rb.velocity.y > 0)
         {
+            dust.ForEach(p => p.Stop());
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
@@ -129,8 +144,10 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
         }
-        else
+        else if(gameTimer.goingOn)
         {
+            dust.ForEach(p => p.Play());
+            animator.SetBool("IsIdle", false);
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
