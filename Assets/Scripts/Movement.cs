@@ -163,7 +163,8 @@ public class Movement : MonoBehaviour
 
     public void FootStepSound()
     {
-        FindObjectOfType<AudioManager>().Play("StepSound");
+        if(isGrounded)
+            FindObjectOfType<AudioManager>().Play("StepSound");
     }
 
 }
