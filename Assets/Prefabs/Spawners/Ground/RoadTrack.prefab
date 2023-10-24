@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1079354235012525724}
   - component: {fileID: 1070380335198568609}
   - component: {fileID: 800402757034805443}
-  - component: {fileID: 8428513128453180893}
+  - component: {fileID: 8803002766987622492}
   m_Layer: 0
   m_Name: RoadTrack
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8428513128453180893
+--- !u!64 &8803002766987622492
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

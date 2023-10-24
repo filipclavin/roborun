@@ -12,7 +12,7 @@ public class PickUpEnergy : MonoBehaviour
 	[SerializeField] private bool needFullEnergy = true;
 	[SerializeField] private int scoreValue;
     [SerializeField] private int batteryValue;
-
+    
     private void Start()
     {
 		playerScore = FindAnyObjectByType<PlayerScore>();
@@ -24,6 +24,7 @@ public class PickUpEnergy : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
+			
 			if (batteryController.ChargeBattery(batteryValue) == true || needFullEnergy == false)
 			{
 				playerScore.AddScore(scoreValue);
