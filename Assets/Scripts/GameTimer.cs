@@ -11,6 +11,10 @@ public class GameTimer : MonoBehaviour
 
     [SerializeField] private GameData _gameData;
     [SerializeField] private float _timeScaleMultiplier = 1f;
+    [SerializeField] private float _speedPenaltyMultiplier = 1f;
+    [SerializeField] private float _speedRecoveryRate = 1f;
+
+    private float _speedPenalty = 1;
 
     private void Start()
     {
@@ -25,11 +29,16 @@ public class GameTimer : MonoBehaviour
             gameTimer += Time.deltaTime;
             UIManager.Instance.UpdateTimer(gameLength - gameTimer);
 
-            _gameData.scaledDeltaTime = Time.deltaTime * Mathf.Max(Mathf.Log(_timeScaleMultiplier * gameTimer + 1f), 1);
+            _gameData.scaledDeltaTime = Time.deltaTime * _speedPenalty * Mathf.Max(Mathf.Log(_timeScaleMultiplier * gameTimer + 1f), 1);
 
 			if (gameTimer >= gameLength)
             {
                 EndGame(true);
+            }
+
+            if (_speedPenalty < 1)
+            {
+                RecoverSpeed();
             }
         }
     }
@@ -52,6 +61,21 @@ public class GameTimer : MonoBehaviour
         else
         {
             UIManager.Instance.GameOver();
+        }
+    }
+
+    public void ApplySpeedPenalty()
+    {
+        _speedPenalty *= _speedPenaltyMultiplier;
+    }
+
+    public void RecoverSpeed()
+    {
+        _speedPenalty += _speedRecoveryRate * Time.deltaTime;
+
+        if (_speedPenalty > 1)
+        {
+            _speedPenalty = 1;
         }
     }
 }
