@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8908872917133004369}
   - component: {fileID: 5031576814389375116}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BoltParicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1486,7 +1486,7 @@ ParticleSystem:
     startFrame:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.10714286
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1537,7 +1537,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 28
+    tilesX: 1
     tilesY: 1
     animationType: 0
     rowIndex: 0
@@ -1546,33 +1546,6 @@ ParticleSystem:
     rowMode: 1
     sprites:
     - sprite: {fileID: 1095163814, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1917095133, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1514069484, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 1918522558, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 153789662, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -545502504, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -510608234, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -131811958, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1100765094, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 665617855, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 368786196, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -179814802, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 1126184115, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -801678967, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 189509682, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -316535778, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 1478534626, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 110383933, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1024436412, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 259615500, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 862302492, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 1988852692, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 2073406238, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 1211675322, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1679574777, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1710396059, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: 1022951886, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
-    - sprite: {fileID: -1265677952, guid: e3372f918d8631c46acda0b2a4599642, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4862,7 +4835,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14e51f0dd0fff23439fd15b94c909cb7, type: 2}
+  - {fileID: 2100000, guid: f2d8fb05aabdf644cb30584be27c0f25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
