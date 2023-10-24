@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.VFX;
+
 //Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private bool isJumping = false;
     private bool isSliding = false;
+    private Collider playerCollider;
+    public VisualEffect dustEffect;
     
     [Header("Movement")]
     [Space]
@@ -20,7 +25,6 @@ public class Movement : MonoBehaviour
     [Space]
     [Header("Animations & Effects")]
     [SerializeField] private Animator animator;
-    [SerializeField] private List<ParticleSystem> dust;
     [Space]
     [Header("Lanes")]
     [SerializeField] private int numberOfLanes = 5;
@@ -32,8 +36,8 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        playerCollider = GetComponent<Collider>();
         gameTimer = FindAnyObjectByType<GameTimer>();
-        dust.ForEach(p => p.Play());
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         playerInput.actions["Slide"].performed += Slide;
@@ -47,7 +51,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        
         Animations();
         Physics.gravity = new Vector3(0, gravity, 0);
         GroundCheck();
@@ -116,6 +119,7 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
+            
             isSliding = true;
         }
         else
@@ -124,33 +128,47 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private bool isRunning = false;
     private void Animations()
     {
         if (gameTimer.goingOn == false)
         {
+            isRunning = false;
             animator.SetBool("IsIdle", true);
         }
         
         if (rb.velocity.y > 0)
         {
-            dust.ForEach(p => p.Stop());
+            isRunning = false;
+            dustEffect.Stop();
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
         }
+        
         else if (isSliding)
         {
+            isRunning = false;
             animator.SetBool("IsSliding", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
         }
         else if(gameTimer.goingOn)
         {
-            dust.ForEach(p => p.Play());
+            isRunning = true;
             animator.SetBool("IsIdle", false);
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
         }
+        if(isRunning && isGrounded)
+        {
+            dustEffect.Play();
+        }
+        else
+        {
+            dustEffect.Stop();
+        }
+        
     }
 }
