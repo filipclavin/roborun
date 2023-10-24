@@ -110,7 +110,6 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            
             isGrounded = false;
         }
     }
@@ -119,7 +118,6 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            
             isSliding = true;
         }
         else
@@ -136,7 +134,7 @@ public class Movement : MonoBehaviour
             isRunning = false;
             animator.SetBool("IsIdle", true);
         }
-        
+    
         if (rb.velocity.y > 0)
         {
             isRunning = false;
@@ -145,7 +143,6 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
         }
-        
         else if (isSliding)
         {
             isRunning = false;
@@ -153,7 +150,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
         }
-        else if(gameTimer.goingOn)
+        else if (gameTimer.goingOn)
         {
             isRunning = true;
             animator.SetBool("IsIdle", false);
@@ -161,14 +158,14 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
         }
-        if(isRunning && isGrounded)
-        {
-            dustEffect.Play();
-        }
-        else
-        {
-            dustEffect.Stop();
-        }
-        
+
     }
+
+    public void FootStepSound()
+    {
+        FindObjectOfType<AudioManager>().Play("StepSound");
+    }
+
 }
+
+
