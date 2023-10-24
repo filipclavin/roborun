@@ -45,15 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466bf97fd81f0804c83c592eb26fb662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 0}
-  _spawnDistance: 15
-  _minSpawnInterval: 1
-  _maxSpawnInterval: 2
-  _spawnHeights:
-  - 0.5
-  - 1
   _laneWidth: 2
   _gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
+  _playerTransform: {fileID: 0}
 --- !u!114 &2901664904763545055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6daa42ba3ecb340a63d5acdb69e343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLength: 100
-  tempHighScore: {fileID: 0}
-  goingOn: 1
+  gameLength: 60
+  gameTimer: 0
+  goingOn: 0
+  _gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
+  _timeScaleMultiplier: 60
+  _speedPenaltyMultiplier: 0.5
