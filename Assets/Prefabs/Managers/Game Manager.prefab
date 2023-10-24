@@ -66,3 +66,4 @@ MonoBehaviour:
   _gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
   _timeScaleMultiplier: 60
   _speedPenaltyMultiplier: 0.5
+  _speedRecoveryRate: 1
