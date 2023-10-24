@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PrefabSpawner : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class PrefabSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _nextRandomSpawnInterval = Random.Range(_gameData._minSpawnInterval, _gameData._maxSpawnInterval);
+        _nextRandomSpawnInterval = UnityEngine.Random.Range(_gameData._minSpawnInterval, _gameData._maxSpawnInterval);
         _allSpawnables.AddRange(_gameData.randomizedSpawnables);
         _allSpawnables.AddRange(_gameData.fixedSpawnables);
     }
@@ -36,7 +38,7 @@ public class PrefabSpawner : MonoBehaviour
                 _randomTimer = 0f;
                 SpawnRandom();
                 DestroyPassed();
-                _nextRandomSpawnInterval = Random.Range(_gameData._minSpawnInterval, _gameData._maxSpawnInterval);
+                _nextRandomSpawnInterval = UnityEngine.Random.Range(_gameData._minSpawnInterval, _gameData._maxSpawnInterval);
             }
         }
 
@@ -52,7 +54,7 @@ public class PrefabSpawner : MonoBehaviour
     {
         Spawnable[] randomizedSpawnables = _gameData.randomizedSpawnables;
 
-        Spawnable randomSpawnable = randomizedSpawnables[Random.Range(0, randomizedSpawnables.Length)];
+        Spawnable randomSpawnable = randomizedSpawnables[UnityEngine.Random.Range(0, randomizedSpawnables.Length)];
 
         if (randomSpawnable.allowedLanes == 0) return;
 
@@ -68,11 +70,7 @@ public class PrefabSpawner : MonoBehaviour
             spawnPosition,
             Quaternion.identity,
             roadTile
-        ).Completed += handle =>
-        {
-            handle.Result.AddComponent<SpawnableDataContainer>().spawnable = randomSpawnable;
-            _spawnedObjects.Add(handle.Result);
-        };
+        ).Completed += handle => HandleSpawned(handle, randomSpawnable);
     }
 
     void TrySpawnFixed()
@@ -99,11 +97,7 @@ public class PrefabSpawner : MonoBehaviour
                     spawnPosition,
                     Quaternion.identity,
                     roadTile
-                ).Completed += handle =>
-                {
-                    handle.Result.AddComponent<SpawnableDataContainer>().spawnable = fixedSpawnable;
-                    _spawnedObjects.Add(handle.Result);
-                };
+                ).Completed += handle => HandleSpawned(handle, fixedSpawnable);
             }
         }
     }
@@ -122,8 +116,8 @@ public class PrefabSpawner : MonoBehaviour
         };
 
         return new Vector3(
-            xPositions[Random.Range(0, xPositions.Length)],
-            spawnable.spawnHeights[Random.Range(0, spawnable.spawnHeights.Length)],
+            xPositions[UnityEngine.Random.Range(0, xPositions.Length)],
+            spawnable.spawnHeights[UnityEngine.Random.Range(0, spawnable.spawnHeights.Length)],
             _playerTransform.position.z + spawnable._spawnDistance
         ); 
     }
@@ -131,7 +125,7 @@ public class PrefabSpawner : MonoBehaviour
     void DestroyPassed()
     {
         List<GameObject> _objectsBehindPlayer = _spawnedObjects.FindAll(
-            item => Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < -item.GetComponent<SpawnableDataContainer>().spawnable._despawnDistance
+            item => Vector3.Dot(_playerTransform.forward, item.transform.position - _playerTransform.position) < -item.GetComponent<SpawnableMonoBehaviour>().spawnable._despawnDistance
         );
 
         foreach (GameObject item in _objectsBehindPlayer)
@@ -140,4 +134,76 @@ public class PrefabSpawner : MonoBehaviour
             Destroy(item);
         }
     }
+
+    private void HandleSpawned(AsyncOperationHandle<GameObject> handle, Spawnable spawnable)
+    {
+        handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
+
+        List<Collider> cols = new();
+        bool colFound = handle.Result.TryGetComponent(out Collider col);
+        if (colFound) cols.Add(col);
+        cols.AddRange(handle.Result.GetComponentsInChildren<Collider>());
+
+        cols.ForEach(col => col.enabled = false);
+        Collider[] hitCols = Physics.OverlapSphere(cols[0].bounds.center,
+                                                    cols[0].bounds.extents.magnitude,
+                                                    LayerMask.NameToLayer("Ground"),
+                                                    QueryTriggerInteraction.Collide);
+        cols.ForEach(col => col.enabled = true);
+
+        if (hitCols.Length > 0)
+        {
+            // figure out what lanes the hitCols span and move new object to a different lane
+            // or just above the hitCols if all allowed lanes are blocked
+            Debug.Log($"{handle.Result.name} spawned inside something else at " + handle.Result.transform.position);
+
+            foreach (Collider hitCol in hitCols)
+            {
+                Debug.Log("Hit thing: " + hitCol.name);
+
+                if (hitCol.bounds.extents.x * 2 <= _laneWidth)
+                {
+                    if (hitCol.bounds.center.x < 0)
+                    {
+                        spawnable.allowedLanes &= ~Lanes.Left;
+                    }
+                    else if (hitCol.bounds.center.x > 0)
+                    {
+                        spawnable.allowedLanes &= ~Lanes.Right;
+                    }
+                    else
+                    {
+                        spawnable.allowedLanes &= ~Lanes.Middle;
+                    }
+                }
+                else if (hitCol.bounds.extents.x < 3 * _laneWidth)
+                {
+                    if (hitCol.bounds.center.x < 0)
+                    {
+                        spawnable.allowedLanes &= ~(Lanes.Left | Lanes.Middle);
+                    }
+                    else if (hitCol.bounds.center.x > 0)
+                    {
+                        spawnable.allowedLanes &= ~(Lanes.Right | Lanes.Middle);
+                    }
+                }
+                else
+                {
+                    spawnable.allowedLanes = 0;
+                    handle.Result.transform.position += 2 * hitCol.bounds.extents.y * Vector3.up;
+                }
+            }
+
+            if (spawnable.allowedLanes != 0)
+            {
+                handle.Result.transform.position = GenerateSpawnPosition(spawnable);
+            }
+
+            Debug.Log("Moving to " + handle.Result.transform.position);
+        }
+
+        _spawnedObjects.Add(handle.Result);
+    }
+
+
 }

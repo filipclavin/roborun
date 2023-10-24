@@ -164,3 +164,4 @@ MonoBehaviour:
     _despawnDistance: 5
     spawnInterval: 15
   roadTileTag: Ground
+  roadTag: Road
