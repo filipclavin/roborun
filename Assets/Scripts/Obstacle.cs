@@ -25,6 +25,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Crash");
             movement.effects.ElementAt(2).Play();
             gameTimer.ApplySpeedPenalty();
             batteryController.ObstacleHit(drainValue);
