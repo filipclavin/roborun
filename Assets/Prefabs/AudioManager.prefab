@@ -45,9 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: f4955e573eed00d4394dba51a0f20b19, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 1
   - name: StepSound
     clip: {fileID: 8300000, guid: f812399221404bb4ab0d86d957603d2f, type: 3}
-    pitch: 0
-    volume: 0
+    pitch: 1
+    volume: 0.1
     source: {fileID: 0}
     loop: 0
