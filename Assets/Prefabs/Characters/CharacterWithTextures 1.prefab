@@ -960,7 +960,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8858718190920981790}
-  - {fileID: 4578800628144921233}
   - {fileID: 5912626686382675275}
   - {fileID: 4633392510597172755}
   - {fileID: 9116305242974936897}
@@ -1536,7 +1535,8 @@ Transform:
   m_LocalPosition: {x: 0.47095123, y: 0.38956895, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4578800628144921233}
   m_Father: {fileID: 5387804451295956169}
   m_LocalEulerAnglesHint: {x: 4.7443647, y: 20.573765, z: -56.433746}
 --- !u!1 &6924286318111187607
@@ -2057,11 +2057,11 @@ Transform:
   m_GameObject: {fileID: 8883883116796710138}
   serializedVersion: 2
   m_LocalRotation: {x: -0.031199116, y: -0, z: -0, w: 0.9995132}
-  m_LocalPosition: {x: 0, y: 0.0024578443, z: 0.03933211}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0012944341, y: -1.2480886, z: 0.025644097}
+  m_LocalScale: {x: 0.65198886, y: 0.6519888, z: 0.6519888}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1459308785276141650}
+  m_Father: {fileID: 4182888914856705282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6751282768442699128
 SkinnedMeshRenderer:
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   hitColor: {r: 0.6226415, g: 0, b: 0, a: 0}
   currentBattery: 100
   damageInvis: 1
-  batteryCharge: 0
+  batteryAnimTime: 0
 --- !u!114 &449070131355349471
 MonoBehaviour:
   m_ObjectHideFlags: 0
