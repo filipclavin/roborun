@@ -1,5 +1,6 @@
 using Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour
     private GameTimer gameTimer;
     private bool playedAnimation = false;
     private DontDestroy dontDestroy;
+    private List<TMP_Text> scoreTexts = new List<TMP_Text>();
 
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
     [SerializeField] public PlayableDirector gameDirector;
@@ -204,4 +206,28 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 	}
+
+    public void SpawnPickupText(float scoreValue)
+    {
+        TMP_Text scoreText = FindInactiveText();
+        if (scoreText == null)
+        {
+            TMP_Text text = Instantiate(scoreText, transform);
+            scoreTexts.Add(text);
+
+        }
+        scoreText.text = scoreValue.ToString();
+    }
+
+    private TMP_Text FindInactiveText()
+    {
+        foreach (TMP_Text text in scoreTexts)
+        {
+            if (text.gameObject.activeSelf == false)
+            {
+                return text;
+            }
+        }
+        return null;
+    }
 }
