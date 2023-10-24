@@ -2799,6 +2799,21 @@ PrefabInstance:
       propertyPath: batteryAnimTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: damagedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a00faee891ef21743b79fdde68f8856c, type: 2}
+    - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: healthyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
+    - target: {fileID: 4328933620533881318, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
     - target: {fileID: 4871374370922604778, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_LocalPosition.x
