@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 1353432823163100741}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -24.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,12 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a8748f5c49f074090e61ae11d48b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: 12
-  tilesToPreSpawn: 15
+  movingSpeed: 0
+  tilesToPreSpawn: 3
   tilesWithoutObstacles: 3
   DespawnPoint: {fileID: 413658803134197592}
   startPoint: {fileID: 6801290830073585324}
-  tilePrefab: {fileID: 6848344934081727140, guid: 25c7e97b4712f5e4f8d29cb6994bf38b,
+  tilePrefab: {fileID: 2088171248995477085, guid: 25c7e97b4712f5e4f8d29cb6994bf38b,
     type: 3}
 --- !u!1 &8426197799717533999
 GameObject:
@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 8426197799717533999}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalPosition: {x: 0, y: 0, z: -223.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
