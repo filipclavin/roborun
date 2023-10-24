@@ -2437,6 +2437,12 @@ Transform:
   - {fileID: 763670699}
   m_Father: {fileID: 1314897891}
   m_LocalEulerAnglesHint: {x: 12.459, y: -180, z: 0}
+--- !u!198 &985052031 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3922583110072018425, guid: 2bb3275ef9b70904ab103271285fbb63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366100911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251654019
 GameObject:
   m_ObjectHideFlags: 3
@@ -3079,6 +3085,11 @@ PrefabInstance:
       propertyPath: laneWidth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: lightning
+      value: 
+      objectReference: {fileID: 985052031}
     - target: {fileID: 8225670489799550528, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5421,6 +5432,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022890927057951817, guid: 2c2485892a0c4454b88cbed52f5e0648,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022890927057951817, guid: 2c2485892a0c4454b88cbed52f5e0648,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
