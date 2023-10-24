@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private BatteryController batteryController;
     [SerializeField] private int drainValue;
+    [SerializeField] private GameData gameData;
+    private GameTimer gameTimer;
+
+    private BatteryController batteryController;
     private BoxCollider boxCollider;
 
     private void Start()
     {
         boxCollider = transform.parent.GetComponent<BoxCollider>();
         batteryController = FindAnyObjectByType<BatteryController>();
+        gameTimer = FindAnyObjectByType<GameTimer>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            gameTimer.ApplySpeedPenalty();
             batteryController.ObstacleHit(drainValue);
             boxCollider.enabled = false;
         }         
