@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private bool isJumping = false;
     private bool isSliding = false;
+    private Collider playerCollider;
     
     [Header("Movement")]
     [Space]
@@ -32,6 +33,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        playerCollider = GetComponent<Collider>();
         gameTimer = FindAnyObjectByType<GameTimer>();
         dust.ForEach(p => p.Play());
         playerInput = GetComponent<PlayerInput>();
@@ -116,6 +118,7 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
+            
             isSliding = true;
         }
         else
