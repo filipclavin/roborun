@@ -132,6 +132,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc7680f4169fd364f968118211bf2998
+    m_Address: Assets/Prefabs/Pickups/Battery/Battery_Final.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 97700dd045bd3ac4e9f66af41c7cef9b, type: 2}
   m_SchemaSet:
