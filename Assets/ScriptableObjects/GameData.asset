@@ -113,8 +113,8 @@ MonoBehaviour:
     allowedLanes: 3
     _spawnDistance: 150
     _despawnDistance: 2
-  _minSpawnInterval: 5
-  _maxSpawnInterval: 6
+  _minSpawnInterval: 6
+  _maxSpawnInterval: 7
   fixedSpawnables:
   - prefabAddressable:
       m_AssetGUID: be888ec596d26054e8b9f0f9ee6298eb
@@ -129,7 +129,7 @@ MonoBehaviour:
     _despawnDistance: 5
     spawnInterval: 25
   - prefabAddressable:
-      m_AssetGUID: 7995b761caac07544943585db33a4ddc
+      m_AssetGUID: 9ace467d261e48847ae860fcc128fb39
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 150
     _despawnDistance: 5
-    spawnInterval: 20
+    spawnInterval: 30
   - prefabAddressable:
       m_AssetGUID: dc22fc0ce62c1624eb6c9b332ac69f72
       m_SubObjectName: 
