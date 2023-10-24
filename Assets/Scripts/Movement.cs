@@ -165,7 +165,6 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
         }
-
     }
 
     public void FootStepSound()
