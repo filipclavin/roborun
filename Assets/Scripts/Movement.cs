@@ -107,9 +107,11 @@ public class Movement : MonoBehaviour
         if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
             isGrounded = true;
+            dustEffect.Play();
         }
         else
         {
+            dustEffect.Stop();
             isGrounded = false;
         }
     }
@@ -138,7 +140,6 @@ public class Movement : MonoBehaviour
         if (rb.velocity.y > 0)
         {
             isRunning = false;
-            dustEffect.Stop();
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
@@ -163,7 +164,8 @@ public class Movement : MonoBehaviour
 
     public void FootStepSound()
     {
-        AudioManager.instance.Play("StepSound");
+        if(isGrounded)
+            AudioManager.instance.Play("StepSound");
     }
 
 }
