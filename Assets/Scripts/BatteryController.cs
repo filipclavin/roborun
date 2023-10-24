@@ -5,7 +5,7 @@ using UnityEngine;
 public class BatteryController : MonoBehaviour
 {
     private GameTimer gameTimer;
-    private MeshRenderer[] meshRenderers;
+    private List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
     private List<Color> defaultColor = new List<Color>();
     private bool invisActive = false;
     private float invisTimer = 0;
@@ -29,18 +29,30 @@ public class BatteryController : MonoBehaviour
     [SerializeField] private float damageInvis = 1f;
     [SerializeField] private float batteryAnimTime;
 
-    [Header("Charge values")]
-    [SerializeField] private float batteryCharge = 0.50f;
-
+    /*
+        If we ever bring back batterycharge
+        [Header("Charge values")]
+        [SerializeField] private float batteryCharge = 0.50f;
+    */
 
 
     private void Start()
     {
         gameTimer = FindAnyObjectByType<GameTimer>();
-        meshRenderers = GetComponentsInChildren<MeshRenderer>();
         batteryMeshRenderer = visualBattery.GetComponentInChildren<MeshRenderer>();
-        foreach (MeshRenderer renderer in meshRenderers)
+        meshRenderers.AddRange(GetComponentsInChildren<MeshRenderer>());
+        for (int i = 0; i < meshRenderers.Count; i++)
         {
+            MeshRenderer renderer = meshRenderers[i];
+
+            if (renderer == batteryMeshRenderer)
+            {
+                meshRenderers.Remove(renderer);
+                i--;
+                continue;
+            } 
+
+
             defaultColor.Add(renderer.material.color);
         }
         maxBattery = currentBattery;
@@ -52,7 +64,7 @@ public class BatteryController : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        for (int i = 0; i < meshRenderers.Length; i++)
+        for (int i = 0; i < meshRenderers.Count; i++)
         {
             MeshRenderer mesh = meshRenderers[i];
             mesh.material.color = defaultColor[i];
@@ -148,18 +160,11 @@ public class BatteryController : MonoBehaviour
         float blinkTwo = 0.2f;
 
         invisActive = true;
+
         while (blinkingTime < seconds)
         {
             ChangeColors(hitColor, blinkOne);
-            yield return new WaitForSeconds(blinkOne);
-
-            for (int i = 0; i < meshRenderers.Length; i++)
-            {
-                MeshRenderer mesh = meshRenderers[i];
-                mesh.material.color = defaultColor[i];
-            }
-
-            yield return new WaitForSeconds(blinkTwo);
+            yield return new WaitForSeconds(blinkOne + blinkTwo);
             blinkingTime += blinkOne + blinkTwo;
         }
         invisActive = false;
@@ -177,7 +182,7 @@ public class BatteryController : MonoBehaviour
     }
     private IEnumerator ChangeColor(Color color, float duration)
     {
-        for (int i = 0; i < meshRenderers.Length; i++)
+        for (int i = 0; i < meshRenderers.Count; i++)
         {
             MeshRenderer mesh = meshRenderers[i];
             mesh.material.color = color;
@@ -185,7 +190,7 @@ public class BatteryController : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
 
-        for (int i = 0; i < meshRenderers.Length; i++)
+        for (int i = 0; i < meshRenderers.Count; i++)
         {
             MeshRenderer mesh = meshRenderers[i];
             mesh.material.color = defaultColor[i];
