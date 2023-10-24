@@ -3356,6 +3356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afc1e44a0c1bfa48a62d018513c66b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreTextPrefab:
+    m_AssetGUID: a6159bb34b6a3094d90b29d2545bed5b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   gameplayCamera: {fileID: 564195189}
   gameDirector: {fileID: 724477839}
   input: {fileID: 1305087771}

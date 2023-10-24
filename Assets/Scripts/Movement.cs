@@ -160,6 +160,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsSliding", false);
         }
 
+        //if(dustEffect.)
+
     }
 
     public void FootStepSound()

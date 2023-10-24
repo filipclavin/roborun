@@ -17,8 +17,9 @@ public class PickUpEnergy : MonoBehaviour
 	private Collider pickUpcollider;
 
 	[SerializeField] private bool needFullEnergy = true;
-	[SerializeField] private int scoreValue;
-    [SerializeField] private int batteryValue;
+	
+	public int scoreValue;
+    public int batteryValue;
 
     private void Start()
     {
@@ -47,13 +48,17 @@ public class PickUpEnergy : MonoBehaviour
 
 	private void FlyToUI()
 	{
-		flyingToUI = true;
-		whenTaken = transform.position;
-        pickUpcollider.enabled = false;
+		UIManager.Instance.SpawnPickupText(this);
+		/*
+			flyingToUI = true;
+			whenTaken = transform.position;
+			pickUpcollider.enabled = false;
+		*/
     }
-
+	
     private void Update()
     {
+		/*
         if (flyingToUI)
 		{
 			flyTime += flyingSpeed * Time.deltaTime;
@@ -65,5 +70,6 @@ public class PickUpEnergy : MonoBehaviour
 				gameObject.SetActive(false);
 			}
 		}
+		*/
     }
 }

@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     private GameTimer gameTimer;
     private bool playedAnimation = false;
     private DontDestroy dontDestroy;
-    private List<TMP_Text> scoreTexts = new List<TMP_Text>();
+    private List<GameObject> scoreTexts = new List<GameObject>();
     
     [SerializeField] private GameObjectAssetReference scoreTextPrefab;
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
@@ -73,12 +73,14 @@ public class UIManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        /*
         for (int i = 0; i < scoreTexts.Count; i++)
         {
             TMP_Text item = scoreTexts[i];
             scoreTexts.Remove(item);
             Destroy(item);
         }
+        */
     }
 
     private void SkipMainMenu()
@@ -219,12 +221,13 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
 	}
 
-    public void SpawnPickupText(float scoreValue, Transform scoreTransform)
+    public void SpawnPickupText(PickUpEnergy pickUpEnergy)
     {
         var test = Addressables.InstantiateAsync(
             scoreTextPrefab,
-            scoreTransform
+            pickUpEnergy.transform
         );
+        //scoreTexts.Add(test);
         // = scoreValue.ToString();
     }
 }
