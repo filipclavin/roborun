@@ -2817,7 +2817,7 @@ PrefabInstance:
     - target: {fileID: 4871374370922604778, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4871374370922604778, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
@@ -4288,7 +4288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilePrefab
       value: 
-      objectReference: {fileID: 2088171248995477085, guid: 25c7e97b4712f5e4f8d29cb6994bf38b,
+      objectReference: {fileID: 5481357707973582074, guid: 5390da78cd36477469350b9d694581c1,
         type: 3}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
