@@ -151,7 +151,6 @@ public class Movement : MonoBehaviour
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
             FindObjectOfType<AudioManager>().Play("Jump");
-            isSliding = false;
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
