@@ -4512,7 +4512,7 @@ PrefabInstance:
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
       propertyPath: tilesToPreSpawn
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
