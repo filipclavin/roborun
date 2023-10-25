@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drainValue: 40
+  gameData: {fileID: 0}
 --- !u!1001 &2270162253517198826
 PrefabInstance:
   m_ObjectHideFlags: 0
