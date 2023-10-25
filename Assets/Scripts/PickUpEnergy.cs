@@ -37,7 +37,11 @@ public class PickUpEnergy : MonoBehaviour
 				FindObjectOfType<AudioManager>().Play("Battery");
 			}
 			if(gameObject.CompareTag("TinCan"))
+			{
 				movement.effects.ElementAt(1).Play();
+				FindObjectOfType<AudioManager>().Play("Can_Pickup");
+			}
+				
 		}
 	}
 }
