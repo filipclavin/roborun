@@ -48,7 +48,7 @@ MonoBehaviour:
   - name: Theme
     clip: {fileID: 8300000, guid: d001922aca5c3b04690d61cb5616f401, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.35
     source: {fileID: 0}
     loop: 1
   - name: StepSound
@@ -83,6 +83,24 @@ MonoBehaviour:
     loop: 0
   - name: Jump
     clip: {fileID: 8300000, guid: 96cf34c0be2270c4fb45c13b8632025a, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Slide
+    clip: {fileID: 8300000, guid: b923988b103ee3142a39a6541565bcf7, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Battery
+    clip: {fileID: 8300000, guid: f612c4424057840409e831c1e0e0872d, type: 3}
+    pitch: 1
+    volume: 0.99
+    source: {fileID: 0}
+    loop: 0
+  - name: Can_Pickup
+    clip: {fileID: 8300000, guid: d5bccb30ed557384d90810a75fb2006b, type: 3}
     pitch: 1
     volume: 0.5
     source: {fileID: 0}
