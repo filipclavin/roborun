@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58618a1ce02457f44a37818d1918487f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drainValue: 30
+  drainValue: 25
   gameData: {fileID: 0}
 --- !u!1001 &4112734466075362323
 PrefabInstance:
