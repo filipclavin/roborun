@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drainValue: 30
+  gameData: {fileID: 0}
 --- !u!1001 &4112734466075362323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
         type: 3}

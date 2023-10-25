@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class PrefabSpawner : MonoBehaviour
 {
@@ -137,82 +138,54 @@ public class PrefabSpawner : MonoBehaviour
 
     private void HandleSpawned(AsyncOperationHandle<GameObject> handle, Spawnable spawnable)
     {
-        handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
 
-        List<Collider> cols = new();
-        bool colFound = handle.Result.TryGetComponent(out Collider col);
-        if (colFound) cols.Add(col);
-        cols.AddRange(handle.Result.GetComponentsInChildren<Collider>());
-
-        cols.ForEach(col => col.enabled = false);
-        Collider[] hitCols = Physics.OverlapSphere(cols[0].bounds.center,
-                                                    cols[0].bounds.extents.magnitude,
-                                                    LayerMask.NameToLayer("Ground"),
-                                                    QueryTriggerInteraction.Collide);
-        cols.ForEach(col => col.enabled = true);
-
-        if (hitCols.Length > 0)
+        while (SpawnedInsideOther(handle.Result))
         {
-            // figure out what lanes the hitCols span and move new object to a different lane
-            // or just above the hitCols if all allowed lanes are blocked
-            //Debug.Log($"{handle.Result.name} spawned inside something else at " + handle.Result.transform.position);
-            float originalY = handle.Result.transform.position.y;
+            spawnable.allowedLanes &= handle.Result.transform.position.x == -_laneWidth ? ~Lanes.Left :
+                handle.Result.transform.position.x == 0f ? ~Lanes.Middle
+                    : ~Lanes.Right;
 
-            foreach (Collider hitCol in hitCols)
+            if (spawnable.allowedLanes == 0)
             {
-                //Debug.Log("Hit thing: " + hitCol.name);
+                spawnable.spawnHeights = spawnable.spawnHeights.Where(h => h != handle.Result.transform.position.y).ToArray();
 
-                if (hitCol.bounds.extents.x * 2 <= _laneWidth)
+                if (spawnable.spawnHeights.Length == 0)
                 {
-                    if (hitCol.bounds.center.x < 0)
-                    {
-                        spawnable.allowedLanes &= ~Lanes.Left;
-                    }
-                    else if (hitCol.bounds.center.x > 0)
-                    {
-                        spawnable.allowedLanes &= ~Lanes.Right;
-                    }
-                    else
-                    {
-                        spawnable.allowedLanes &= ~Lanes.Middle;
-                    }
-                }
-                else if (hitCol.bounds.extents.x * 2 <= 2 * _laneWidth)
-                {
-                    if (hitCol.bounds.center.x < 0)
-                    {
-                        spawnable.allowedLanes &= ~(Lanes.Left | Lanes.Middle);
-                    }
-                    else if (hitCol.bounds.center.x > 0)
-                    {
-                        spawnable.allowedLanes &= ~(Lanes.Right | Lanes.Middle);
-                    }
-                }
-                else
-                {
-                    spawnable.allowedLanes = 0;
-
-                    if (originalY + 2 * hitCol.bounds.extents.y > handle.Result.transform.position.y)
-                    {
-                        handle.Result.transform.position = new Vector3(
-                            handle.Result.transform.position.x,
-                            originalY + 2 * hitCol.bounds.extents.y,
-                            handle.Result.transform.position.z
-                        );
-                    }
+                    Destroy(handle.Result);
+                    return;
                 }
             }
 
-            if (spawnable.allowedLanes != 0)
-            {
-                handle.Result.transform.position = GenerateSpawnPosition(spawnable);
-            }
-
-            Debug.Log("Moving to " + handle.Result.transform.position);
+            Vector3 newPosition = GenerateSpawnPosition(spawnable);
+            handle.Result.transform.position = newPosition;
         }
 
+        handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
         _spawnedObjects.Add(handle.Result);
     }
 
+    private bool SpawnedInsideOther(GameObject spawnedObject)
+    {
+        List<Collider> cols = new();
+        bool colFound = spawnedObject.TryGetComponent(out Collider col);
+        if (colFound) cols.Add(col);
+        cols.AddRange(spawnedObject.GetComponentsInChildren<Collider>());
 
+        List<Collider> hitCols = new();
+
+        cols.ForEach(c => c.enabled = false);
+        foreach (Collider c in cols)
+        {
+            hitCols.AddRange(Physics.OverlapBox(
+                c.bounds.center,
+                c.bounds.extents,
+                Quaternion.identity,
+                LayerMask.NameToLayer("Ground"),
+                QueryTriggerInteraction.Collide)
+            );
+        }
+        cols.ForEach(c => c.enabled = true);
+
+        return hitCols.Count > 0;
+    }
 }
