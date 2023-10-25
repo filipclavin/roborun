@@ -123,6 +123,7 @@ public class Movement : MonoBehaviour
         if (context.performed)
         {
             desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
+            FindObjectOfType<AudioManager>().Play("Move_Woosh");
         }
     }
 
