@@ -149,7 +149,7 @@ public class UIManager : MonoBehaviour
         if (batteryBar != null)
         {
             batteryBar.value = currentBattery;
-            batteryText.text = Mathf.RoundToInt(currentBattery).ToString();
+            batteryText.text = Mathf.RoundToInt(currentBattery) + "%";
         }
     }
 
