@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
+    [SerializeField] private Image robotPortrait;
 
     [Header("Buttons")]
     private Button startGameButton;
@@ -84,6 +85,7 @@ public class UIManager : MonoBehaviour
         timerText.gameObject.SetActive(true);
         victoryText.gameObject.SetActive(true);
         batteryBar.gameObject.SetActive(true);
+        robotPortrait.gameObject.SetActive(true);
 
         gameplayCamera.gameObject.SetActive(true);
         input.enabled = true;
@@ -163,7 +165,7 @@ public class UIManager : MonoBehaviour
     {
         if (timerText != null)
         {
-            timerText.text = "Time until escape: " + Mathf.RoundToInt(timerLeft) + "s";
+            timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
         }
 	}
 

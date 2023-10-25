@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 55e62a83fd1138c418aa3c1941cfa065
+guid: cf65e7f395a881943935abfd498d4dca
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,8 +37,8 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
@@ -95,13 +95,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_IconOutline_0
+      name: Tv_ScreechGrid_0
       rect:
         serializedVersion: 2
-        x: 22
+        x: 0
         y: 0
-        width: 2812
-        height: 2110
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,8 +109,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d1348f44b8c8744cbc19ab901dff19e
-      internalID: -1882702843
+      spriteID: 862e35c8ff683254e903f47c4900f429
+      internalID: 1143985989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tv_ScreechGrid_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe5a8407d5b18b4eb0551e3c079b7cc
+      internalID: 654234606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tv_ScreechGrid_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c889fe2b3633d704d98ef6ea1810100e
+      internalID: -1807365865
       vertices: []
       indices: 
       edges: []
@@ -118,7 +160,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f7bd20cf648e75f43834b925b17720ad
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -126,7 +168,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_IconOutline_0: -1882702843
+      Tv_ScreechGrid_0: 1143985989
+      Tv_ScreechGrid_1: 654234606
+      Tv_ScreechGrid_2: -1807365865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
