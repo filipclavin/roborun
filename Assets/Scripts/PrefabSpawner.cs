@@ -13,6 +13,7 @@ public class PrefabSpawner : MonoBehaviour
     [SerializeField] private GameData _gameData;
     [Header("Refrences")]
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private GameTimer _gameTimer;
 
     private List<Spawnable> _allSpawnables = new();
     private List<GameObject> _spawnedObjects = new();
@@ -30,7 +31,7 @@ public class PrefabSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_gameData.randomizedSpawnables.Length > 0)
+        if (_gameData.randomizedSpawnables.Length > 0 && Time.timeScale != 0f && _gameTimer.goingOn)
         {
             _randomTimer += _gameData.scaledDeltaTime;
 
@@ -43,7 +44,7 @@ public class PrefabSpawner : MonoBehaviour
             }
         }
 
-        if (_gameData.fixedSpawnables.Length > 0)
+        if (_gameData.fixedSpawnables.Length > 0 && Time.timeScale != 0f && _gameTimer.goingOn)
         {
             TrySpawnFixed();
             DestroyPassed();
@@ -142,6 +143,7 @@ public class PrefabSpawner : MonoBehaviour
         tempSpawnable.allowedLanes = spawnable.allowedLanes;
         tempSpawnable.spawnHeights = spawnable.spawnHeights;
         tempSpawnable._spawnDistance = spawnable._spawnDistance;
+
 
         while (SpawnedInsideOther(handle.Result))
         {

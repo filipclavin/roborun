@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,6 @@ public class Movement : MonoBehaviour
 {
     
     private GameTimer gameTimer;
-    private PlayerInput playerInput;
     private Rigidbody rb;
     private Vector3 direction;
     private bool isJumping = false;
@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     
     [Header("Movement")]
     [Space]
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float maxJumpForce = 35f;
     [SerializeField] private float minJumpForce = 30f;
     [Space]
@@ -55,9 +56,14 @@ public class Movement : MonoBehaviour
         desiredLane = numberOfLanes / 2;
     }
 
+    private void OnEnable()
+    {
+        playerInput.actions.Enable();
+    }
+
     private void OnDisable()
     {
-        playerInput.actions["Slide"].performed -= Slide;
+        playerInput.actions.Disable();
     }
 
     private void Update()
@@ -71,7 +77,6 @@ public class Movement : MonoBehaviour
         Physics.gravity = new Vector3(0, increaseGravity, 0);
         GroundCheck();
         MoveCharacter();
-        Debug.Log(animator.GetBool("IsJumping"));
     }
 
     private float IncreaseGravity()
@@ -151,7 +156,7 @@ public class Movement : MonoBehaviour
         var adjustedJumpForce = IncreaseJumpForce();
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            //FindObjectOfType<AudioManager>().Play("Jump");
+            FindObjectOfType<AudioManager>().Play("Jump");
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
@@ -160,7 +165,6 @@ public class Movement : MonoBehaviour
 
             StartCoroutine(DustTimer());
         }
-        Debug.Log(rb.velocity.y);
     }
 
     private bool isGrounded;
@@ -183,9 +187,9 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && gameTimer.goingOn)
+        if (context.performed && isGrounded && gameTimer.goingOn && !isSliding)
         {
-            FindObjectOfType<AudioManager>().Play("Slide");
+            
             StartCoroutine(SlideTimer());
         }
         
@@ -234,6 +238,9 @@ public class Movement : MonoBehaviour
         isSliding = true;
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
+        
+        FindObjectOfType<AudioManager>().Play("Slide");
+        
         yield return new WaitForSeconds(.5f);
         isSliding = false;
         playerCollider.center = originalCenter;
