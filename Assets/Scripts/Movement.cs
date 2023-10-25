@@ -71,6 +71,7 @@ public class Movement : MonoBehaviour
         Physics.gravity = new Vector3(0, increaseGravity, 0);
         GroundCheck();
         MoveCharacter();
+        Debug.Log(animator.GetBool("IsJumping"));
     }
 
     private float IncreaseGravity()
@@ -159,6 +160,7 @@ public class Movement : MonoBehaviour
 
             StartCoroutine(DustTimer());
         }
+        Debug.Log(rb.velocity.y);
     }
 
     private bool isGrounded;
@@ -205,7 +207,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
         }
-        if (isSliding)
+        
+        else if (isSliding)
         {
             animator.SetBool("IsSliding", true);
             animator.SetBool("IsRunning", false);
@@ -213,7 +216,6 @@ public class Movement : MonoBehaviour
         }
         else if (gameTimer.goingOn)
         {
-            isRunning = true;
             animator.SetBool("IsIdle", false);
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsRunning", true);
