@@ -75,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e6f1a9e50f5b7ae45abf66ca3d0ba9b8,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e06e9209e5a8fdf4790e99e120085001, type: 2}
     - target: {fileID: 919132149155446097, guid: e6f1a9e50f5b7ae45abf66ca3d0ba9b8,
@@ -104,10 +104,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8725417211701784844}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6f1a9e50f5b7ae45abf66ca3d0ba9b8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6671904700729309594}
   m_SourcePrefab: {fileID: 100100000, guid: e6f1a9e50f5b7ae45abf66ca3d0ba9b8, type: 3}
 --- !u!1 &6013102173629427267 stripped
 GameObject:
@@ -163,15 +159,3 @@ MonoBehaviour:
   needFullEnergy: 1
   scoreValue: 600
   batteryValue: 100
---- !u!114 &6671904700729309594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6013102173629427267}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f4a46f15f2c480438ce14c7773d1c12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
