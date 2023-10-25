@@ -150,7 +150,7 @@ public class Movement : MonoBehaviour
         var adjustedJumpForce = IncreaseJumpForce();
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            FindObjectOfType<AudioManager>().Play("Jump");
+            //FindObjectOfType<AudioManager>().Play("Jump");
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
@@ -159,7 +159,6 @@ public class Movement : MonoBehaviour
 
             StartCoroutine(DustTimer());
         }
-            
     }
 
     private bool isGrounded;
@@ -202,14 +201,12 @@ public class Movement : MonoBehaviour
     
         if (rb.velocity.y > 0)
         {
-            isRunning = false;
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
         }
         if (isSliding)
         {
-            isRunning = false;
             animator.SetBool("IsSliding", true);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
