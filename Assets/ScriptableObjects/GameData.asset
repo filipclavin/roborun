@@ -30,7 +30,7 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     spawnHeights:
     - -1
-    allowedLanes: 2
+    allowedLanes: 0
     _spawnDistance: 150
     _despawnDistance: 2
   - prefabAddressable:
