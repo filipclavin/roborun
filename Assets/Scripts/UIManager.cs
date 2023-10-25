@@ -22,8 +22,10 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Slider batteryBar;
 
     [Header("Buttons")]
-    [SerializeField] private GameObject startGameButton;
-	[SerializeField] private GameObject exitGameButton;
+    private Button startGameButton;
+    private Button exitGameButton;
+    [SerializeField] private GameObject startGame;
+	[SerializeField] private GameObject exitGame;
 
 
 	[Header("Texts")]
@@ -57,6 +59,8 @@ public class UIManager : MonoBehaviour
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
 		gameTimer = FindAnyObjectByType<GameTimer>();
+        startGameButton = startGame.GetComponent<Button>();
+        exitGameButton = exitGame.GetComponent<Button>();
 		OpenMenu();
 	}
 
@@ -67,13 +71,12 @@ public class UIManager : MonoBehaviour
             Debug.Log("Pause");
             Pause();
         }
-
 	}
 
     private void SkipMainMenu()
     {
-        startGameButton.SetActive(false);
-        exitGameButton.SetActive(false);
+        startGame.SetActive(false);
+        exitGame.SetActive(false);
 
         scoreText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
@@ -101,8 +104,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        startGameButton.SetActive(true);
-		exitGameButton.SetActive(true);
+        startGame.SetActive(true);
+		exitGame.SetActive(true);
         input.enabled = false;
         if (playedAnimation)
         {
@@ -113,8 +116,8 @@ public class UIManager : MonoBehaviour
 	public void LoadGame()
 	{
 		gameTimer.StartGame();
-		startGameButton.SetActive(false);
-		exitGameButton.SetActive(false);
+		startGame.SetActive(false);
+		exitGame.SetActive(false);
         StartCoroutine(IntroAnimation()); 
     }
 
