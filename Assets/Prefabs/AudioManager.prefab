@@ -58,7 +58,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: Crash
-    clip: {fileID: 8300000, guid: dade2f1209a86bd42bb7bcf62517e3f5, type: 3}
+    clip: {fileID: 8300000, guid: faa43d000c3c8c74a8823639643a3aba, type: 3}
     pitch: 1
     volume: 0.5
     source: {fileID: 0}
@@ -77,6 +77,12 @@ MonoBehaviour:
     loop: 0
   - name: UI_Move
     clip: {fileID: 8300000, guid: 7d748318ea094bd42a1e22e2a49fa06e, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Jump
+    clip: {fileID: 8300000, guid: 96cf34c0be2270c4fb45c13b8632025a, type: 3}
     pitch: 1
     volume: 0.5
     source: {fileID: 0}

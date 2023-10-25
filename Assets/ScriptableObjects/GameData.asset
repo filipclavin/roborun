@@ -20,7 +20,7 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     spawnHeights:
     - -1
-    allowedLanes: 0
+    allowedLanes: 2
     _spawnDistance: 150
     _despawnDistance: 5
   - prefabAddressable:
@@ -114,7 +114,7 @@ MonoBehaviour:
     _spawnDistance: 150
     _despawnDistance: 2
   _minSpawnInterval: 10
-  _maxSpawnInterval: 11
+  _maxSpawnInterval: 10
   fixedSpawnables:
   - prefabAddressable:
       m_AssetGUID: bc7680f4169fd364f968118211bf2998
@@ -147,7 +147,7 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
     spawnHeights:
     - 0
-    allowedLanes: -6
+    allowedLanes: -1
     _spawnDistance: 150
     _despawnDistance: 5
     spawnInterval: 15

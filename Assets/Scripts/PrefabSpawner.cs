@@ -138,26 +138,32 @@ public class PrefabSpawner : MonoBehaviour
 
     private void HandleSpawned(AsyncOperationHandle<GameObject> handle, Spawnable spawnable)
     {
+        Spawnable tempSpawnable = new Spawnable();
+        tempSpawnable.allowedLanes = spawnable.allowedLanes;
+        tempSpawnable.spawnHeights = spawnable.spawnHeights;
+        tempSpawnable._spawnDistance = spawnable._spawnDistance;
 
         while (SpawnedInsideOther(handle.Result))
         {
-            spawnable.allowedLanes &= handle.Result.transform.position.x == -_laneWidth ? ~Lanes.Left :
+            tempSpawnable.allowedLanes &= handle.Result.transform.position.x == -_laneWidth ? ~Lanes.Left :
                 handle.Result.transform.position.x == 0f ? ~Lanes.Middle
                     : ~Lanes.Right;
 
-            if (spawnable.allowedLanes == 0)
+            if (tempSpawnable.allowedLanes == 0)
             {
-                spawnable.spawnHeights = spawnable.spawnHeights.Where(h => h != handle.Result.transform.position.y).ToArray();
+                tempSpawnable.spawnHeights = tempSpawnable.spawnHeights.Where(h => h != handle.Result.transform.position.y).ToArray();
 
-                if (spawnable.spawnHeights.Length == 0)
+                if (tempSpawnable.spawnHeights.Length == 0)
                 {
+                    Debug.Log("No more spawn positions available");
                     Destroy(handle.Result);
                     return;
                 }
             }
 
-            Vector3 newPosition = GenerateSpawnPosition(spawnable);
+            Vector3 newPosition = GenerateSpawnPosition(tempSpawnable);
             handle.Result.transform.position = newPosition;
+            Debug.Log("Trying new position: " + newPosition);
         }
 
         handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
@@ -185,6 +191,12 @@ public class PrefabSpawner : MonoBehaviour
             );
         }
         cols.ForEach(c => c.enabled = true);
+
+        if (hitCols.Count > 0)
+        {
+            Debug.Log($"{spawnedObject.name} (id: {spawnedObject.GetInstanceID()}) at {spawnedObject.transform.position} spawned inside:");
+            hitCols.ForEach(c => Debug.Log(c.name));
+        }
 
         return hitCols.Count > 0;
     }

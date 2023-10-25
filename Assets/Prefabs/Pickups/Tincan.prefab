@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 721557753b8e3e6429c70a058c1468d6,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.030064
+      value: 0.021294933
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721557753b8e3e6429c70a058c1468d6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.030064
+      value: 0.021294933
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721557753b8e3e6429c70a058c1468d6,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.030064
+      value: 0.021294933
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721557753b8e3e6429c70a058c1468d6,
         type: 3}
@@ -73,9 +73,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 721557753b8e3e6429c70a058c1468d6,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 721557753b8e3e6429c70a058c1468d6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b91b99de2163fb54ab2aae5025c6eb4a, type: 2}
     - target: {fileID: -5754084199372789682, guid: 721557753b8e3e6429c70a058c1468d6,
@@ -134,7 +139,7 @@ MonoBehaviour:
   batteryValue: 0
 --- !u!95 &8454038705332992331
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,6 +153,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -172,7 +178,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 9.696831
-  m_Height: 32.664948
+  m_Radius: 21
+  m_Height: 58.01
   m_Direction: 1
   m_Center: {x: 0, y: 4.0285716, z: 0}
