@@ -1811,23 +1811,38 @@ PlayableDirector:
   m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 4255228257813824418, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 330585548}
-  - key: {fileID: -4153554808851274910, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 79635281}
-  - key: {fileID: 8187949891912861044, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 2017282625}
-  - key: {fileID: 7416625590744980226, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 1550699349}
-  - key: {fileID: 118473297769653546, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 190825720}
-  - key: {fileID: 7537511148826213644, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+  - key: {fileID: 0}
+    value: {fileID: 564195187}
+  - key: {fileID: 1717999066306606896, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 330585548}
+  - key: {fileID: -8820220886451133860, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 79635281}
+  - key: {fileID: -2511655072498582356, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 190825720}
+  - key: {fileID: 2360358528599562766, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 2017282625}
+  - key: {fileID: 8523621130047429985, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
+    value: {fileID: 1550699349}
+  - key: {fileID: 3871855446778976311, guid: 8f3e955296672e14e925de0fc5b54d5b, type: 2}
     value: {fileID: 564195187}
   m_ExposedReferences:
     m_References:
     - f27b91774e320e74280424c99140d3dc: {fileID: 926792508}
     - cc0cacf455682a44bac208806ee74784: {fileID: 400746446}
+    - 5b7690f65191f134ca6beb910bd9bc05: {fileID: 926792508}
+    - 2fd3542f03bed954bac8cc03e0abeb89: {fileID: 564195189}
     - 4e77422f671c4fa4e9e5d54b41c73f22: {fileID: 564195189}
+    - aafafde1b17e8f143af841e5df4855e8: {fileID: 400746446}
 --- !u!1 &674600634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &926792508
 MonoBehaviour:
   m_ObjectHideFlags: 0
