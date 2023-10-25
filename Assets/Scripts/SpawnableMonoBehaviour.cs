@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpawnableDataContainer : MonoBehaviour
+public class SpawnableMonoBehaviour : MonoBehaviour
 {
     public Spawnable spawnable;
 }
