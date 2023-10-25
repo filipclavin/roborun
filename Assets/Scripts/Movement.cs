@@ -139,7 +139,7 @@ public class Movement : MonoBehaviour
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && gameTimer.goingOn)
         {
             desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
             FindObjectOfType<AudioManager>().Play("Move_Woosh");
