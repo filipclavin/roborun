@@ -156,6 +156,7 @@ public class PrefabSpawner : MonoBehaviour
             // figure out what lanes the hitCols span and move new object to a different lane
             // or just above the hitCols if all allowed lanes are blocked
             Debug.Log($"{handle.Result.name} spawned inside something else at " + handle.Result.transform.position);
+            float originalY = handle.Result.transform.position.y;
 
             foreach (Collider hitCol in hitCols)
             {
@@ -176,7 +177,7 @@ public class PrefabSpawner : MonoBehaviour
                         spawnable.allowedLanes &= ~Lanes.Middle;
                     }
                 }
-                else if (hitCol.bounds.extents.x < 3 * _laneWidth)
+                else if (hitCol.bounds.extents.x * 2 <= 2 * _laneWidth)
                 {
                     if (hitCol.bounds.center.x < 0)
                     {
@@ -190,7 +191,15 @@ public class PrefabSpawner : MonoBehaviour
                 else
                 {
                     spawnable.allowedLanes = 0;
-                    handle.Result.transform.position += 2 * hitCol.bounds.extents.y * Vector3.up;
+
+                    if (originalY + 2 * hitCol.bounds.extents.y > handle.Result.transform.position.y)
+                    {
+                        handle.Result.transform.position = new Vector3(
+                            handle.Result.transform.position.x,
+                            originalY + 2 * hitCol.bounds.extents.y,
+                            handle.Result.transform.position.z
+                        );
+                    }
                 }
             }
 
