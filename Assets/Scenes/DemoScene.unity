@@ -2437,12 +2437,6 @@ Transform:
   - {fileID: 763670699}
   m_Father: {fileID: 1314897891}
   m_LocalEulerAnglesHint: {x: 12.459, y: -180, z: 0}
---- !u!198 &985052031 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3922583110072018425, guid: 2bb3275ef9b70904ab103271285fbb63,
-    type: 3}
-  m_PrefabInstance: {fileID: 1366100911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251654019
 GameObject:
   m_ObjectHideFlags: 3
@@ -3072,24 +3066,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
-      propertyPath: gravity
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
-        type: 3}
-      propertyPath: jumpForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
-        type: 3}
       propertyPath: laneWidth
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
-        type: 3}
-      propertyPath: lightning
-      value: 
-      objectReference: {fileID: 985052031}
     - target: {fileID: 8225670489799550528, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4539,7 +4518,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilePrefab
       value: 
-      objectReference: {fileID: 5481357707973582074, guid: 43043a1da53da544b930fab2b2d0a678,
+      objectReference: {fileID: 2088171248995477085, guid: 25c7e97b4712f5e4f8d29cb6994bf38b,
         type: 3}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
@@ -5432,16 +5411,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9022890927057951817, guid: 2c2485892a0c4454b88cbed52f5e0648,
-        type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 9022890927057951817, guid: 2c2485892a0c4454b88cbed52f5e0648,
-        type: 3}
-      propertyPath: sounds.Array.data[1].volume
-      value: 1.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

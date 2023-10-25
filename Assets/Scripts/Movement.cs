@@ -1,7 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.VFX;
 
 //Script Made By Daniel Alvarado
@@ -14,32 +14,38 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private bool isJumping = false;
     private bool isSliding = false;
-    private Collider playerCollider;
-    [Header("Effects")]
-    public ParticleSystem lightning;
-    public VisualEffect dustEffect;
+    private CapsuleCollider playerCollider;
+    private int desiredLane;
     
     [Header("Movement")]
     [Space]
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float gravity = -20f;
+    [SerializeField] private float maxJumpForce = 35f;
+    [SerializeField] private float minJumpForce = 30f;
+    [Space]
+    [SerializeField] private float currentJumpForce;
+    [Space]
+    [SerializeField] private float maxGravity = -40f;
+    [SerializeField] private float minGravity = -30f;
+    [Space]
+    [SerializeField] private float currentGravity;
+    [Space]
     [SerializeField] private float laneSwitchSpeed = 10f;
     [Space]
     [Header("Animations & Effects")]
     [SerializeField] private Animator animator;
+    public List<ParticleSystem> effects;
+    public VisualEffect dustEffect;
     [Space]
     [Header("Lanes")]
     [SerializeField] private int numberOfLanes = 5;
     [SerializeField] private float laneWidth = 2f; 
-    private int desiredLane;
     [SerializeField] private float groundDistance;
-    
     
 
     private void Start()
     {
-        playerCollider = GetComponent<Collider>();
         gameTimer = FindAnyObjectByType<GameTimer>();
+        playerCollider = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         playerInput.actions["Slide"].performed += Slide;
@@ -54,10 +60,46 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         Animations();
-        Physics.gravity = new Vector3(0, gravity, 0);
+        IncreaseJumpForce();
+        currentJumpForce = IncreaseJumpForce();
+        var increaseGravity = IncreaseGravity();
+        currentGravity = increaseGravity;
+        Physics.gravity = new Vector3(0, increaseGravity, 0);
         GroundCheck();
         MoveCharacter();
     }
+
+    private float IncreaseGravity()
+    {
+        if (gameTimer.goingOn)
+        {
+            float progress = gameTimer.gameTimer / gameTimer.gameLength;
+            float adjustedGravity = Mathf.Lerp(minGravity, maxGravity, progress * 100);
+           
+            return adjustedGravity;
+        }
+        else
+        {
+            return minGravity;
+        }
+    }
+    
+    private float IncreaseJumpForce()
+    {
+        if (gameTimer.goingOn)
+        {
+            float progress = gameTimer.gameTimer / gameTimer.gameLength;
+            float adjustedJumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, progress * 100);
+            
+            return adjustedJumpForce;
+        }
+        else
+        {
+            return minJumpForce;
+        }
+    }
+
+
 
     private void MoveCharacter()
     {
@@ -69,10 +111,9 @@ public class Movement : MonoBehaviour
 
             targetPosition += transform.right * lanePosition;
 
-            if (Time.timeScale != 0)
-            {
-                transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime / Time.timeScale);
-            }
+            
+            transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime);
+            
         }
     }
 
@@ -87,50 +128,43 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        var adjustedJumpForce = IncreaseJumpForce();
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
 
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            
+            rb.AddForce(Vector3.up * adjustedJumpForce, ForceMode.Impulse);
+
+            StartCoroutine(DustTimer());
         }
+            
     }
 
     private bool isGrounded;
     void GroundCheck()
     {
         RaycastHit hit;
-        
+    
         Vector3 dir = new Vector3(0, -1);
 
         if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
-            Debug.Log("Grounded");
             isGrounded = true;
-            dustEffect.Play();
         }
         else
         {
-            Debug.Log("NotGrounded");
-            dustEffect.Stop();
             isGrounded = false;
         }
     }
+
 
     public void Slide(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            
-            isSliding = true;
-        }
-        else
-        {
-           
-            isSliding = false;
+            StartCoroutine(SlideTimer());
         }
     }
 
@@ -150,7 +184,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsSliding", false);
         }
-        else if (isSliding)
+        if (isSliding)
         {
             isRunning = false;
             animator.SetBool("IsSliding", true);
@@ -165,9 +199,31 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsSliding", false);
         }
-
     }
 
+    private IEnumerator SlideTimer()
+    {
+        float originalHeight = 2.8f;
+        float slideHeight = 1f;
+        
+        Vector3 originalCenter = new Vector3(0, .33f, 0);
+        Vector3 slideCenter = new Vector3(0, -.46f, 0);
+        
+        isSliding = true;
+        playerCollider.height = slideHeight;
+        playerCollider.center = slideCenter;
+        yield return new WaitForSeconds(.5f);
+        isSliding = false;
+        playerCollider.center = originalCenter;
+        playerCollider.height = originalHeight;
+    }
+
+    private IEnumerator DustTimer()
+    {
+        dustEffect.Stop();
+        yield return new WaitForSeconds(1f);
+        dustEffect.Play();
+    }
     public void FootStepSound()
     {
         if(isGrounded)

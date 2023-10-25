@@ -46,14 +46,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: f4955e573eed00d4394dba51a0f20b19, type: 3}
+    clip: {fileID: 8300000, guid: d001922aca5c3b04690d61cb5616f401, type: 3}
     pitch: 1
-    volume: 0.5
+    volume: 1
     source: {fileID: 0}
     loop: 1
   - name: StepSound
-    clip: {fileID: 8300000, guid: f812399221404bb4ab0d86d957603d2f, type: 3}
+    clip: {fileID: 8300000, guid: a2ad911917295ca4c8ae6b20b6e0891e, type: 3}
     pitch: 1
-    volume: 0.1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Crash
+    clip: {fileID: 8300000, guid: dade2f1209a86bd42bb7bcf62517e3f5, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Move_Woosh
+    clip: {fileID: 8300000, guid: ed907cbd9f55ebf468e8363ea2e96acc, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: UI_Select
+    clip: {fileID: 8300000, guid: 443af2e527f183941a0e425227bd10a8, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: UI_Move
+    clip: {fileID: 8300000, guid: 7d748318ea094bd42a1e22e2a49fa06e, type: 3}
+    pitch: 1
+    volume: 0.5
     source: {fileID: 0}
     loop: 0

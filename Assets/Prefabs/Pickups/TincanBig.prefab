@@ -89,6 +89,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TincanBig
       objectReference: {fileID: 0}
+    - target: {fileID: 6640974909409080455, guid: dc22fc0ce62c1624eb6c9b332ac69f72,
+        type: 3}
+      propertyPath: m_TagString
+      value: TinCan
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
