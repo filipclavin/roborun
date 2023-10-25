@@ -57,3 +57,27 @@ MonoBehaviour:
     volume: 0.5
     source: {fileID: 0}
     loop: 0
+  - name: Crash
+    clip: {fileID: 8300000, guid: dade2f1209a86bd42bb7bcf62517e3f5, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Move_Woosh
+    clip: {fileID: 8300000, guid: ed907cbd9f55ebf468e8363ea2e96acc, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: UI_Select
+    clip: {fileID: 8300000, guid: 443af2e527f183941a0e425227bd10a8, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: UI_Move
+    clip: {fileID: 8300000, guid: 7d748318ea094bd42a1e22e2a49fa06e, type: 3}
+    pitch: 1
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
