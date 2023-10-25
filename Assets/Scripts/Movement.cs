@@ -29,7 +29,10 @@ public class Movement : MonoBehaviour
     [Space]
     [SerializeField] private float currentGravity;
     [Space]
-    [SerializeField] private float laneSwitchSpeed = 10f;
+    [SerializeField] private float minSwitchSpeed = 5f;
+    [SerializeField] private float maxSwitchSpeed = 10f;
+    [SerializeField] private float currentSwitchSpeed;
+    
     [Space]
     [Header("Animations & Effects")]
     [SerializeField] private Animator animator;
@@ -59,6 +62,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        currentSwitchSpeed = IncreaseLaneSwitchSpeed();
         Animations();
         IncreaseJumpForce();
         currentJumpForce = IncreaseJumpForce();
@@ -74,7 +78,7 @@ public class Movement : MonoBehaviour
         if (gameTimer.goingOn)
         {
             float progress = gameTimer.gameTimer / gameTimer.gameLength;
-            float adjustedGravity = Mathf.Lerp(minGravity, maxGravity, progress * 100);
+            float adjustedGravity = Mathf.Lerp(minGravity, maxGravity, progress * 1);
            
             return adjustedGravity;
         }
@@ -89,7 +93,7 @@ public class Movement : MonoBehaviour
         if (gameTimer.goingOn)
         {
             float progress = gameTimer.gameTimer / gameTimer.gameLength;
-            float adjustedJumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, progress * 100);
+            float adjustedJumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, progress * 1);
             
             return adjustedJumpForce;
         }
@@ -100,9 +104,23 @@ public class Movement : MonoBehaviour
     }
 
 
-
+    private float IncreaseLaneSwitchSpeed()
+    {
+        if(gameTimer.goingOn)
+        {
+            float progress = gameTimer.gameTimer / gameTimer.gameLength;
+            float increasedLaneSwitchSpeed = Mathf.Lerp(minSwitchSpeed, maxSwitchSpeed, progress * 1);
+            
+            return increasedLaneSwitchSpeed;
+        }
+        else
+        {
+            return minSwitchSpeed;
+        }
+    }
     private void MoveCharacter()
     {
+        var increasedLaneSwitchSpeed = IncreaseLaneSwitchSpeed();
         if (gameTimer.goingOn)
         {
             Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
@@ -112,7 +130,7 @@ public class Movement : MonoBehaviour
             targetPosition += transform.right * lanePosition;
 
             
-            transform.position = Vector3.Lerp(transform.position, targetPosition, laneSwitchSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, increasedLaneSwitchSpeed * Time.deltaTime);
             
         }
     }
@@ -132,6 +150,7 @@ public class Movement : MonoBehaviour
         var adjustedJumpForce = IncreaseJumpForce();
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
+            isSliding = false;
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
@@ -167,7 +186,9 @@ public class Movement : MonoBehaviour
         {
             StartCoroutine(SlideTimer());
         }
+        
     }
+
 
     private bool isRunning = false;
     private void Animations()
