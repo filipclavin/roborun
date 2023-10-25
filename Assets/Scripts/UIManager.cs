@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     private TMP_Text batteryText;
     private GameTimer gameTimer;
     private bool playedAnimation = false;
+    private bool pauseMenuActive = false;
     private DontDestroy dontDestroy;
 
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
@@ -63,8 +64,10 @@ public class UIManager : MonoBehaviour
 	{
         if (input.controller.Movement.Pause.triggered && !gameOverPanel.activeSelf && !victoryPanel.activeSelf)
         {
+            Debug.Log("Pause");
             Pause();
         }
+
 	}
 
     private void SkipMainMenu()
@@ -181,8 +184,17 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
-		pausePanel.SetActive(true);
-		Time.timeScale = 0f;
+        pauseMenuActive = !pauseMenuActive;
+        if (pauseMenuActive)
+        {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Continue();
+        }
+
 	}
 
     public void Victory(int score)
