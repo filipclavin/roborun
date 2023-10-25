@@ -299,13 +299,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7904002368613137017, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2279334706522210217, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
+        type: 3}
+    - target: {fileID: 148596120497668291, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7434549690534084444, guid: 5e26d774876068649a33f9802582280b,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: 0c8ca2897ab556c458f7735e48361bfe,
         type: 3}
       propertyPath: m_Name
       value: CarJump
       objectReference: {fileID: 0}
+    - target: {fileID: 1795051411137643396, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2279334706522210217, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
+        type: 3}
+    - target: {fileID: 2037017640781825008, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2279334706522210217, guid: 5e26d774876068649a33f9802582280b,
+        type: 3}
+    - target: {fileID: 6356093256086446329, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 7687046079212055324, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+    - target: {fileID: 7158742969986881087, guid: 0c8ca2897ab556c458f7735e48361bfe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1180465463354349067, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
+        type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -8667184578498139821, guid: 0c8ca2897ab556c458f7735e48361bfe, type: 3}
+    - {fileID: 6727007405964328823, guid: 0c8ca2897ab556c458f7735e48361bfe, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c8ca2897ab556c458f7735e48361bfe,
         type: 3}
