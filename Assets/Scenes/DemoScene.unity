@@ -4518,7 +4518,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilePrefab
       value: 
-      objectReference: {fileID: 2088171248995477085, guid: 25c7e97b4712f5e4f8d29cb6994bf38b,
+      objectReference: {fileID: 5481357707973582074, guid: 43043a1da53da544b930fab2b2d0a678,
         type: 3}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
@@ -5296,23 +5296,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
+      propertyPath: _maxTimeScale
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
       propertyPath: tempHighScore
       value: 
       objectReference: {fileID: 190825722}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _speedRecoveryRate
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleMultiplier
-      value: 400
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _speedPenaltyMultiplier
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6893433109066577899, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}

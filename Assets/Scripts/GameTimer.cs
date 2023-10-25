@@ -13,6 +13,7 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float _timeScaleMultiplier = 1f;
     [SerializeField] private float _speedPenaltyMultiplier = 1f;
     [SerializeField] private float _speedRecoveryRate = 1f;
+    [SerializeField] private float _maxTimeScale = 5f;
 
     private float _speedPenalty = 1;
 
@@ -29,7 +30,10 @@ public class GameTimer : MonoBehaviour
             gameTimer += Time.deltaTime;
             UIManager.Instance.UpdateTimer(gameLength - gameTimer);
 
-            _gameData.scaledDeltaTime = Time.deltaTime * _speedPenalty * Mathf.Max(Mathf.Log(_timeScaleMultiplier * gameTimer + 1f), 1);
+            _gameData.scaledDeltaTime = Time.deltaTime * _speedPenalty * Mathf.Min(
+                Mathf.Max(Mathf.Log(_timeScaleMultiplier * gameTimer + 1f), 1),
+                _maxTimeScale
+            );
 
 			if (gameTimer >= gameLength)
             {
