@@ -48,13 +48,13 @@ MonoBehaviour:
   - name: Theme
     clip: {fileID: 8300000, guid: d001922aca5c3b04690d61cb5616f401, type: 3}
     pitch: 1
-    volume: 0.35
+    volume: 0.5
     source: {fileID: 0}
     loop: 1
   - name: StepSound
     clip: {fileID: 8300000, guid: a2ad911917295ca4c8ae6b20b6e0891e, type: 3}
     pitch: 1
-    volume: 0.5
+    volume: 0.35
     source: {fileID: 0}
     loop: 0
   - name: Crash
@@ -102,6 +102,6 @@ MonoBehaviour:
   - name: Can_Pickup
     clip: {fileID: 8300000, guid: 572cbc6a61bd19f45a451360d2aecdbc, type: 3}
     pitch: 1
-    volume: 0.5
+    volume: 0.75
     source: {fileID: 0}
     loop: 0
