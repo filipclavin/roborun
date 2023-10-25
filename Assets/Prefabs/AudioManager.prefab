@@ -100,7 +100,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: Can_Pickup
-    clip: {fileID: 8300000, guid: d5bccb30ed557384d90810a75fb2006b, type: 3}
+    clip: {fileID: 8300000, guid: 572cbc6a61bd19f45a451360d2aecdbc, type: 3}
     pitch: 1
     volume: 0.5
     source: {fileID: 0}
