@@ -9,7 +9,7 @@ public class BatteryController : MonoBehaviour
     private List<Color> defaultColor = new List<Color>();
     private bool invisActive = false;
     private float invisTimer = 0;
-    private float invisDuration = 0;
+    private float invisDuration = 1;
     private float batteryAnimTimePassed = 0f;
     private bool updatingVisualBattery = false;
     private float batteryLastFrame = -1f;
