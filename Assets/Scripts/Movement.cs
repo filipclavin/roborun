@@ -138,7 +138,7 @@ public class Movement : MonoBehaviour
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && gameTimer.goingOn)
         {
             desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
             FindObjectOfType<AudioManager>().Play("Move_Woosh");
@@ -150,7 +150,7 @@ public class Movement : MonoBehaviour
         var adjustedJumpForce = IncreaseJumpForce();
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            //FindObjectOfType<AudioManager>().Play("Jump");
+            FindObjectOfType<AudioManager>().Play("Jump");
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
             rb.velocity = velocity;
@@ -183,7 +183,7 @@ public class Movement : MonoBehaviour
     {
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
-            FindObjectOfType<AudioManager>().Play("Slide");
+            
             StartCoroutine(SlideTimer());
         }
         
@@ -229,6 +229,7 @@ public class Movement : MonoBehaviour
         Vector3 originalCenter = new Vector3(0, .33f, 0);
         Vector3 slideCenter = new Vector3(0, -.46f, 0);
         
+        FindObjectOfType<AudioManager>().Play("Slide");
         isSliding = true;
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
