@@ -10,7 +10,6 @@ public class Movement : MonoBehaviour
 {
     
     private GameTimer gameTimer;
-    private PlayerInput playerInput;
     private Rigidbody rb;
     private Vector3 direction;
     private bool isJumping = false;
@@ -20,6 +19,7 @@ public class Movement : MonoBehaviour
     
     [Header("Movement")]
     [Space]
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float maxJumpForce = 35f;
     [SerializeField] private float minJumpForce = 30f;
     [Space]
