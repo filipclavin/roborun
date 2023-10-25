@@ -30,9 +30,12 @@ public class PickUpEnergy : MonoBehaviour
 				playerScore.AddScore(scoreValue);
 			}
 			gameObject.SetActive(false);
-			
-			if(gameObject.CompareTag("Battery"))
+
+			if (gameObject.CompareTag("Battery"))
+			{
 				movement.effects.ElementAt(0).Play();
+				FindObjectOfType<AudioManager>().Play("Battery");
+			}
 			if(gameObject.CompareTag("TinCan"))
 				movement.effects.ElementAt(1).Play();
 		}
