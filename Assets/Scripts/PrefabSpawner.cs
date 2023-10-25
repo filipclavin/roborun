@@ -155,12 +155,12 @@ public class PrefabSpawner : MonoBehaviour
         {
             // figure out what lanes the hitCols span and move new object to a different lane
             // or just above the hitCols if all allowed lanes are blocked
-            Debug.Log($"{handle.Result.name} spawned inside something else at " + handle.Result.transform.position);
+            //Debug.Log($"{handle.Result.name} spawned inside something else at " + handle.Result.transform.position);
             float originalY = handle.Result.transform.position.y;
 
             foreach (Collider hitCol in hitCols)
             {
-                Debug.Log("Hit thing: " + hitCol.name);
+                //Debug.Log("Hit thing: " + hitCol.name);
 
                 if (hitCol.bounds.extents.x * 2 <= _laneWidth)
                 {

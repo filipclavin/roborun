@@ -9,7 +9,7 @@ public class BatteryController : MonoBehaviour
     private List<Color> defaultColor = new List<Color>();
     private bool invisActive = false;
     private float invisTimer = 0;
-    private float invisDuration = 1;
+    private float invisDuration;
     private float batteryAnimTimePassed = 0f;
     private bool updatingVisualBattery = false;
     private float batteryLastFrame = -1f;
@@ -158,16 +158,18 @@ public class BatteryController : MonoBehaviour
         float blinkingTime = 0f;
         float blinkOne = 0.3f;
         float blinkTwo = 0.2f;
-
-        invisActive = true;
-
-        while (blinkingTime < seconds)
+        SetInvis(seconds);
+        
+        while (blinkingTime >= invisDuration)
         {
             ChangeColors(hitColor, blinkOne);
             yield return new WaitForSeconds(blinkOne + blinkTwo);
             blinkingTime += blinkOne + blinkTwo;
+            if (blinkingTime >= seconds)
+            {
+                invisActive = false;
+            }
         }
-        invisActive = false;
     }
 
     private void BatteryDrain(float drain)
@@ -210,7 +212,8 @@ public class BatteryController : MonoBehaviour
         }
         else
         {
-            invisActive = true;   
+            invisActive = true;
+            StartCoroutine(InvisTime(duration));
         }
         invisDuration = duration;
     }
