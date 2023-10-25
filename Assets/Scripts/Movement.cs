@@ -205,7 +205,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("IsIdle", true);
         }
     
-        if (rb.velocity.y > 0)
+        if (rb.velocity.y > 1 )
         {
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsRunning", false);

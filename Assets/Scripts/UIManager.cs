@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     private Button exitGameButton;
     [SerializeField] private GameObject startGame;
 	[SerializeField] private GameObject exitGame;
+    [SerializeField] private GameObject startMenu;
 
 
 	[Header("Texts")]

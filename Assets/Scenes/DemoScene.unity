@@ -747,7 +747,6 @@ GameObject:
   - component: {fileID: 313850925}
   - component: {fileID: 313850924}
   - component: {fileID: 313850923}
-  - component: {fileID: 313850926}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -847,19 +846,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &313850926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313850921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f13ae476d9b7ac4abde19d2ebdca34c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryButton: {fileID: 1483920378}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,7 +2673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 36.679993, y: 58.45999}
+  m_AnchoredPosition: {x: 36.67993, y: 58.45996}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1143383264
@@ -3951,7 +3937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1483920378}
     m_SelectOnDown: {fileID: 1483920378}
@@ -4031,6 +4017,7 @@ MonoBehaviour:
   robotPortrait: {fileID: 1143383264}
   startGame: {fileID: 1483920373}
   exitGame: {fileID: 1475571904}
+  startMenu: {fileID: 0}
   scoreText: {fileID: 79635283}
   highScoreText: {fileID: 190825722}
   timerText: {fileID: 2017282626}
@@ -4144,7 +4131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1475571909}
     m_SelectOnDown: {fileID: 1475571909}
@@ -4188,7 +4175,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 313850926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonSelect, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1

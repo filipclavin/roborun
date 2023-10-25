@@ -2630,6 +2630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d137ea826c0c664c97de87137346b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 421863395292178792}
   maxJumpForce: 35
   minJumpForce: 30
   currentJumpForce: 0
@@ -2708,10 +2709,6 @@ MonoBehaviour:
     m_ActionName: 'Movement/Slide[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: bef150de-9632-41c4-a39d-104f013fadb3
-    m_ActionName: 'Movement/Move[/Keyboard/a,/Keyboard/d]'
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: dc264992-4f17-4685-b093-bb61c5cce4bc
     m_ActionName: 'Movement/Pause[/Keyboard/escape]'
   - m_PersistentCalls:
@@ -2734,6 +2731,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9269e492-59b9-4db2-b2e9-48cda8db5c0b
     m_ActionName: 'Movement/Resume[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4043e443-4399-45bf-b31e-66be4e15a67c
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8de871b0-d966-4f81-b556-0f618e002560
+    m_ActionName: 'UI/Navigation[/Keyboard/w,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4653fb89-a11f-42e2-81ea-ecfcc16baff4
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
