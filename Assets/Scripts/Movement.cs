@@ -150,6 +150,7 @@ public class Movement : MonoBehaviour
         var adjustedJumpForce = IncreaseJumpForce();
         if (context.performed && isGrounded && gameTimer.goingOn)
         {
+            
             isSliding = false;
             var velocity = rb.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);
