@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,9 +56,14 @@ public class Movement : MonoBehaviour
         desiredLane = numberOfLanes / 2;
     }
 
+    private void OnEnable()
+    {
+        playerInput.actions.Enable();
+    }
+
     private void OnDisable()
     {
-        playerInput.actions["Slide"].performed -= Slide;
+        playerInput.actions.Disable();
     }
 
     private void Update()
@@ -183,7 +189,7 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && gameTimer.goingOn)
+        if (context.performed && isGrounded && gameTimer.goingOn && !isSliding)
         {
             
             StartCoroutine(SlideTimer());
@@ -231,10 +237,12 @@ public class Movement : MonoBehaviour
         Vector3 originalCenter = new Vector3(0, .33f, 0);
         Vector3 slideCenter = new Vector3(0, -.46f, 0);
         
-        FindObjectOfType<AudioManager>().Play("Slide");
         isSliding = true;
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
+        
+        FindObjectOfType<AudioManager>().Play("Slide");
+        
         yield return new WaitForSeconds(.5f);
         isSliding = false;
         playerCollider.center = originalCenter;
