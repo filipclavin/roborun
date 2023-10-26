@@ -149,7 +149,6 @@ public class PrefabSpawner : MonoBehaviour
         tempSpawnable.spawnHeights = spawnable.spawnHeights;
         tempSpawnable._spawnDistance = spawnable._spawnDistance;
 
-
         while (SpawnedInsideOther(handle.Result))
         {
             float roundedX = (float)Math.Round(handle.Result.transform.position.x, 1);
@@ -164,7 +163,6 @@ public class PrefabSpawner : MonoBehaviour
 
                 if (tempSpawnable.spawnHeights.Length == 0)
                 {
-                    Debug.Log("No viable spawn positions");
                     Destroy(handle.Result);
                     return;
                 }
@@ -172,50 +170,71 @@ public class PrefabSpawner : MonoBehaviour
 
             Vector3 newPosition = GenerateSpawnPosition(tempSpawnable);
             handle.Result.transform.position = newPosition;
-            Debug.Log($"Trying new position: " + newPosition);
         }
 
+        _oldPos = Vector3.zero;
+        _oldColCenters.Clear();
         handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
         _spawnedObjects.Add(handle.Result);
     }
 
+    private Vector3 _oldPos = Vector3.zero;
+    private List<Vector3> _oldColCenters = new();
     private bool SpawnedInsideOther(GameObject spawnedObject)
     {
         List<Collider> cols = new();
         cols.AddRange(spawnedObject.GetComponentsInChildren<Collider>());
 
-        List<Vector3> centers = new();
+        List<Vector3> colCenters = new();
         List<Vector3> extents = new();
 
         List<Collider> hitCols = new();
 
-        cols.ForEach(c =>
+        for (int i = 0; i < cols.Count; i++)
         {
-            centers.Add(c.bounds.center);
+            Collider c = cols[i];
+
+            if (_oldColCenters.Count > 0)
+            {
+                System.Diagnostics.Debugger.Break();
+            }
+
+            if (
+                    _oldColCenters.Count > 0 &&
+                    _oldColCenters[i].x == c.bounds.center.x &&
+                    _oldColCenters[i].y == c.bounds.center.y
+                )
+            {
+                Vector3 diff = spawnedObject.transform.position - _oldPos;
+
+                colCenters.Add(c.bounds.center + diff);
+            }
+            else
+            {
+                colCenters.Add(c.bounds.center);
+            }
+
             extents.Add(c.bounds.extents);
             c.enabled = false;
-        });
-
-
+        }
 
         for (int i = 0; i < cols.Count; i++)
         {
-            hitCols.AddRange(Physics.OverlapBox(
-                centers[i],
+            List<Collider> hits = Physics.OverlapBox(
+                colCenters[i],
                 extents[i],
-                Quaternion.identity,
+                spawnedObject.transform.rotation,
                 LayerMask.GetMask("Default", "OutlineObjects"),
-                QueryTriggerInteraction.Collide)
-            );
+                QueryTriggerInteraction.Collide
+            ).ToList();
+
+            hitCols.AddRange(hits);
         }
 
+        _oldPos = spawnedObject.transform.position;
+        _oldColCenters.Clear();
+        _oldColCenters.AddRange(colCenters);
         cols.ForEach(c => c.enabled = true);
-
-        if (hitCols.Count > 0)
-        {
-            Debug.Log($"{spawnedObject.name} spawned inside the following GameObjects at {spawnedObject.transform.position}", spawnedObject);
-            hitCols.ForEach(c => Debug.Log(c.name, c.gameObject));
-        }
 
         return hitCols.Count > 0;
     }

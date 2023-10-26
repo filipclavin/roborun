@@ -5,9 +5,9 @@ using UnityEngine.AddressableAssets;
 [Flags]
 public enum Lanes
 {
-    Left = 1 << 0,
-    Middle = 1 << 1,
-    Right = 1 << 2
+    Left = 1 << 0, // 0001
+    Middle = 1 << 1, // 0010
+    Right = 1 << 2 // 0100
 }
 
 [Serializable]
