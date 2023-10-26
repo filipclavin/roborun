@@ -104,7 +104,7 @@ public class UIManager : MonoBehaviour
     {
         gameDirector.Play();
         yield return new WaitForSeconds((float) gameDirector.playableAsset.duration);
-        dontDestroy.skipMainMenu = true;
+        //dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
 
