@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class PrefabSpawner : MonoBehaviour
 {
@@ -111,9 +110,12 @@ public class PrefabSpawner : MonoBehaviour
             Lanes.Left => new float[] { -_laneWidth },
             Lanes.Middle => new float[] { 0 },
             Lanes.Right => new float[] { _laneWidth },
-            Lanes.Left | Lanes.Middle => new float[] { -_laneWidth, 0 },
-            Lanes.Left | Lanes.Right => new float[] { -_laneWidth, _laneWidth },
-            Lanes.Middle | Lanes.Right => new float[] { 0, _laneWidth },
+            (Lanes.Left | Lanes.Middle) => new float[] { -_laneWidth, 0 },
+            (Lanes)(-5) => new float[] { -_laneWidth, 0 },
+            (Lanes.Left | Lanes.Right) => new float[] { -_laneWidth, _laneWidth },
+            (Lanes)(-3) => new float[] { -_laneWidth, _laneWidth },
+            (Lanes.Middle | Lanes.Right) => new float[] { 0, _laneWidth },
+            (Lanes)(-2) => new float[] { 0, _laneWidth },
             _ => new float[] { -_laneWidth, 0, _laneWidth }
         };
 
@@ -121,7 +123,7 @@ public class PrefabSpawner : MonoBehaviour
             xPositions[UnityEngine.Random.Range(0, xPositions.Length)],
             spawnable.spawnHeights[UnityEngine.Random.Range(0, spawnable.spawnHeights.Length)],
             _playerTransform.position.z + spawnable._spawnDistance
-        ); 
+        );
     }
 
     void DestroyPassed()
@@ -147,12 +149,14 @@ public class PrefabSpawner : MonoBehaviour
 
         while (SpawnedInsideOther(handle.Result))
         {
-            tempSpawnable.allowedLanes &= handle.Result.transform.position.x == -_laneWidth ? ~Lanes.Left :
-                handle.Result.transform.position.x == 0f ? ~Lanes.Middle
+            float roundedX = (float)Math.Round(handle.Result.transform.position.x, 1);
+            tempSpawnable.allowedLanes &= roundedX == -_laneWidth ? ~Lanes.Left :
+                roundedX == 0f ? ~Lanes.Middle
                     : ~Lanes.Right;
 
             if (tempSpawnable.allowedLanes == 0)
             {
+                float roundedY = (float)Math.Round(handle.Result.transform.position.y, 1);
                 tempSpawnable.spawnHeights = tempSpawnable.spawnHeights.Where(h => h != handle.Result.transform.position.y).ToArray();
 
                 if (tempSpawnable.spawnHeights.Length == 0)
