@@ -95,11 +95,6 @@ public class UIManager : MonoBehaviour
         gameTimer.StartGame();
     }
 
-    private void OnDestroy()
-    {
-        PlayerPrefs.DeleteKey(leadingScoreKey);
-    }
-
     private IEnumerator IntroAnimation()
     {
         gameDirector.Play();
