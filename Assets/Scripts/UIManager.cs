@@ -23,13 +23,15 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Slider batteryBar;
     [SerializeField] private Image robotPortrait;
 
+    [Header("Face Animation")]
+    public Animator faceAnimator;
+    [Space]
+
     [Header("Buttons")]
     private Button startGameButton;
     private Button exitGameButton;
     [SerializeField] private GameObject startGame;
 	[SerializeField] private GameObject exitGame;
-    [SerializeField] private GameObject startMenu;
-
 
 	[Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
