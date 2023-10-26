@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizedSpawnables:
   - prefabAddressable:
-      m_AssetGUID: b78fdb2d6aac61c4cb0f4e676855190b
+      m_AssetGUID: 91de545d9c93f7b48a2dd203bf35e191
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     spawnHeights:
     - -1
-    allowedLanes: 4
+    allowedLanes: 2
     _spawnDistance: 250
     _despawnDistance: 5
   - prefabAddressable:
@@ -125,7 +125,7 @@ MonoBehaviour:
     - 0
     - 3
     allowedLanes: -1
-    _spawnDistance: 250
+    _spawnDistance: 200
     _despawnDistance: 5
     spawnInterval: 30
   - prefabAddressable:
@@ -137,7 +137,7 @@ MonoBehaviour:
     - 0
     - 3
     allowedLanes: -1
-    _spawnDistance: 250
+    _spawnDistance: 200
     _despawnDistance: 5
     spawnInterval: 3
   - prefabAddressable:
@@ -148,7 +148,7 @@ MonoBehaviour:
     spawnHeights:
     - 0
     allowedLanes: -1
-    _spawnDistance: 250
+    _spawnDistance: 200
     _despawnDistance: 5
     spawnInterval: 15
   roadTileTag: Ground
