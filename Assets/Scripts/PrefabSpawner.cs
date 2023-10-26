@@ -144,6 +144,9 @@ public class PrefabSpawner : MonoBehaviour
 
     private void HandleSpawned(AsyncOperationHandle<GameObject> handle, Spawnable spawnable)
     {
+        _oldPos = Vector3.zero;
+        _oldColCenters.Clear();
+
         Spawnable tempSpawnable = new Spawnable();
         tempSpawnable.allowedLanes = spawnable.allowedLanes;
         tempSpawnable.spawnHeights = spawnable.spawnHeights;
@@ -172,8 +175,6 @@ public class PrefabSpawner : MonoBehaviour
             handle.Result.transform.position = newPosition;
         }
 
-        _oldPos = Vector3.zero;
-        _oldColCenters.Clear();
         handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
         _spawnedObjects.Add(handle.Result);
     }
