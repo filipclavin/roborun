@@ -95,16 +95,11 @@ public class UIManager : MonoBehaviour
         gameTimer.StartGame();
     }
 
-    private void DeleteScore() // If we wanna reset score
-    {
-        PlayerPrefs.DeleteKey(leadingScoreKey);
-    }
-
     private IEnumerator IntroAnimation()
     {
         gameDirector.Play();
         yield return new WaitForSeconds((float) gameDirector.playableAsset.duration);
-        dontDestroy.skipMainMenu = true;
+        //dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
 
