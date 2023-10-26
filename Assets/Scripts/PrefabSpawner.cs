@@ -179,23 +179,31 @@ public class PrefabSpawner : MonoBehaviour
     private bool SpawnedInsideOther(GameObject spawnedObject)
     {
         List<Collider> cols = new();
-        bool colFound = spawnedObject.TryGetComponent(out Collider col);
-        if (colFound) cols.Add(col);
         cols.AddRange(spawnedObject.GetComponentsInChildren<Collider>());
+
+        List<Vector3> centers = new();
+        List<Vector3> extents = new();
 
         List<Collider> hitCols = new();
 
-        cols.ForEach(c => c.enabled = false);
-        foreach (Collider c in cols)
+        cols.ForEach(c =>
+        {
+            centers.Add(c.bounds.center);
+            extents.Add(c.bounds.extents);
+            c.enabled = false;
+        });
+
+        for (int i = 0; i < cols.Count; i++)
         {
             hitCols.AddRange(Physics.OverlapBox(
-                c.bounds.center,
-                c.bounds.extents,
+                centers[i],
+                extents[i],
                 Quaternion.identity,
-                LayerMask.NameToLayer("Ground"),
+                LayerMask.GetMask("Default", "OutlineObjects"),
                 QueryTriggerInteraction.Collide)
             );
         }
+
         cols.ForEach(c => c.enabled = true);
 
         if (hitCols.Count > 0)
