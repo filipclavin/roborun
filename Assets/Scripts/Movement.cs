@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +7,9 @@ using UnityEngine.VFX;
 //Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
 {
-    
     private GameTimer gameTimer;
     private Rigidbody rb;
     private Vector3 direction;
-    private bool isJumping = false;
     private bool isSliding = false;
     private CapsuleCollider playerCollider;
     private int desiredLane;
