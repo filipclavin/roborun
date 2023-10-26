@@ -12,6 +12,7 @@ public class Obstacle : MonoBehaviour
     private BatteryController batteryController;
     private BoxCollider boxCollider;
     Movement movement;
+    
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class Obstacle : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Crash");
             movement.effects.ElementAt(2).Play();
+            UIManager.Instance.faceAnimator.SetTrigger("SadTrigger");
             gameTimer.ApplySpeedPenalty();
             batteryController.ObstacleHit(drainValue);
             boxCollider.enabled = false;

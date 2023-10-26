@@ -175,6 +175,7 @@ public class BatteryController : MonoBehaviour
     private void BatteryDrain(float drain)
     {
         currentBattery -= drain;
+        UIManager.Instance.faceAnimator.SetTrigger("SadTrigger");
         if (currentBattery <= 0)
         {
             currentBattery = 0;
