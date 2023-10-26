@@ -108,8 +108,11 @@ public class PrefabSpawner : MonoBehaviour
         float[] xPositions = spawnable.allowedLanes switch
         {
             Lanes.Left => new float[] { -_laneWidth },
+            (Lanes)(-7) => new float[] { -_laneWidth },
             Lanes.Middle => new float[] { 0 },
+            (Lanes)(-6) => new float[] { 0 },
             Lanes.Right => new float[] { _laneWidth },
+            (Lanes)(-4) => new float[] { _laneWidth },
             (Lanes.Left | Lanes.Middle) => new float[] { -_laneWidth, 0 },
             (Lanes)(-5) => new float[] { -_laneWidth, 0 },
             (Lanes.Left | Lanes.Right) => new float[] { -_laneWidth, _laneWidth },
@@ -154,14 +157,14 @@ public class PrefabSpawner : MonoBehaviour
                 roundedX == 0f ? ~Lanes.Middle
                     : ~Lanes.Right;
 
-            if (tempSpawnable.allowedLanes == 0)
+            if (tempSpawnable.allowedLanes == 0 || tempSpawnable.allowedLanes == (Lanes)(-8))
             {
                 float roundedY = (float)Math.Round(handle.Result.transform.position.y, 1);
                 tempSpawnable.spawnHeights = tempSpawnable.spawnHeights.Where(h => h != handle.Result.transform.position.y).ToArray();
 
                 if (tempSpawnable.spawnHeights.Length == 0)
                 {
-                    Debug.Log("No more spawn positions available");
+                    Debug.Log("No viable spawn positions");
                     Destroy(handle.Result);
                     return;
                 }
@@ -169,7 +172,7 @@ public class PrefabSpawner : MonoBehaviour
 
             Vector3 newPosition = GenerateSpawnPosition(tempSpawnable);
             handle.Result.transform.position = newPosition;
-            Debug.Log("Trying new position: " + newPosition);
+            Debug.Log($"Trying new position: " + newPosition);
         }
 
         handle.Result.AddComponent<SpawnableMonoBehaviour>().spawnable = spawnable;
@@ -193,6 +196,8 @@ public class PrefabSpawner : MonoBehaviour
             c.enabled = false;
         });
 
+
+
         for (int i = 0; i < cols.Count; i++)
         {
             hitCols.AddRange(Physics.OverlapBox(
@@ -208,8 +213,8 @@ public class PrefabSpawner : MonoBehaviour
 
         if (hitCols.Count > 0)
         {
-            Debug.Log($"{spawnedObject.name} (id: {spawnedObject.GetInstanceID()}) at {spawnedObject.transform.position} spawned inside:");
-            hitCols.ForEach(c => Debug.Log(c.name));
+            Debug.Log($"{spawnedObject.name} spawned inside the following GameObjects at {spawnedObject.transform.position}", spawnedObject);
+            hitCols.ForEach(c => Debug.Log(c.name, c.gameObject));
         }
 
         return hitCols.Count > 0;
