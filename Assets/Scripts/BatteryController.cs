@@ -132,12 +132,15 @@ public class BatteryController : MonoBehaviour
     {
         if (gameTimer.goingOn)
         {
-            currentBattery += rechargeValue;
-            if (currentBattery >= maxBattery)
+            if (currentBattery == maxBattery)
             {
-                currentBattery = maxBattery;
                 UIManager.Instance.UpdateBatteryBar(currentBattery);
                 return true;
+            }
+            currentBattery += rechargeValue;
+            if(currentBattery > maxBattery)
+            {
+                currentBattery = maxBattery;
             }
             UIManager.Instance.UpdateBatteryBar(currentBattery);
         }
@@ -175,6 +178,7 @@ public class BatteryController : MonoBehaviour
     private void BatteryDrain(float drain)
     {
         currentBattery -= drain;
+        UIManager.Instance.faceAnimator.SetTrigger("SadTrigger");
         if (currentBattery <= 0)
         {
             currentBattery = 0;

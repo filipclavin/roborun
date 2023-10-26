@@ -21,13 +21,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
+    [SerializeField] private Image robotPortrait;
+
+    [Header("Face Animation")]
+    public Animator faceAnimator;
+    [Space]
 
     [Header("Buttons")]
     private Button startGameButton;
     private Button exitGameButton;
     [SerializeField] private GameObject startGame;
 	[SerializeField] private GameObject exitGame;
-
 
 	[Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
@@ -84,6 +88,7 @@ public class UIManager : MonoBehaviour
         timerText.gameObject.SetActive(true);
         victoryText.gameObject.SetActive(true);
         batteryBar.gameObject.SetActive(true);
+        robotPortrait.gameObject.SetActive(true);
 
         gameplayCamera.gameObject.SetActive(true);
         input.enabled = true;
@@ -147,7 +152,7 @@ public class UIManager : MonoBehaviour
         if (batteryBar != null)
         {
             batteryBar.value = currentBattery;
-            batteryText.text = "Battery: " + Mathf.RoundToInt(currentBattery) + "/" + batteryBar.maxValue;
+            batteryText.text = Mathf.RoundToInt(currentBattery) + "%";
         }
     }
 
@@ -163,7 +168,7 @@ public class UIManager : MonoBehaviour
     {
         if (timerText != null)
         {
-            timerText.text = "Time until escape: " + Mathf.RoundToInt(timerLeft) + "s";
+            timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
         }
 	}
 
