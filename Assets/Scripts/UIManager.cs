@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         gameTimer.StartGame();
     }
 
-    private void DeleteScore() // If we wanna reset score
+    private void OnDestroy()
     {
         PlayerPrefs.DeleteKey(leadingScoreKey);
     }
