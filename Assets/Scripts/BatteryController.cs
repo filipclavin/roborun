@@ -179,6 +179,7 @@ public class BatteryController : MonoBehaviour
     {
         currentBattery -= drain;
         UIManager.Instance.faceAnimator.SetTrigger("SadTrigger");
+        AudioManager.instance.Play("Crash");
         if (currentBattery <= 0)
         {
             currentBattery = 0;
