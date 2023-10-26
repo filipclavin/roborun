@@ -132,12 +132,15 @@ public class BatteryController : MonoBehaviour
     {
         if (gameTimer.goingOn)
         {
-            currentBattery += rechargeValue;
-            if (currentBattery >= maxBattery)
+            if (currentBattery == maxBattery)
             {
-                currentBattery = maxBattery;
                 UIManager.Instance.UpdateBatteryBar(currentBattery);
                 return true;
+            }
+            currentBattery += rechargeValue;
+            if(currentBattery > maxBattery)
+            {
+                currentBattery = maxBattery;
             }
             UIManager.Instance.UpdateBatteryBar(currentBattery);
         }
