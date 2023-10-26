@@ -187,9 +187,11 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && gameTimer.goingOn && !isSliding)
+        
+        var adjustedJumpForce = IncreaseJumpForce();
+        if (context.performed && gameTimer.goingOn && !isSliding)
         {
-            
+            rb.AddForce(Vector3.down * adjustedJumpForce, ForceMode.Impulse);
             StartCoroutine(SlideTimer());
         }
         
