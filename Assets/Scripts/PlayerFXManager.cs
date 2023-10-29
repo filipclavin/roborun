@@ -6,9 +6,8 @@ using UnityEngine.VFX;
 public class PlayerFXManager : MonoBehaviour
 {
     [SerializeField] private Animator _faceAnimator;
-    
-    public List<ParticleSystem> effects;
-    public VisualEffect dustEffect;
+    [SerializeField] private List<ParticleSystem> effects;
+    [SerializeField] private VisualEffect dustEffect;
    public static PlayerFXManager Instance { get; set; }
 
    

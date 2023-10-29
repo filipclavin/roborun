@@ -120,7 +120,7 @@ public class Movement : MonoBehaviour
         }
     }
     
-    void GroundCheck()
+    private void GroundCheck()
     {
         RaycastHit hit;
     
