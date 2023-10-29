@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PickUpEnergy : MonoBehaviour
 {
-	private Movement movement;
 	private PlayerScore playerScore;
 	private MeshRenderer meshRenderer;
 	private BatteryController batteryController;
@@ -15,7 +14,6 @@ public class PickUpEnergy : MonoBehaviour
     
     private void Start()
     {
-	    movement = FindAnyObjectByType<Movement>();
 		playerScore = FindAnyObjectByType<PlayerScore>();
 		meshRenderer = GetComponent<MeshRenderer>();
         batteryController = playerScore.GetComponent<BatteryController>();
@@ -33,15 +31,13 @@ public class PickUpEnergy : MonoBehaviour
 
             if (gameObject.CompareTag("Battery"))
 			{
-				UIManager.Instance.faceAnimator.SetTrigger("HappyTrigger");
-				movement.effects.ElementAt(0).Play();
-				AudioManager.instance.Play("Battery");
+				
+				PlayerFXManager.Instance.BatteryEffect();
 			}
 			else if(gameObject.CompareTag("TinCan"))
 			{
-                UIManager.Instance.faceAnimator.SetTrigger("ScoreTrigger");
-                movement.effects.ElementAt(1).Play();
-				AudioManager.instance.Play("Can_Pickup");
+                
+                PlayerFXManager.Instance.CanEffect();
 			}
 				
 		}

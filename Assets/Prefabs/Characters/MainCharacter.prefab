@@ -2485,6 +2485,8 @@ GameObject:
   - component: {fileID: 449070131355349471}
   - component: {fileID: 7966400926609831725}
   - component: {fileID: 421863395292178792}
+  - component: {fileID: 5178031530427790931}
+  - component: {fileID: 3417323689032068399}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Player
@@ -2630,6 +2632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d137ea826c0c664c97de87137346b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isSliding: 0
   playerInput: {fileID: 421863395292178792}
   maxJumpForce: 35
   minJumpForce: 30
@@ -2640,15 +2644,14 @@ MonoBehaviour:
   minSwitchSpeed: 5
   maxSwitchSpeed: 10
   currentSwitchSpeed: 0
+  numberOfLanes: 3
+  laneWidth: 2
+  groundDistance: 1.2
   animator: {fileID: 1359553523320128600}
   effects:
   - {fileID: 94680384724898143}
   - {fileID: 7988628048728199606}
   - {fileID: 5370297373192107841}
-  dustEffect: {fileID: 8950744814954286077}
-  numberOfLanes: 3
-  laneWidth: 2
-  groundDistance: 1.2
 --- !u!114 &421863395292178792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,6 +2751,37 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5178031530427790931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125925030341315120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0a6bf1f93955f4ca739d67aeccfae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 94680384724898143}
+  - {fileID: 7988628048728199606}
+  - {fileID: 5370297373192107841}
+  faceAnimator: {fileID: 1359553523320128600}
+  dustEffect: {fileID: 8950744814954286077}
+--- !u!114 &3417323689032068399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125925030341315120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dba497e2dde8a44aee36b1b3fa92fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1359553523320128600}
 --- !u!1 &9186893930101048791
 GameObject:
   m_ObjectHideFlags: 0

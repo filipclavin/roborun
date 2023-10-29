@@ -11,12 +11,10 @@ public class Obstacle : MonoBehaviour
 
     private BatteryController batteryController;
     private BoxCollider boxCollider;
-    Movement movement;
     
 
     private void Start()
     {
-        movement = FindAnyObjectByType<Movement>();
         boxCollider = transform.parent.GetComponent<BoxCollider>();
         batteryController = FindAnyObjectByType<BatteryController>();
         gameTimer = FindAnyObjectByType<GameTimer>();
@@ -26,7 +24,6 @@ public class Obstacle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            movement.effects.ElementAt(2).Play();
             gameTimer.ApplySpeedPenalty();
             batteryController.ObstacleHit(drainValue);
             boxCollider.enabled = false;
