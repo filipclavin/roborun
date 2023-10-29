@@ -135,14 +135,12 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
-        
-        
-        if (context.performed && gameTimer.goingOn && !isSliding)
-        {
-            rb.AddForce(Vector3.down * currentJumpForce, ForceMode.Impulse);
+        if (!context.performed || !gameTimer.goingOn || isSliding) return;
             StartCoroutine(SlideTimer());
-        }
         
+        if(rb.velocity.y > 0)
+            rb.AddForce(Vector3.down * currentJumpForce, ForceMode.Impulse);
+
     }
     
     private bool isRunning = false;

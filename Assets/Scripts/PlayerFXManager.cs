@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.VFX;
 //Script Made By Daniel Alvarado
 public class PlayerFXManager : MonoBehaviour
 {
-    [SerializeField] private Animator _faceAnimator;
+    [FormerlySerializedAs("_faceAnimator")] [SerializeField] private Animator faceAnimator;
     [SerializeField] private List<ParticleSystem> effects;
     [SerializeField] private VisualEffect dustEffect;
-   public static PlayerFXManager Instance { get; private set; }
+    private static readonly int SadTrigger = Animator.StringToHash("SadTrigger");
+    private static readonly int ScoreTrigger = Animator.StringToHash("ScoreTrigger");
+    private static readonly int HappyTrigger = Animator.StringToHash("HappyTrigger");
+    public static PlayerFXManager Instance { get; private set; }
 
    
     private void Awake()
@@ -23,14 +27,14 @@ public class PlayerFXManager : MonoBehaviour
     
     public void BatteryEffect()
     {
-        _faceAnimator.SetTrigger("HappyTrigger");
+        faceAnimator.SetTrigger(HappyTrigger);
         effects[0].Play();
         AudioManager.Instance.Play("Battery");
     }
 
     public void CanEffect()
     {
-        _faceAnimator.SetTrigger("ScoreTrigger");
+        faceAnimator.SetTrigger(ScoreTrigger);
         effects[1].Play();
         AudioManager.Instance.Play("Can_Pickup");
     }
@@ -47,7 +51,7 @@ public class PlayerFXManager : MonoBehaviour
 
     public void DamageEffect()
     {
-        _faceAnimator.SetTrigger("SadTrigger");
+        faceAnimator.SetTrigger(SadTrigger);
         effects[2].Play();
         AudioManager.Instance.Play("Crash");
     }

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+//Script Made By Daniel Alvarado
 public class Rotation : MonoBehaviour
 {
    

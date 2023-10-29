@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-
+//Script Made By Daniel Alvarado
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;

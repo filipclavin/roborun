@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Script Made By Daniel Alvarado
 public class InputManager : MonoBehaviour
 {
     public PlayerController controller;
