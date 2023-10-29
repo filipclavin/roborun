@@ -8,6 +8,10 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private CapsuleCollider playerCollider;
     private int desiredLane;
+    private float slideTime = .5f;
+    private float currentSlideTime;
+    private GameTimer gameTimer;
+    
     
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool isGrounded = false;
@@ -31,13 +35,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float laneWidth = 2f;
     [Space]
     [SerializeField] private float groundDistance;
-    [Space]
-    private float slideTime = .5f;
-    private float currentSlideTime;
-    [Space]
-    
-    private GameTimer gameTimer;
-    
     public static Movement Instance { get; private set; }
     private void Awake()
     {
@@ -47,7 +44,6 @@ public class Movement : MonoBehaviour
             return;
         }
         Instance = this;
-
 
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
