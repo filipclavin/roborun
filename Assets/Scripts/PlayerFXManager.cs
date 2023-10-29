@@ -1,14 +1,13 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
-
+//Script Made By Daniel Alvarado
 public class PlayerFXManager : MonoBehaviour
 {
     [SerializeField] private Animator _faceAnimator;
     [SerializeField] private List<ParticleSystem> effects;
     [SerializeField] private VisualEffect dustEffect;
-   public static PlayerFXManager Instance { get; set; }
+   public static PlayerFXManager Instance { get; private set; }
 
    
     private void Awake()

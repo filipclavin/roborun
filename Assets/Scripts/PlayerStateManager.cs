@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+//Script Made By Daniel Alvarado
 public class PlayerStateManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
@@ -17,7 +15,7 @@ public class PlayerStateManager : MonoBehaviour
         UpdateAnimations();
         UpdateCharacterState();
     }
-    private enum CharacterState
+    private enum MovementState
     {
         Idle,
         Running,
@@ -25,7 +23,7 @@ public class PlayerStateManager : MonoBehaviour
         Sliding
     }
 
-    private CharacterState currentState;
+    private MovementState currentState;
     
     private const float jumpVelocity = 1; 
 
@@ -33,23 +31,23 @@ public class PlayerStateManager : MonoBehaviour
     {
         if (!_gameTimer.goingOn)
         {
-            currentState = CharacterState.Idle;
+            currentState = MovementState.Idle;
             return;
         }
 
         if (Movement.Instance.rb.velocity.y > jumpVelocity)
         {
-            currentState = CharacterState.Jumping;
+            currentState = MovementState.Jumping;
             return;
         }
 
         if (Movement.Instance.isSliding)
         {
-            currentState = CharacterState.Sliding;
+            currentState = MovementState.Sliding;
             return;
         }
 
-        currentState = CharacterState.Running;
+        currentState = MovementState.Running;
     }
 
     private void UpdateAnimations()
@@ -61,16 +59,16 @@ public class PlayerStateManager : MonoBehaviour
 
         switch (currentState)
         {
-            case CharacterState.Idle:
+            case MovementState.Idle:
                 animator.SetBool("IsIdle", true);
                 break;
-            case CharacterState.Jumping:
+            case MovementState.Jumping:
                 animator.SetBool("IsJumping", true);
                 break;
-            case CharacterState.Sliding:
+            case MovementState.Sliding:
                 animator.SetBool("IsSliding", true);
                 break;
-            case CharacterState.Running:
+            case MovementState.Running:
                 animator.SetBool("IsRunning", true);
                 break;
         }
