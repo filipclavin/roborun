@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private CapsuleCollider playerCollider;
     private int desiredLane;
+    
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isSliding = false;
@@ -34,22 +35,19 @@ public class Movement : MonoBehaviour
     private float slideTime = .5f;
     private float currentSlideTime;
     [Space]
-    [Header("Animations & Effects")]
     
     private GameTimer gameTimer;
     
     public static Movement Instance { get; private set; }
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
+        if (Instance != null)
         {
-            {
-                Destroy(gameObject);
-                return;
-            }
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
+
 
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
