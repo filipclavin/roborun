@@ -22,8 +22,8 @@ public class PlayerFXManager : MonoBehaviour
             return;
         }
         Instance = this;
-
     }
+
     
     public void BatteryEffect()
     {

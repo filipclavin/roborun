@@ -138,9 +138,8 @@ public class Movement : MonoBehaviour
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
             StartCoroutine(SlideTimer());
         
-        if(rb.velocity.y > 0)
+        if(!isGrounded)
             rb.AddForce(Vector3.down * currentJumpForce, ForceMode.Impulse);
-
     }
     
     private bool isRunning = false;
@@ -171,8 +170,11 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PlayerFXManager.Instance.StopDustEffect();
     }
-    
 
+    public void StepSound()
+    {
+        AudioManager.Instance.Play("StepSound");
+    }
 }
 
 
