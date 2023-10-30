@@ -1,22 +1,25 @@
 using UnityEngine;
+
 //Script Made By Daniel Alvarado
 public class PlayerStateManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     private GameTimer _gameTimer;
     private BatteryController _batteryController;
+
     void Start()
     {
         _batteryController = GetComponent<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
         animator = GetComponent<Animator>();
     }
-    
+
     void Update()
     {
         UpdateAnimations();
         UpdateCharacterState();
     }
+
     private enum MovementState
     {
         Idle,
@@ -27,8 +30,8 @@ public class PlayerStateManager : MonoBehaviour
     }
 
     private MovementState currentState;
-    
-    private const float JumpVelocity = 1; 
+
+    private const float JumpVelocity = 1;
 
     private void UpdateCharacterState()
     {
@@ -49,7 +52,13 @@ public class PlayerStateManager : MonoBehaviour
             currentState = MovementState.Sliding;
             return;
         }
-        
+
+        if (_batteryController.isGod)
+        {
+            currentState = MovementState.GodMode;
+            return;
+        }
+
 
         currentState = MovementState.Running;
     }
@@ -60,6 +69,7 @@ public class PlayerStateManager : MonoBehaviour
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsRunning", false);
         animator.SetBool("IsSliding", false);
+        animator.SetBool("IsGodMode", false);
 
         switch (currentState)
         {
@@ -75,7 +85,9 @@ public class PlayerStateManager : MonoBehaviour
             case MovementState.Running:
                 animator.SetBool("IsRunning", true);
                 break;
+            case MovementState.GodMode:
+                animator.SetBool("IsGodMode", true);
+                break;
         }
     }
-    
 }

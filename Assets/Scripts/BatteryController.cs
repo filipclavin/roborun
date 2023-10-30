@@ -51,11 +51,6 @@ public class BatteryController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Powerup();
-    }
-
     public bool ChargeBattery(float rechargeValue)
     {
         if (gameTimer.goingOn)
@@ -81,7 +76,7 @@ public class BatteryController : MonoBehaviour
         {
             BatteryDrain(drain);
             gameTimer.ApplySpeedPenalty();
-            StartCoroutine(InvisTime(damageInvis));
+            SetInvis(damageInvis);
         }
     }
 
@@ -90,7 +85,6 @@ public class BatteryController : MonoBehaviour
         float blinkingTime = 0f;
         float blinkOne = 0.2f;
         float blinkTwo = 0.1f;
-        SetInvis(seconds);
         while (blinkingTime <= invisDuration)
         {
             playerVisuals.ChangeColors(Color.red , blinkOne);
@@ -129,17 +123,14 @@ public class BatteryController : MonoBehaviour
         invisDuration = duration;
     }
 
-    public void Powerup()
+    public void Powerup(Powerup powerup)
     {
-        if (isGod == true)
-        {
-            StartCoroutine(GodTimer());
-        }
+       StartCoroutine(GodTimer(powerup.duration));
     }
 
-    private IEnumerator GodTimer()
+    private IEnumerator GodTimer(float duration)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(duration);
         isGod = false;
     }
 }

@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PowerupInvis : Powerup
 {
-    private Color invisColor = Color.yellow;
+    [SerializeField] private Color godColor;
 
     protected override IEnumerator PowerUpActive()
     {
-        BatteryController batteryController = FindAnyObjectByType<BatteryController>();
-        batteryController.GetComponent<PlayerVisuals>().ChangeColors(invisColor, duration);
-        batteryController.SetInvis(duration);
+        batteryController.GetComponent<PlayerVisuals>().ChangeColors(godColor, duration);
         batteryController.isGod = true;
         yield return null;
     }
