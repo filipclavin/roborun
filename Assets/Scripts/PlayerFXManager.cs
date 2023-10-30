@@ -62,4 +62,13 @@ public class PlayerFXManager : MonoBehaviour
             AudioManager.Instance.Play("StepSound");
     }
 
+    public void SlideSpark()
+    {
+        effects[3].Play();
+    }
+    public void StopSlideSpark()
+    {
+        effects[3].Stop();
+    }
+
 }
