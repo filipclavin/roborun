@@ -2137,6 +2137,12 @@ Transform:
   - {fileID: 2030513067}
   m_Father: {fileID: 1314897891}
   m_LocalEulerAnglesHint: {x: 10, y: -1.6, z: -1.207}
+--- !u!137 &565617993 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6751282768442699128, guid: 2bb3275ef9b70904ab103271285fbb63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366100911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582230880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,6 +3785,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 9.26685
       objectReference: {fileID: 0}
+    - target: {fileID: 3545475513193439312, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: batteryRenderer
+      value: 
+      objectReference: {fileID: 565617993}
     - target: {fileID: 3818062625241845667, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_Layer
