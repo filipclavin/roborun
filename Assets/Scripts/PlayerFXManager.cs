@@ -71,4 +71,14 @@ public class PlayerFXManager : MonoBehaviour
         effects[3].Stop();
     }
 
+    public void PlayGodSparkles()
+    {
+        effects[4].Play();
+    }
+    
+    public void StopGodSparkles()
+    {
+        effects[4].Stop();
+    }
+
 }

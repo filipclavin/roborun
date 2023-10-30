@@ -79,7 +79,7 @@ public class PlayerVisuals : MonoBehaviour
         }
     }
 
-    private void ChangeVisualBattery()
+    public void ChangeVisualBattery()
     {
         if (batteryController.currentBattery < batteryDamagedPercent)
         {

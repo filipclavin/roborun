@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 //Script Made By Daniel Alvarado
@@ -6,9 +7,11 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] private Animator animator;
     private GameTimer _gameTimer;
     private BatteryController _batteryController;
+    private PlayerVisuals _playerVisuals;
 
     void Start()
     {
+        _playerVisuals = GetComponent<PlayerVisuals>();
         _batteryController = GetComponent<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
         animator = GetComponent<Animator>();
@@ -18,6 +21,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         UpdateAnimations();
         UpdateCharacterState();
+        UpdateEffects();
     }
 
     private enum MovementState
@@ -61,6 +65,8 @@ public class PlayerStateManager : MonoBehaviour
 
 
         currentState = MovementState.Running;
+        
+            
     }
 
     private void UpdateAnimations()
@@ -88,6 +94,18 @@ public class PlayerStateManager : MonoBehaviour
             case MovementState.GodMode:
                 animator.SetBool("IsGodMode", true);
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private void UpdateEffects()
+    {
+        if (currentState == MovementState.GodMode)
+        {
+            PlayerFXManager.Instance.PlayGodSparkles();
+        }
+        else if(currentState != MovementState.GodMode)
+            PlayerFXManager.Instance.StopGodSparkles();
     }
 }
