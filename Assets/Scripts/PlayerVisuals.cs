@@ -13,10 +13,12 @@ public class PlayerVisuals : MonoBehaviour
     private float batteryDamagedPercent;
     private readonly int batteryDamageDivide = 3;
     private BatteryController batteryController;
-    private float colorDuration;
+    private float materialDuration = 0;
+    private float changeMaterialTimer = 0;
     private Material currentRobotColor;
 
-    [SerializeField] private SkinnedMeshRenderer batteryRenderer;
+
+	[SerializeField] private SkinnedMeshRenderer batteryRenderer;
     [SerializeField] private float batteryAnimTime = 0.5f;
     [SerializeField] private Transform visualBattery;
     [SerializeField] private Material healthyMaterial;
@@ -46,7 +48,6 @@ public class PlayerVisuals : MonoBehaviour
 
     private void OnDisable()
     {
-        StopAllCoroutines();
         ResetMaterial();
     }
 
@@ -62,6 +63,16 @@ public class PlayerVisuals : MonoBehaviour
             TransitionBatteryScale();
         }
         batteryLastFrame = batteryController.currentBattery;
+
+        if (materialDuration > 0)
+        {
+            changeMaterialTimer += Time.deltaTime;
+            if (changeMaterialTimer >= materialDuration)
+            {
+                ResetMaterial();
+                materialDuration = 0;
+            }
+		}
     }
     
     private void TransitionBatteryScale()
@@ -94,14 +105,6 @@ public class PlayerVisuals : MonoBehaviour
         updatingVisualBattery = true;
     }
 
-
-    private IEnumerator ChangeMaterial()
-    {
-        ChangeCurrentMaterial();
-        yield return new WaitForSeconds(colorDuration);
-        ResetMaterial();
-    }
-
     private void ChangeCurrentMaterial()
     {
         for (int i = 0; i < meshRenderers.Count; i++)
@@ -122,11 +125,13 @@ public class PlayerVisuals : MonoBehaviour
 
     public void ChangeColors(Material material, float duration)
     {
-        ResetMaterial();
+        if (duration > 0)
+        {
+		    ResetMaterial();
+            changeMaterialTimer = 0;
+        }
         currentRobotColor = material;
-        colorDuration = duration;
-        StartCoroutine(ChangeMaterial());
+        materialDuration = duration;
+        ChangeCurrentMaterial();
     }
-    
-    
 }
