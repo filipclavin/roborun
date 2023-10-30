@@ -107,29 +107,19 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
     private bool isTurning = false;
-
+    private static readonly int GodRight = Animator.StringToHash("GodRight");
+    private static readonly int GodLight = Animator.StringToHash("GodLeft");
     private void GodModeAnimations()
     {
         if (currentState != MovementState.GodMode) return;
 
-        if (isTurning) return; // Skip this turn if we're already turning
+        if (isTurning) return;
 
         float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
-        if (direction != 0)
-        {
-            isTurning = true; // Indicate that a turn is in progress
-            if (direction > 0)
-            {
-                animator.SetTrigger("GodRight");
-            }
-            else
-            {
-                animator.SetTrigger("GodLeft");
-            }
-
-            // Assume your animation length is 1 second; adjust as needed
-            StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
-        }
+        if (direction == 0) return;
+        isTurning = true;
+        animator.SetTrigger(direction > 0 ? GodRight : GodLight);
+        StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
     }
 
     private IEnumerator ResetTurnFlagAfterSeconds(float seconds)

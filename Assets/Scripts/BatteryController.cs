@@ -51,15 +51,13 @@ public class BatteryController : MonoBehaviour
             }
         }
 
-        if (isGod)
-        {
-            godTimer += Time.fixedDeltaTime;
-            if(godTimer >= godDuration)
-            {
-                godTimer = 0;
-                isGod = false;
-            }
-        }
+        if (!isGod) return;
+        godTimer += Time.fixedDeltaTime;
+        if (!(godTimer >= godDuration)) return;
+        PlayerFXManager.Instance.StopGodSparkles();
+        PlayerFXManager.Instance.DustEffect();
+        godTimer = 0;
+        isGod = false;
     }
 
     public bool ChargeBattery(float rechargeValue)
@@ -143,6 +141,8 @@ public class BatteryController : MonoBehaviour
         }
         else
         {
+            PlayerFXManager.Instance.StopDustEffect();
+            PlayerFXManager.Instance.PlayGodSparkles();
             isGod = true;
             invisActive = false;
         }

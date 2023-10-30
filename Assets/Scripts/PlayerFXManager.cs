@@ -33,10 +33,10 @@ public class PlayerFXManager : MonoBehaviour
 
     private void Update()
     {
-        if (_batteryController.isGod)
-            PlayGodSparkles();
-        else
-            StopGodSparkles();
+        // if (_batteryController.isGod)
+        //     PlayGodSparkles();
+        // else
+        //     StopGodSparkles();
     }
 
     public void BatteryEffect()
