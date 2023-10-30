@@ -37,41 +37,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e16f53a8c56cffe4db9df9e7d98810a6
-    m_Address: Assets/Prefabs/Obsticles/Cars_M,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6fb148452f8596149a610ac51411b763
-    m_Address: Assets/Prefabs/Obsticles/Cont_L,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8a1c44c35dd34b64588299beec66b832
-    m_Address: Assets/Prefabs/Obsticles/Cars_L,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 91de545d9c93f7b48a2dd203bf35e191
-    m_Address: Assets/Prefabs/Obsticles/Cont_L,M.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d39b8cbf5305d11469538ab0a6c9c13d
-    m_Address: Assets/Prefabs/Obsticles/Cont,Car_L.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b26c8f39813af8d468d81218446e29a4
-    m_Address: Assets/Prefabs/Obsticles/Cont,Car_R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66c867c21e5f7c644ba98a580d8ea7ba
-    m_Address: Assets/Prefabs/Obsticles/Cont_M,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ace467d261e48847ae860fcc128fb39
     m_Address: Assets/Prefabs/Pickups/PowerUpInvis.prefab
     m_ReadOnly: 0
@@ -87,28 +52,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4e2ecb18885f72a4fad36408355b631b
-    m_Address: Assets/Prefabs/Obsticles/Tree,Cont_L.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b78fdb2d6aac61c4cb0f4e676855190b
-    m_Address: Assets/Prefabs/Obsticles/Tree,Cont_R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 396a0a908f1709742b37bd05bb4829c4
-    m_Address: Assets/Prefabs/Obsticles/Cars_L,M.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71dacf0242d61f54f8bbd92542a67240
     m_Address: Assets/Prefabs/Obsticles/Tree_alljump.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d38212fab55e954f98f8ba78fa5c7f1
-    m_Address: Assets/Prefabs/Obsticles/Cont,Cars_R.prefab
+    m_Address: Assets/Prefabs/Obstacles/Cont,Cars_R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -129,6 +79,51 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9b5c9586b9401b849be095de3dad166f
     m_Address: Assets/Prefabs/Pickups/TrailTest 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 661fd67e1aa91bd4eafa0965dc98e006
+    m_Address: Assets/Prefabs/Obstacles/Cont,car_L.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee697d15e9c26d440b46c657dcabc102
+    m_Address: Assets/Prefabs/Obstacles/Cont,car_R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7743895235c2b1e43a7f4bcfcdb34363
+    m_Address: Assets/Prefabs/Obstacles/Conts,Car_L,M.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17347e36c202d4645830d33aedf18f91
+    m_Address: Assets/Prefabs/Obstacles/Conts_L,M.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26c84c76bcd44634da936a299ed9ee7a
+    m_Address: Assets/Prefabs/Obstacles/Conts_L,R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ef9033e064996d4da6910f8791075f1
+    m_Address: Assets/Prefabs/Obstacles/Conts_M,R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56ee808626c26fb44bfcae8811ee02c7
+    m_Address: Assets/Prefabs/Obstacles/Tree,Cont_L.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8059b5be366e16349bf5d8dd8368720a
+    m_Address: Assets/Prefabs/Obstacles/Tree,Cont_R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 179b1e3dccfcd7f47b893905f158315d
+    m_Address: Assets/Prefabs/Obstacles/Conts,Car_M,R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

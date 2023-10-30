@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizedSpawnables:
   - prefabAddressable:
-      m_AssetGUID: b78fdb2d6aac61c4cb0f4e676855190b
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-    spawnHeights:
-    - -1
-    allowedLanes: 6
-    _spawnDistance: 250
-    _despawnDistance: 2
-  - prefabAddressable:
-      m_AssetGUID: 4e2ecb18885f72a4fad36408355b631b
+      m_AssetGUID: ee697d15e9c26d440b46c657dcabc102
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     spawnHeights:
     - -1
     allowedLanes: 3
+    _spawnDistance: 250
+    _despawnDistance: 2
+  - prefabAddressable:
+      m_AssetGUID: 661fd67e1aa91bd4eafa0965dc98e006
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights:
+    - -1
+    allowedLanes: 6
     _spawnDistance: 250
     _despawnDistance: 2
   - prefabAddressable:
@@ -64,7 +64,7 @@ MonoBehaviour:
     _spawnDistance: 250
     _despawnDistance: 2
   - prefabAddressable:
-      m_AssetGUID: 6fb148452f8596149a610ac51411b763
+      m_AssetGUID: 17347e36c202d4645830d33aedf18f91
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -74,7 +74,17 @@ MonoBehaviour:
     _spawnDistance: 250
     _despawnDistance: 2
   - prefabAddressable:
-      m_AssetGUID: 66c867c21e5f7c644ba98a580d8ea7ba
+      m_AssetGUID: 0ef9033e064996d4da6910f8791075f1
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights:
+    - -1
+    allowedLanes: 2
+    _spawnDistance: 250
+    _despawnDistance: 2
+  - prefabAddressable:
+      m_AssetGUID: 26c84c76bcd44634da936a299ed9ee7a
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 1
@@ -82,19 +92,9 @@ MonoBehaviour:
     - -1
     allowedLanes: 2
     _spawnDistance: 250
-    _despawnDistance: 2
-  - prefabAddressable:
-      m_AssetGUID: 91de545d9c93f7b48a2dd203bf35e191
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-    spawnHeights:
-    - -1
-    allowedLanes: 2
-    _spawnDistance: 250
     _despawnDistance: 5
   - prefabAddressable:
-      m_AssetGUID: d39b8cbf5305d11469538ab0a6c9c13d
+      m_AssetGUID: 56ee808626c26fb44bfcae8811ee02c7
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -104,13 +104,33 @@ MonoBehaviour:
     _spawnDistance: 250
     _despawnDistance: 2
   - prefabAddressable:
-      m_AssetGUID: b26c8f39813af8d468d81218446e29a4
+      m_AssetGUID: 8059b5be366e16349bf5d8dd8368720a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    spawnHeights:
+    - -1
+    allowedLanes: 3
+    _spawnDistance: 250
+    _despawnDistance: 2
+  - prefabAddressable:
+      m_AssetGUID: 179b1e3dccfcd7f47b893905f158315d
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     spawnHeights:
     - -1
-    allowedLanes: 3
+    allowedLanes: 2
+    _spawnDistance: 250
+    _despawnDistance: 2
+  - prefabAddressable:
+      m_AssetGUID: 7743895235c2b1e43a7f4bcfcdb34363
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    spawnHeights:
+    - -1
+    allowedLanes: 2
     _spawnDistance: 250
     _despawnDistance: 2
   _minSpawnInterval: 15

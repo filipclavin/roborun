@@ -106,7 +106,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 2441c79940171dc43b33badf9fe97828, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 7ed994c1997814049b44c36a823bba6c, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
