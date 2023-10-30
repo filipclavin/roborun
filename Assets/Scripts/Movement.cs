@@ -11,11 +11,12 @@ public class Movement : MonoBehaviour
     private float slideTime = .5f;
     private float currentSlideTime;
     private GameTimer gameTimer;
-    
+
     
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isSliding = false;
+    [HideInInspector] public bool shouldPlaySlideSpark = false;
 
     [Header("Movement Settings")]
     [SerializeField] private PlayerInput playerInput;
@@ -119,12 +120,17 @@ public class Movement : MonoBehaviour
     private void GroundCheck()
     {
         RaycastHit hit;
-    
+
         Vector3 dir = new Vector3(0, -1);
+
+        bool wasGrounded = isGrounded; 
 
         if (Physics.Raycast(transform.position, dir, out hit, groundDistance))
         {
             isGrounded = true;
+            if (wasGrounded || !shouldPlaySlideSpark) return; 
+            PlayerFXManager.Instance.SlideSpark();
+            shouldPlaySlideSpark = false; 
         }
         else
         {
@@ -133,14 +139,26 @@ public class Movement : MonoBehaviour
     }
 
 
+
     public void Slide(InputAction.CallbackContext context)
     {
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
-            StartCoroutine(SlideTimer());
-        
-        if(!isGrounded)
+
+        StartCoroutine(SlideTimer());
+
+        if (!isGrounded) 
+        {
             rb.AddForce(Vector3.down * currentJumpForce, ForceMode.Impulse);
+            shouldPlaySlideSpark = true; 
+        }
+        else
+        {
+            PlayerFXManager.Instance.SlideSpark();
+        }
+        if(!isSliding)
+            PlayerFXManager.Instance.StopSlideSpark();
     }
+
     
     private bool isRunning = false;
     
