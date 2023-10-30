@@ -120,12 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &10101615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9125925030341315120, guid: 2bb3275ef9b70904ab103271285fbb63,
-    type: 3}
-  m_PrefabInstance: {fileID: 1366100911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &60862083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,47 +2837,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1366100911}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10101615}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &889433957 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1359553523320128600, guid: 2bb3275ef9b70904ab103271285fbb63,
-    type: 3}
-  m_PrefabInstance: {fileID: 1366100911}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &889433958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10101615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3dba497e2dde8a44aee36b1b3fa92fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 889433957}
---- !u!114 &889433963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10101615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d70d16aba0942b5439bbd29e126636d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteryAnimTime: 0.5
-  visualBattery: {fileID: 1600389052}
-  healthyMaterial: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
-  damagedMaterial: {fileID: 2100000, guid: a00faee891ef21743b79fdde68f8856c, type: 2}
 --- !u!1 &926792507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3763,7 +3722,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
+      objectReference: {fileID: 2100000, guid: 9f520ee145c2b9c40b276253662bdf72, type: 2}
     - target: {fileID: 4338382212401749928, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4212,15 +4171,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9125925030341315120, guid: 2bb3275ef9b70904ab103271285fbb63,
-        type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 889433963}
-    - targetCorrespondingSourceObject: {fileID: 9125925030341315120, guid: 2bb3275ef9b70904ab103271285fbb63,
-        type: 3}
-      insertIndex: 7
-      addedObject: {fileID: 889433958}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bb3275ef9b70904ab103271285fbb63, type: 3}
 --- !u!198 &1366100912 stripped
 ParticleSystem:
@@ -4806,7 +4757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.51416, y: -14.996155}
+  m_AnchoredPosition: {x: -6.51416, y: -14.996124}
   m_SizeDelta: {x: 3051, y: 2110}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1554130525
