@@ -118,6 +118,7 @@ public class BatteryController : MonoBehaviour
             gameTimer.EndGame(false);
         }
         UIManager.Instance.UpdateBatteryBar(currentBattery);
+        PlayerStateManager.Instance.animator.SetTrigger("Collision");
     }
 
     public void SetInvis(float duration)

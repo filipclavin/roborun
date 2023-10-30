@@ -1,13 +1,21 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Script Made By Daniel Alvarado
 public class PlayerStateManager : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    public Animator animator;
     private GameTimer _gameTimer;
     private BatteryController _batteryController;
     private PlayerVisuals _playerVisuals;
+
+    public static PlayerStateManager Instance { get; set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
