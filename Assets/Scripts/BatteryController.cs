@@ -12,9 +12,6 @@ public class BatteryController : MonoBehaviour
     private float invisDuration;
     private float batteryAnimTimePassed = 0f;
     private bool updatingVisualBattery = false;
-    private float invisTimer = 0;
-    private float invisDuration = 0;
-    private float batteryAnimTimePassed = 0f;
     private float batteryLastFrame = -1f;
     private float maxBattery;
     private float colorDuration;
