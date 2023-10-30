@@ -166,9 +166,9 @@ public class Movement : MonoBehaviour
 
     private IEnumerator DustTimer()
     {
-        PlayerFXManager.Instance.DustEffect();
-        yield return new WaitForSeconds(1f);
         PlayerFXManager.Instance.StopDustEffect();
+        yield return new WaitForSeconds(1f);
+        PlayerFXManager.Instance.DustEffect();
     }
 
     public void StepSound()

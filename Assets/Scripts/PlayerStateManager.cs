@@ -25,7 +25,7 @@ public class PlayerStateManager : MonoBehaviour
 
     private MovementState currentState;
     
-    private const float jumpVelocity = 1; 
+    private const float JumpVelocity = 1; 
 
     private void UpdateCharacterState()
     {
@@ -35,7 +35,7 @@ public class PlayerStateManager : MonoBehaviour
             return;
         }
 
-        if (Movement.Instance.rb.velocity.y > jumpVelocity)
+        if (Movement.Instance.rb.velocity.y > JumpVelocity)
         {
             currentState = MovementState.Jumping;
             return;
