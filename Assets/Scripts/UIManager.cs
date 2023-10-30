@@ -118,8 +118,8 @@ public class UIManager : MonoBehaviour
 	public void LoadGame()
 	{
 		gameTimer.StartGame();
-		startGame.SetActive(false);
-		exitGame.SetActive(false);
+		// startGame.SetActive(false);
+		// exitGame.SetActive(false);
         StartCoroutine(IntroAnimation()); 
     }
 
