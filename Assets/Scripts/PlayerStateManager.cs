@@ -4,8 +4,10 @@ public class PlayerStateManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     private GameTimer _gameTimer;
+    private BatteryController _batteryController;
     void Start()
     {
+        _batteryController = GetComponent<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
         animator = GetComponent<Animator>();
     }
@@ -20,7 +22,8 @@ public class PlayerStateManager : MonoBehaviour
         Idle,
         Running,
         Jumping,
-        Sliding
+        Sliding,
+        GodMode
     }
 
     private MovementState currentState;
@@ -46,6 +49,7 @@ public class PlayerStateManager : MonoBehaviour
             currentState = MovementState.Sliding;
             return;
         }
+        
 
         currentState = MovementState.Running;
     }
