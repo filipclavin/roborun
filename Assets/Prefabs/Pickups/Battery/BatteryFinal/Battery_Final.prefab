@@ -162,5 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needFullEnergy: 1
-  scoreValue: 600
+  scoreValue: 1000
   batteryValue: 100
