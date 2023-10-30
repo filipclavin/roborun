@@ -7,7 +7,7 @@ public class BatteryController : MonoBehaviour
     private GameTimer gameTimer;
     private List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
     private List<Color> defaultColor = new List<Color>();
-    private bool invisActive = false;
+    public bool invisActive = false;
     private float invisTimer = 0;
     private float invisDuration;
     private float batteryAnimTimePassed = 0f;
