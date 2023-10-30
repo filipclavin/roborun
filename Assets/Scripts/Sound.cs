@@ -1,8 +1,5 @@
-using System;
-
-using UnityEngine.Audio;
 using UnityEngine;
-
+//Script Made By Daniel Alvarado
 [System.Serializable]
 public class Sound 
 {

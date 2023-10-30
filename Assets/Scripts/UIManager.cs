@@ -21,7 +21,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
+    [SerializeField] private Slider timerBar;
     [SerializeField] private Image robotPortrait;
+
+    [Header("Face Animation")]
+    public Animator faceAnimator;
+    [Space]
 
     [Header("Buttons")]
     private Button startGameButton;
@@ -29,14 +34,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startGame;
 	[SerializeField] private GameObject exitGame;
 
-
 	[Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
 	[SerializeField] private TMP_Text timerText;
 	[SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TMP_Text multiplierText;
 
-	[Header("Panels")]
+    [Header("Panels")]
 	[SerializeField] private GameObject gameOverPanel;
 	[SerializeField] private GameObject victoryPanel;
 	[SerializeField] private GameObject pausePanel;
@@ -60,10 +65,9 @@ public class UIManager : MonoBehaviour
 	{
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
-		gameTimer = FindAnyObjectByType<GameTimer>();
         startGameButton = startGame.GetComponent<Button>();
         exitGameButton = exitGame.GetComponent<Button>();
-		OpenMenu();
+        OpenMenu();
 	}
 
 	private void Update()
@@ -92,16 +96,11 @@ public class UIManager : MonoBehaviour
         gameTimer.StartGame();
     }
 
-    private void DeleteScore() // If we wanna reset score
-    {
-        PlayerPrefs.DeleteKey(leadingScoreKey);
-    }
-
     private IEnumerator IntroAnimation()
     {
         gameDirector.Play();
         yield return new WaitForSeconds((float) gameDirector.playableAsset.duration);
-        dontDestroy.skipMainMenu = true;
+        //dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
 
@@ -119,8 +118,8 @@ public class UIManager : MonoBehaviour
 	public void LoadGame()
 	{
 		gameTimer.StartGame();
-		startGame.SetActive(false);
-		exitGame.SetActive(false);
+		// startGame.SetActive(false);
+		// exitGame.SetActive(false);
         StartCoroutine(IntroAnimation()); 
     }
 
@@ -142,6 +141,18 @@ public class UIManager : MonoBehaviour
             batteryBar.maxValue = maxBattery;
             UpdateScore(0);
         }
+
+        if (timerBar != null)
+        {
+            gameTimer = FindAnyObjectByType<GameTimer>();
+            timerBar.minValue = 0;
+            timerBar.maxValue = gameTimer.gameLength;
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
+        }
     }
 
     public void UpdateBatteryBar(float currentBattery)
@@ -149,7 +160,7 @@ public class UIManager : MonoBehaviour
         if (batteryBar != null)
         {
             batteryBar.value = currentBattery;
-            batteryText.text = Mathf.RoundToInt(currentBattery).ToString();
+            batteryText.text = Mathf.RoundToInt(currentBattery) + "%";
         }
     }
 
@@ -167,6 +178,11 @@ public class UIManager : MonoBehaviour
         {
             timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
         }
+
+        if (timerBar != null)
+        {
+            timerBar.value = timerBar.maxValue - timerLeft;
+        }
 	}
 
     public void UpdateHighScore(int currentScore)
@@ -174,12 +190,12 @@ public class UIManager : MonoBehaviour
         if (currentScore > PlayerPrefs.GetInt(leadingScoreKey))
         {
             PlayerPrefs.SetInt(leadingScoreKey, currentScore);
+            if (highScoreText != null)
+            {
+                highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
+            }
         }
 
-        if (highScoreText != null)
-        {
-            highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
-        }
     }
 
     public void GameOver()
@@ -222,4 +238,15 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 	}
+
+    public void ActivateScoreMulti(float multiplier)
+    {
+        multiplierText.gameObject.SetActive(true);
+        multiplierText.text = multiplier + "X";
+    }
+
+    public void DisableScoreMulti()
+    {
+        multiplierText.gameObject.SetActive(false);
+    }
 }

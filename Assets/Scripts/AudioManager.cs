@@ -1,18 +1,16 @@
-
 using System;
-using UnityEngine.Audio;
 using UnityEngine;
 
-
+//Script Made By Daniel Alvarado
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    public static AudioManager instance;
+    public static AudioManager Instance { get; private set; }
     void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
         {
             {

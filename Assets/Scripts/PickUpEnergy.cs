@@ -1,12 +1,8 @@
-
-using System.Linq;
 using UnityEngine;
 
 public class PickUpEnergy : MonoBehaviour
 {
-	private Movement movement;
 	private PlayerScore playerScore;
-	private MeshRenderer meshRenderer;
 	private BatteryController batteryController;
 	
 	[SerializeField] private bool needFullEnergy = true;
@@ -15,9 +11,7 @@ public class PickUpEnergy : MonoBehaviour
     
     private void Start()
     {
-	    movement = FindAnyObjectByType<Movement>();
 		playerScore = FindAnyObjectByType<PlayerScore>();
-		meshRenderer = GetComponent<MeshRenderer>();
         batteryController = playerScore.GetComponent<BatteryController>();
     }
 
@@ -28,20 +22,21 @@ public class PickUpEnergy : MonoBehaviour
 			if (batteryController.ChargeBattery(batteryValue) == true || needFullEnergy == false)
 			{
 				playerScore.AddScore(scoreValue);
+				HandleEffect();
 			}
 			gameObject.SetActive(false);
-
-			if (gameObject.CompareTag("Battery"))
-			{
-				movement.effects.ElementAt(0).Play();
-				FindObjectOfType<AudioManager>().Play("Battery");
-			}
-			if(gameObject.CompareTag("TinCan"))
-			{
-				movement.effects.ElementAt(1).Play();
-				FindObjectOfType<AudioManager>().Play("Can_Pickup");
-			}
-				
 		}
 	}
+    
+    private void HandleEffect()
+    {
+	    if (gameObject.CompareTag("Battery"))
+	    {
+		    PlayerFXManager.Instance.BatteryEffect();
+	    }
+	    else if (gameObject.CompareTag("TinCan"))
+	    {
+		    PlayerFXManager.Instance.CanEffect();
+	    }
+    }
 }

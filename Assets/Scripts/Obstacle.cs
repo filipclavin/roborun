@@ -11,11 +11,10 @@ public class Obstacle : MonoBehaviour
 
     private BatteryController batteryController;
     private BoxCollider boxCollider;
-    Movement movement;
+    
 
     private void Start()
     {
-        movement = FindAnyObjectByType<Movement>();
         boxCollider = transform.parent.GetComponent<BoxCollider>();
         batteryController = FindAnyObjectByType<BatteryController>();
         gameTimer = FindAnyObjectByType<GameTimer>();
@@ -23,13 +22,9 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            FindObjectOfType<AudioManager>().Play("Crash");
-            movement.effects.ElementAt(2).Play();
-            gameTimer.ApplySpeedPenalty();
-            batteryController.ObstacleHit(drainValue);
-            boxCollider.enabled = false;
-        }         
+        if (!other.gameObject.CompareTag("Player")) return;
+        boxCollider.enabled = false;
+        if (batteryController.invisActive && batteryController.isGod) return;
+        batteryController.ObstacleHit(drainValue);
     }
 }
