@@ -2603,8 +2603,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2708f8e085063748be81edbefb85561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invisActive: 0
+  hitMaterial: {fileID: 0}
   currentBattery: 100
+  invisActive: 0
   isGod: 0
 --- !u!114 &3545475513193439312
 MonoBehaviour:
@@ -2618,6 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70d16aba0942b5439bbd29e126636d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  batteryRenderer: {fileID: 0}
   batteryAnimTime: 0.5
   visualBattery: {fileID: 7414920121652568480}
   healthyMaterial: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
