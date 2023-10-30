@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public PlayableDirector gameDirector;
 	[SerializeField] private InputManager input;
 	[SerializeField] private Slider batteryBar;
+    [SerializeField] private Slider timerBar;
     [SerializeField] private Image robotPortrait;
 
     [Header("Face Animation")]
@@ -63,10 +64,9 @@ public class UIManager : MonoBehaviour
 	{
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
-		gameTimer = FindAnyObjectByType<GameTimer>();
         startGameButton = startGame.GetComponent<Button>();
         exitGameButton = exitGame.GetComponent<Button>();
-		OpenMenu();
+        OpenMenu();
 	}
 
 	private void Update()
@@ -140,6 +140,18 @@ public class UIManager : MonoBehaviour
             batteryBar.maxValue = maxBattery;
             UpdateScore(0);
         }
+
+        if (timerBar != null)
+        {
+            gameTimer = FindAnyObjectByType<GameTimer>();
+            timerBar.minValue = 0;
+            timerBar.maxValue = gameTimer.gameLength;
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
+        }
     }
 
     public void UpdateBatteryBar(float currentBattery)
@@ -165,6 +177,11 @@ public class UIManager : MonoBehaviour
         {
             timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
         }
+
+        if (timerBar != null)
+        {
+            timerBar.value = timerBar.maxValue - timerLeft;
+        }
 	}
 
     public void UpdateHighScore(int currentScore)
@@ -172,12 +189,12 @@ public class UIManager : MonoBehaviour
         if (currentScore > PlayerPrefs.GetInt(leadingScoreKey))
         {
             PlayerPrefs.SetInt(leadingScoreKey, currentScore);
+            if (highScoreText != null)
+            {
+                highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
+            }
         }
 
-        if (highScoreText != null)
-        {
-            highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
-        }
     }
 
     public void GameOver()
