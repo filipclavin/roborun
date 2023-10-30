@@ -148,10 +148,4 @@ public class BatteryController : MonoBehaviour
         godDuration = duration;
         playerVisuals.ChangeColors(godMaterial, duration);
     }
-    
-    public IEnumerator GodTimer(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        isGod = false;
-    }
 }

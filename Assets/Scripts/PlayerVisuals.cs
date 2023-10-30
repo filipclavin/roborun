@@ -48,7 +48,6 @@ public class PlayerVisuals : MonoBehaviour
 
     private void OnDisable()
     {
-        StopAllCoroutines();
         ResetMaterial();
     }
 
