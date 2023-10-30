@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -8,6 +9,7 @@ public class PlayerFXManager : MonoBehaviour
     [FormerlySerializedAs("_faceAnimator")] [SerializeField] private Animator faceAnimator;
     [SerializeField] private List<ParticleSystem> effects;
     [SerializeField] private VisualEffect dustEffect;
+    private BatteryController _batteryController;
     private static readonly int SadTrigger = Animator.StringToHash("SadTrigger");
     private static readonly int ScoreTrigger = Animator.StringToHash("ScoreTrigger");
     private static readonly int HappyTrigger = Animator.StringToHash("HappyTrigger");
@@ -24,7 +26,19 @@ public class PlayerFXManager : MonoBehaviour
         Instance = this;
     }
 
-    
+    private void Start()
+    {
+        _batteryController = GetComponent<BatteryController>();
+    }
+
+    private void Update()
+    {
+        if (_batteryController.isGod)
+            PlayGodSparkles();
+        else
+            StopGodSparkles();
+    }
+
     public void BatteryEffect()
     {
         faceAnimator.SetTrigger(HappyTrigger);

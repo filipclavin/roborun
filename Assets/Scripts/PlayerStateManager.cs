@@ -101,11 +101,6 @@ public class PlayerStateManager : MonoBehaviour
 
     private void UpdateEffects()
     {
-        if (currentState == MovementState.GodMode)
-        {
-            PlayerFXManager.Instance.PlayGodSparkles();
-        }
-        else if(currentState != MovementState.GodMode)
-            PlayerFXManager.Instance.StopGodSparkles();
+        
     }
 }
