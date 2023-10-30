@@ -4,31 +4,23 @@ using UnityEngine;
 
 public class BatteryController : MonoBehaviour
 {
+    private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
+
     private List<SkinnedMeshRenderer> meshRenderers = new List<SkinnedMeshRenderer>();
     private List<Color> defaultColor = new List<Color>();
+
     public bool invisActive = false;
+    private bool updatingVisualBattery = false;
+
     private float invisTimer = 0;
     private float invisDuration;
-    private float batteryAnimTimePassed = 0f;
-    private bool updatingVisualBattery = false;
-    private float batteryLastFrame = -1f;
-    private float maxBattery;
-    private float colorDuration;
-    private Color currentRobotColor;
+    private readonly float damageInvis = 1.5f;
 
-    [Header("Visual Battery")]
-    private float batteryDamagedPercent;
-    private readonly int batteryDamageDivide = 3;
-    private MeshRenderer batteryMeshRenderer;
-    [SerializeField] private Transform visualBattery;
-    [SerializeField] private Material healthyMaterial;
-    [SerializeField] private Material damagedMaterial;
-    [Space]
-    [SerializeField] private Color hitColor;
-    [SerializeField] private float currentBattery = 100;
-    [SerializeField] private float damageInvis = 1f;
-    [SerializeField] private float batteryAnimTime;
+    private float maxBattery;
+    public float currentBattery = 100;
+
+    public bool isGod;
 
     /*
         If we ever bring back batterycharge
@@ -36,40 +28,13 @@ public class BatteryController : MonoBehaviour
         [SerializeField] private float batteryCharge = 0.50f;
     */
 
-
     private void Start()
     {
+        playerVisuals = GetComponent<PlayerVisuals>();
         gameTimer = FindAnyObjectByType<GameTimer>();
-        batteryMeshRenderer = visualBattery.GetComponentInChildren<MeshRenderer>();
-        meshRenderers.AddRange(GetComponentsInChildren<SkinnedMeshRenderer>());
-        for (int i = 0; i < meshRenderers.Count; i++)
-        {
-            SkinnedMeshRenderer renderer = meshRenderers[i];
-
-            if (renderer == batteryMeshRenderer)
-            {
-                meshRenderers.Remove(renderer);
-                i--;
-                continue;
-            } 
-
-
-            defaultColor.Add(renderer.material.color);
-        }
         maxBattery = currentBattery;
-        batteryDamagedPercent = maxBattery / batteryDamageDivide;
         UIManager.Instance.StartUI(currentBattery, maxBattery);
         UIManager.Instance.UpdateBatteryBar(currentBattery);
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-        for (int i = 0; i < meshRenderers.Count; i++)
-        {
-            SkinnedMeshRenderer mesh = meshRenderers[i];
-            mesh.material.color = defaultColor[i];
-        }
     }
 
     private void FixedUpdate()
@@ -88,45 +53,7 @@ public class BatteryController : MonoBehaviour
 
     private void Update()
     {
-        if (batteryLastFrame != -1f && batteryLastFrame != currentBattery)
-        {
-            ChangeVisualBattery();
-        }
-
-        if (updatingVisualBattery)
-        {
-            TransitionBatteryScale();
-        }
-
-        batteryLastFrame = currentBattery;
-    }
-
-    private void TransitionBatteryScale()
-    {
-        Vector3 targetScale = new Vector3(visualBattery.localScale.x, currentBattery / maxBattery, visualBattery.localScale.z);
-        visualBattery.transform.localScale = Vector3.Slerp(visualBattery.localScale, targetScale, batteryAnimTimePassed / batteryAnimTime);
-
-        if (batteryAnimTimePassed >= batteryAnimTime) {
-            updatingVisualBattery = false;
-        } else
-        {
-            batteryAnimTimePassed += Time.deltaTime;
-        }
-    }
-
-    private void ChangeVisualBattery()
-    {
-        if (currentBattery < batteryDamagedPercent)
-        {
-            batteryMeshRenderer.material = damagedMaterial;
-        }
-        else
-        {
-            batteryMeshRenderer.material = healthyMaterial;
-        }
-
-        batteryAnimTimePassed = 0f;
-        updatingVisualBattery = true;
+        Powerup();
     }
 
     public bool ChargeBattery(float rechargeValue)
@@ -147,10 +74,10 @@ public class BatteryController : MonoBehaviour
         }
         return false;
     }
-
+    
     public void ObstacleHit(float drain)
     {
-        if (invisActive == false)
+        if (invisActive == false && isGod == false)
         {
             BatteryDrain(drain);
             StartCoroutine(InvisTime(damageInvis));
@@ -165,7 +92,7 @@ public class BatteryController : MonoBehaviour
         SetInvis(seconds);
         while (blinkingTime <= invisDuration)
         {
-            ChangeColors(hitColor, blinkOne);
+            playerVisuals.ChangeColors(Color.red , blinkOne);
             yield return new WaitForSeconds(blinkOne + blinkTwo);
             blinkingTime += blinkOne + blinkTwo;
             if (blinkingTime >= seconds)
@@ -186,34 +113,9 @@ public class BatteryController : MonoBehaviour
         }
         UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
-    private IEnumerator ChangeColor()
-    {
-        for (int i = 0; i < meshRenderers.Count; i++)
-        {
-            SkinnedMeshRenderer mesh = meshRenderers[i];
-            mesh.material.color = currentRobotColor;
-        }
-
-        yield return new WaitForSeconds(colorDuration);
-
-        for (int i = 0; i < meshRenderers.Count; i++)
-        {
-            SkinnedMeshRenderer mesh = meshRenderers[i];
-            mesh.material.color = defaultColor[i];
-        }
-    }
-
-    public void ChangeColors(Color color, float duration)
-    {
-        currentRobotColor = color;
-        colorDuration = duration;
-        StopCoroutine(ChangeColor());
-        StartCoroutine(ChangeColor());
-    }
 
     public void SetInvis(float duration)
     {
-        invisDuration = duration;
         if (invisActive)
         {
             invisTimer = 0;
@@ -223,5 +125,20 @@ public class BatteryController : MonoBehaviour
             invisActive = true;
             StartCoroutine(InvisTime(duration));
         }
+        invisDuration = duration;
+    }
+
+    public void Powerup()
+    {
+        if (isGod == true)
+        {
+            StartCoroutine(GodTimer());
+        }
+    }
+
+    private IEnumerator GodTimer()
+    {
+        yield return new WaitForSeconds(5);
+        isGod = false;
     }
 }

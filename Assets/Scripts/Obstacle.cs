@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
-        if (batteryController.invisActive) return;
+        if (batteryController.invisActive && batteryController.isGod) return;
         gameTimer.ApplySpeedPenalty();
         batteryController.ObstacleHit(drainValue);
         boxCollider.enabled = false;
