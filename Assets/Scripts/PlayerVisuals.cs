@@ -122,10 +122,11 @@ public class PlayerVisuals : MonoBehaviour
 
     public void ChangeColors(Material material, float duration)
     {
-        StopCoroutine(ChangeMaterial());
         ResetMaterial();
         currentRobotColor = material;
         colorDuration = duration;
         StartCoroutine(ChangeMaterial());
     }
+    
+    
 }
