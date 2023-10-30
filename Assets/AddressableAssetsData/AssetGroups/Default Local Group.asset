@@ -43,87 +43,42 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e16f53a8c56cffe4db9df9e7d98810a6
-    m_Address: Assets/Prefabs/Obsticles/Jump_M,R.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cars_M,R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6fb148452f8596149a610ac51411b763
-    m_Address: Assets/Prefabs/Obsticles/NoJump_L,R.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cont_L,R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8a1c44c35dd34b64588299beec66b832
-    m_Address: Assets/Prefabs/Obsticles/Jump_L,R.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cars_L,R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 91de545d9c93f7b48a2dd203bf35e191
-    m_Address: Assets/Prefabs/Obsticles/NoJump_L,M.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cont_L,M.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d39b8cbf5305d11469538ab0a6c9c13d
-    m_Address: Assets/Prefabs/Obsticles/Stair_L.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cont,Car_L.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b26c8f39813af8d468d81218446e29a4
-    m_Address: Assets/Prefabs/Obsticles/Stair_R.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cont,Car_R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 66c867c21e5f7c644ba98a580d8ea7ba
-    m_Address: Assets/Prefabs/Obsticles/NoJump_M,R.prefab
+    m_Address: Assets/Prefabs/Obsticles/Cont_M,R.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ace467d261e48847ae860fcc128fb39
     m_Address: Assets/Prefabs/Pickups/PowerUpInvis.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 43e17600ee4c6be409b5d640c8379892
-    m_Address: Assets/Prefabs/CurvedObstacles/CarJump 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 07b2c88f4e2c45d438df6fda51d5fe2d
-    m_Address: Assets/Prefabs/CurvedObstacles/ContainerNotJumpable 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f4044b820ecc1f84fb192eeb23e3dc36
-    m_Address: Assets/Prefabs/CurvedObstacles/Jump_L,M 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e33ac85a49d220247869d3f8ea83bd77
-    m_Address: Assets/Prefabs/CurvedObstacles/Jump_L,R 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dc9bea80dbd547349bb439259d360744
-    m_Address: Assets/Prefabs/CurvedObstacles/Jump_M,R 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8cfa335dcc5e42c4cad6411ef068782c
-    m_Address: Assets/Prefabs/CurvedObstacles/Stair_L 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 42cd3a39cc700c141956068f8417b644
-    m_Address: Assets/Prefabs/CurvedObstacles/Stair_R 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1b36b276660bf204f9d6c9acad3f737a
-    m_Address: Assets/Prefabs/CurvedPickups/PowerUpMult 1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 10b57476695e3904abc0ee7e866a749a
-    m_Address: Assets/Prefabs/CurvedPickups/Tincan 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -138,12 +93,32 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e2ecb18885f72a4fad36408355b631b
-    m_Address: Assets/Prefabs/Obsticles/TreeL.prefab
+    m_Address: Assets/Prefabs/Obsticles/Tree,Cont_L.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b78fdb2d6aac61c4cb0f4e676855190b
-    m_Address: Assets/Prefabs/Obsticles/TreeR.prefab
+    m_Address: Assets/Prefabs/Obsticles/Tree,Cont_R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 396a0a908f1709742b37bd05bb4829c4
+    m_Address: Assets/Prefabs/Obsticles/Cars_L,M.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71dacf0242d61f54f8bbd92542a67240
+    m_Address: Assets/Prefabs/Obsticles/Tree_alljump.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d38212fab55e954f98f8ba78fa5c7f1
+    m_Address: Assets/Prefabs/Obsticles/Cont,Cars_R.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 241c67fda29bd3a49a81175abb995c6b
+    m_Address: Assets/Prefabs/Obsticles/Cont,Cars_L.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
