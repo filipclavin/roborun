@@ -24,7 +24,6 @@ public class Obstacle : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player")) return;
         if (batteryController.invisActive && batteryController.isGod) return;
-        gameTimer.ApplySpeedPenalty();
         batteryController.ObstacleHit(drainValue);
         boxCollider.enabled = false;
     }

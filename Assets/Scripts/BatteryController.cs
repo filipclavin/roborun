@@ -80,6 +80,7 @@ public class BatteryController : MonoBehaviour
         if (invisActive == false && isGod == false)
         {
             BatteryDrain(drain);
+            gameTimer.ApplySpeedPenalty();
             StartCoroutine(InvisTime(damageInvis));
         }
     }
