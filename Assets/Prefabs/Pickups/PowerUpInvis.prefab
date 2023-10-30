@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
-  godColor: {r: 1, g: 0.98475426, b: 0, a: 0}
+  material: {fileID: 2100000, guid: f7028d63310b74f41a97451dda06e1a3, type: 2}

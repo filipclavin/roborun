@@ -39,8 +39,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text highScoreText;
 	[SerializeField] private TMP_Text timerText;
 	[SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TMP_Text multiplierText;
 
-	[Header("Panels")]
+    [Header("Panels")]
 	[SerializeField] private GameObject gameOverPanel;
 	[SerializeField] private GameObject victoryPanel;
 	[SerializeField] private GameObject pausePanel;
@@ -237,4 +238,14 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 	}
+
+    public void ActivateScoreMultiUI()
+    {
+        multiplierText.enabled = true;
+    }
+
+    public void DisableScoreMultiUI()
+    {
+        multiplierText.enabled = false;
+    }
 }

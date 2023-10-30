@@ -162,4 +162,15 @@ MonoBehaviour:
     _spawnDistance: 200
     _despawnDistance: 5
     spawnInterval: 35
+  - prefabAddressable:
+      m_AssetGUID: 7995b761caac07544943585db33a4ddc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    spawnHeights:
+    - 0
+    allowedLanes: -1
+    _spawnDistance: 200
+    _despawnDistance: 5
+    spawnInterval: 35
   roadTileTag: Ground

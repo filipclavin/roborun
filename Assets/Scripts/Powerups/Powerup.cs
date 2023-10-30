@@ -13,7 +13,6 @@ public abstract class Powerup : MonoBehaviour
         {
             GetComponent<MeshRenderer>().enabled = false;
             batteryController = FindAnyObjectByType<BatteryController>();
-            batteryController.Powerup(this);
             StartCoroutine(PowerUpActive());
         }
     }

@@ -7,19 +7,20 @@ public class BatteryController : MonoBehaviour
     private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
 
-    private List<SkinnedMeshRenderer> meshRenderers = new List<SkinnedMeshRenderer>();
-    private List<Color> defaultColor = new List<Color>();
-
-    public bool invisActive = false;
     private bool updatingVisualBattery = false;
 
     private float invisTimer = 0;
     private float invisDuration;
+
+    private float godTimer = 0;
+    private float godDuration;
     private readonly float damageInvis = 1.5f;
-
+    
     private float maxBattery;
-    public float currentBattery = 100;
 
+    [SerializeField] private Material hitMaterial;
+    public float currentBattery = 100;
+    public bool invisActive = false;
     public bool isGod;
 
     /*
@@ -47,6 +48,16 @@ public class BatteryController : MonoBehaviour
             {
                 invisTimer = 0;
                 invisActive = false;
+            }
+        }
+
+        if (isGod)
+        {
+            godTimer += Time.fixedDeltaTime;
+            if(godTimer >= godDuration)
+            {
+                godTimer = 0;
+                isGod = false;
             }
         }
     }
@@ -87,7 +98,7 @@ public class BatteryController : MonoBehaviour
         float blinkTwo = 0.1f;
         while (blinkingTime <= invisDuration)
         {
-            playerVisuals.ChangeColors(Color.red , blinkOne);
+            playerVisuals.ChangeColors(hitMaterial, blinkOne);
             yield return new WaitForSeconds(blinkOne + blinkTwo);
             blinkingTime += blinkOne + blinkTwo;
             if (blinkingTime >= seconds)
@@ -123,12 +134,22 @@ public class BatteryController : MonoBehaviour
         invisDuration = duration;
     }
 
-    public void Powerup(Powerup powerup)
+    public void SetGod(float duration, Material godMaterial)
     {
-       StartCoroutine(GodTimer(powerup.duration));
+        if (isGod)
+        {
+            godTimer = 0;
+        }
+        else
+        {
+            isGod = true;
+            invisActive = false;
+        }
+        godDuration = duration;
+        playerVisuals.ChangeColors(godMaterial, duration);
     }
-
-    private IEnumerator GodTimer(float duration)
+    
+    public IEnumerator GodTimer(float duration)
     {
         yield return new WaitForSeconds(duration);
         isGod = false;
