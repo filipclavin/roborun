@@ -37,41 +37,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e16f53a8c56cffe4db9df9e7d98810a6
-    m_Address: Assets/Prefabs/Obsticles/Cars_M,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6fb148452f8596149a610ac51411b763
-    m_Address: Assets/Prefabs/Obsticles/Cont_L,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8a1c44c35dd34b64588299beec66b832
-    m_Address: Assets/Prefabs/Obsticles/Cars_L,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 91de545d9c93f7b48a2dd203bf35e191
-    m_Address: Assets/Prefabs/Obsticles/Cont_L,M.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d39b8cbf5305d11469538ab0a6c9c13d
-    m_Address: Assets/Prefabs/Obsticles/Cont,Car_L.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b26c8f39813af8d468d81218446e29a4
-    m_Address: Assets/Prefabs/Obsticles/Cont,Car_R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66c867c21e5f7c644ba98a580d8ea7ba
-    m_Address: Assets/Prefabs/Obsticles/Cont_M,R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ace467d261e48847ae860fcc128fb39
     m_Address: Assets/Prefabs/Pickups/PowerUpInvis.prefab
     m_ReadOnly: 0
@@ -84,21 +49,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc7680f4169fd364f968118211bf2998
     m_Address: Assets/Prefabs/Pickups/Battery/Battery_Final.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4e2ecb18885f72a4fad36408355b631b
-    m_Address: Assets/Prefabs/Obsticles/Tree,Cont_L.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b78fdb2d6aac61c4cb0f4e676855190b
-    m_Address: Assets/Prefabs/Obsticles/Tree,Cont_R.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 396a0a908f1709742b37bd05bb4829c4
-    m_Address: Assets/Prefabs/Obsticles/Cars_L,M.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

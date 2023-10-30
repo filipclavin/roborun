@@ -239,13 +239,14 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
 	}
 
-    public void ActivateScoreMultiUI()
+    public void ActivateScoreMulti(float multiplier)
     {
-        multiplierText.enabled = true;
+        multiplierText.gameObject.SetActive(true);
+        multiplierText.text = multiplier + "X";
     }
 
-    public void DisableScoreMultiUI()
+    public void DisableScoreMulti()
     {
-        multiplierText.enabled = false;
+        multiplierText.gameObject.SetActive(false);
     }
 }

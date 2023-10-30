@@ -6,9 +6,8 @@ public class PowerupInvis : Powerup
 {
     public Material material;
 
-    protected override IEnumerator PowerUpActive()
+    protected override void PowerUpActive()
     {
         batteryController.SetGod(duration, material);
-        yield return null;
     }
 }

@@ -6,20 +6,9 @@ public class PowerupMultiplier : Powerup
 {
     [SerializeField] private int multiplier;
 
-    protected override IEnumerator PowerUpActive()
+    protected override void PowerUpActive()
     {
         PlayerScore playerScore = FindAnyObjectByType<PlayerScore>();
-        if (playerScore.multipler == multiplier)
-        {
-            playerScore.multipler /= multiplier;
-            StopCoroutine(PowerUpActive());
-            StartCoroutine(PowerUpActive());
-        }
-        else
-        {
-            playerScore.multipler *= multiplier;
-            yield return new WaitForSeconds(duration);
-            playerScore.multipler /= multiplier;
-        }
+        playerScore.PowerUpMultiplier(duration, multiplier);
     }
 }
