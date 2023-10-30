@@ -3,8 +3,18 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public PlayerController controller;
+    
+    public static InputManager Instance { get; private set; }
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         controller = new PlayerController();
     }
     

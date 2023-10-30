@@ -1,5 +1,5 @@
 using System;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 //Script Made By Daniel Alvarado
@@ -29,7 +29,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         UpdateAnimations();
         UpdateCharacterState();
-        UpdateEffects();
+        GodModeAnimations();
     }
 
     private enum MovementState
@@ -106,9 +106,38 @@ public class PlayerStateManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+    private bool isTurning = false;
 
-    private void UpdateEffects()
+    private void GodModeAnimations()
     {
-        
+        if (currentState != MovementState.GodMode) return;
+
+        if (isTurning) return; // Skip this turn if we're already turning
+
+        float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
+        if (direction != 0)
+        {
+            isTurning = true; // Indicate that a turn is in progress
+            if (direction > 0)
+            {
+                animator.SetTrigger("GodRight");
+            }
+            else
+            {
+                animator.SetTrigger("GodLeft");
+            }
+
+            // Assume your animation length is 1 second; adjust as needed
+            StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
+        }
     }
+
+    private IEnumerator ResetTurnFlagAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        isTurning = false;
+    }
+
+
+    
 }
