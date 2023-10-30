@@ -2882,8 +2882,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryAnimTime: 0.5
   visualBattery: {fileID: 1600389052}
-  healthyMaterial: {fileID: 2100000, guid: 7740edd30ab048045a9417799d0a5503, type: 2}
-  damagedMaterial: {fileID: 2100000, guid: ad90f9bd95132044ab530a9b68ebce6e, type: 2}
+  healthyMaterial: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
+  damagedMaterial: {fileID: 2100000, guid: a00faee891ef21743b79fdde68f8856c, type: 2}
 --- !u!1 &926792507
 GameObject:
   m_ObjectHideFlags: 0
