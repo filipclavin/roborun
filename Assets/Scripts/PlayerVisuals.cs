@@ -49,11 +49,7 @@ public class PlayerVisuals : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        for (int i = 0; i < meshRenderers.Count; i++)
-        {
-            SkinnedMeshRenderer mesh = meshRenderers[i];
-            mesh.material.color = defaultColor[i];
-        }
+        ResetColors();
     }
 
     private void Update()
@@ -100,16 +96,8 @@ public class PlayerVisuals : MonoBehaviour
         updatingVisualBattery = true;
     }
 
-    private IEnumerator ChangeColor()
+    private void ResetColors()
     {
-        for (int i = 0; i < meshRenderers.Count; i++)
-        {
-            SkinnedMeshRenderer mesh = meshRenderers[i];
-            mesh.material.color = currentRobotColor;
-        }
-
-        yield return new WaitForSeconds(colorDuration);
-
         for (int i = 0; i < meshRenderers.Count; i++)
         {
             SkinnedMeshRenderer mesh = meshRenderers[i];
@@ -117,11 +105,40 @@ public class PlayerVisuals : MonoBehaviour
         }
     }
 
+    private void ChangeColorMesh()
+    {
+        for (int i = 0; i < meshRenderers.Count; i++)
+        {
+            SkinnedMeshRenderer mesh = meshRenderers[i];
+            mesh.material.color = currentRobotColor;
+        }
+    }
+
+    private IEnumerator ChangeColor()
+    {
+        ChangeColorMesh();
+        yield return new WaitForSeconds(colorDuration);
+        ResetColors();
+    }
+
     public void ChangeColors(Color color, float duration)
     {
+        StopCoroutine(ChangeColor());
+        ResetColors();
         currentRobotColor = color;
         colorDuration = duration;
-        StopCoroutine(ChangeColor());
         StartCoroutine(ChangeColor());
     }
+
+    /*
+    public void ChangeColors(Material material)
+    {
+
+    }
+
+    private IEnumerator ChangeMaterial()
+    {
+        for
+    }
+    */
 }
