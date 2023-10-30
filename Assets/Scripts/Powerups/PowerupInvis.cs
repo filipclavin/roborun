@@ -9,8 +9,9 @@ public class PowerupInvis : Powerup
     protected override IEnumerator PowerUpActive()
     {
         BatteryController batteryController = FindAnyObjectByType<BatteryController>();
-        batteryController.ChangeColors(invisColor, duration);
+        batteryController.GetComponent<PlayerVisuals>().ChangeColors(invisColor, duration);
         batteryController.SetInvis(duration);
+        batteryController.isGod = true;
         yield return null;
     }
 }
