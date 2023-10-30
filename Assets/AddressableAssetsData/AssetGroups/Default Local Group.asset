@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4129552679d186d44b92a8404bfa8f16
   m_SerializeEntries:
-  - m_GUID: 779722bbecc95a543973a7c7afed6988
-    m_Address: Obstacle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 53fa28422cca4d842a0e07c7287e401d
     m_Address: Collectable
     m_ReadOnly: 0
@@ -119,6 +114,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 241c67fda29bd3a49a81175abb995c6b
     m_Address: Assets/Prefabs/Obsticles/Cont,Cars_L.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97b5fa5a2d3925a4c9e9926c26ba1ac2
+    m_Address: Assets/Prefabs/Pickups/TrailTest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75a1fd424a97dba4ca3ea819ba40d46b
+    m_Address: Assets/Prefabs/Pickups/TrailTest 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b5c9586b9401b849be095de3dad166f
+    m_Address: Assets/Prefabs/Pickups/TrailTest 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
