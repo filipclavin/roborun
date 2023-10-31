@@ -7,5 +7,6 @@ public class PowerupInvis : Powerup
     protected override void PowerUpActive()
     {
         batteryController.SetGod(duration, material);
+        AudioManager.Instance.Play("PizzaParty");
     }
 }
