@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class ButtonSelect : MonoBehaviour
 {
-    public MainButton primaryButton;
+    public Button primaryButton;
+    
     void Start()
     {
-        primaryButton.Select();
+       primaryButton.Select();
+       
+   
     }
     
 
@@ -16,7 +19,8 @@ public class ButtonSelect : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         
-        primaryButton.Select();
+       primaryButton.Select();
+       
     }
 
     
