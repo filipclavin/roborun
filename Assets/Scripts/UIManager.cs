@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text highScoreText;
 	[SerializeField] private TMP_Text timerText;
 	[SerializeField] private TMP_Text victoryText;
-    [SerializeField] private TMP_Text multiplierText;
 
     [Header("Panels")]
 	[SerializeField] private GameObject gameOverPanel;
@@ -133,7 +132,7 @@ public class UIManager : MonoBehaviour
             maxBattery = currentBattery;
             batteryBar.maxValue = 0;
             batteryBar.maxValue = maxBattery;
-            UpdateScore(0);
+            UpdateScore(0, 1);
         }
 
         if (timerBar != null)
@@ -158,11 +157,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int scoreValue)
+    public void UpdateScore(int scoreValue, float multiplier)
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + scoreValue;
+            if (multiplier != 1)
+            {
+                scoreText.text = "Score: " + multiplier + "X " + scoreValue;
+            }
+            else
+            {
+                scoreText.text = "Score: " + scoreValue;
+            }
         }
     }
 
@@ -226,15 +232,4 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
 	}
-
-    public void ActivateScoreMulti(float multiplier)
-    {
-        multiplierText.gameObject.SetActive(true);
-        multiplierText.text = multiplier + "X";
-    }
-
-    public void DisableScoreMulti()
-    {
-        multiplierText.gameObject.SetActive(false);
-    }
 }

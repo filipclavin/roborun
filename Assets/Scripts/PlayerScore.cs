@@ -30,7 +30,7 @@ public class PlayerScore : MonoBehaviour
             if (multipliertimer >= multiplierDuration)
             {
                 multiplier = 1;
-                UIManager.Instance.DisableScoreMulti();
+                UIManager.Instance.UpdateScore(CurrentScore, multiplier);
             }
         }
     }
@@ -38,7 +38,7 @@ public class PlayerScore : MonoBehaviour
     public void AddScore(int score)
     {
         CurrentScore += (int) (score * multiplier);
-        UIManager.Instance.UpdateScore(CurrentScore);
+        UIManager.Instance.UpdateScore(CurrentScore, multiplier);
     }
 
     public void PowerUpMultiplier(float duration, float pickUpMultiplier)
@@ -49,7 +49,6 @@ public class PlayerScore : MonoBehaviour
         }
         multiplierDuration = duration;
         multipliertimer = 0;
-        UIManager.Instance.ActivateScoreMulti(multiplier);
-        
+        UIManager.Instance.UpdateScore(CurrentScore, multiplier);
     }
 }
