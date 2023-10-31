@@ -33,7 +33,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7995b761caac07544943585db33a4ddc
-    m_Address: Assets/Prefabs/PowerUp.prefab
+    m_Address: Assets/Prefabs/Pickups/PowerUpMult.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
