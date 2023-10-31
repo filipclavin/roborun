@@ -6,7 +6,7 @@ public class BatteryController : MonoBehaviour
 {
    [SerializeField] private float themeGodPitch = 1.05f;
    [SerializeField] private float originialPitch = 1f;
-    
+   
     private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
 
@@ -43,6 +43,7 @@ public class BatteryController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         //ChargeBattery(batteryCharge);
         if (invisActive)
         {
@@ -64,6 +65,7 @@ public class BatteryController : MonoBehaviour
         isGod = false;
     }
 
+   
     public bool ChargeBattery(float rechargeValue)
     {
         if (gameTimer.goingOn)
@@ -145,6 +147,7 @@ public class BatteryController : MonoBehaviour
         }
         else
         {
+            
             AudioManager.Instance.sounds[0].source.pitch = themeGodPitch;
             PlayerStateManager.Instance.animator.SetTrigger("ChargeToGod");
             PlayerFXManager.Instance.StopDustEffect();

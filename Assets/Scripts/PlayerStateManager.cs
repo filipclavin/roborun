@@ -28,7 +28,7 @@ public class PlayerStateManager : MonoBehaviour
         UpdateAnimations();
         UpdateCharacterState();
         GodModeAnimations();
-        //RunTurnAnimation();
+        RunTurnAnimation();
     }
 
     private enum MovementState
@@ -108,7 +108,7 @@ public class PlayerStateManager : MonoBehaviour
     private static readonly int GodRight = Animator.StringToHash("GodRight");
     private static readonly int GodLight = Animator.StringToHash("GodLeft");
     private bool isGodTurning = false;
-    private bool isTurnButtonReleased = true; 
+    private bool isGodTurnButtonReleased = true; 
 
     private void GodModeAnimations()
     {
@@ -119,14 +119,14 @@ public class PlayerStateManager : MonoBehaviour
         float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
         if (direction == 0)
         {
-            isTurnButtonReleased = true;
+            isGodTurnButtonReleased = true;
             return;
         }
 
-        if (!isTurnButtonReleased) return; 
+        if (!isGodTurnButtonReleased) return; 
 
         isGodTurning = true;
-        isTurnButtonReleased = false; 
+        isGodTurnButtonReleased = false; 
         animator.SetTrigger(direction > 0 ? GodRight : GodLight);
         StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
     }
@@ -138,25 +138,37 @@ public class PlayerStateManager : MonoBehaviour
         isGodTurning = false;
     }
     
-    // private bool isTurning = false;
-    // private static readonly int Right = Animator.StringToHash("DefaultRightTurn");
-    // private static readonly int Left = Animator.StringToHash("DefaultLeftTurn");
-    // private void RunTurnAnimation()
-    // {
-    //     if(currentState != MovementState.Running) return;
-    //     
-    //     if(isTurning) return;
-    //     
-    //     float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
-    //     if (direction == 0) return;
-    //     isTurning = true;
-    //     animator.SetTrigger(direction > 0 ? Right : Left);
-    //     StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
-    // }
-    //
-    // private IEnumerator ResetTurnFlagAfterSeconds(float seconds)
-    // {
-    //     yield return new WaitForSeconds(seconds);
-    //     isTurning = false;
-    // }
+    private bool isTurning = false;
+    private static readonly int Right = Animator.StringToHash("DefaultRightTurn");
+    private static readonly int Left = Animator.StringToHash("DefaultLeftTurn");
+
+    private bool isTurnButtonReleased = true;
+    private void RunTurnAnimation()
+    {
+        if (currentState != MovementState.Running) return;
+    
+        if (isTurning) return;
+    
+        float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
+    
+        if (direction == 0)
+        {
+            isTurnButtonReleased = true;
+            return;
+        }
+
+        if (!isTurnButtonReleased) return;
+    
+        isTurning = true;
+        isTurnButtonReleased = false;
+        animator.SetTrigger(direction > 0 ? Right : Left);
+        StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
+    }
+
+    private IEnumerator ResetTurnFlagAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        isTurning = false;
+    }
+
 }
