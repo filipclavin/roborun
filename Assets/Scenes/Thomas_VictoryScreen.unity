@@ -2082,8 +2082,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 268}
-  m_SizeDelta: {x: 663.12, y: 50}
+  m_AnchoredPosition: {x: 0, y: 480}
+  m_SizeDelta: {x: 1590.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380846777
 MonoBehaviour:
@@ -2105,9 +2105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Victory
-
-'
+  m_text: Great job!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89cbdaf6906a06146807dbceb56dc937, type: 2}
   m_sharedMaterial: {fileID: -3148690411276303121, guid: 89cbdaf6906a06146807dbceb56dc937,
@@ -3172,7 +3170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &674600635
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5364,7 +5362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.1, y: 71.8}
+  m_AnchoredPosition: {x: 7.6, y: 65.3}
   m_SizeDelta: {x: 83.6, y: 391.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839145982
@@ -5389,8 +5387,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 89cbdaf6906a06146807dbceb56dc937, type: 2}
-  m_sharedMaterial: {fileID: -3148690411276303121, guid: 89cbdaf6906a06146807dbceb56dc937,
+  m_fontAsset: {fileID: 11400000, guid: 7851949c0ed0900498b64486104925eb, type: 2}
+  m_sharedMaterial: {fileID: 903584915710766628, guid: 7851949c0ed0900498b64486104925eb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5454,7 +5452,7 @@ MonoBehaviour:
   m_margin: {x: 8.58411, y: 241.75946, z: 27.173584, w: 36.298096}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1839145983
@@ -6641,17 +6639,17 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[1].time
-      value: 0.2240176
+      value: 0.009499733
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].time
-      value: 0.4990905
+      value: 0.10385807
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].time
-      value: 0.8
+      value: 0.2871479
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -6661,22 +6659,22 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[0].value
-      value: 0.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[1].value
-      value: 0.57474
+      value: 0.3957731
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].value
-      value: 0.8851681
+      value: 0.6396446
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].value
-      value: 1
+      value: 0.8288555
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -6686,22 +6684,22 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[0].inSlope
-      value: 0.11342055
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[1].inSlope
-      value: 1.0602264
+      value: 2.034967
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].inSlope
-      value: 0.60916984
+      value: 1.7351694
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].inSlope
-      value: 0.014794288
+      value: 0.43776265
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -6711,7 +6709,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[0].outSlope
-      value: 0.11342055
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -6721,42 +6719,42 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[1].outSlope
-      value: 1.0602264
+      value: 3.2833276
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].inWeight
-      value: 0.14430621
+      value: 0.3503589
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].outSlope
-      value: 0.60916984
+      value: 1.7351694
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].inWeight
-      value: 0.26155528
+      value: 0.2798373
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].outSlope
-      value: 0
+      value: 0.43776265
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[0].outWeight
-      value: 0.08029873
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
+      value: 0.20805065
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].outWeight
-      value: 0.09134747
+      value: 0.20905414
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -6771,16 +6769,6 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
-        type: 3}
-      propertyPath: _timeScaleCurve.m_Curve.Array.data[2].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
-        type: 3}
-      propertyPath: _timeScaleCurve.m_Curve.Array.data[3].tangentMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6893433109066577899, guid: 80357b9c443e9e64fb82058973cf9b5a,
