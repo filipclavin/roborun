@@ -41,18 +41,8 @@ public class BatteryController : MonoBehaviour
         UIManager.Instance.StartUI(currentBattery, maxBattery);
         UIManager.Instance.UpdateBatteryBar(currentBattery);
     }
-
-    private void Update()
-    {
-        if (isGod)
-            StartCoroutine(GodSlowMo());
-    }
-    private static IEnumerator GodSlowMo()
-    {
-        Time.timeScale = 0.5f;
-        yield return new WaitForSeconds(1);
-        Time.timeScale = 1;
-    }
+    
+    
 
     private void FixedUpdate()
     {
