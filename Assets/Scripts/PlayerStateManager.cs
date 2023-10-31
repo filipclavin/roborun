@@ -22,7 +22,6 @@ public class PlayerStateManager : MonoBehaviour
         _playerVisuals = GetComponent<PlayerVisuals>();
         _batteryController = GetComponent<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
-        animator = GetComponent<Animator>();
     }
 
     void Update()
