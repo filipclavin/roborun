@@ -144,7 +144,7 @@ public class UIManager : MonoBehaviour
 
         if (highScoreText != null)
         {
-            highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
+            highScoreText.text = "Recordwatt: " + PlayerPrefs.GetInt(leadingScoreKey);
         }
     }
 
@@ -163,11 +163,11 @@ public class UIManager : MonoBehaviour
         {
             if (multiplier != 1)
             {
-                scoreText.text = "Score: " + multiplier + "X " + scoreValue;
+                scoreText.text = "Watthours saved: " + multiplier + "X " + scoreValue;
             }
             else
             {
-                scoreText.text = "Score: " + scoreValue;
+                scoreText.text = "Watthours saved: " + scoreValue;
             }
         }
     }
@@ -192,7 +192,7 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt(leadingScoreKey, currentScore);
             if (highScoreText != null)
             {
-                highScoreText.text = "Highscore: " + PlayerPrefs.GetInt(leadingScoreKey);
+                highScoreText.text = "Recordwatt: " + PlayerPrefs.GetInt(leadingScoreKey);
             }
         }
 
@@ -224,7 +224,7 @@ public class UIManager : MonoBehaviour
     {
 		victoryPanel.SetActive(true);
 		Time.timeScale = 0f;
-        victoryText.text = "You got " + score + " points";
+        victoryText.text = "You saved " + score + " watthours during your game";
 	}
 
     public void ReloadScene()
