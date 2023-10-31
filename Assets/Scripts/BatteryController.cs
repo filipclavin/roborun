@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,18 @@ public class BatteryController : MonoBehaviour
         maxBattery = currentBattery;
         UIManager.Instance.StartUI(currentBattery, maxBattery);
         UIManager.Instance.UpdateBatteryBar(currentBattery);
+    }
+
+    private void Update()
+    {
+        if (isGod)
+            StartCoroutine(GodSlowMo());
+    }
+    private static IEnumerator GodSlowMo()
+    {
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(1);
+        Time.timeScale = 1;
     }
 
     private void FixedUpdate()
@@ -147,7 +160,6 @@ public class BatteryController : MonoBehaviour
         }
         else
         {
-            
             AudioManager.Instance.sounds[0].source.pitch = themeGodPitch;
             PlayerStateManager.Instance.animator.SetTrigger("ChargeToGod");
             PlayerFXManager.Instance.StopDustEffect();

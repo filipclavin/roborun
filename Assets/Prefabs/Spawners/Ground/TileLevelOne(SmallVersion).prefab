@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 5261589129828059692}
   - component: {fileID: 5481357707973582074}
   - component: {fileID: 5777159366434063318}
+  - component: {fileID: 6657011983580122524}
   m_Layer: 0
   m_Name: TileLevelOne(SmallVersion)
   m_TagString: Ground
@@ -117,6 +118,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gameData: {fileID: 11400000, guid: e1aa125926c9f1a4592f5bf6d6f62bce, type: 2}
+--- !u!114 &6657011983580122524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611436751923663529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4741ca6519918b4897b172832c15df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1993663821463806411
 GameObject:
   m_ObjectHideFlags: 0

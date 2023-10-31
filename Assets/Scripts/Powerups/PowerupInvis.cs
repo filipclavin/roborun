@@ -9,5 +9,6 @@ public class PowerupInvis : Powerup
         batteryController.SetGod(duration, material);
         AudioManager.Instance.Play("PizzaParty");
         PlayerFXManager.Instance.PlayPPP();
+        
     }
 }
