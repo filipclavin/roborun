@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private CapsuleCollider playerCollider;
     private int desiredLane;
-    private float slideTime = .5f;
     private float currentSlideTime;
     private GameTimer gameTimer;
 
@@ -22,6 +21,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float maxJumpForce = 35f;
     [SerializeField] private float minJumpForce = 30f;
+    [SerializeField] private float slideTime = .5f;
     [Space]
     [SerializeField] private float currentJumpForce;
     [SerializeField] private float maxGravity = -40f;
