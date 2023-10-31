@@ -110,7 +110,7 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""84274d9a-9124-4ff2-bc6a-6602b46ca48b"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
