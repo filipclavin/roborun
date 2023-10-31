@@ -4319,6 +4319,7 @@ MonoBehaviour:
   highScoreText: {fileID: 190825722}
   timerText: {fileID: 2017282626}
   victoryText: {fileID: 1898727828}
+  multiplierText: {fileID: 0}
   gameOverPanel: {fileID: 60862083}
   victoryPanel: {fileID: 674600634}
   pausePanel: {fileID: 1556492502}
@@ -5457,8 +5458,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilePrefab
       value: 
-      objectReference: {fileID: 5481357707973582074, guid: 22825995f1b38de4a8861cfbd6bb4658,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
       propertyPath: movingSpeed
