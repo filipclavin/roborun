@@ -10,5 +10,6 @@ public class PowerupMultiplier : Powerup
     {
         PlayerScore playerScore = FindAnyObjectByType<PlayerScore>();
         playerScore.PowerUpMultiplier(duration, multiplier);
+        gameObject.SetActive(false);
     }
 }
