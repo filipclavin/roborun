@@ -1,31 +1,25 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UI.Button;
 
-public class MainButton : Selectable
+public class MovePointer : MonoBehaviour
 {
     [SerializeField] private GameObject selected;
     [SerializeField] private ButtonClickedEvent buttonEvent;
-    public ButtonClickedEvent onClick
-    {
-        get { return buttonEvent; }
-        set { buttonEvent = value; }
-    }
+
+    [SerializeField] private List<Button> buttons = new List<Button>();
     
     private void Update()
     {
-        if (IsHighlighted())
+        if (buttons.ElementAt(0))
         {
             selected.SetActive(true);
         }
         else
         {
             selected.SetActive(false);
-        }
-
-        if (IsPressed())
-        {
-            onClick.Invoke();
         }
     }
 }

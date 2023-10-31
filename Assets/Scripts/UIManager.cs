@@ -29,10 +29,7 @@ public class UIManager : MonoBehaviour
     [Space]
 
     [Header("Buttons")]
-    // private Button startGameButton;
-    // private Button exitGameButton;
- //    [SerializeField] private GameObject startGame;
-	// [SerializeField] private GameObject exitGame;
+    [SerializeField] private Canvas startMenu;
 
 	[Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
@@ -65,8 +62,6 @@ public class UIManager : MonoBehaviour
 	{
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
-        // startGameButton = startGame.GetComponent<Button>();
-        // exitGameButton = exitGame.GetComponent<Button>();
         OpenMenu();
 	}
 
@@ -84,12 +79,14 @@ public class UIManager : MonoBehaviour
         // startGame.SetActive(false);
         // exitGame.SetActive(false);
 
+        /*
         scoreText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
         timerText.gameObject.SetActive(true);
         victoryText.gameObject.SetActive(true);
         batteryBar.gameObject.SetActive(true);
         robotPortrait.gameObject.SetActive(true);
+        */
 
         gameplayCamera.gameObject.SetActive(true);
         input.enabled = true;
@@ -106,8 +103,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
-  //       startGame.SetActive(true);
-		// exitGame.SetActive(true);
+        startMenu.gameObject.SetActive(true);
         input.enabled = false;
         if (playedAnimation)
         {
@@ -118,8 +114,6 @@ public class UIManager : MonoBehaviour
 	public void LoadGame()
 	{
 		gameTimer.StartGame();
-		// startGame.SetActive(false);
-		// exitGame.SetActive(false);
         StartCoroutine(IntroAnimation()); 
     }
 
@@ -214,7 +208,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Continue();
+            pausePanel.SetActive(false);
+            Time.timeScale = 1f;
         }
 
 	}
@@ -226,13 +221,6 @@ public class UIManager : MonoBehaviour
         victoryText.text = "You got " + score + " points";
 	}
 
-    public void Continue()
-    {
-		gameOverPanel.SetActive(false);
-		pausePanel.SetActive(false);
-		victoryPanel.SetActive(false);
-        Time.timeScale = 1f;
-	}
     public void ReloadScene()
     {
         SceneManager.LoadScene(sceneName);
