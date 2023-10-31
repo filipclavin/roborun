@@ -29,10 +29,10 @@ public class UIManager : MonoBehaviour
     [Space]
 
     [Header("Buttons")]
-    private Button startGameButton;
-    private Button exitGameButton;
-    [SerializeField] private GameObject startGame;
-	[SerializeField] private GameObject exitGame;
+    // private Button startGameButton;
+    // private Button exitGameButton;
+ //    [SerializeField] private GameObject startGame;
+	// [SerializeField] private GameObject exitGame;
 
 	[Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
@@ -65,8 +65,8 @@ public class UIManager : MonoBehaviour
 	{
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
-        startGameButton = startGame.GetComponent<Button>();
-        exitGameButton = exitGame.GetComponent<Button>();
+        // startGameButton = startGame.GetComponent<Button>();
+        // exitGameButton = exitGame.GetComponent<Button>();
         OpenMenu();
 	}
 
@@ -81,8 +81,8 @@ public class UIManager : MonoBehaviour
 
     private void SkipMainMenu()
     {
-        startGame.SetActive(false);
-        exitGame.SetActive(false);
+        // startGame.SetActive(false);
+        // exitGame.SetActive(false);
 
         scoreText.gameObject.SetActive(true);
         highScoreText.gameObject.SetActive(true);
@@ -106,8 +106,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        startGame.SetActive(true);
-		exitGame.SetActive(true);
+  //       startGame.SetActive(true);
+		// exitGame.SetActive(true);
         input.enabled = false;
         if (playedAnimation)
         {
