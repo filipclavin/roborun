@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+//Script Made By Daniel Alvarado
 public class GodModeMagnet : MonoBehaviour
 {
     private BatteryController _batteryController;

@@ -2,29 +2,30 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+//script made by Daniel Alvarado
 public class GodModeSpeed : MonoBehaviour
 {
-    private Move move;
+    private Move _move;
     private BatteryController _batteryController;
-    private float minTimeScale = 0.2f; 
-    private float maxTimeScale = 1f;
-    private float currentTimeScale;
-    private float waitTime;
-    private GameTimer gameTimer;
+    private readonly float _minTimeScale = 0.2f; 
+    private readonly float _maxTimeScale = 1f;
+    private float _currentTimeScale;
+    private float _waitTime;
+    private GameTimer _gameTimer; 
     
     [Obsolete("Obsolete")]
     private void Start()
     {
-        move = GetComponent<Move>();
+        _move = GetComponent<Move>();
         _batteryController = FindObjectOfType<BatteryController>();
-        gameTimer = FindObjectOfType<GameTimer>();
+        _gameTimer = FindObjectOfType<GameTimer>();
     }
     
     private void Update()
     {
-        move.speed = _batteryController.isGod ? 10f : 5f;
+        _move.speed = _batteryController.isGod ? 10f : 5f;
         
-        AdjustTimeScale();
+        AdjustTimeBasedOnTimer();
         GodModeEffect();
     }
 
@@ -36,19 +37,19 @@ public class GodModeSpeed : MonoBehaviour
         }
     }
     
-    private void AdjustTimeScale()
+    private void AdjustTimeBasedOnTimer()
     {
-        float progress = gameTimer.gameTimer / gameTimer.gameLength;
-        currentTimeScale = Mathf.Lerp(minTimeScale, maxTimeScale, progress);
-        waitTime = Mathf.Lerp(.5f, 2f, progress); 
+        float progress = _gameTimer.gameTimer / _gameTimer.gameLength;
+        _currentTimeScale = Mathf.Lerp(_minTimeScale, _maxTimeScale, progress);
+        _waitTime = Mathf.Lerp(.5f, 2f, progress); 
     }
     
     private IEnumerator GodSlowMo()
     {
-        float originalTimeScale = currentTimeScale;
+        float originalTimeScale = _currentTimeScale;
         Time.timeScale = originalTimeScale * 0.5f; 
 
-        yield return new WaitForSecondsRealtime(waitTime); 
+        yield return new WaitForSecondsRealtime(_waitTime); 
 
         Time.timeScale = 1; 
     }

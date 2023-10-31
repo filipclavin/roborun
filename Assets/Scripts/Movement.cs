@@ -107,16 +107,17 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded && gameTimer.goingOn)
+        if (!context.performed || !isGrounded || !gameTimer.goingOn) return;
+        AudioManager.Instance.Play("Jump");
+        var velocity = rb.velocity;
+        velocity = new Vector3(velocity.x, 0, velocity.z);
+        rb.velocity = velocity;
+
+        rb.AddForce(Vector3.up * currentJumpForce, ForceMode.Impulse);
+
+        if (batteryController.isGod == false)
         {
-            AudioManager.Instance.Play("Jump");
-            var velocity = rb.velocity;
-            velocity = new Vector3(velocity.x, 0, velocity.z);
-            rb.velocity = velocity;
-
-            rb.AddForce(Vector3.up * currentJumpForce, ForceMode.Impulse);
-
-            StartCoroutine(DustTimer());
+            StartCoroutine(DustTimer(1));
         }
     }
     
@@ -149,6 +150,10 @@ public class Movement : MonoBehaviour
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
 
         StartCoroutine(SlideTimer());
+        if (batteryController.isGod == false)
+        {
+            StartCoroutine(DustTimer(.5f));
+        }
 
         if (!isGrounded) 
         {
@@ -186,12 +191,14 @@ public class Movement : MonoBehaviour
         playerCollider.height = originalHeight;
     }
 
-    private IEnumerator DustTimer()
+    private IEnumerator DustTimer(float waitTime)
     {
         PlayerFXManager.Instance.StopDustEffect();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(waitTime);
         PlayerFXManager.Instance.DustEffect();
     }
+
+    
 
     public void StepSound()
     {
