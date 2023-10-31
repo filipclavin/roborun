@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PowerupMultiplier : Powerup
@@ -11,5 +10,6 @@ public class PowerupMultiplier : Powerup
         PlayerScore playerScore = FindAnyObjectByType<PlayerScore>();
         playerScore.PowerUpMultiplier(duration, multiplier);
         gameObject.SetActive(false);
+        PlayerFXManager.Instance.Play2X();
     }
 }

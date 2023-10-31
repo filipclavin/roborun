@@ -94,5 +94,15 @@ public class PlayerFXManager : MonoBehaviour
     {
         effects[4].Stop();
     }
+    
+    public void PlayPPP()
+    {
+        effects[5].Play();
+    }
+
+    public void Play2X()
+    {
+        effects[6].Play();
+    }
 
 }
