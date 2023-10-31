@@ -181,7 +181,7 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 200
     _despawnDistance: 5
-    spawnInterval: 40
+    spawnInterval: 50
   - prefabAddressable:
       m_AssetGUID: e518e6cb3eb05ed43ad24e77070a74d4
       m_SubObjectName: 
