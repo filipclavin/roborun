@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BoltMaterial
+  m_Name: X2Material
   m_Shader: {fileID: 4800000, guid: b7839dad95683814aa64166edc107ae2, type: 3}
-  m_Parent: {fileID: 2100000, guid: aeb98022cbef0374ca0ed7a6d17ceb84, type: 2}
+  m_Parent: {fileID: 2100000, guid: 67b6333ce8b14fd40a5be98907152b27, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -28,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: b6fd15a5e3bc38d419d8de46c2f18710, type: 3}
+        m_Texture: {fileID: 2800000, guid: 733e66f71a57cee4e97b401cdd34176f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
