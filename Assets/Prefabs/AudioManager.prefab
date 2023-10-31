@@ -105,3 +105,9 @@ MonoBehaviour:
     volume: 0.65
     source: {fileID: 0}
     loop: 0
+  - name: PizzaParty
+    clip: {fileID: 8300000, guid: 4e75ec66fb209e3418d8a679f7f35051, type: 3}
+    pitch: 1
+    volume: 0.8
+    source: {fileID: 0}
+    loop: 0
