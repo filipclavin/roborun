@@ -1572,6 +1572,11 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 49621645}
+    - target: {fileID: 7966400926609831725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: timeMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8177890451924594889, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_Layer
