@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670ca410b019a7244afb9be7e7cd7861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 7
+  duration: 10
   material: {fileID: 2100000, guid: a3f2136cf27fe2149875420626cb1188, type: 2}
 --- !u!95 &-4462762348174031493
 Animator:
