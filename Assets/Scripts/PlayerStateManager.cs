@@ -105,9 +105,11 @@ public class PlayerStateManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
-    private bool isGodTurning = false;
     private static readonly int GodRight = Animator.StringToHash("GodRight");
     private static readonly int GodLight = Animator.StringToHash("GodLeft");
+    private bool isGodTurning = false;
+    private bool isTurnButtonReleased = true; // Add this line
+
     private void GodModeAnimations()
     {
         if (currentState != MovementState.GodMode) return;
@@ -115,11 +117,20 @@ public class PlayerStateManager : MonoBehaviour
         if (isGodTurning) return;
 
         float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
-        if (direction == 0) return;
+        if (direction == 0)
+        {
+            isTurnButtonReleased = true; // Set flag to true when button is released
+            return;
+        }
+
+        if (!isTurnButtonReleased) return; // Add this line to prevent re-triggering
+
         isGodTurning = true;
+        isTurnButtonReleased = false; // Set flag to false when button is pressed
         animator.SetTrigger(direction > 0 ? GodRight : GodLight);
         StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
     }
+
 
     private IEnumerator ResetGodTurnFlagAfterSeconds(float seconds)
     {

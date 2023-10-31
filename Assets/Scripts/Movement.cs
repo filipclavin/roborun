@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     private int desiredLane;
     private float currentSlideTime;
     private GameTimer gameTimer;
+    private BatteryController batteryController;
 
     
     [HideInInspector] public Rigidbody rb;
@@ -45,7 +46,7 @@ public class Movement : MonoBehaviour
             return;
         }
         Instance = this;
-
+         batteryController = GetComponent<BatteryController>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
@@ -68,6 +69,11 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if(batteryController.isGod)
+        {
+            rb.position = new Vector3(rb.position.x, 1.5f, rb.position.z);
+        }
+
         if (!gameTimer.goingOn) return;
 
         AdjustGameSettingsBasedOnTimer();
