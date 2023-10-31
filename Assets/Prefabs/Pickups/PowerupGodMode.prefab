@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 7
-  material: {fileID: 2100000, guid: e14a0dbf6c04b28498f7bd9d6ccfea0b, type: 2}
+  material: {fileID: 2100000, guid: a3f2136cf27fe2149875420626cb1188, type: 2}
 --- !u!95 &-4462762348174031493
 Animator:
   serializedVersion: 7
