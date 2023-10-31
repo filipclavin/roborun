@@ -28,6 +28,7 @@ public class PlayerStateManager : MonoBehaviour
         UpdateAnimations();
         UpdateCharacterState();
         GodModeAnimations();
+        //RunTurnAnimation();
     }
 
     private enum MovementState
@@ -104,28 +105,47 @@ public class PlayerStateManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
-    private bool isTurning = false;
+    private bool isGodTurning = false;
     private static readonly int GodRight = Animator.StringToHash("GodRight");
     private static readonly int GodLight = Animator.StringToHash("GodLeft");
     private void GodModeAnimations()
     {
         if (currentState != MovementState.GodMode) return;
 
-        if (isTurning) return;
+        if (isGodTurning) return;
 
         float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
         if (direction == 0) return;
-        isTurning = true;
+        isGodTurning = true;
         animator.SetTrigger(direction > 0 ? GodRight : GodLight);
-        StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
+        StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
     }
 
-    private IEnumerator ResetTurnFlagAfterSeconds(float seconds)
+    private IEnumerator ResetGodTurnFlagAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        isTurning = false;
+        isGodTurning = false;
     }
-
-
     
+    // private bool isTurning = false;
+    // private static readonly int Right = Animator.StringToHash("DefaultRightTurn");
+    // private static readonly int Left = Animator.StringToHash("DefaultLeftTurn");
+    // private void RunTurnAnimation()
+    // {
+    //     if(currentState != MovementState.Running) return;
+    //     
+    //     if(isTurning) return;
+    //     
+    //     float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
+    //     if (direction == 0) return;
+    //     isTurning = true;
+    //     animator.SetTrigger(direction > 0 ? Right : Left);
+    //     StartCoroutine(ResetTurnFlagAfterSeconds(.1f));
+    // }
+    //
+    // private IEnumerator ResetTurnFlagAfterSeconds(float seconds)
+    // {
+    //     yield return new WaitForSeconds(seconds);
+    //     isTurning = false;
+    // }
 }
