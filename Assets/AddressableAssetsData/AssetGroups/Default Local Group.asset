@@ -37,8 +37,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9ace467d261e48847ae860fcc128fb39
-    m_Address: Assets/Prefabs/Pickups/PowerUpInvis.prefab
+  - m_GUID: e518e6cb3eb05ed43ad24e77070a74d4
+    m_Address: Assets/Prefabs/Pickups/PowerupGodMode.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
