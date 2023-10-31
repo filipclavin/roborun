@@ -2882,7 +2882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582230881
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7096,7 +7096,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].time
-      value: 0.7
+      value: 0.6999553
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -7121,7 +7121,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].value
-      value: 1
+      value: 0.9441787
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -7146,12 +7146,12 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].inSlope
-      value: 0.014794288
+      value: 0.3967594
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].inSlope
-      value: 0
+      value: 0.18604326
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -7176,22 +7176,22 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].inWeight
-      value: 0.26155528
+      value: 0.29535457
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].outSlope
-      value: 0
+      value: 0.18604326
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].inWeight
-      value: 0
+      value: 0.15800446
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].outSlope
-      value: 0
+      value: 0.367719
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -7206,7 +7206,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].outWeight
-      value: 0.33333334
+      value: 0.16573669
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
@@ -7226,12 +7226,12 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[2].tangentMode
-      value: 1
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _timeScaleCurve.m_Curve.Array.data[3].tangentMode
-      value: 0
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 6893433109066577899, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
