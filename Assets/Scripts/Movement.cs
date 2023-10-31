@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private CapsuleCollider playerCollider;
     private int desiredLane;
-    private float currentSlideTime;
     private GameTimer gameTimer;
     private BatteryController batteryController;
 
@@ -22,7 +21,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float maxJumpForce = 35f;
     [SerializeField] private float minJumpForce = 30f;
-    [SerializeField] private float slideTime = .5f;
+    //[SerializeField] private float slideTime = .5f;
+    [Space]
+    [SerializeField] private float timeMultiplier = 2f;
+    [SerializeField] private float currentSlideTime;
+    [SerializeField] private float maxSlideTime = .7f;
+    [SerializeField] private float minSlideTime = .5f;
     [Space]
     [SerializeField] private float currentJumpForce;
     [SerializeField] private float maxGravity = -40f;
@@ -87,6 +91,7 @@ public class Movement : MonoBehaviour
         currentGravity = Mathf.Lerp(minGravity, maxGravity, progress);
         currentJumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, progress);
         currentSwitchSpeed = Mathf.Lerp(minSwitchSpeed, maxSwitchSpeed, progress);
+        currentSlideTime = Mathf.Lerp(maxSlideTime, minSlideTime, progress * timeMultiplier);
         Physics.gravity = new Vector3(0, currentGravity, 0);
     }
 
@@ -182,7 +187,7 @@ public class Movement : MonoBehaviour
         
         AudioManager.Instance.Play("Slide");
         
-        yield return new WaitForSeconds(slideTime);
+        yield return new WaitForSeconds(currentSlideTime);
         isSliding = false;
         playerCollider.center = originalCenter;
         playerCollider.height = originalHeight;
