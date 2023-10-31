@@ -8,7 +8,6 @@ public class PlayerStateManager : MonoBehaviour
     public Animator animator;
     private GameTimer _gameTimer;
     private BatteryController _batteryController;
-    private PlayerVisuals _playerVisuals;
 
     public static PlayerStateManager Instance { get; set; }
 
@@ -17,14 +16,14 @@ public class PlayerStateManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    [Obsolete("Obsolete")]
+    private void Start()
     {
-        _playerVisuals = GetComponent<PlayerVisuals>();
         _batteryController = GetComponent<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
     }
 
-    void Update()
+    private void Update()
     {
         UpdateAnimations();
         UpdateCharacterState();
