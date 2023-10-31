@@ -5,7 +5,6 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-
     public static AudioManager Instance { get; private set; }
     void Awake()
     {
@@ -28,7 +27,8 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-        } 
+        }
+        
     }
 
     public void Play(string name)
@@ -46,5 +46,10 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("Theme");
+    }
+
+    private void Update()
+    {
+        
     }
 }
