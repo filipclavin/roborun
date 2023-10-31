@@ -11,7 +11,10 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GetComponent<MeshRenderer>().enabled = false;
+            foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>()) 
+            {
+                mesh.enabled = false;
+            }
             batteryController = FindAnyObjectByType<BatteryController>();
             PowerUpActive();
         }
