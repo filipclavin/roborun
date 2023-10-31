@@ -192,5 +192,5 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 200
     _despawnDistance: 5
-    spawnInterval: 4
+    spawnInterval: 100
   roadTileTag: Ground
