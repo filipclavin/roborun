@@ -108,7 +108,7 @@ public class PlayerStateManager : MonoBehaviour
     private static readonly int GodRight = Animator.StringToHash("GodRight");
     private static readonly int GodLight = Animator.StringToHash("GodLeft");
     private bool isGodTurning = false;
-    private bool isTurnButtonReleased = true; // Add this line
+    private bool isTurnButtonReleased = true; 
 
     private void GodModeAnimations()
     {
@@ -119,14 +119,14 @@ public class PlayerStateManager : MonoBehaviour
         float direction = InputManager.Instance.controller.Movement.Turn.ReadValue<float>();
         if (direction == 0)
         {
-            isTurnButtonReleased = true; // Set flag to true when button is released
+            isTurnButtonReleased = true;
             return;
         }
 
-        if (!isTurnButtonReleased) return; // Add this line to prevent re-triggering
+        if (!isTurnButtonReleased) return; 
 
         isGodTurning = true;
-        isTurnButtonReleased = false; // Set flag to false when button is pressed
+        isTurnButtonReleased = false; 
         animator.SetTrigger(direction > 0 ? GodRight : GodLight);
         StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
     }
