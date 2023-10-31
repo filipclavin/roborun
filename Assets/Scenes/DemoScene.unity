@@ -852,6 +852,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 865300511850229268, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 920088028580800979, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_Layer
@@ -1340,6 +1345,26 @@ PrefabInstance:
     - target: {fileID: 5367281574779355725, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367281574779355725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367281574779355725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367281574779355725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367281574779355725, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5387804451295956169, guid: 2bb3275ef9b70904ab103271285fbb63,
