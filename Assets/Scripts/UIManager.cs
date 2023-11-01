@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public PlayableDirector gameDirector;
     [SerializeField] private InputManager input;
     [SerializeField] private Slider batteryBar;
-    [SerializeField] private Slider timerBar;
+    [SerializeField] private Image forestImage;
     [SerializeField] private Image robotPortrait;
 
     [Header("Face Animation")]
@@ -137,11 +137,10 @@ public class UIManager : MonoBehaviour
             UpdateScore(0, 1);
         }
 
-        if (timerBar != null)
+        if (forestImage != null)
         {
             gameTimer = FindAnyObjectByType<GameTimer>();
-            timerBar.minValue = 0;
-            timerBar.maxValue = gameTimer.gameLength;
+            forestImage.fillAmount = 0;
         }
 
         if (highScoreText != null)
@@ -197,9 +196,9 @@ public class UIManager : MonoBehaviour
             timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
         }
 
-        if (timerBar != null)
+        if (forestImage != null)
         {
-            timerBar.value = timerBar.maxValue - timerLeft;
+            forestImage.fillAmount = gameTimer.gameTimer / gameTimer.gameLength;
         }
     }
 
@@ -235,8 +234,8 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
         }
-
     }
+
 
     public void Victory(int score)
     {
