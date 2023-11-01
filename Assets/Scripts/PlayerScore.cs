@@ -6,6 +6,7 @@ public class PlayerScore : MonoBehaviour
     private float multiplierDuration;
     private readonly float baseMultipler = 1;
     private float multiplier;
+    private int batteryCount;
     private int tincanCount;
     private int pantBurkCount;
 
@@ -49,6 +50,10 @@ public class PlayerScore : MonoBehaviour
             case string s when s.StartsWith("PantBurk"):
                 pantBurkCount++;
                 UIManager.Instance.UpdatePickup("PantBurk", pantBurkCount.ToString());
+                break;
+            case string s when s.StartsWith("Battery"):
+                batteryCount++;
+                UIManager.Instance.UpdatePickup("Battery", batteryCount.ToString());
                 break;
             default:
                 Debug.LogError("Unknown pickup name: " + name);
