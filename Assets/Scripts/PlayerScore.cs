@@ -61,6 +61,25 @@ public class PlayerScore : MonoBehaviour
         }
     }
 
+    public int GetPickup(string name)
+    {
+		switch (name)
+		{
+			case string s when s.StartsWith("Tincan"):
+            return tincanCount;
+
+			case string s when s.StartsWith("PantBurk"):
+            return pantBurkCount;
+
+			case string s when s.StartsWith("Battery"):
+            return batteryCount;
+
+			default:
+			Debug.LogError("Unknown pickup name: " + name);
+            return 0;
+		}
+	}
+
     public void PowerUpMultiplier(float duration, float pickUpMultiplier)
     {
         if (multiplier == baseMultipler)

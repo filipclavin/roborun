@@ -44,7 +44,11 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject victoryPanel;
-    [SerializeField] private GameObject pausePanel;
+	[SerializeField] private TMP_Text batteryCountVictory;
+	[SerializeField] private TMP_Text tincanCountVictory;
+	[SerializeField] private TMP_Text pantBurkCountVictory;
+	[SerializeField] private GameObject pausePanel;
+
 
     private static UIManager instance;
     public static UIManager Instance { get { return instance; } set { instance = value; } }
@@ -239,14 +243,18 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void Victory(int score)
+    public void Victory(int score, int tincan, int pantburk, int battery)
     {
         //pauseDirector.Play();
         UIGame.gameObject.SetActive(false);
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
         victoryText.text = "You saved " + score + " watthours during your game";
-    }
+        tincanCountVictory.text = tincan.ToString();
+		pantBurkCountText.text = tincan.ToString();
+		batteryCountVictory.text = tincan.ToString();
+
+	}
 
     public void ReloadScene()
     {
