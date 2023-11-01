@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Electricity_Pizza_VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 3231738027529375490, guid: c378a712f97ea4d4c86da9f427fae8fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4507108104312556713, guid: c378a712f97ea4d4c86da9f427fae8fd,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -172,6 +177,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 695e4eefd0d48914d8ff53952cbd0df9, type: 2}
+    - target: {fileID: -7596840181347516413, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -6249904357762393040, guid: 6bb257d7894a88c4ca79928b20562f59,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -182,26 +192,51 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 695e4eefd0d48914d8ff53952cbd0df9, type: 2}
+    - target: {fileID: -2952681196515322580, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -2085269328941198675, guid: 6bb257d7894a88c4ca79928b20562f59,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 695e4eefd0d48914d8ff53952cbd0df9, type: 2}
+    - target: {fileID: -784250342334712666, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -160990336151057506, guid: 6bb257d7894a88c4ca79928b20562f59,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 695e4eefd0d48914d8ff53952cbd0df9, type: 2}
+    - target: {fileID: 221056057885429840, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6bb257d7894a88c4ca79928b20562f59,
         type: 3}
       propertyPath: m_Name
       value: PowerupGodMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1853286008014741474, guid: 6bb257d7894a88c4ca79928b20562f59,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 695e4eefd0d48914d8ff53952cbd0df9, type: 2}
+    - target: {fileID: 2919736101767507460, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3127206543617617192, guid: 6bb257d7894a88c4ca79928b20562f59,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -212,6 +247,21 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 695e4eefd0d48914d8ff53952cbd0df9, type: 2}
+    - target: {fileID: 4001660664572588796, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154381827520814946, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478040459950035550, guid: 6bb257d7894a88c4ca79928b20562f59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5173963215689903404}
   - component: {fileID: 2785900128886242768}
   - component: {fileID: 301052975060367612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DamageHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 780458099614398605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree_alljump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 6982531677130966936}
   - component: {fileID: 6560138389558319425}
   - component: {fileID: 2484889504516432882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,6 +275,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2874599038206748660, guid: 16d6049381325cc44907b7eaa5cd56ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3219915630812495182, guid: 16d6049381325cc44907b7eaa5cd56ab,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -363,6 +368,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrafficSign2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745352477104642513, guid: b1d82e7fd958c8e478a57a0bf6642c14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313056552496223285, guid: b1d82e7fd958c8e478a57a0bf6642c14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665118564079440179, guid: b1d82e7fd958c8e478a57a0bf6642c14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9082762385940971197, guid: b1d82e7fd958c8e478a57a0bf6642c14,
         type: 3}
@@ -453,6 +473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush
       objectReference: {fileID: 0}
+    - target: {fileID: 2874599038206748660, guid: 16d6049381325cc44907b7eaa5cd56ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3219915630812495182, guid: 16d6049381325cc44907b7eaa5cd56ab,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -531,6 +556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874599038206748660, guid: 16d6049381325cc44907b7eaa5cd56ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3219915630812495182, guid: 16d6049381325cc44907b7eaa5cd56ab,
         type: 3}
@@ -676,6 +706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6063219515630820552, guid: d8a076f0ccb481c43b89b156d196fb76,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6876770865683646066, guid: d8a076f0ccb481c43b89b156d196fb76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -730,6 +765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664176926610829209, guid: d8a076f0ccb481c43b89b156d196fb76,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7718769783443381527, guid: d8a076f0ccb481c43b89b156d196fb76,
         type: 3}
