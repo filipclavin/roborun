@@ -10,6 +10,7 @@ public class BatteryController : MonoBehaviour
    
     private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
+    private PlayerStateManager playerStateManager;
 
     private bool updatingVisualBattery = false;
 
@@ -35,6 +36,7 @@ public class BatteryController : MonoBehaviour
 
     private void Start()
     {
+        playerStateManager = GetComponent<PlayerStateManager>();
         playerVisuals = GetComponent<PlayerVisuals>();
         gameTimer = FindAnyObjectByType<GameTimer>();
         maxBattery = currentBattery;
@@ -98,24 +100,7 @@ public class BatteryController : MonoBehaviour
         }
     }
 
-    private IEnumerator InvisTime(float seconds)
-    {
-        float blinkingTime = 0f;
-        float blinkOne = 0.2f;
-        float blinkTwo = 0.1f;
-        while (blinkingTime <= invisDuration)
-        {
-            playerVisuals.ChangeColors(hitMaterial, blinkOne);
-            yield return new WaitForSeconds(blinkOne + blinkTwo);
-            blinkingTime += blinkOne + blinkTwo;
-            if (blinkingTime >= seconds)
-            {
-                invisActive = false;
-            }
-        }
-    }
-
-    private void BatteryDrain(float drain)
+    public void BatteryDrain(float drain)
     {
         currentBattery -= drain;
         PlayerFXManager.Instance.DamageEffect();
@@ -125,11 +110,12 @@ public class BatteryController : MonoBehaviour
             gameTimer.EndGame(false);
         }
         UIManager.Instance.UpdateBatteryBar(currentBattery);
-        PlayerStateManager.Instance.animator.SetTrigger("Collision");
+        playerStateManager.animator.SetTrigger("Collision");
     }
 
     public void SetInvis(float duration)
     {
+        invisDuration = duration;
         if (invisActive)
         {
             invisTimer = 0;
@@ -137,9 +123,8 @@ public class BatteryController : MonoBehaviour
         else
         {
             invisActive = true;
-            StartCoroutine(InvisTime(duration));
+            playerVisuals.ChangeColors(hitMaterial, invisDuration, 0);
         }
-        invisDuration = duration;
     }
 
     public void SetGod(float duration, Material godMaterial)
@@ -151,13 +136,13 @@ public class BatteryController : MonoBehaviour
         else
         {
             AudioManager.Instance.sounds[0].source.pitch = themeGodPitch;
-            PlayerStateManager.Instance.animator.SetTrigger("ChargeToGod");
+            playerStateManager.animator.SetTrigger("ChargeToGod");
             PlayerFXManager.Instance.StopDustEffect();
             PlayerFXManager.Instance.PlayGodSparkles();
             isGod = true;
             invisActive = false;
         }
         godDuration = duration;
-        playerVisuals.ChangeColors(godMaterial, duration);
+        playerVisuals.ChangeColors(godMaterial, duration, godDuration - 2.5f);
     }
 }

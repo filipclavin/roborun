@@ -1268,6 +1268,11 @@ PrefabInstance:
       propertyPath: batteryRenderer
       value: 
       objectReference: {fileID: 1396345912}
+    - target: {fileID: 3545475513193439312, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 65301d71552bf0b4eb1e07b153e60968, type: 2}
     - target: {fileID: 3818062625241845667, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_Layer

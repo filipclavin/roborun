@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerVisuals : MonoBehaviour
 {
     private List<SkinnedMeshRenderer> meshRenderers = new List<SkinnedMeshRenderer>();
-    private List<Material> defaultMaterial = new List<Material>();
     private float batteryAnimTimePassed = 0f;
     private bool updatingVisualBattery = false;
     private float batteryLastFrame = -1f;
@@ -16,9 +15,12 @@ public class PlayerVisuals : MonoBehaviour
     private float materialDuration = 0;
     private float changeMaterialTimer = 0;
     private Material currentRobotColor;
+    private float blinkOne = 0.2f;
+    private float blinkTwo = 0.1f;
 
 
-	[SerializeField] private SkinnedMeshRenderer batteryRenderer;
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private SkinnedMeshRenderer batteryRenderer;
     [SerializeField] private float batteryAnimTime = 0.5f;
     [SerializeField] private Transform visualBattery;
     [SerializeField] private Material healthyMaterial;
@@ -35,11 +37,9 @@ public class PlayerVisuals : MonoBehaviour
             if (renderer == batteryRenderer)
             {
                 meshRenderers.Remove(renderer);
-                i--;
-                continue;
+                break;
             }
 
-            defaultMaterial.Add(renderer.material);
         }
 
         maxBattery = batteryController.currentBattery;
@@ -119,19 +119,41 @@ public class PlayerVisuals : MonoBehaviour
         for (int i = 0; i < meshRenderers.Count; i++)
         {
             SkinnedMeshRenderer mesh = meshRenderers[i];
-            mesh.material = defaultMaterial[i];
+            mesh.material = defaultMaterial;
+        }
+    }
+
+    private IEnumerator Blinking(float blinkStart)
+    {
+        yield return new WaitForSeconds(blinkStart);
+        while (changeMaterialTimer <= materialDuration)
+        {
+            Debug.Log(changeMaterialTimer);
+            ChangeCurrentMaterial();
+            yield return new WaitForSeconds(blinkOne);
+            ResetMaterial();
+            yield return new WaitForSeconds(blinkTwo);
+        }
+    }
+
+    public void ChangeColors(Material material, float duration, float blinkStart)
+    {
+        if (duration > 0)
+        {
+		    ResetMaterial();
+        }
+        changeMaterialTimer = 0;
+        currentRobotColor = material;
+        materialDuration = duration;
+        ChangeCurrentMaterial();
+        if (blinkStart > -1)
+        {
+            StartCoroutine(Blinking(blinkStart));
         }
     }
 
     public void ChangeColors(Material material, float duration)
     {
-        if (duration > 0)
-        {
-		    ResetMaterial();
-            changeMaterialTimer = 0;
-        }
-        currentRobotColor = material;
-        materialDuration = duration;
-        ChangeCurrentMaterial();
+        ChangeColors(material, duration, -1);
     }
 }
