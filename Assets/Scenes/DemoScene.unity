@@ -9255,7 +9255,7 @@ PrefabInstance:
     - target: {fileID: 8459419589974535972, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: _laneWidth
-      value: 3
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8459419589974535972, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
