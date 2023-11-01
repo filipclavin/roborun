@@ -64,7 +64,7 @@ public class BatteryController : MonoBehaviour
         if (!isGod) return;
         godTimer += Time.fixedDeltaTime;
         if (!(godTimer >= godDuration)) return;
-        faceAnimator.SetBool("God", false);
+        faceAnimator.SetBool("isGod", false);
         AudioManager.Instance.sounds[0].source.pitch = originialPitch;
         PlayerFXManager.Instance.StopGodSparkles();
         PlayerFXManager.Instance.DustEffect();
