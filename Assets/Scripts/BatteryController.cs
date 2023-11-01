@@ -10,6 +10,7 @@ public class BatteryController : MonoBehaviour
    
     private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
+    private PlayerStateManager playerStateManager;
 
     private bool updatingVisualBattery = false;
 
@@ -35,6 +36,7 @@ public class BatteryController : MonoBehaviour
 
     private void Start()
     {
+        playerStateManager = GetComponent<PlayerStateManager>();
         playerVisuals = GetComponent<PlayerVisuals>();
         gameTimer = FindAnyObjectByType<GameTimer>();
         maxBattery = currentBattery;
@@ -98,7 +100,7 @@ public class BatteryController : MonoBehaviour
         }
     }
 
-    private void BatteryDrain(float drain)
+    public void BatteryDrain(float drain)
     {
         currentBattery -= drain;
         PlayerFXManager.Instance.DamageEffect();
@@ -108,7 +110,7 @@ public class BatteryController : MonoBehaviour
             gameTimer.EndGame(false);
         }
         UIManager.Instance.UpdateBatteryBar(currentBattery);
-        PlayerStateManager.Instance.animator.SetTrigger("Collision");
+        playerStateManager.animator.SetTrigger("Collision");
     }
 
     public void SetInvis(float duration)
@@ -134,7 +136,7 @@ public class BatteryController : MonoBehaviour
         else
         {
             AudioManager.Instance.sounds[0].source.pitch = themeGodPitch;
-            PlayerStateManager.Instance.animator.SetTrigger("ChargeToGod");
+            playerStateManager.animator.SetTrigger("ChargeToGod");
             PlayerFXManager.Instance.StopDustEffect();
             PlayerFXManager.Instance.PlayGodSparkles();
             isGod = true;

@@ -9,13 +9,6 @@ public class PlayerStateManager : MonoBehaviour
     private GameTimer _gameTimer;
     private BatteryController _batteryController;
 
-    public static PlayerStateManager Instance { get; set; }
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     [Obsolete("Obsolete")]
     private void Start()
     {
@@ -29,6 +22,7 @@ public class PlayerStateManager : MonoBehaviour
         UpdateCharacterState();
         GodModeAnimations();
         RunTurnAnimation();
+        
     }
 
     private enum MovementState
