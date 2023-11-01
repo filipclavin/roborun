@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float maxJumpForce = 35f;
     [SerializeField] private float minJumpForce = 30f;
-    //[SerializeField] private float slideTime = .5f;
     [Space]
     [SerializeField] private float slideTime = .5f;
     [Space]
@@ -66,7 +65,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-
         if (!gameTimer.goingOn) return;
 
         AdjustGameSettingsBasedOnTimer();
