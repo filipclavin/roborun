@@ -54,7 +54,7 @@ MonoBehaviour:
   - name: StepSound
     clip: {fileID: 8300000, guid: a2ad911917295ca4c8ae6b20b6e0891e, type: 3}
     pitch: 1
-    volume: 0.27
+    volume: 0.2
     source: {fileID: 0}
     loop: 0
   - name: Crash
@@ -64,9 +64,9 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: Move_Woosh
-    clip: {fileID: 8300000, guid: ed907cbd9f55ebf468e8363ea2e96acc, type: 3}
+    clip: {fileID: 8300000, guid: 5ca26652ffa489b4ab40629b3785ec85, type: 3}
     pitch: 1
-    volume: 0.1
+    volume: 0.2
     source: {fileID: 0}
     loop: 0
   - name: UI_Select
@@ -102,7 +102,7 @@ MonoBehaviour:
   - name: Can_Pickup
     clip: {fileID: 8300000, guid: 572cbc6a61bd19f45a451360d2aecdbc, type: 3}
     pitch: 1
-    volume: 0.65
+    volume: 0.57
     source: {fileID: 0}
     loop: 0
   - name: PizzaParty
