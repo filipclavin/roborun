@@ -181,28 +181,28 @@ public class Movement : MonoBehaviour
     
     private IEnumerator SlideTimer()
     {
+
         float originalHeight = 2.8f;
         float slideHeight = 1f;
-        
+
         Vector3 originalCenter = new Vector3(0, .33f, 0);
         Vector3 slideCenter = new Vector3(0, -.46f, 0);
         
-        if(!batteryController.isGod)
             isSliding = true;
 
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
-        
-            AudioManager.Instance.Play("Slide");
-        
+
+        AudioManager.Instance.Play("Slide");
+
         yield return new WaitForSeconds(slideTime);
         
-        if(!batteryController.isGod)
             isSliding = false;
 
         playerCollider.center = originalCenter;
         playerCollider.height = originalHeight;
     }
+
 
     private IEnumerator DustTimer(float waitTime)
     {
