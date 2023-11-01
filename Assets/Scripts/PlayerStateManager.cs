@@ -76,14 +76,12 @@ public class PlayerStateManager : MonoBehaviour
 
     private void UpdateAnimations()
     {
-        // Reset all states
         animator.SetBool("IsIdle", false);
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsRunning", false);
         animator.SetBool("IsSliding", false);
         animator.SetBool("IsGodMode", false);
-
-        // Set current state
+        
         switch (currentState)
         {
             case MovementState.Idle:
