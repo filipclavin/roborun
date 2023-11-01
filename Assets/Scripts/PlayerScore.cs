@@ -1,8 +1,3 @@
-
-using System;
-using System.Collections;
-using System.Threading;
-using TMPro;
 using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
@@ -11,9 +6,12 @@ public class PlayerScore : MonoBehaviour
     private float multiplierDuration;
     private readonly float baseMultipler = 1;
     private float multiplier;
+    private int batteryCount;
+    private int tincanBigCount;
+    private int tincanCount;
 
     public int CurrentScore { get; private set; }
-    
+
     public int scoreValue;
 
     private void Start()
@@ -37,8 +35,30 @@ public class PlayerScore : MonoBehaviour
 
     public void AddScore(int score)
     {
-        CurrentScore += (int) (score * multiplier);
+        CurrentScore += (int)(score * multiplier);
         UIManager.Instance.UpdateScore(CurrentScore, multiplier);
+    }
+
+    public void AddPickup(string name)
+    {
+        switch (name)
+        {
+            case string s when s.StartsWith("Battery"):
+                batteryCount++;
+                UIManager.Instance.UpdatePickup("Battery", batteryCount.ToString());
+                break;
+            case string s when s.StartsWith("TincanBig"):
+                tincanBigCount++;
+                UIManager.Instance.UpdatePickup("TincanBig", tincanBigCount.ToString());
+                break;
+            case string s when s.StartsWith("Tincan"):
+                tincanCount++;
+                UIManager.Instance.UpdatePickup("Tincan", tincanCount.ToString());
+                break;
+            default:
+                Debug.LogError("Unknown pickup name: " + name);
+                break;
+        }
     }
 
     public void PowerUpMultiplier(float duration, float pickUpMultiplier)

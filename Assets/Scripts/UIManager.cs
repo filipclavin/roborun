@@ -2,7 +2,6 @@ using Cinemachine;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,8 +18,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
     [SerializeField] public PlayableDirector gameDirector;
-	[SerializeField] private InputManager input;
-	[SerializeField] private Slider batteryBar;
+    [SerializeField] private InputManager input;
+    [SerializeField] private Slider batteryBar;
     [SerializeField] private Slider timerBar;
     [SerializeField] private Image robotPortrait;
 
@@ -31,18 +30,21 @@ public class UIManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Canvas startMenu;
 
-	[Header("Texts")]
+    [Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
-	[SerializeField] private TMP_Text timerText;
-	[SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TMP_Text batteryCountText;
+    [SerializeField] private TMP_Text tincanBigCountText;
+    [SerializeField] private TMP_Text tincanCountText;
 
     [Header("Panels")]
-	[SerializeField] private GameObject gameOverPanel;
-	[SerializeField] private GameObject victoryPanel;
-	[SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private GameObject pausePanel;
 
-	private static UIManager instance;
+    private static UIManager instance;
     public static UIManager Instance { get { return instance; } set { instance = value; } }
     private void Awake()
     {
@@ -56,22 +58,22 @@ public class UIManager : MonoBehaviour
         }
         sceneName = SceneManager.GetActiveScene().name;
     }
-    
-	private void Start()
-	{
+
+    private void Start()
+    {
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
         OpenMenu();
-	}
+    }
 
-	private void Update()
-	{
+    private void Update()
+    {
         if (input.controller.Movement.Pause.triggered && !gameOverPanel.activeSelf && !victoryPanel.activeSelf)
         {
             Debug.Log("Pause");
             Pause();
         }
-	}
+    }
 
     private void SkipMainMenu()
     {
@@ -95,7 +97,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator IntroAnimation()
     {
         gameDirector.Play();
-        yield return new WaitForSeconds((float) gameDirector.playableAsset.duration);
+        yield return new WaitForSeconds((float)gameDirector.playableAsset.duration);
         //dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
@@ -110,21 +112,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
-	public void LoadGame()
-	{
-		gameTimer.StartGame();
-        StartCoroutine(IntroAnimation()); 
+    public void LoadGame()
+    {
+        gameTimer.StartGame();
+        StartCoroutine(IntroAnimation());
     }
 
-	public void ExitGame()
-	{
-        #if UNITY_EDITOR
-		    UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-		    Application.Quit();
-	}
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
+    }
 
-	public void StartUI(float currentBattery, float maxBattery)
+    public void StartUI(float currentBattery, float maxBattery)
     {
         if (batteryBar != null)
         {
@@ -172,6 +174,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void UpdatePickup(string type, string count)
+    {
+        switch (type)
+        {
+            case "Battery":
+                batteryCountText.text = count;
+                break;
+            case "TincanBig":
+                tincanBigCountText.text = count;
+                break;
+            case "Tincan":
+                tincanCountText.text = count;
+                break;
+        }
+    }
+
     public void UpdateTimer(float timerLeft)
     {
         if (timerText != null)
@@ -183,7 +201,7 @@ public class UIManager : MonoBehaviour
         {
             timerBar.value = timerBar.maxValue - timerLeft;
         }
-	}
+    }
 
     public void UpdateHighScore(int currentScore)
     {
@@ -218,18 +236,18 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-	}
+    }
 
     public void Victory(int score)
     {
-		victoryPanel.SetActive(true);
-		Time.timeScale = 0f;
+        victoryPanel.SetActive(true);
+        Time.timeScale = 0f;
         victoryText.text = "You saved " + score + " watthours during your game";
-	}
+    }
 
     public void ReloadScene()
     {
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
-	}
+    }
 }
