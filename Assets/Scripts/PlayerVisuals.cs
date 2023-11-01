@@ -15,8 +15,9 @@ public class PlayerVisuals : MonoBehaviour
     private float materialDuration = 0;
     private float changeMaterialTimer = 0;
     private Material currentRobotColor;
-    private float blinkOne = 0.2f;
-    private float blinkTwo = 0.1f;
+    private float blinkOne = 0.3f;
+    private float blinkTwo = 0.2f;
+    private float currentBlinkstart;
 
 
     [SerializeField] private Material defaultMaterial;
@@ -125,6 +126,7 @@ public class PlayerVisuals : MonoBehaviour
 
     private IEnumerator Blinking(float blinkStart)
     {
+        currentBlinkstart = blinkStart;
         yield return new WaitForSeconds(blinkStart);
         while (changeMaterialTimer <= materialDuration)
         {
@@ -139,6 +141,7 @@ public class PlayerVisuals : MonoBehaviour
     {
         if (duration > 0)
         {
+            StopCoroutine(Blinking(currentBlinkstart));
 		    ResetMaterial();
         }
         changeMaterialTimer = 0;

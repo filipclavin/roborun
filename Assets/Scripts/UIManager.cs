@@ -17,10 +17,12 @@ public class UIManager : MonoBehaviour
     private DontDestroy dontDestroy;
 
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
-    [SerializeField] public PlayableDirector gameDirector;
+    [SerializeField] public PlayableDirector startDirector;
+    [SerializeField] public PlayableDirector pauseDirector;
+    [SerializeField] public PlayableDirector continueDirector;
     [SerializeField] private InputManager input;
     [SerializeField] private Slider batteryBar;
-    [SerializeField] private Slider timerBar;
+    [SerializeField] private Image forestImage;
     [SerializeField] private Image robotPortrait;
 
     [Header("Face Animation")]
@@ -29,11 +31,11 @@ public class UIManager : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Canvas startMenu;
+    [SerializeField] private Canvas UIGame;
 
     [Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
-    [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text victoryText;
     [SerializeField] private TMP_Text tincanCountText;
     [SerializeField] private TMP_Text pantBurkCountText;
@@ -69,7 +71,6 @@ public class UIManager : MonoBehaviour
     {
         if (input.controller.Movement.Pause.triggered && !gameOverPanel.activeSelf && !victoryPanel.activeSelf)
         {
-            Debug.Log("Pause");
             Pause();
         }
     }
@@ -95,8 +96,8 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator IntroAnimation()
     {
-        gameDirector.Play();
-        yield return new WaitForSeconds((float)gameDirector.playableAsset.duration);
+        startDirector.Play();
+        yield return new WaitForSeconds((float)startDirector.playableAsset.duration);
         //dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
@@ -136,11 +137,10 @@ public class UIManager : MonoBehaviour
             UpdateScore(0, 1);
         }
 
-        if (timerBar != null)
+        if (forestImage != null)
         {
             gameTimer = FindAnyObjectByType<GameTimer>();
-            timerBar.minValue = 0;
-            timerBar.maxValue = gameTimer.gameLength;
+            forestImage.fillAmount = 0;
         }
 
         if (highScoreText != null)
@@ -189,14 +189,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimer(float timerLeft)
     {
-        if (timerText != null)
+        if (forestImage != null)
         {
-            timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
-        }
-
-        if (timerBar != null)
-        {
-            timerBar.value = timerBar.maxValue - timerLeft;
+            forestImage.fillAmount = gameTimer.gameTimer / gameTimer.gameLength;
         }
     }
 
@@ -217,6 +212,8 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+        UIGame.gameObject.SetActive(false);
+        //pauseDirector.Play();
     }
 
     public void Pause()
@@ -224,19 +221,25 @@ public class UIManager : MonoBehaviour
         pauseMenuActive = !pauseMenuActive;
         if (pauseMenuActive)
         {
+            //pauseDirector.Play();
+            UIGame.gameObject.SetActive(false);
             pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
+            //continueDirector.Play();
+            UIGame.gameObject.SetActive(true);
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
         }
-
     }
+
 
     public void Victory(int score)
     {
+        //pauseDirector.Play();
+        UIGame.gameObject.SetActive(false);
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
         victoryText.text = "You saved " + score + " watthours during your game";

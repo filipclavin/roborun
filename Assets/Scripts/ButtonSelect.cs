@@ -22,6 +22,4 @@ public class ButtonSelect : MonoBehaviour
        primaryButton.Select();
        
     }
-
-    
 }
