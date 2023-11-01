@@ -1246,6 +1246,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 321635358}
+    - target: {fileID: 3417323689032068399, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: _gameTimer
+      value: 
+      objectReference: {fileID: 1036428273}
     - target: {fileID: 3447701513250928709, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_Layer
