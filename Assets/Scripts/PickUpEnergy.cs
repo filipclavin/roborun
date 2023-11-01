@@ -21,11 +21,11 @@ public class PickUpEnergy : MonoBehaviour
         {
             if (batteryController.ChargeBattery(batteryValue) == true || needFullEnergy == false)
             {
+                playerScore.AddPickup(gameObject.name);
                 playerScore.AddScore(scoreValue);
                 HandleEffect();
             }
 
-            playerScore.AddPickup(gameObject.name);
             gameObject.SetActive(false);
         }
     }

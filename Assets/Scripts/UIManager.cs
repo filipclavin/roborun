@@ -35,9 +35,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text highScoreText;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text victoryText;
-    [SerializeField] private TMP_Text batteryCountText;
-    [SerializeField] private TMP_Text tincanBigCountText;
     [SerializeField] private TMP_Text tincanCountText;
+    [SerializeField] private TMP_Text pantBurkCountText;
 
     [Header("Panels")]
     [SerializeField] private GameObject gameOverPanel;
@@ -176,16 +175,14 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePickup(string type, string count)
     {
+        Debug.Log("UpdatePickup: " + type + " " + count);
         switch (type)
         {
-            case "Battery":
-                batteryCountText.text = count;
-                break;
-            case "TincanBig":
-                tincanBigCountText.text = count;
-                break;
             case "Tincan":
                 tincanCountText.text = count;
+                break;
+            case "PantBurk":
+                pantBurkCountText.text = count;
                 break;
         }
     }
