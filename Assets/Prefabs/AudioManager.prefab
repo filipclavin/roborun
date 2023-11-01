@@ -66,7 +66,7 @@ MonoBehaviour:
   - name: Move_Woosh
     clip: {fileID: 8300000, guid: 5ca26652ffa489b4ab40629b3785ec85, type: 3}
     pitch: 1
-    volume: 0.2
+    volume: 0.1
     source: {fileID: 0}
     loop: 0
   - name: UI_Select
