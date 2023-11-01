@@ -98,23 +98,6 @@ public class BatteryController : MonoBehaviour
         }
     }
 
-    private IEnumerator InvisTime(float seconds)
-    {
-        float blinkingTime = 0f;
-        float blinkOne = 0.2f;
-        float blinkTwo = 0.1f;
-        while (blinkingTime <= invisDuration)
-        {
-            playerVisuals.ChangeColors(hitMaterial, blinkOne);
-            yield return new WaitForSeconds(blinkOne + blinkTwo);
-            blinkingTime += blinkOne + blinkTwo;
-            if (blinkingTime >= seconds)
-            {
-                invisActive = false;
-            }
-        }
-    }
-
     private void BatteryDrain(float drain)
     {
         currentBattery -= drain;
@@ -130,6 +113,7 @@ public class BatteryController : MonoBehaviour
 
     public void SetInvis(float duration)
     {
+        invisDuration = duration;
         if (invisActive)
         {
             invisTimer = 0;
@@ -137,9 +121,8 @@ public class BatteryController : MonoBehaviour
         else
         {
             invisActive = true;
-            StartCoroutine(InvisTime(duration));
+            playerVisuals.ChangeColors(hitMaterial, invisDuration, 0);
         }
-        invisDuration = duration;
     }
 
     public void SetGod(float duration, Material godMaterial)
@@ -158,6 +141,6 @@ public class BatteryController : MonoBehaviour
             invisActive = false;
         }
         godDuration = duration;
-        playerVisuals.ChangeColors(godMaterial, duration);
+        playerVisuals.ChangeColors(godMaterial, duration, godDuration - 2.5f);
     }
 }
