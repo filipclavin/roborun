@@ -8,9 +8,11 @@ public class PlayerStateManager : MonoBehaviour
      [SerializeField] private GameTimer _gameTimer;
     public Animator animator;
     private BatteryController _batteryController;
+    private Movement _movement;
 
     private void Start()
     {
+        _movement = GetComponent<Movement>();
         _batteryController = GetComponent<BatteryController>();
     }
 
@@ -20,7 +22,7 @@ public class PlayerStateManager : MonoBehaviour
         UpdateCharacterState();
         GodModeAnimations();
         RunTurnAnimation();
-        
+        GodModeJumpSlide();
     }
 
     private enum MovementState
@@ -38,6 +40,7 @@ public class PlayerStateManager : MonoBehaviour
 
     private void UpdateCharacterState()
     {
+        Debug.Log("Current State: " + currentState);
         if (_gameTimer != null) 
         {
             if (!_gameTimer.goingOn)
@@ -47,13 +50,13 @@ public class PlayerStateManager : MonoBehaviour
             }
         } 
 
-        if (Movement.Instance.rb.velocity.y > JumpVelocity)
+        if (_movement.rb.velocity.y > JumpVelocity)
         {
             currentState = MovementState.Jumping;
             return;
         }
 
-        if (Movement.Instance.isSliding)
+        if (_movement.isSliding)
         {
             currentState = MovementState.Sliding;
             return;
@@ -73,12 +76,14 @@ public class PlayerStateManager : MonoBehaviour
 
     private void UpdateAnimations()
     {
+        // Reset all states
         animator.SetBool("IsIdle", false);
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsRunning", false);
         animator.SetBool("IsSliding", false);
         animator.SetBool("IsGodMode", false);
 
+        // Set current state
         switch (currentState)
         {
             case MovementState.Idle:
@@ -100,6 +105,7 @@ public class PlayerStateManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+
     private static readonly int GodRight = Animator.StringToHash("GodRight");
     private static readonly int GodLight = Animator.StringToHash("GodLeft");
     private bool isGodTurning = false;
@@ -124,6 +130,17 @@ public class PlayerStateManager : MonoBehaviour
         isGodTurnButtonReleased = false; 
         animator.SetTrigger(direction > 0 ? GodRight : GodLight);
         StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
+    }
+
+    private void GodModeJumpSlide()
+    {
+        animator.SetBool("IsGodSlide", false);
+        if(currentState != MovementState.GodMode) return;
+        
+        if(_movement.isGodSlising)
+        {
+            animator.SetBool("IsGodSlide", true);
+        }
     }
 
 

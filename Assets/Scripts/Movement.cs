@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isSliding = false;
     [HideInInspector] public bool shouldPlaySlideSpark = false;
+    [HideInInspector] public bool isGodSlising;
 
     [Header("Movement Settings")]
     [SerializeField] private PlayerInput playerInput;
@@ -38,15 +39,15 @@ public class Movement : MonoBehaviour
     [SerializeField] private float laneWidth = 2f;
     [Space]
     [SerializeField] private float groundDistance;
-    public static Movement Instance { get; private set; }
+    //public static Movement Instance { get; private set; }
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        // if (Instance != null)
+        // {
+        //     Destroy(gameObject);
+        //     return;
+        // }
+        // Instance = this;
          batteryController = GetComponent<BatteryController>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
@@ -179,14 +180,33 @@ public class Movement : MonoBehaviour
         Vector3 originalCenter = new Vector3(0, .33f, 0);
         Vector3 slideCenter = new Vector3(0, -.46f, 0);
         
-        isSliding = true;
+        switch (batteryController.isGod)
+        {
+            case true:
+                isGodSlising = true;
+                break;
+            case false:
+                isSliding = true;
+                break;
+        }
+
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
         
         AudioManager.Instance.Play("Slide");
         
         yield return new WaitForSeconds(slideTime);
-        isSliding = false;
+        
+        switch (batteryController.isGod)
+        {
+            case true:
+                isGodSlising = false;
+                break;
+            case false:
+                isSliding = false;
+                break;
+        }
+
         playerCollider.center = originalCenter;
         playerCollider.height = originalHeight;
     }
