@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     [HideInInspector] public bool isSliding = false;
     [HideInInspector] public bool shouldPlaySlideSpark = false;
     [HideInInspector] public bool isGodSlising;
+    private bool isGamePaused = false;
 
     [Header("Movement Settings")]
     [SerializeField] private PlayerInput playerInput;
@@ -101,7 +102,7 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!context.performed || !isGrounded || !gameTimer.goingOn) return;
+        if (!context.performed || !isGrounded || !gameTimer.goingOn || isGamePaused) return;
         if(Time.timeScale == 1)
             AudioManager.Instance.Play("Jump");
         var velocity = rb.velocity;
