@@ -9,6 +9,7 @@ public class PlayerFXManager : MonoBehaviour
     [FormerlySerializedAs("_faceAnimator")] [SerializeField] private Animator faceAnimator;
     [SerializeField] private List<ParticleSystem> effects;
     [SerializeField] private VisualEffect dustEffect;
+    [SerializeField] private GameTimer _gameTimer;
     private BatteryController _batteryController;
     private static readonly int SadTrigger = Animator.StringToHash("SadTrigger");
     private static readonly int ScoreTrigger = Animator.StringToHash("ScoreTrigger");
@@ -33,10 +34,6 @@ public class PlayerFXManager : MonoBehaviour
 
     private void Update()
     {
-        // if (_batteryController.isGod)
-        //     PlayGodSparkles();
-        // else
-        //     StopGodSparkles();
     }
 
     public void BatteryEffect()

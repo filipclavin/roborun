@@ -5,15 +5,13 @@ using UnityEngine;
 //Script Made By Daniel Alvarado
 public class PlayerStateManager : MonoBehaviour
 {
+     [SerializeField] private GameTimer _gameTimer;
     public Animator animator;
-    private GameTimer _gameTimer;
     private BatteryController _batteryController;
 
-    [Obsolete("Obsolete")]
     private void Start()
     {
         _batteryController = GetComponent<BatteryController>();
-        _gameTimer = FindObjectOfType<GameTimer>();
     }
 
     private void Update()
@@ -40,11 +38,14 @@ public class PlayerStateManager : MonoBehaviour
 
     private void UpdateCharacterState()
     {
-        if (!_gameTimer.goingOn)
+        if (_gameTimer != null) 
         {
-            currentState = MovementState.Idle;
-            return;
-        }
+            if (!_gameTimer.goingOn)
+            {
+                currentState = MovementState.Idle;
+                return;
+            }
+        } 
 
         if (Movement.Instance.rb.velocity.y > JumpVelocity)
         {

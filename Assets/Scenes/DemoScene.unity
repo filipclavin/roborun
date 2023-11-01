@@ -1143,6 +1143,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 27.613152
       objectReference: {fileID: 0}
+    - target: {fileID: 2718694792203645037, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: _gameTimer
+      value: 
+      objectReference: {fileID: 1036428273}
     - target: {fileID: 2720910835275992243, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1493,6 +1498,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5178031530427790931, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: _gameTimer
+      value: 
+      objectReference: {fileID: 1036428273}
     - target: {fileID: 5178031530427790931, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: faceAnimator
@@ -5163,6 +5173,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854637983}
   m_CullTransparentMesh: 1
+--- !u!114 &911911269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 449070131355349471, guid: 2bb3275ef9b70904ab103271285fbb63,
+    type: 3}
+  m_PrefabInstance: {fileID: 267956774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7e0ebc310e4c344a696ccca9b62c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &926792507
 GameObject:
   m_ObjectHideFlags: 0
@@ -8676,6 +8698,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 911911269}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: goingOn

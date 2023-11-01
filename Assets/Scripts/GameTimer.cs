@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
-    private PlayerScore player;
+    [SerializeField] private PlayerScore player;
 
     public float gameLength = 100f;
     public float gameTimer = 0f;
@@ -14,14 +14,14 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float _speedPenaltyMultiplier = 1f;
     [SerializeField] private float _speedRecoveryRate = 1f;
 
-    private float _speedPenalty = 1;
 
+    private float _speedPenalty = 1;
+    
     private void Start()
     {
         UIManager.Instance.UpdateHighScore(0);
-        player = FindAnyObjectByType<PlayerScore>();
+        //player = FindAnyObjectByType<PlayerScore>();
     }
-
     private void Update()
     {
         if (goingOn)
