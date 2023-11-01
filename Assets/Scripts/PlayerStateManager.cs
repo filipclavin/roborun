@@ -130,15 +130,26 @@ public class PlayerStateManager : MonoBehaviour
         StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
     }
 
+    private bool isGodJumpTriggered = false; // Add this flag at class level
+
     private void GodModeJump()
     {
-        animator.SetBool("IsGodJump", false);
         if(currentState != MovementState.GodMode) return;
-        if(_movement.isGodJumping)
+
+        // If isGodJumping is true and the animation hasn't been triggered yet
+        if(_movement.isGodJumping && !isGodJumpTriggered)
         {
-            animator.SetBool("IsGodJump", true);
+            animator.SetTrigger("GodJump");
+            isGodJumpTriggered = true; // Set flag to true
+        }
+
+        // Reset the flag when isGodJumping is false
+        if(!_movement.isGodJumping)
+        {
+            isGodJumpTriggered = false;
         }
     }
+
 
 
     private IEnumerator ResetGodTurnFlagAfterSeconds(float seconds)
