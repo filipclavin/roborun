@@ -15,8 +15,8 @@ public class PlayerVisuals : MonoBehaviour
     private float materialDuration = 0;
     private float changeMaterialTimer = 0;
     private Material currentRobotColor;
-    private float blinkOne = 0.2f;
-    private float blinkTwo = 0.1f;
+    private float blinkOne = 0.3f;
+    private float blinkTwo = 0.2f;
 
 
     [SerializeField] private Material defaultMaterial;
@@ -128,7 +128,6 @@ public class PlayerVisuals : MonoBehaviour
         yield return new WaitForSeconds(blinkStart);
         while (changeMaterialTimer <= materialDuration)
         {
-            Debug.Log(changeMaterialTimer);
             ChangeCurrentMaterial();
             yield return new WaitForSeconds(blinkOne);
             ResetMaterial();
