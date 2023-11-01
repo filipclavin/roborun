@@ -15,8 +15,8 @@ public class PlayerVisuals : MonoBehaviour
     private float materialDuration = 0;
     private float changeMaterialTimer = 0;
     private Material currentRobotColor;
-    private float blinkOne = 0.2f;
-    private float blinkTwo = 0.1f;
+    private float blinkOne = 0.3f;
+    private float blinkTwo = 0.2f;
 
 
     [SerializeField] private Material defaultMaterial;
