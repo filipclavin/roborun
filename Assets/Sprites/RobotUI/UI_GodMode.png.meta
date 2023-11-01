@@ -93,18 +93,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI_GodMode_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 0
+        width: 2822
+        height: 2110
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e98181119a45e4d81c9e8537fb49ad
+      internalID: -1929680378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ed9d204edcfd6684fa7f07d700298153
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_GodMode_0: -1929680378
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
