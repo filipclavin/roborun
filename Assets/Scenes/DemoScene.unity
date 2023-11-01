@@ -6326,6 +6326,9 @@ MonoBehaviour:
   highScoreText: {fileID: 190825722}
   timerText: {fileID: 2017282626}
   victoryText: {fileID: 1898727828}
+  batteryCountText: {fileID: 495429801}
+  tincanBigCountText: {fileID: 1910452914}
+  tincanCountText: {fileID: 777914230}
   gameOverPanel: {fileID: 60862083}
   victoryPanel: {fileID: 674600634}
   pausePanel: {fileID: 1556492502}
