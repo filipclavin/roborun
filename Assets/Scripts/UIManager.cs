@@ -44,7 +44,11 @@ public class UIManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject victoryPanel;
-    [SerializeField] private GameObject pausePanel;
+	[SerializeField] private TMP_Text batteryCountVictory;
+	[SerializeField] private TMP_Text tincanCountVictory;
+	[SerializeField] private TMP_Text pantBurkCountVictory;
+	[SerializeField] private GameObject pausePanel;
+
 
     private static UIManager instance;
     public static UIManager Instance { get { return instance; } set { instance = value; } }
@@ -246,7 +250,10 @@ public class UIManager : MonoBehaviour
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
         victoryText.text = "You saved " + score + " watthours during your game";
-    }
+        //PlayerScore playerScore = batteryBar.GetComponent<PlayerScore>();
+		//batteryCountVictory.text = 
+
+	}
 
     public void ReloadScene()
     {
