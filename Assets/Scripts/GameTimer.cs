@@ -52,6 +52,7 @@ public class GameTimer : MonoBehaviour
     public void EndGame(bool won)
     {
         goingOn = false;
+        player.GetComponent<BatteryController>().isGod = false;
         UIManager.Instance.UpdateHighScore(player.scoreValue);
         Time.timeScale = 0;
         if (won)
