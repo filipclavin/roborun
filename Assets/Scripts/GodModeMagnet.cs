@@ -20,7 +20,7 @@ public class GodModeMagnet : MonoBehaviour
         float distanceToPlayer = directionToPlayer.magnitude;
 
         if (!(distanceToPlayer <= distance)) return;
-        float speedModifier = 2.0f;
+        const float speedModifier = 2.0f;
 
         directionToPlayer.Normalize();
         transform.position += directionToPlayer * (Time.deltaTime * 50f * speedModifier);
@@ -28,4 +28,3 @@ public class GodModeMagnet : MonoBehaviour
 
 
 }
-
