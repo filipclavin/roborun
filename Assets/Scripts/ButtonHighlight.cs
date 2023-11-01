@@ -13,13 +13,13 @@ public class ButtonHighlight : MonoBehaviour
 
     void Start()
     {
-        // Initialize the pointer at the first button
+       
         MovePointerToButton(buttons[0]);
     }
 
     void Update()
     {
-        // Check for the currently highlighted button
+      
         GameObject selected = EventSystem.current.currentSelectedGameObject;
 
         if (selected != null)
@@ -35,10 +35,9 @@ public class ButtonHighlight : MonoBehaviour
 
     void MovePointerToButton(Button button)
     {
-        // Update the current button
+        
         currentButton = button;
-
-        // Move the pointer to the new button position
+        
         RectTransform buttonRect = button.GetComponent<RectTransform>();
         Vector3 buttonPosition = buttonRect.position;
         pointer.transform.position = new Vector3(buttonPosition.x + xOffset, buttonPosition.y, buttonPosition.z);

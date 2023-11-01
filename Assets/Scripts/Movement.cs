@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     [HideInInspector] public bool isSliding = false;
     [HideInInspector] public bool shouldPlaySlideSpark = false;
     [HideInInspector] public bool isGodSlising;
+    private bool isGamePaused = false;
 
     [Header("Movement Settings")]
     [SerializeField] private PlayerInput playerInput;
@@ -91,18 +92,19 @@ public class Movement : MonoBehaviour
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
+        if (Time.timeScale == 0) return;
+        if (!context.performed) return;
+        desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
             AudioManager.Instance.Play("Move_Woosh");
-        }
     }
 
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!context.performed || !isGrounded || !gameTimer.goingOn) return;
-        AudioManager.Instance.Play("Jump");
+        if (Time.timeScale == 0) return;
+        if (!context.performed || !isGrounded || !gameTimer.goingOn || isGamePaused) return;
+        if(Time.timeScale == 1)
+            AudioManager.Instance.Play("Jump");
         var velocity = rb.velocity;
         velocity = new Vector3(velocity.x, 0, velocity.z);
         rb.velocity = velocity;
@@ -141,6 +143,7 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0) return;
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
 
         StartCoroutine(SlideTimer());
@@ -185,7 +188,7 @@ public class Movement : MonoBehaviour
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
         
-        AudioManager.Instance.Play("Slide");
+            AudioManager.Instance.Play("Slide");
         
         yield return new WaitForSeconds(slideTime);
         
