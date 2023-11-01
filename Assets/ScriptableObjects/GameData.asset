@@ -149,7 +149,7 @@ MonoBehaviour:
     _despawnDistance: 5
     spawnInterval: 30
   - prefabAddressable:
-      m_AssetGUID: dc22fc0ce62c1624eb6c9b332ac69f72
+      m_AssetGUID: 7a12c39ea1c2fde49b0aa06f18780c66
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
     _despawnDistance: 5
     spawnInterval: 4
   - prefabAddressable:
-      m_AssetGUID: 7a12c39ea1c2fde49b0aa06f18780c66
+      m_AssetGUID: f24c55381aa1d914f9c5b18f71144ac7
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 200
     _despawnDistance: 5
-    spawnInterval: 50
+    spawnInterval: 100
   - prefabAddressable:
       m_AssetGUID: e518e6cb3eb05ed43ad24e77070a74d4
       m_SubObjectName: 
@@ -192,5 +192,5 @@ MonoBehaviour:
     allowedLanes: -1
     _spawnDistance: 200
     _despawnDistance: 5
-    spawnInterval: 180
+    spawnInterval: 250
   roadTileTag: Ground
