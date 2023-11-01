@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 //Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
@@ -17,7 +18,8 @@ public class Movement : MonoBehaviour
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isSliding = false;
     [HideInInspector] public bool shouldPlaySlideSpark = false;
-    [HideInInspector] public bool isGodSlising;
+    [HideInInspector] public bool isGodSliding;
+    [HideInInspector] public bool isGodJumping = false;
     private bool isGamePaused = false;
 
     [Header("Movement Settings")]
@@ -110,11 +112,14 @@ public class Movement : MonoBehaviour
         rb.velocity = velocity;
 
         rb.AddForce(Vector3.up * currentJumpForce, ForceMode.Impulse);
+        if (batteryController.isGod)
+            StartCoroutine(JumpTimer());
 
         if (batteryController.isGod == false)
         {
             StartCoroutine(DustTimer(1));
         }
+
     }
     
     private void GroundCheck()
@@ -138,7 +143,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-
+    private IEnumerator JumpTimer()
+    {
+        isGodJumping = true;
+        yield return new WaitForSeconds(.5f);
+        isGodJumping = false;
+    }
 
 
     public void Slide(InputAction.CallbackContext context)
@@ -178,7 +188,7 @@ public class Movement : MonoBehaviour
         switch (batteryController.isGod)
         {
             case true:
-                isGodSlising = true;
+                isGodSliding = true;
                 break;
             case false:
                 isSliding = true;
@@ -195,7 +205,7 @@ public class Movement : MonoBehaviour
         switch (batteryController.isGod)
         {
             case true:
-                isGodSlising = false;
+                isGodSliding = false;
                 break;
             case false:
                 isSliding = false;

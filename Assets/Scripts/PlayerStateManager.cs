@@ -133,11 +133,16 @@ public class PlayerStateManager : MonoBehaviour
     private void GodModeJumpSlide()
     {
         animator.SetBool("IsGodSlide", false);
+        animator.SetBool("IsGodJump", false);
         if(currentState != MovementState.GodMode) return;
         
-        if(_movement.isGodSlising)
+        if(_movement.isGodSliding)
         {
             animator.SetBool("IsGodSlide", true);
+        }
+        if(_movement.isGodJumping)
+        {
+            animator.SetBool("IsGodJump", true);
         }
     }
 
