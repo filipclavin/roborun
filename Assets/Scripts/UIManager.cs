@@ -234,8 +234,8 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
         }
-
     }
+
 
     public void Victory(int score)
     {

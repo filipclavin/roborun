@@ -102,6 +102,7 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0) return;
         if (!context.performed || !isGrounded || !gameTimer.goingOn || isGamePaused) return;
         if(Time.timeScale == 1)
             AudioManager.Instance.Play("Jump");
@@ -143,6 +144,7 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0) return;
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
 
         StartCoroutine(SlideTimer());
