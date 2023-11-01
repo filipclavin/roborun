@@ -22,7 +22,7 @@ public class PlayerStateManager : MonoBehaviour
         UpdateCharacterState();
         GodModeAnimations();
         RunTurnAnimation();
-        GodModeJumpSlide();
+        GodModeJump();
     }
 
     private enum MovementState
@@ -130,16 +130,10 @@ public class PlayerStateManager : MonoBehaviour
         StartCoroutine(ResetGodTurnFlagAfterSeconds(.1f));
     }
 
-    private void GodModeJumpSlide()
+    private void GodModeJump()
     {
-        animator.SetBool("IsGodSlide", false);
         animator.SetBool("IsGodJump", false);
         if(currentState != MovementState.GodMode) return;
-        
-        if(_movement.isGodSliding)
-        {
-            animator.SetBool("IsGodSlide", true);
-        }
         if(_movement.isGodJumping)
         {
             animator.SetBool("IsGodJump", true);

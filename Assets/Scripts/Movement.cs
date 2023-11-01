@@ -153,6 +153,7 @@ public class Movement : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext context)
     {
+        if (batteryController.isGod) return;
         if (Time.timeScale == 0) return;
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
 
@@ -173,6 +174,7 @@ public class Movement : MonoBehaviour
         }
         if(!isSliding)
             PlayerFXManager.Instance.StopSlideSpark();
+
     }
 
     
@@ -185,15 +187,8 @@ public class Movement : MonoBehaviour
         Vector3 originalCenter = new Vector3(0, .33f, 0);
         Vector3 slideCenter = new Vector3(0, -.46f, 0);
         
-        switch (batteryController.isGod)
-        {
-            case true:
-                isGodSliding = true;
-                break;
-            case false:
-                isSliding = true;
-                break;
-        }
+        if(!batteryController.isGod)
+            isSliding = true;
 
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
@@ -202,15 +197,8 @@ public class Movement : MonoBehaviour
         
         yield return new WaitForSeconds(slideTime);
         
-        switch (batteryController.isGod)
-        {
-            case true:
-                isGodSliding = false;
-                break;
-            case false:
-                isSliding = false;
-                break;
-        }
+        if(!batteryController.isGod)
+            isSliding = false;
 
         playerCollider.center = originalCenter;
         playerCollider.height = originalHeight;
