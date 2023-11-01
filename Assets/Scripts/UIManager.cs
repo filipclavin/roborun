@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
     [SerializeField] private TMP_Text victoryText;
+    [SerializeField] private TMP_Text batteryCountText;
     [SerializeField] private TMP_Text tincanCountText;
     [SerializeField] private TMP_Text pantBurkCountText;
 
@@ -175,7 +176,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePickup(string type, string count)
     {
-        Debug.Log("UpdatePickup: " + type + " " + count);
         switch (type)
         {
             case "Tincan":
@@ -183,6 +183,9 @@ public class UIManager : MonoBehaviour
                 break;
             case "PantBurk":
                 pantBurkCountText.text = count;
+                break;
+            case "Battery":
+                batteryCountText.text = count;
                 break;
         }
     }
