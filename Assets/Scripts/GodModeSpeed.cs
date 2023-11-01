@@ -22,7 +22,7 @@ public class GodModeSpeed : MonoBehaviour
         _batteryController = FindObjectOfType<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
     }
-    
+    private bool godSlowMoRunning = false;
     private void Update()
     { 
        
@@ -31,7 +31,10 @@ public class GodModeSpeed : MonoBehaviour
         AdjustTimeBasedOnTimer();
         GodModeEffect();
         if(UIManager.Instance.isPaused)
-            StopCoroutine(GodSlowMo());
+            Time.timeScale = 0f;
+        
+        Debug.Log("Current Time Scale: " + Time.timeScale);
+        
     }
 
     private void GodModeEffect()
@@ -53,10 +56,10 @@ public class GodModeSpeed : MonoBehaviour
 
     private IEnumerator GodSlowMo()
     {
-        if (UIManager.Instance.isPaused)
-        {
-            yield break;
-        }
+        // if (UIManager.Instance.isPaused)
+        // {
+        //     yield break;
+        // }
         
     
         float originalTimeScale = _currentTimeScale;
@@ -66,7 +69,8 @@ public class GodModeSpeed : MonoBehaviour
         if(UIManager.Instance.isPaused == false)
         {
             PlayerFXManager.Instance.PlayCameraEffect();
-            Time.timeScale = UIManager.Instance.isPaused ? 0f : 1f; 
+            Time.timeScale = 1;
+            //Time.timeScale = UIManager.Instance.isPaused ? 0f : 1f; 
         }
     }
 }

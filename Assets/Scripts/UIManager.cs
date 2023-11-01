@@ -241,7 +241,7 @@ public class UIManager : MonoBehaviour
         {
             UIGame.gameObject.SetActive(true);
             pausePanel.SetActive(false);
-            Time.timeScale = isPaused ? 0f : 1f;  
+            Time.timeScale = 1;
         }
     }
 
