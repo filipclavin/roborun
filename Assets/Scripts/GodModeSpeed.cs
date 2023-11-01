@@ -26,7 +26,7 @@ public class GodModeSpeed : MonoBehaviour
         _move.speed = _batteryController.isGod ? 10f : 5f;
         
         AdjustTimeBasedOnTimer();
-        GodModeEffect();
+        //GodModeEffect();
     }
 
     private void GodModeEffect()
@@ -44,15 +44,22 @@ public class GodModeSpeed : MonoBehaviour
         _waitTime = Mathf.Lerp(.5f, 2f, progress); 
     }
     
+    
+
     private IEnumerator GodSlowMo()
     {
+        if (UIManager.Instance.isPaused)
+        {
+            yield break;
+        }
+    
         float originalTimeScale = _currentTimeScale;
         Time.timeScale = originalTimeScale * 0.5f; 
 
         yield return new WaitForSecondsRealtime(_waitTime);
         PlayerFXManager.Instance.PlayCameraEffect();
-        Time.timeScale = 1; 
+        Time.timeScale = UIManager.Instance.isPaused ? 0f : 1f; 
     }
-
+    
 
 }

@@ -6290,6 +6290,7 @@ MonoBehaviour:
   tincanCountVictory: {fileID: 1587906130}
   pantBurkCountVictory: {fileID: 867678803}
   pausePanel: {fileID: 1556492502}
+  isPaused: 0
 --- !u!4 &1477294276
 Transform:
   m_ObjectHideFlags: 0
@@ -8514,7 +8515,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: gameLength
-      value: 180
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}

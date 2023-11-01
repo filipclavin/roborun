@@ -72,6 +72,8 @@ public class UIManager : MonoBehaviour
         OpenMenu();
     }
 
+    [HideInInspector] public bool isPaused = false;  
+
     private void Update()
     {
         if (input.controller.Movement.Pause.triggered && !gameOverPanel.activeSelf && !victoryPanel.activeSelf)
@@ -225,20 +227,20 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
+        isPaused = !isPaused;  
+    
         pauseMenuActive = !pauseMenuActive;
         if (pauseMenuActive)
         {
-            //pauseDirector.Play();
             UIGame.gameObject.SetActive(false);
             pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
-            //continueDirector.Play();
             UIGame.gameObject.SetActive(true);
             pausePanel.SetActive(false);
-            Time.timeScale = 1f;
+            Time.timeScale = isPaused ? 0f : 1f;  
         }
     }
 
