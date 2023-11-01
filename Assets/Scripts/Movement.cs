@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,10 +9,10 @@ public class Movement : MonoBehaviour
     private Vector3 direction;
     private CapsuleCollider playerCollider;
     private int desiredLane;
-    private GameTimer gameTimer;
     private BatteryController batteryController;
 
     
+    [SerializeField] private GameTimer gameTimer;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isSliding = false;
@@ -39,20 +40,14 @@ public class Movement : MonoBehaviour
     [SerializeField] private float laneWidth = 2f;
     [Space]
     [SerializeField] private float groundDistance;
-    //public static Movement Instance { get; private set; }
+    
+    [Obsolete("Obsolete")]
     private void Awake()
     {
-        // if (Instance != null)
-        // {
-        //     Destroy(gameObject);
-        //     return;
-        // }
-        // Instance = this;
-         batteryController = GetComponent<BatteryController>();
+        batteryController = GetComponent<BatteryController>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
-        gameTimer = FindObjectOfType<GameTimer>();
     }
     private void Start()
     {
@@ -170,7 +165,6 @@ public class Movement : MonoBehaviour
     }
 
     
-    private bool isRunning = false;
     
     private IEnumerator SlideTimer()
     {
