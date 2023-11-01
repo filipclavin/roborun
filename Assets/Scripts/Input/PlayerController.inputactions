@@ -76,6 +76,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7eae701a-bda3-4466-b0d3-893cb73d5af5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f5786539-edd6-4ead-8966-d05200955d9d",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -89,6 +100,17 @@
                     "name": "",
                     "id": "84274d9a-9124-4ff2-bc6a-6602b46ca48b",
                     "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16434723-1e28-4cbb-8fbd-d2ec09cc533b",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
