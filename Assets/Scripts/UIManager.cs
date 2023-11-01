@@ -243,15 +243,16 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void Victory(int score)
+    public void Victory(int score, int tincan, int pantburk, int battery)
     {
         //pauseDirector.Play();
         UIGame.gameObject.SetActive(false);
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
         victoryText.text = "You saved " + score + " watthours during your game";
-        //PlayerScore playerScore = batteryBar.GetComponent<PlayerScore>();
-		//batteryCountVictory.text = 
+        tincanCountVictory.text = tincan.ToString();
+		pantBurkCountText.text = tincan.ToString();
+		batteryCountVictory.text = tincan.ToString();
 
 	}
 
