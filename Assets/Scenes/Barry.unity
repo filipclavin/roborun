@@ -4998,7 +4998,9 @@ MonoBehaviour:
   highScoreText: {fileID: 190825722}
   timerText: {fileID: 2017282626}
   victoryText: {fileID: 1898727828}
-  multiplierText: {fileID: 582230882}
+  batteryCountText: {fileID: 0}
+  tincanBigCountText: {fileID: 0}
+  tincanCountText: {fileID: 0}
   gameOverPanel: {fileID: 60862083}
   victoryPanel: {fileID: 674600634}
   pausePanel: {fileID: 1556492502}
@@ -5276,6 +5278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackViewTerrain
       objectReference: {fileID: 0}
+    - target: {fileID: 7070861166294624119, guid: 5a51e16e8e8f6ad49a46f42d8b252be1,
+        type: 3}
+      propertyPath: m_MaterialTemplate
+      value: 
+      objectReference: {fileID: 2100000, guid: 2441c79940171dc43b33badf9fe97828, type: 2}
     - target: {fileID: 7839903629261859574, guid: 5a51e16e8e8f6ad49a46f42d8b252be1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6262,7 +6269,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tilePrefab
       value: 
-      objectReference: {fileID: 5481357707973582074, guid: 22825995f1b38de4a8861cfbd6bb4658,
+      objectReference: {fileID: 5481357707973582074, guid: 64cc58c1b9fe0144a86ef63da99aca53,
         type: 3}
     - target: {fileID: 585933339926125924, guid: 03b8ef0d004d4c34eb4954d93c962937,
         type: 3}
