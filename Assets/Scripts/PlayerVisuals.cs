@@ -128,7 +128,6 @@ public class PlayerVisuals : MonoBehaviour
         yield return new WaitForSeconds(blinkStart);
         while (changeMaterialTimer <= materialDuration)
         {
-            Debug.Log(changeMaterialTimer);
             ChangeCurrentMaterial();
             yield return new WaitForSeconds(blinkOne);
             ResetMaterial();
