@@ -2246,7 +2246,7 @@ PrefabInstance:
     - target: {fileID: 1112568036884345476, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1855375529584772097, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
         type: 3}
@@ -3941,6 +3941,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640229735}
   m_CullTransparentMesh: 1
+--- !u!114 &648992290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7663385508891012392, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 301660948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &674600634
 GameObject:
   m_ObjectHideFlags: 0
@@ -6363,8 +6375,8 @@ MonoBehaviour:
   pantBurkCountText: {fileID: 2095411215}
   gameOverPanel: {fileID: 60862083}
   victoryPanel: {fileID: 1390485938}
-  batteryCountVictory: {fileID: 1587906130}
-  tincanCountVictory: {fileID: 1874593915}
+  batteryCountVictory: {fileID: 648992290}
+  tincanCountVictory: {fileID: 1587906130}
   pantBurkCountVictory: {fileID: 867678803}
   pausePanel: {fileID: 1556492502}
 --- !u!4 &1477294276
@@ -7672,18 +7684,6 @@ PlayableDirector:
     m_References:
     - c6f75888ae3cd5a49bb22781fffd922d: {fileID: 926792508}
     - 5f2b12f997aa48240b22fac96258923b: {fileID: 564195189}
---- !u!114 &1874593915 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 89378608931237261, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 301660948}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1875557294
 GameObject:
   m_ObjectHideFlags: 0
