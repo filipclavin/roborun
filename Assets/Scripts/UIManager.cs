@@ -251,7 +251,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         victoryText.text = "You saved " + score + " watthours during your game";
         tincanCountVictory.text = tincan.ToString();
-		pantBurkCountText.text = pantburk.ToString();
+		pantBurkCountVictory.text = pantburk.ToString();
 		batteryCountVictory.text = battery.ToString();
 
 	}
