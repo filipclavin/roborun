@@ -8,8 +8,7 @@ public class PlayerFXManager : MonoBehaviour
 {
     [FormerlySerializedAs("_faceAnimator")] [SerializeField] private Animator faceAnimator;
     [SerializeField] private List<ParticleSystem> effects;
-    [SerializeField] private VisualEffect dustEffect;
-    [SerializeField] private GameTimer _gameTimer;
+    [SerializeField] private List<VisualEffect> visualEffects;
     [SerializeField] private Movement _movement;
     private BatteryController _batteryController;
     private static readonly int SadTrigger = Animator.StringToHash("SadTrigger");
@@ -36,8 +35,14 @@ public class PlayerFXManager : MonoBehaviour
 
     private void Update()
     {
+        if(!_batteryController.isGod)
+            visualEffects[1].gameObject.SetActive(false);
     }
 
+    public void PlayCameraEffect()
+    {
+        visualEffects[1].gameObject.SetActive(true);
+    }
     public void BatteryEffect()
     {
         faceAnimator.SetTrigger(HappyTrigger);
@@ -54,12 +59,12 @@ public class PlayerFXManager : MonoBehaviour
     
     public void DustEffect()
     {
-        dustEffect.Play();
+        visualEffects[0].Play();
     }
     
     public void StopDustEffect()
     {
-        dustEffect.Stop();
+        visualEffects[0].Stop();
     }
 
     public void DamageEffect()

@@ -49,8 +49,8 @@ public class GodModeSpeed : MonoBehaviour
         float originalTimeScale = _currentTimeScale;
         Time.timeScale = originalTimeScale * 0.5f; 
 
-        yield return new WaitForSecondsRealtime(_waitTime); 
-
+        yield return new WaitForSecondsRealtime(_waitTime);
+        PlayerFXManager.Instance.PlayCameraEffect();
         Time.timeScale = 1; 
     }
 
