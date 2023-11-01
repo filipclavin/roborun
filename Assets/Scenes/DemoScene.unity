@@ -2251,7 +2251,7 @@ PrefabInstance:
     - target: {fileID: 1112568036884345476, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774037059426659489, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
         type: 3}
@@ -8509,7 +8509,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: gameLength
-      value: 180
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
