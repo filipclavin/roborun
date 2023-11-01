@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour
     [Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;
-    [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text victoryText;
     [SerializeField] private TMP_Text batteryCountText;
     [SerializeField] private TMP_Text tincanBigCountText;
@@ -193,11 +192,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimer(float timerLeft)
     {
-        if (timerText != null)
-        {
-            timerText.text = "Time remaining: " + Mathf.RoundToInt(timerLeft) + "s";
-        }
-
         if (forestImage != null)
         {
             forestImage.fillAmount = gameTimer.gameTimer / gameTimer.gameLength;
