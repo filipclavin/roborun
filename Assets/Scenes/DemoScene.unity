@@ -3420,7 +3420,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: b4945e82344bb2d479c243ab9aa4d157, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -3429,6 +3429,8 @@ PlayableDirector:
     value: {fileID: 330585548}
   - key: {fileID: 7144700888972120378, guid: b4945e82344bb2d479c243ab9aa4d157, type: 2}
     value: {fileID: 330585548}
+  - key: {fileID: 3318347160277803421, guid: b4945e82344bb2d479c243ab9aa4d157, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - c6f75888ae3cd5a49bb22781fffd922d: {fileID: 926792508}
@@ -5996,13 +5998,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayCamera: {fileID: 564195189}
-  gameDirector: {fileID: 1362551906}
+  startDirector: {fileID: 1362551906}
+  pauseDirector: {fileID: 0}
+  continueDirector: {fileID: 0}
   input: {fileID: 1305087771}
   batteryBar: {fileID: 1550699350}
   forestImage: {fileID: 1492976870}
   robotPortrait: {fileID: 1554130525}
   faceAnimator: {fileID: 83722122}
   startMenu: {fileID: 1180888689}
+  UIGame: {fileID: 313850925}
   scoreText: {fileID: 79635283}
   highScoreText: {fileID: 190825722}
   timerText: {fileID: 2017282626}
@@ -7140,13 +7145,15 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 0464786ac1796ef498347789b74a6ab3, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 7144700888972120378, guid: 0464786ac1796ef498347789b74a6ab3, type: 2}
     value: {fileID: 330585548}
+  - key: {fileID: 259137773749394593, guid: 0464786ac1796ef498347789b74a6ab3, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - c6f75888ae3cd5a49bb22781fffd922d: {fileID: 926792508}
