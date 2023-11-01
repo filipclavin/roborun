@@ -92,10 +92,9 @@ public class Movement : MonoBehaviour
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0) return;
         if (!context.performed) return;
         desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
-            
-        if(Time.timeScale == 1)
             AudioManager.Instance.Play("Move_Woosh");
     }
 
@@ -189,7 +188,6 @@ public class Movement : MonoBehaviour
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
         
-        if(Time.timeScale == 1)
             AudioManager.Instance.Play("Slide");
         
         yield return new WaitForSeconds(slideTime);
