@@ -2288,6 +2288,11 @@ PrefabInstance:
       propertyPath: yOffset
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1943439643600042228, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2466241183682939677, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
