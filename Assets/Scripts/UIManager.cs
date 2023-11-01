@@ -67,6 +67,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
         OpenMenu();
@@ -236,11 +237,11 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
-        else
+        else 
         {
             UIGame.gameObject.SetActive(true);
             pausePanel.SetActive(false);
-            Time.timeScale = isPaused ? 0f : 1f;  
+            Time.timeScale = 1;
         }
     }
 

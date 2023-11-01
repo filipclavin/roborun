@@ -12,6 +12,8 @@ public class GodModeSpeed : MonoBehaviour
     private float _currentTimeScale;
     private float _waitTime;
     private GameTimer _gameTimer; 
+    public float slowTime = 0.5f;
+    private bool isSlowed = false;
     
     [Obsolete("Obsolete")]
     private void Start()
@@ -20,13 +22,19 @@ public class GodModeSpeed : MonoBehaviour
         _batteryController = FindObjectOfType<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
     }
-    
+    private bool godSlowMoRunning = false;
     private void Update()
-    {
+    { 
+       
         _move.speed = _batteryController.isGod ? 10f : 5f;
         
         AdjustTimeBasedOnTimer();
-        //GodModeEffect();
+        GodModeEffect();
+        if(UIManager.Instance.isPaused)
+            Time.timeScale = 0f;
+        
+        Debug.Log("Current Time Scale: " + Time.timeScale);
+        
     }
 
     private void GodModeEffect()
@@ -48,18 +56,21 @@ public class GodModeSpeed : MonoBehaviour
 
     private IEnumerator GodSlowMo()
     {
-        if (UIManager.Instance.isPaused)
-        {
-            yield break;
-        }
+        // if (UIManager.Instance.isPaused)
+        // {
+        //     yield break;
+        // }
+        
     
         float originalTimeScale = _currentTimeScale;
         Time.timeScale = originalTimeScale * 0.5f; 
 
         yield return new WaitForSecondsRealtime(_waitTime);
-        PlayerFXManager.Instance.PlayCameraEffect();
-        Time.timeScale = UIManager.Instance.isPaused ? 0f : 1f; 
+        if(UIManager.Instance.isPaused == false)
+        {
+            PlayerFXManager.Instance.PlayCameraEffect();
+            Time.timeScale = 1;
+            //Time.timeScale = UIManager.Instance.isPaused ? 0f : 1f; 
+        }
     }
-    
-
 }
