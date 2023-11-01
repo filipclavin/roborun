@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class BatteryController : MonoBehaviour
 {
-   [SerializeField] private float themeGodPitch = 1.05f;
-   [SerializeField] private float originialPitch = 1f;
+    [SerializeField] private float themeGodPitch = 1.05f;
+    [SerializeField] private float originialPitch = 1f;
+    [SerializeField] private Animator faceAnimator;
    
     private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
@@ -63,6 +64,7 @@ public class BatteryController : MonoBehaviour
         if (!isGod) return;
         godTimer += Time.fixedDeltaTime;
         if (!(godTimer >= godDuration)) return;
+        faceAnimator.SetBool("isGod", false);
         AudioManager.Instance.sounds[0].source.pitch = originialPitch;
         PlayerFXManager.Instance.StopGodSparkles();
         PlayerFXManager.Instance.DustEffect();
@@ -139,6 +141,8 @@ public class BatteryController : MonoBehaviour
             playerStateManager.animator.SetTrigger("ChargeToGod");
             PlayerFXManager.Instance.StopDustEffect();
             PlayerFXManager.Instance.PlayGodSparkles();
+            Debug.Log(faceAnimator.gameObject.name);
+            faceAnimator.SetBool("isGod", true);
             isGod = true;
             invisActive = false;
         }
