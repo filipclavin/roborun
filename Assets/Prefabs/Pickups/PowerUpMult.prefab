@@ -45,6 +45,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b3c3b542dc9152c42847de6d9d3b2a80, type: 2}
+    - target: {fileID: 433854586220544988, guid: 22e9a1e7f1a9ba6428ef5ff630215473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 499881235230556567, guid: 22e9a1e7f1a9ba6428ef5ff630215473,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -69,6 +74,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 174.041
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522439485350676134, guid: 22e9a1e7f1a9ba6428ef5ff630215473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547406885981868102, guid: 22e9a1e7f1a9ba6428ef5ff630215473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6128403279468996667, guid: 22e9a1e7f1a9ba6428ef5ff630215473,
         type: 3}
@@ -134,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PowerupX2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793582167321932417, guid: 22e9a1e7f1a9ba6428ef5ff630215473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -211,6 +231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Electricity_x2_VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3231738027529375490, guid: 041e13039770595459d79d12964c7f3a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4507108104312556713, guid: 041e13039770595459d79d12964c7f3a,
         type: 3}
