@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 4803653773091342525}
   - component: {fileID: 976276562206349395}
   m_Layer: 5
-  m_Name: TotalWh (1)
+  m_Name: PlayAgainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
