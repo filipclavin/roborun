@@ -56,8 +56,8 @@ public class GameTimer : MonoBehaviour
         UIManager.Instance.UpdateHighScore(player.scoreValue);
         Time.timeScale = 0;
         if (won)
-        {
-            UIManager.Instance.Victory(player.scoreValue);
+		{
+			UIManager.Instance.Victory(player.scoreValue, player.GetPickup("Tincan"), player.GetPickup("PantBurk"), player.GetPickup("Battery"));
         }
         else
         {
