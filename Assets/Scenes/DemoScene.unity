@@ -5712,7 +5712,7 @@ Transform:
   m_GameObject: {fileID: 1264021735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.16, y: 10.53, z: -5.31}
+  m_LocalPosition: {x: 11.16, y: 10.53, z: -5.36}
   m_LocalScale: {x: 1.7425, y: 1.7425, z: 1.7425}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5813,12 +5813,12 @@ VisualEffect:
           ctime5: 0
           ctime6: 0
           ctime7: 0
-          atime0: 0
-          atime1: 11951
+          atime0: 11951
+          atime1: 20239
           atime2: 30455
           atime3: 34117
-          atime4: 48766
-          atime5: 65535
+          atime4: 44911
+          atime5: 52621
           atime6: 0
           atime7: 0
           m_Mode: 0
