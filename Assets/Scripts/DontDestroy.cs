@@ -25,8 +25,8 @@ public class DontDestroy : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void OnDestroy()
-    {
+	private void OnApplicationQuit()
+	{
         PlayerPrefs.DeleteKey(leadingScoreKey);
-    }
+	}
 }
