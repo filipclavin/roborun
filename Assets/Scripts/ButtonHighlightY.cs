@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonHighlightY : MonoBehaviour
 {
+    [SerializeField] private float scaleIncrease;
     public GameObject pointer; // The pointer GameObject
     public List<Button> buttons; // List of buttons on the canvas
     public float xOffset = -50f; // Offset on the X-axis to position pointer on the left side of the button
@@ -24,9 +25,16 @@ public class ButtonHighlightY : MonoBehaviour
         if (selected != null)
         {
             Button selectedButton = selected.GetComponent<Button>();
+
+
             if (selectedButton != null && selectedButton != currentButton)
             {
+                if (currentButton != null)
+                {
+                    currentButton.transform.localScale /= scaleIncrease;
+                }
                 // Move the pointer if the highlighted button changes
+                selected.transform.localScale *= scaleIncrease;
                 MovePointerToButton(selectedButton);
             }
         }

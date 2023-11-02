@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d796b0195c2f98c4d8df23c9cc240880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleIncrease: 1.1
   pointer: {fileID: 83087481}
   buttons:
   - {fileID: 806654304}
@@ -2288,6 +2289,11 @@ PrefabInstance:
       propertyPath: yOffset
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1855375529584772097, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
+        type: 3}
+      propertyPath: scaleIncrease
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1943439643600042228, guid: 0da2cb5de45fafd46a4ab545da06a6a5,
         type: 3}
       propertyPath: m_enableAutoSizing
@@ -2479,7 +2485,10 @@ PrefabInstance:
       value: -93
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2586585942095407189, guid: 0da2cb5de45fafd46a4ab545da06a6a5, type: 3}
+    - {fileID: 6822146734462316063, guid: 0da2cb5de45fafd46a4ab545da06a6a5, type: 3}
+    - {fileID: 7339210718794380089, guid: 0da2cb5de45fafd46a4ab545da06a6a5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0da2cb5de45fafd46a4ab545da06a6a5, type: 3}
@@ -5298,6 +5307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d796b0195c2f98c4d8df23c9cc240880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleIncrease: 1.1
   pointer: {fileID: 1930107058}
   buttons:
   - {fileID: 1217248817}
@@ -6837,11 +6847,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d796b0195c2f98c4d8df23c9cc240880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleIncrease: 1.1
   pointer: {fileID: 343453784}
   buttons:
   - {fileID: 503460949}
   - {fileID: 372031337}
-  xOffset: -180
+  xOffset: -210
 --- !u!114 &1556492507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8612,7 +8623,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: gameLength
-      value: 180
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
