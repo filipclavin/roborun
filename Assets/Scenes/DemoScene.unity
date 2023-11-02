@@ -1422,6 +1422,21 @@ PrefabInstance:
       propertyPath: defaultMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 65301d71552bf0b4eb1e07b153e60968, type: 2}
+    - target: {fileID: 3545475513193439312, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: healthyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9f520ee145c2b9c40b276253662bdf72, type: 2}
+    - target: {fileID: 3545475513193439312, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: batteryMeshRenderer
+      value: 
+      objectReference: {fileID: 385974938}
+    - target: {fileID: 3545475513193439312, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: batterySkinnedRenderer
+      value: 
+      objectReference: {fileID: 1396345912}
     - target: {fileID: 3818062625241845667, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: m_Layer
@@ -3098,6 +3113,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372031335}
   m_CullTransparentMesh: 1
+--- !u!23 &385974938 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4328933620533881318, guid: 2bb3275ef9b70904ab103271285fbb63,
+    type: 3}
+  m_PrefabInstance: {fileID: 267956774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &400746445
 GameObject:
   m_ObjectHideFlags: 0
@@ -8628,7 +8649,7 @@ PrefabInstance:
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
       propertyPath: gameLength
-      value: 100
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2901664904763545055, guid: 80357b9c443e9e64fb82058973cf9b5a,
         type: 3}
