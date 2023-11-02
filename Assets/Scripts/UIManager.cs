@@ -226,10 +226,13 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         UIGame.gameObject.SetActive(false);
         //pauseDirector.Play();
+        AudioManager.Instance.StopPizzaTheme();
+        AudioManager.Instance.sounds[0].source.pitch = 1;
     }
 
     public void Pause()
     {
+        AudioManager.Instance.sounds[0].source.volume = 0.25f;
         isPaused = !isPaused;  
     
         pauseMenuActive = !pauseMenuActive;
@@ -241,6 +244,7 @@ public class UIManager : MonoBehaviour
         }
         else 
         {
+            AudioManager.Instance.sounds[0].source.volume = 0.5f;
             UIGame.gameObject.SetActive(true);
             pausePanel.SetActive(false);
             Time.timeScale = 1;
@@ -250,6 +254,8 @@ public class UIManager : MonoBehaviour
 
     public void Victory(int score, int tincan, int pantburk, int battery)
     {
+        AudioManager.Instance.StopPizzaTheme();
+        AudioManager.Instance.sounds[0].source.pitch = 1;
         //pauseDirector.Play();
         UIGame.gameObject.SetActive(false);
         victoryPanel.SetActive(true);
