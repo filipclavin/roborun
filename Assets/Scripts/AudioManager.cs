@@ -4,6 +4,7 @@ using UnityEngine;
 //Script Made By Daniel Alvarado
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private BatteryController _batteryController;
     public Sound[] sounds;
     public static AudioManager Instance { get; private set; }
     void Awake()
@@ -52,15 +53,22 @@ public class AudioManager : MonoBehaviour
         sounds[10].source.Stop();
     }
 
-//     private void Stop(string pizzaparty)
-//     {
-// Sound s = Array.Find(sounds, sound => sound.name == pizzaparty);
-//         if (s == null)
-//         {
-//             Debug.LogWarning("Sound: " + pizzaparty + " not found!");
-//             return;
-//         }
-//        
-//         s.source.Stop();
-//     }
+    private void Update()
+    {
+        if (UIManager.Instance.isPaused)
+        {
+            for (int i = 1; i < sounds.Length; i++)
+            {
+                sounds[i].source.Pause();
+            }
+        }
+        else
+        {
+            for (int i = 1; i < sounds.Length; i++)
+            {
+                sounds[i].source.UnPause();
+            }
+        }
+    }
+
 }

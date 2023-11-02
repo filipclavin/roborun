@@ -12,8 +12,6 @@ public class GodModeSpeed : MonoBehaviour
     private float _currentTimeScale;
     private float _waitTime;
     private GameTimer _gameTimer; 
-    public float slowTime = 0.5f;
-    private bool isSlowed = false;
     
     [Obsolete("Obsolete")]
     private void Start()
@@ -22,7 +20,6 @@ public class GodModeSpeed : MonoBehaviour
         _batteryController = FindObjectOfType<BatteryController>();
         _gameTimer = FindObjectOfType<GameTimer>();
     }
-    private bool godSlowMoRunning = false;
     private void Update()
     { 
        
@@ -58,12 +55,6 @@ public class GodModeSpeed : MonoBehaviour
 
     private IEnumerator GodSlowMo()
     {
-        // if (UIManager.Instance.isPaused)
-        // {
-        //     yield break;
-        // }
-        
-    
         float originalTimeScale = _currentTimeScale;
         Time.timeScale = originalTimeScale * 0.5f; 
 
