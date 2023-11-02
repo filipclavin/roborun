@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7399456, g: 0.31267098, b: 0.8363174, a: 1}
+  m_IndirectSpecularColor: {r: 0.54018587, g: 0.22823559, b: 0.61037624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3275,7 +3275,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4738,7 +4738,7 @@ GameObject:
   - component: {fileID: 832575519}
   - component: {fileID: 832575518}
   - component: {fileID: 832575520}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4752,7 +4752,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -4784,7 +4784,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -5676,7 +5676,7 @@ Transform:
   m_GameObject: {fileID: 1264021735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.16, y: 10.53, z: -4.77}
+  m_LocalPosition: {x: 11.16, y: 10.53, z: -5.31}
   m_LocalScale: {x: 1.7425, y: 1.7425, z: 1.7425}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5761,34 +5761,34 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1.0689421, g: 0, b: 4.6037736, a: 0}
-          key1: {r: 4, g: 0, b: 1.1210651, a: 1}
-          key2: {r: 0, g: 0, b: 0, a: 0.8}
-          key3: {r: 0, g: 0, b: 0, a: 0}
-          key4: {r: 0, g: 0, b: 0, a: 0}
+          key0: {r: 0.35519513, g: 0, b: 1.5076072, a: 0}
+          key1: {r: 0.34158137, g: 0.1956486, b: 1.3916397, a: 0.5911998}
+          key2: {r: 0.17821278, g: 2.5434823, b: 0, a: 1}
+          key3: {r: 5.1702647, g: 1.5364467, b: 4.8848863, a: 0.9891891}
+          key4: {r: 4.0642753, g: 0, b: 3.4609845, a: 0.8}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
-          ctime0: 0
-          ctime1: 65535
-          ctime2: 0
-          ctime3: 0
-          ctime4: 0
+          ctime0: 22166
+          ctime1: 25636
+          ctime2: 33153
+          ctime3: 39321
+          ctime4: 41634
           ctime5: 0
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 23130
-          atime2: 47031
-          atime3: 65535
-          atime4: 0
-          atime5: 0
+          atime1: 11951
+          atime2: 30455
+          atime3: 34117
+          atime4: 48766
+          atime5: 65535
           atime6: 0
           atime7: 0
           m_Mode: 0
           m_ColorSpace: 1
-          m_NumColorKeys: 2
-          m_NumAlphaKeys: 4
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 6
         m_Name: ColorGradient
         m_Overridden: 1
     m_NamedObject:
