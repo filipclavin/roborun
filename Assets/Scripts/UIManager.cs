@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     private bool playedAnimation = false;
     private bool pauseMenuActive = false;
     private DontDestroy dontDestroy;
+    [SerializeField] private GameObject pointer;
     [SerializeField] private BatteryController battery;
 
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
@@ -123,6 +124,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadGame()
     {
+        pointer.SetActive(false);
         gameTimer.StartGame();
         StartCoroutine(IntroAnimation());
         Time.timeScale = 1f;
