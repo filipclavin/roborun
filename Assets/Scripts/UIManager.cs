@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     private bool playedAnimation = false;
     private bool pauseMenuActive = false;
     private DontDestroy dontDestroy;
+    [SerializeField] private BatteryController battery;
 
     [SerializeField] private CinemachineVirtualCamera gameplayCamera;
     [SerializeField] public PlayableDirector startDirector;
@@ -124,6 +125,7 @@ public class UIManager : MonoBehaviour
     {
         gameTimer.StartGame();
         StartCoroutine(IntroAnimation());
+        Time.timeScale = 1f;
     }
 
     public void ExitGame()
@@ -258,9 +260,12 @@ public class UIManager : MonoBehaviour
 		batteryCountVictory.text = battery.ToString();
 
 	}
-
+    public bool isReloaded = false;
     public void ReloadScene()
     {
+        AudioManager.Instance.StopPizzaTheme();
+        AudioManager.Instance.sounds[0].source.pitch = 1;
+        isReloaded = true;
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
     }
