@@ -143,7 +143,6 @@ public class BatteryController : MonoBehaviour
             playerStateManager.animator.SetTrigger("ChargeToGod");
             PlayerFXManager.Instance.StopDustEffect();
             PlayerFXManager.Instance.PlayGodSparkles();
-            Debug.Log(faceAnimator.gameObject.name);
             faceAnimator.SetBool("isGod", true);
             isGod = true;
             invisActive = false;
