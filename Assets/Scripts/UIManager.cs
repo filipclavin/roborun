@@ -128,6 +128,7 @@ public class UIManager : MonoBehaviour
         gameTimer.StartGame();
         StartCoroutine(IntroAnimation());
         Time.timeScale = 1f;
+        
     }
 
     public void ExitGame()
@@ -271,6 +272,8 @@ public class UIManager : MonoBehaviour
     public bool isReloaded = false;
     public void ReloadScene()
     {
+        
+        AudioManager.Instance.sounds[0].source.volume = 0.5f;
         AudioManager.Instance.StopPizzaTheme();
         AudioManager.Instance.sounds[0].source.pitch = 1;
         isReloaded = true;
