@@ -63,8 +63,10 @@ public class Movement : MonoBehaviour
 
     private void OnDisable()
     {
+        StopAllCoroutines();
         playerInput.actions.Disable();
     }
+
 
     private void Update()
     {
@@ -181,6 +183,7 @@ public class Movement : MonoBehaviour
     
     private IEnumerator SlideTimer()
     {
+        if(this == null) yield break;
 
         float originalHeight = 2.8f;
         float slideHeight = 1f;
@@ -188,7 +191,7 @@ public class Movement : MonoBehaviour
         Vector3 originalCenter = new Vector3(0, .33f, 0);
         Vector3 slideCenter = new Vector3(0, -.46f, 0);
         
-            isSliding = true;
+        isSliding = true;
 
         playerCollider.height = slideHeight;
         playerCollider.center = slideCenter;
@@ -196,12 +199,15 @@ public class Movement : MonoBehaviour
         AudioManager.Instance.Play("Slide");
 
         yield return new WaitForSeconds(slideTime);
-        
-            isSliding = false;
+    
+        if(this == null) yield break;
+
+        isSliding = false;
 
         playerCollider.center = originalCenter;
         playerCollider.height = originalHeight;
     }
+
 
 
     private IEnumerator DustTimer(float waitTime)

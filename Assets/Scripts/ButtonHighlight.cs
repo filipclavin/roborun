@@ -35,15 +35,14 @@ public class ButtonHighlight : MonoBehaviour
                 selected.transform.localScale *= scaleIncrease;
                 // Move the pointer if the highlighted button changes
                 MovePointerToButton(selectedButton);
+                AudioManager.Instance.Play("UI_Move");
             }
         }
     }
 
     void MovePointerToButton(Button button)
     {
-        
         currentButton = button;
-        
         RectTransform buttonRect = button.GetComponent<RectTransform>();
         Vector3 buttonPosition = buttonRect.position;
         pointer.transform.position = new Vector3(buttonPosition.x + xOffset, buttonPosition.y, buttonPosition.z);

@@ -36,6 +36,7 @@ public class ButtonHighlightY : MonoBehaviour
                 // Move the pointer if the highlighted button changes
                 selected.transform.localScale *= scaleIncrease;
                 MovePointerToButton(selectedButton);
+                AudioManager.Instance.Play("UI_Move");
             }
         }
     }

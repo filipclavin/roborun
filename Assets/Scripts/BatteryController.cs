@@ -12,7 +12,6 @@ public class BatteryController : MonoBehaviour
     private PlayerVisuals playerVisuals;
     private GameTimer gameTimer;
     private PlayerStateManager playerStateManager;
-    private Movement move;
 
     private bool updatingVisualBattery = false;
 
@@ -38,7 +37,6 @@ public class BatteryController : MonoBehaviour
 
     private void Start()
     {
-        move = GetComponent<Movement>();
         playerStateManager = GetComponent<PlayerStateManager>();
         playerVisuals = GetComponent<PlayerVisuals>();
         gameTimer = FindAnyObjectByType<GameTimer>();

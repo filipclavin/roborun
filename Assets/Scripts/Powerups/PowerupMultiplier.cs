@@ -11,5 +11,6 @@ public class PowerupMultiplier : Powerup
         playerScore.PowerUpMultiplier(duration, multiplier);
         gameObject.SetActive(false);
         PlayerFXManager.Instance.Play2X();
+        AudioManager.Instance.Play("2x");
     }
 }
