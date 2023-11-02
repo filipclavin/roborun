@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needFullEnergy: 1
-  scoreValue: 480
+  scoreValue: 440
   batteryValue: 100
 --- !u!135 &4837540732102731243
 SphereCollider:
