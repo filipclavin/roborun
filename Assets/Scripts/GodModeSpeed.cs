@@ -32,6 +32,8 @@ public class GodModeSpeed : MonoBehaviour
         GodModeEffect();
         if(UIManager.Instance.isPaused)
             Time.timeScale = 0f;
+        if(UIManager.Instance.isReloaded)
+            Time.timeScale = 1f;
         
         Debug.Log("Current Time Scale: " + Time.timeScale);
         
