@@ -171,7 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4741ca6519918b4897b172832c15df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowTime: 0.5
 --- !u!1 &1993663821463806411
 GameObject:
   m_ObjectHideFlags: 0
@@ -10656,7 +10655,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2ce1d38bc48eede4f84ca250125c5118, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
     - target: {fileID: -3838735271085949761, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -11545,12 +11544,12 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2ce1d38bc48eede4f84ca250125c5118, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
     - target: {fileID: -3838735271085949761, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2ce1d38bc48eede4f84ca250125c5118, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
     - target: {fileID: 919132149155446097, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
         type: 3}
       propertyPath: m_Name
@@ -11560,7 +11559,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2ce1d38bc48eede4f84ca250125c5118, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15983,12 +15982,22 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0751a4aa74f6997409693c8bd090cf7b, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
+    - target: {fileID: -3838735271085949761, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
     - target: {fileID: 919132149155446097, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
         type: 3}
       propertyPath: m_Name
       value: Car (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1305633752583275104, guid: c03a03b3f7ea8e84a8e73bb631bcd6f7,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c06fe9563a94bc47a8ce90011678179, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
