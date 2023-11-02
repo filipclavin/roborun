@@ -21,7 +21,8 @@ public class PlayerVisuals : MonoBehaviour
 
 
     [SerializeField] private Material defaultMaterial;
-    [SerializeField] private SkinnedMeshRenderer batteryRenderer;
+    [SerializeField] private SkinnedMeshRenderer batterySkinnedRenderer;
+    [SerializeField] private MeshRenderer batteryMeshRenderer;
     [SerializeField] private float batteryAnimTime = 0.5f;
     [SerializeField] private Transform visualBattery;
     [SerializeField] private Material healthyMaterial;
@@ -35,7 +36,7 @@ public class PlayerVisuals : MonoBehaviour
         {
             SkinnedMeshRenderer renderer = meshRenderers[i];
 
-            if (renderer == batteryRenderer)
+            if (renderer == batterySkinnedRenderer)
             {
                 meshRenderers.Remove(renderer);
                 break;
@@ -95,11 +96,11 @@ public class PlayerVisuals : MonoBehaviour
     {
         if (batteryController.currentBattery < batteryDamagedPercent)
         {
-            batteryRenderer.material = damagedMaterial;
+            batteryMeshRenderer.material = damagedMaterial;
         }
         else
         {
-            batteryRenderer.material = healthyMaterial;
+            batteryMeshRenderer.material = healthyMaterial;
         }
         
         batteryAnimTimePassed = 0f;
