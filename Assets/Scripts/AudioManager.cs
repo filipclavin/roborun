@@ -55,14 +55,20 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        switch (UIManager.Instance.isPaused)
+        if (UIManager.Instance.isPaused)
         {
-            case true:
-                sounds[10].source.Pause();
-                break;
-            case false:
-                sounds[10].source.UnPause();
-                break;
+            for (int i = 1; i < sounds.Length; i++)
+            {
+                sounds[i].source.Pause();
+            }
+        }
+        else
+        {
+            for (int i = 1; i < sounds.Length; i++)
+            {
+                sounds[i].source.UnPause();
+            }
         }
     }
+
 }
