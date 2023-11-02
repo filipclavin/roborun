@@ -47,4 +47,20 @@ public class AudioManager : MonoBehaviour
     {
         Play("Theme");
     }
+    public void StopPizzaTheme()
+    {
+        sounds[10].source.Stop();
+    }
+
+//     private void Stop(string pizzaparty)
+//     {
+// Sound s = Array.Find(sounds, sound => sound.name == pizzaparty);
+//         if (s == null)
+//         {
+//             Debug.LogWarning("Sound: " + pizzaparty + " not found!");
+//             return;
+//         }
+//        
+//         s.source.Stop();
+//     }
 }
