@@ -40,7 +40,6 @@ public class PlayerStateManager : MonoBehaviour
 
     private void UpdateCharacterState()
     {
-        Debug.Log("Current State: " + currentState);
         if (_gameTimer != null) 
         {
             if (!_gameTimer.goingOn)
