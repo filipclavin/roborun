@@ -216,10 +216,11 @@ public class UIManager : MonoBehaviour
         if (currentScore > PlayerPrefs.GetInt(leadingScoreKey))
         {
             PlayerPrefs.SetInt(leadingScoreKey, currentScore);
-            if (highScoreText != null)
-            {
-                highScoreText.text = "Recordwatt: " + PlayerPrefs.GetInt(leadingScoreKey);
-            }
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "Recordwatt: " + PlayerPrefs.GetInt(leadingScoreKey);
         }
 
     }
