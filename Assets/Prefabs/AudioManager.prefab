@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92d5ced0ea476a409545315157e1e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _batteryController: {fileID: 0}
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 5a9542716393ce3409e1adf39786f0df, type: 3}
@@ -76,7 +77,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: UI_Move
-    clip: {fileID: 8300000, guid: 7d748318ea094bd42a1e22e2a49fa06e, type: 3}
+    clip: {fileID: 8300000, guid: 7af27dd343aa37d4181e146c57a4e421, type: 3}
     pitch: 1
     volume: 0.5
     source: {fileID: 0}
