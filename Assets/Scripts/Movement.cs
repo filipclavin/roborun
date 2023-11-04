@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         desiredLane = numberOfLanes / 2;
-        playerInput.actions["Slide"].performed += Slide;
+       // playerInput.actions["Slide"].performed += Slide;
     }
     private void OnEnable()
     {
@@ -75,6 +75,14 @@ public class Movement : MonoBehaviour
         AdjustGameSettingsBasedOnTimer();
         GroundCheck();
         MoveCharacter();
+        if (!isSliding && rb.velocity.y < 0 && batteryController.isGod == false)
+        {
+            PlayerFXManager.Instance.DustEffect(); // This will ensure dust plays while grounded and not sliding
+        }
+        else if (batteryController.isGod)
+        {
+            PlayerFXManager.Instance.StopDustEffect();
+        }
     }
 
     private void AdjustGameSettingsBasedOnTimer()
@@ -94,19 +102,20 @@ public class Movement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, currentSwitchSpeed * Time.deltaTime);
     }
 
-    public void LaneTurn(InputAction.CallbackContext context)
+    public void LaneTurn(int direction)
     {
-        if (Time.timeScale == 0) return;
-        if (!context.performed) return;
-        desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
-            AudioManager.Instance.Play("Move_Woosh");
+        // 1 for right, -1 for left
+        desiredLane = Mathf.Clamp(desiredLane + direction, 0, numberOfLanes - 1);
+        
+        // Here we handle the audio for lane switching
+        AudioManager.Instance.Play("Move_Woosh");
     }
 
 
-    public void Jump(InputAction.CallbackContext context)
+    public void Jump()
     {
         if (Time.timeScale == 0) return;
-        if (!context.performed || !isGrounded || !gameTimer.goingOn || isGamePaused) return;
+        if ( !isGrounded || !gameTimer.goingOn || isGamePaused) return;
         if(Time.timeScale == 1)
             AudioManager.Instance.Play("Jump");
         var velocity = rb.velocity;
@@ -117,9 +126,15 @@ public class Movement : MonoBehaviour
         if (batteryController.isGod)
             StartCoroutine(JumpTimer());
 
-        if (batteryController.isGod == false)
+        if (batteryController.isGod != false) return;
+        switch (isGrounded)
         {
-            StartCoroutine(DustTimer(1));
+            case true:
+                PlayerFXManager.Instance.DustEffect();
+                break;
+            case false:
+                PlayerFXManager.Instance.StopDustEffect();
+                break;
         }
 
     }
@@ -153,16 +168,24 @@ public class Movement : MonoBehaviour
     }
 
 
-    public void Slide(InputAction.CallbackContext context)
+    public void Slide()
     {
         if (batteryController.isGod) return;
         if (Time.timeScale == 0) return;
-        if (!context.performed || !gameTimer.goingOn || isSliding) return;
+        if (!gameTimer.goingOn || isSliding) return;
 
         StartCoroutine(SlideTimer());
         if (batteryController.isGod == false)
         {
-            StartCoroutine(DustTimer(.5f));
+            switch (isSliding)
+            {
+                case true:
+                    PlayerFXManager.Instance.StopDustEffect();
+                    break;
+                case false:
+                    PlayerFXManager.Instance.DustEffect();
+                    break;
+            }
         }
 
         if (!isGrounded) 
@@ -174,8 +197,12 @@ public class Movement : MonoBehaviour
         {
             PlayerFXManager.Instance.SlideSpark();
         }
-        if(!isSliding)
-            PlayerFXManager.Instance.StopSlideSpark();
+
+        if(isSliding)
+        {
+            // When sliding starts, stop the dust effect
+            PlayerFXManager.Instance.StopDustEffect();
+        }
 
     }
 
@@ -209,13 +236,7 @@ public class Movement : MonoBehaviour
     }
 
 
-
-    private IEnumerator DustTimer(float waitTime)
-    {
-        PlayerFXManager.Instance.StopDustEffect();
-        yield return new WaitForSeconds(waitTime);
-        PlayerFXManager.Instance.DustEffect();
-    }
+    
 
     
 
