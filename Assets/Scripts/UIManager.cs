@@ -159,7 +159,7 @@ public class UIManager : MonoBehaviour
 
         if (highScoreText != null)
         {
-            highScoreText.text = "Recordwatt: " + PlayerPrefs.GetInt(leadingScoreKey);
+            highScoreText.text = "Record Wh: " + PlayerPrefs.GetInt(leadingScoreKey);
         }
     }
 
@@ -178,11 +178,11 @@ public class UIManager : MonoBehaviour
         {
             if (multiplier != 1)
             {
-                scoreText.text = "Watthours saved: " + multiplier + "X " + scoreValue;
+                scoreText.text = "Watt-hours saved: " + multiplier + "X " + scoreValue;
             }
             else
             {
-                scoreText.text = "Watthours saved: " + scoreValue;
+                scoreText.text = "Watt-hours saved: " + scoreValue;
             }
         }
     }
@@ -220,7 +220,7 @@ public class UIManager : MonoBehaviour
 
         if (highScoreText != null)
         {
-            highScoreText.text = "Recordwatt: " + PlayerPrefs.GetInt(leadingScoreKey);
+            highScoreText.text = "Record Wh: " + PlayerPrefs.GetInt(leadingScoreKey);
         }
 
     }
@@ -265,7 +265,7 @@ public class UIManager : MonoBehaviour
         UIGame.gameObject.SetActive(false);
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
-        victoryText.text = "You saved " + score + " watthours during your game";
+        victoryText.text = "You saved " + score + " watthours during your game!";
         tincanCountVictory.text = tincan.ToString();
 		pantBurkCountVictory.text = pantburk.ToString();
 		batteryCountVictory.text = battery.ToString();

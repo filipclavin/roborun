@@ -67,7 +67,7 @@ MonoBehaviour:
   - name: Move_Woosh
     clip: {fileID: 8300000, guid: 5ca26652ffa489b4ab40629b3785ec85, type: 3}
     pitch: 1
-    volume: 0.1
+    volume: 0.34
     source: {fileID: 0}
     loop: 0
   - name: UI_Select
@@ -78,8 +78,8 @@ MonoBehaviour:
     loop: 0
   - name: UI_Move
     clip: {fileID: 8300000, guid: 7af27dd343aa37d4181e146c57a4e421, type: 3}
-    pitch: 1
-    volume: 0.5
+    pitch: 0.5
+    volume: 0.35
     source: {fileID: 0}
     loop: 0
   - name: Jump
@@ -110,5 +110,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4e75ec66fb209e3418d8a679f7f35051, type: 3}
     pitch: 1
     volume: 0.8
+    source: {fileID: 0}
+    loop: 0
+  - name: 2x
+    clip: {fileID: 8300000, guid: 6dfe88097b21550449d934240d0977c5, type: 3}
+    pitch: 1
+    volume: 0.6
     source: {fileID: 0}
     loop: 0
