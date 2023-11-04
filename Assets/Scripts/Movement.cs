@@ -75,6 +75,14 @@ public class Movement : MonoBehaviour
         AdjustGameSettingsBasedOnTimer();
         GroundCheck();
         MoveCharacter();
+        if (!isSliding && rb.velocity.y < 0 && batteryController.isGod == false)
+        {
+            PlayerFXManager.Instance.DustEffect(); // This will ensure dust plays while grounded and not sliding
+        }
+        else if (batteryController.isGod)
+        {
+            PlayerFXManager.Instance.StopDustEffect();
+        }
     }
 
     private void AdjustGameSettingsBasedOnTimer()
@@ -119,7 +127,15 @@ public class Movement : MonoBehaviour
 
         if (batteryController.isGod == false)
         {
-            StartCoroutine(DustTimer(1));
+            switch (isGrounded)
+            {
+                case true:
+                    PlayerFXManager.Instance.DustEffect();
+                    break;
+                case false:
+                    PlayerFXManager.Instance.StopDustEffect();
+                    break;
+            }
         }
 
     }
@@ -162,7 +178,15 @@ public class Movement : MonoBehaviour
         StartCoroutine(SlideTimer());
         if (batteryController.isGod == false)
         {
-            StartCoroutine(DustTimer(.5f));
+            switch (isSliding)
+            {
+                case true:
+                    PlayerFXManager.Instance.StopDustEffect();
+                    break;
+                case false:
+                    PlayerFXManager.Instance.DustEffect();
+                    break;
+            }
         }
 
         if (!isGrounded) 
@@ -174,8 +198,12 @@ public class Movement : MonoBehaviour
         {
             PlayerFXManager.Instance.SlideSpark();
         }
-        if(!isSliding)
-            PlayerFXManager.Instance.StopSlideSpark();
+
+        if(isSliding)
+        {
+            // When sliding starts, stop the dust effect
+            PlayerFXManager.Instance.StopDustEffect();
+        }
 
     }
 
@@ -209,13 +237,7 @@ public class Movement : MonoBehaviour
     }
 
 
-
-    private IEnumerator DustTimer(float waitTime)
-    {
-        PlayerFXManager.Instance.StopDustEffect();
-        yield return new WaitForSeconds(waitTime);
-        PlayerFXManager.Instance.DustEffect();
-    }
+    
 
     
 
