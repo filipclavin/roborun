@@ -2485,10 +2485,10 @@ GameObject:
   - component: {fileID: 3545475513193439312}
   - component: {fileID: 449070131355349471}
   - component: {fileID: 2718694792203645037}
-  - component: {fileID: 7966400926609831725}
   - component: {fileID: 421863395292178792}
   - component: {fileID: 5178031530427790931}
   - component: {fileID: 3417323689032068399}
+  - component: {fileID: 1657271445102054801}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Player
@@ -2608,6 +2608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeGodPitch: 1.05
   originialPitch: 1
+  faceAnimator: {fileID: 0}
   hitMaterial: {fileID: 0}
   currentBattery: 100
   invisActive: 0
@@ -2624,7 +2625,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70d16aba0942b5439bbd29e126636d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryRenderer: {fileID: 0}
+  defaultMaterial: {fileID: 0}
+  batterySkinnedRenderer: {fileID: 0}
+  batteryMeshRenderer: {fileID: 0}
   batteryAnimTime: 0.5
   visualBattery: {fileID: 7414920121652568480}
   healthyMaterial: {fileID: 2100000, guid: 15ebbbd500453e34db4b8d8df5cc863c, type: 2}
@@ -2654,37 +2657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3dba497e2dde8a44aee36b1b3fa92fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameTimer: {fileID: 0}
   animator: {fileID: 1359553523320128600}
---- !u!114 &7966400926609831725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9125925030341315120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d137ea826c0c664c97de87137346b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  isGrounded: 0
-  isSliding: 0
-  shouldPlaySlideSpark: 0
-  playerInput: {fileID: 421863395292178792}
-  maxJumpForce: 35
-  minJumpForce: 30
-  slideTime: 0.5
-  currentJumpForce: 0
-  maxGravity: -40
-  minGravity: -30
-  currentGravity: 0
-  minSwitchSpeed: 5
-  maxSwitchSpeed: 10
-  currentSwitchSpeed: 0
-  numberOfLanes: 3
-  laneWidth: 2
-  groundDistance: 1.2
 --- !u!114 &421863395292178792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,7 +2687,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7966400926609831725}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -2729,7 +2703,7 @@ MonoBehaviour:
     m_ActionName: 'Movement/Jump[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7966400926609831725}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: Slide
         m_Mode: 0
@@ -2749,7 +2723,7 @@ MonoBehaviour:
     m_ActionName: 'Movement/Pause[/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7966400926609831725}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: LaneTurn
         m_Mode: 0
@@ -2803,7 +2777,8 @@ MonoBehaviour:
   - {fileID: 5370297373192107841}
   - {fileID: 454283885773575667}
   - {fileID: 7042253207459505914}
-  dustEffect: {fileID: 8950744814954286077}
+  visualEffects: []
+  movementTouch: {fileID: 0}
 --- !u!114 &3417323689032068399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2816,7 +2791,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3dba497e2dde8a44aee36b1b3fa92fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameTimer: {fileID: 0}
   animator: {fileID: 1359553523320128600}
+--- !u!114 &1657271445102054801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125925030341315120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5622be7b8b85f4abf9bc59933453b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTimer: {fileID: 0}
+  rb: {fileID: 0}
+  isGrounded: 0
+  isSliding: 0
+  shouldPlaySlideSpark: 0
+  isGodSliding: 0
+  isGodJumping: 0
+  playerInput: {fileID: 421863395292178792}
+  maxJumpForce: 35
+  minJumpForce: 30
+  slideTime: 0.5
+  currentJumpForce: 0
+  maxGravity: -40
+  minGravity: -30
+  currentGravity: 0
+  minSwitchSpeed: 5
+  maxSwitchSpeed: 10
+  currentSwitchSpeed: 0
+  numberOfLanes: 3
+  laneWidth: 3
+  groundDistance: 0
 --- !u!1 &9186893930101048791
 GameObject:
   m_ObjectHideFlags: 0

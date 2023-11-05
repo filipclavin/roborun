@@ -9,7 +9,7 @@ public class PlayerFXManager : MonoBehaviour
     [FormerlySerializedAs("_faceAnimator")] [SerializeField] private Animator faceAnimator;
     [SerializeField] private List<ParticleSystem> effects;
     [SerializeField] private List<VisualEffect> visualEffects;
-    [SerializeField] private Movement _movement;
+    [FormerlySerializedAs("_movement")] [SerializeField] private Movement movement;
     private BatteryController _batteryController;
     private static readonly int SadTrigger = Animator.StringToHash("SadTrigger");
     private static readonly int ScoreTrigger = Animator.StringToHash("ScoreTrigger");
@@ -29,7 +29,7 @@ public class PlayerFXManager : MonoBehaviour
 
     private void Start()
     {
-        _movement = GetComponent<Movement>();
+        movement = GetComponent<Movement>();
         _batteryController = GetComponent<BatteryController>();
     }
 
@@ -76,7 +76,7 @@ public class PlayerFXManager : MonoBehaviour
     
     public void FootStepSound()
     {
-        if(_movement.isGrounded)
+        if(movement.isGrounded)
             AudioManager.Instance.Play("StepSound");
     }
 

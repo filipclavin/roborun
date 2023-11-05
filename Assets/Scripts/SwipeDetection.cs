@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SwipeDetection : MonoBehaviour
 {
@@ -66,29 +67,29 @@ public class SwipeDetection : MonoBehaviour
         }
     }
 // Add references to the movement class
-    [SerializeField] private Movement movement;
+    [FormerlySerializedAs("movement")] [SerializeField] private MovementTouch movementTouch;
 
     private void SwipeDirection(Vector2 direction)
     {
         if (Vector2.Dot(Vector2.up, direction) > directionThreshold)
         {
             Debug.Log("Swipe Up");
-            movement.Jump(); // Assume Jump is modified to be callable without arguments
+            movementTouch.Jump(); // Assume Jump is modified to be callable without arguments
         }
         else if (Vector2.Dot(Vector2.down, direction) > directionThreshold)
         {
             Debug.Log("Swipe Down");
-            movement.Slide(); // Assume Slide is modified to be callable without arguments
+            movementTouch.Slide(); // Assume Slide is modified to be callable without arguments
         }
         else if (Vector2.Dot(Vector2.right, direction) > directionThreshold)
         {
             Debug.Log("Swipe Right");
-            movement.LaneTurn(1); // Pass in direction as argument
+            movementTouch.LaneTurn(1); // Pass in direction as argument
         }
         else if (Vector2.Dot(Vector2.left, direction) > directionThreshold)
         {
             Debug.Log("Swipe Left");
-            movement.LaneTurn(-1); // Pass in direction as argument
+            movementTouch.LaneTurn(-1); // Pass in direction as argument
         }
     }
 
