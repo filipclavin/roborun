@@ -1610,7 +1610,7 @@ PrefabInstance:
     - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: isGod
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
@@ -1622,6 +1622,11 @@ PrefabInstance:
       propertyPath: hitMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ecc240776e694a04494f016301bb8663, type: 2}
+    - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
+        type: 3}
+      propertyPath: invisActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: faceAnimator
@@ -1640,7 +1645,7 @@ PrefabInstance:
     - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
       propertyPath: currentBattery
-      value: 100000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3048892014635554413, guid: 2bb3275ef9b70904ab103271285fbb63,
         type: 3}
