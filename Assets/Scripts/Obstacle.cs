@@ -7,7 +7,6 @@ public class Obstacle : MonoBehaviour
 {
     [SerializeField] private int drainValue;
     [SerializeField] private GameData gameData;
-    private GameTimer gameTimer;
 
     private BatteryController batteryController;
     private BoxCollider boxCollider;
@@ -17,7 +16,6 @@ public class Obstacle : MonoBehaviour
     {
         boxCollider = transform.parent.GetComponent<BoxCollider>();
         batteryController = FindAnyObjectByType<BatteryController>();
-        gameTimer = FindAnyObjectByType<GameTimer>();
     }
 
     private void OnTriggerEnter(Collider other)
