@@ -111,6 +111,17 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""109e233b-3768-4734-9438-d2ae95f4408f"",
+                    ""path"": ""<HID::usb gamepad           >/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f5786539-edd6-4ead-8966-d05200955d9d"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -155,6 +166,17 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""bf6b50e5-ec2f-491c-9a05-4b16d85ae905"",
+                    ""path"": ""<HID::usb gamepad           >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d1ffd1e0-3a97-49f0-898d-08dacb636143"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -168,6 +190,17 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""4705909f-cb6e-42ef-bb2a-14c1d36f68e6"",
                     ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77587c5b-4089-49d8-a8ff-43ac3ccfff13"",
+                    ""path"": ""<HID::usb gamepad           >/button10"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -284,6 +317,39 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""maks??"",
+                    ""id"": ""6c67eb8c-5b9f-4bdf-8472-afb213c8f546"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""396ad204-7061-424e-b1b2-9a8ad7336f86"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5d87bf95-803c-49c2-b8f8-178c96983c75"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -335,6 +401,17 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""121c9a8d-5314-4625-9140-177ab0907ce9"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cc653ed-306e-4be4-85f8-55c6d00c252e"",
+                    ""path"": ""<HID::usb gamepad           >/button2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
