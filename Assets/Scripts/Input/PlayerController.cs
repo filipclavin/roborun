@@ -62,15 +62,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Resume"",
-                    ""type"": ""Button"",
-                    ""id"": ""9269e492-59b9-4db2-b2e9-48cda8db5c0b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -111,17 +102,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6d0e988b-1410-4033-b248-f2cdfa80c790"",
                     ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""63e6a4fc-9a4a-460e-afd1-47160f710bb9"",
-                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -509,7 +489,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         m_Movement_Slide = m_Movement.FindAction("Slide", throwIfNotFound: true);
         m_Movement_Pause = m_Movement.FindAction("Pause", throwIfNotFound: true);
         m_Movement_Turn = m_Movement.FindAction("Turn", throwIfNotFound: true);
-        m_Movement_Resume = m_Movement.FindAction("Resume", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
@@ -584,7 +563,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Slide;
     private readonly InputAction m_Movement_Pause;
     private readonly InputAction m_Movement_Turn;
-    private readonly InputAction m_Movement_Resume;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
@@ -593,7 +571,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         public InputAction @Slide => m_Wrapper.m_Movement_Slide;
         public InputAction @Pause => m_Wrapper.m_Movement_Pause;
         public InputAction @Turn => m_Wrapper.m_Movement_Turn;
-        public InputAction @Resume => m_Wrapper.m_Movement_Resume;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -615,9 +592,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Turn.started += instance.OnTurn;
             @Turn.performed += instance.OnTurn;
             @Turn.canceled += instance.OnTurn;
-            @Resume.started += instance.OnResume;
-            @Resume.performed += instance.OnResume;
-            @Resume.canceled += instance.OnResume;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -634,9 +608,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
             @Turn.started -= instance.OnTurn;
             @Turn.performed -= instance.OnTurn;
             @Turn.canceled -= instance.OnTurn;
-            @Resume.started -= instance.OnResume;
-            @Resume.performed -= instance.OnResume;
-            @Resume.canceled -= instance.OnResume;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -776,7 +747,6 @@ public partial class @PlayerController: IInputActionCollection2, IDisposable
         void OnSlide(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
-        void OnResume(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

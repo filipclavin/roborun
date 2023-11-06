@@ -40,15 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Resume",
-                    "type": "Button",
-                    "id": "9269e492-59b9-4db2-b2e9-48cda8db5c0b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -89,17 +80,6 @@
                     "name": "",
                     "id": "6d0e988b-1410-4033-b248-f2cdfa80c790",
                     "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "63e6a4fc-9a4a-460e-afd1-47160f710bb9",
-                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

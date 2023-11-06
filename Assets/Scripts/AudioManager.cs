@@ -4,7 +4,6 @@ using UnityEngine;
 //Script Made By Daniel Alvarado
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private BatteryController _batteryController;
     public Sound[] sounds;
     public static AudioManager Instance { get; private set; }
     void Awake()

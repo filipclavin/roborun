@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 //Script Made By Daniel Alvarado
 public class Movement : MonoBehaviour
@@ -18,7 +17,6 @@ public class Movement : MonoBehaviour
     [HideInInspector] public bool isGrounded = false;
     [HideInInspector] public bool isSliding = false;
     [HideInInspector] public bool shouldPlaySlideSpark = false;
-    [HideInInspector] public bool isGodSliding;
     [HideInInspector] public bool isGodJumping = false;
     private bool isGamePaused = false;
 
@@ -125,17 +123,15 @@ public class Movement : MonoBehaviour
         if (batteryController.isGod)
             StartCoroutine(JumpTimer());
 
-        if (batteryController.isGod == false)
+        if (batteryController.isGod != false) return;
+        switch (isGrounded)
         {
-            switch (isGrounded)
-            {
-                case true:
-                    PlayerFXManager.Instance.DustEffect();
-                    break;
-                case false:
-                    PlayerFXManager.Instance.StopDustEffect();
-                    break;
-            }
+            case true:
+                PlayerFXManager.Instance.DustEffect();
+                break;
+            case false:
+                PlayerFXManager.Instance.StopDustEffect();
+                break;
         }
 
     }
@@ -235,11 +231,6 @@ public class Movement : MonoBehaviour
         playerCollider.center = originalCenter;
         playerCollider.height = originalHeight;
     }
-
-
-    
-
-    
 
     public void StepSound()
     {

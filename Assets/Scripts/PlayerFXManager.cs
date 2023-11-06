@@ -108,5 +108,4 @@ public class PlayerFXManager : MonoBehaviour
     {
         effects[6].Play();
     }
-
 }
