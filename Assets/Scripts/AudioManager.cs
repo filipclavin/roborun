@@ -4,6 +4,7 @@ using UnityEngine;
 //Script Made By Daniel Alvarado
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private bool mainMenu;
     public Sound[] sounds;
     public static AudioManager Instance { get; private set; }
     void Awake()
@@ -54,7 +55,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (UIManager.Instance.isPaused)
+        if (mainMenu || UIManager.Instance.isPaused)
         {
             for (int i = 1; i < sounds.Length; i++)
             {
