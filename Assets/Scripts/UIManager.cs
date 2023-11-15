@@ -75,7 +75,8 @@ public class UIManager : MonoBehaviour
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
         OpenMenu();
-    }
+        AudioManager.Instance.NoMainMenu();
+	}
 
     [HideInInspector] public bool isPaused = false;  
 
