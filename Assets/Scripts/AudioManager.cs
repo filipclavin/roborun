@@ -71,4 +71,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void NoMainMenu()
+    {
+        mainMenu = false;
+    }
+
 }

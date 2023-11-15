@@ -112,11 +112,14 @@ public class UIManager : MonoBehaviour
         {
             SkipMainMenu();
         }
+        else
+        { 
+            AudioManager.Instance.Play("UI_Select");
+        }
     }
 
     public void LoadGame()
     {
-        AudioManager.Instance.Play("UI_Select");
         pointer.SetActive(false);
         gameTimer.StartGame();
         StartCoroutine(IntroAnimation());
