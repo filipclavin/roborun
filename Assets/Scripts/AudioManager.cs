@@ -57,14 +57,14 @@ public class AudioManager : MonoBehaviour
     {
         if (mainMenu || UIManager.Instance.isPaused)
         {
-            for (int i = 1; i < sounds.Length; i++)
+            for (int i = 3; i < sounds.Length; i++)
             {
                 sounds[i].source.Pause();
             }
         }
         else
         {
-            for (int i = 1; i < sounds.Length; i++)
+            for (int i = 3; i < sounds.Length; i++)
             {
                 sounds[i].source.UnPause();
             }
