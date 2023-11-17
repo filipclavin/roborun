@@ -966,11 +966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84861f9e3e04b3a49ab12173e64cb348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleIncrease: 0
+  scaleIncrease: 1.1
   pointer: {fileID: 462968172}
   buttons: []
-  xOffset: -50
-  yOffset: 0
+  xOffset: 3
+  yOffset: -2.5
 --- !u!1001 &634647472
 PrefabInstance:
   m_ObjectHideFlags: 0
