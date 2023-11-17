@@ -17,17 +17,19 @@ public class UIManager : MonoBehaviour
     private DontDestroy dontDestroy;
     [SerializeField] private GameObject pointer;
     [SerializeField] private BatteryController battery;
+	[SerializeField] private GameObject robotStartFace;
+	[SerializeField] private GameObject[] uiDisable;
 
-    [SerializeField] private CinemachineVirtualCamera gameplayCamera;
+	[SerializeField] private CinemachineVirtualCamera gameplayCamera;
     [SerializeField] public PlayableDirector startDirector;
-    [SerializeField] public PlayableDirector pauseDirector;
-    [SerializeField] public PlayableDirector continueDirector;
+    //[SerializeField] public PlayableDirector pauseDirector;
+    //[SerializeField] public PlayableDirector continueDirector;
     [SerializeField] private InputManager input;
     [SerializeField] private Slider batteryBar;
     [SerializeField] private Image forestImage;
     [SerializeField] private Image robotPortrait;
 
-    [Header("Face Animation")]
+	[Header("Face Animation")]
     public Animator faceAnimator;
     [Space]
 
@@ -73,7 +75,8 @@ public class UIManager : MonoBehaviour
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
         OpenMenu();
-    }
+        AudioManager.Instance.NoMainMenu();
+	}
 
     [HideInInspector] public bool isPaused = false;  
 
@@ -87,49 +90,41 @@ public class UIManager : MonoBehaviour
 
     private void SkipMainMenu()
     {
-        // startGame.SetActive(false);
-        // exitGame.SetActive(false);
-
-        /*
-        scoreText.gameObject.SetActive(true);
-        highScoreText.gameObject.SetActive(true);
-        timerText.gameObject.SetActive(true);
-        victoryText.gameObject.SetActive(true);
-        batteryBar.gameObject.SetActive(true);
-        robotPortrait.gameObject.SetActive(true);
-        */
-
-        gameplayCamera.gameObject.SetActive(true);
-        input.enabled = true;
-        gameTimer.StartGame();
+        foreach (GameObject gameObject in uiDisable)
+        {
+			gameObject.SetActive(false);
+		}
+        robotStartFace.SetActive(true);
+        LoadGame();
     }
 
     private IEnumerator IntroAnimation()
     {
         startDirector.Play();
         yield return new WaitForSeconds((float)startDirector.playableAsset.duration);
-        //dontDestroy.skipMainMenu = true;
+        dontDestroy.skipMainMenu = true;
         input.enabled = true;
     }
 
     public void OpenMenu()
     {
-        startMenu.gameObject.SetActive(true);
-        input.enabled = false;
+		input.enabled = false;
         if (playedAnimation)
         {
             SkipMainMenu();
+        }
+        else
+        { 
+            AudioManager.Instance.Play("UI_Select");
         }
     }
 
     public void LoadGame()
     {
-        AudioManager.Instance.Play("UI_Select");
         pointer.SetActive(false);
         gameTimer.StartGame();
         StartCoroutine(IntroAnimation());
         Time.timeScale = 1f;
-        
     }
 
     public void ExitGame()
