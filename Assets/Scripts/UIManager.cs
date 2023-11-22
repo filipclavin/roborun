@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
     {
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
-        OpenMenu();
+        Invoke(nameof(OpenMenu), 0.01f);
         AudioManager.Instance.NoMainMenu();
 	}
 
