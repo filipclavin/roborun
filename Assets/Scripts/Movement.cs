@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     private CapsuleCollider playerCollider;
     private int desiredLane;
     private BatteryController batteryController;
-
+    private float slideTimer = 0f;
     
     [SerializeField] private GameTimer gameTimer;
     [HideInInspector] public Rigidbody rb;
@@ -44,6 +44,8 @@ public class Movement : MonoBehaviour
     [Obsolete("Obsolete")]
     private void Awake()
     {
+        // playerInput.actions["Slide"].performed += Slide;
+        // playerInput.actions["Slide"].canceled -= Slide;
         batteryController = GetComponent<BatteryController>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
@@ -52,10 +54,10 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         desiredLane = numberOfLanes / 2;
-        playerInput.actions["Slide"].performed += Slide;
     }
     private void OnEnable()
     {
+        
         playerInput.actions.Enable();
     }
 
@@ -64,6 +66,12 @@ public class Movement : MonoBehaviour
         StopAllCoroutines();
         playerInput.actions.Disable();
     }
+    
+    private void OnDestroy() 
+    {
+        StopAllCoroutines();
+    }
+
 
 
     private void Update()
@@ -81,6 +89,15 @@ public class Movement : MonoBehaviour
         {
             PlayerFXManager.Instance.StopDustEffect();
         }
+
+        // if (isSliding)
+        // {
+        //     slideTimer += Time.deltaTime;
+        //     if(slideTimer >= slideTime)
+        //     {
+        //         EndSlide();
+        //     }
+        // }
     }
 
     private void AdjustGameSettingsBasedOnTimer()
@@ -102,6 +119,7 @@ public class Movement : MonoBehaviour
 
     public void LaneTurn(InputAction.CallbackContext context)
     {
+        if(gameTimer.goingOn == false) return;
         if (Time.timeScale == 0) return;
         if (!context.performed) return;
         desiredLane = Mathf.Clamp(desiredLane + (int)context.ReadValue<float>(), 0, numberOfLanes - 1);
@@ -170,7 +188,7 @@ public class Movement : MonoBehaviour
         if (batteryController.isGod) return;
         if (Time.timeScale == 0) return;
         if (!context.performed || !gameTimer.goingOn || isSliding) return;
-
+        
         StartCoroutine(SlideTimer());
         if (batteryController.isGod == false)
         {
@@ -203,11 +221,39 @@ public class Movement : MonoBehaviour
 
     }
 
-    
+    private void StartSlide()
+    {
+        if (playerCollider == null) return;
+        slideTimer = 0.5f;
+        float originalHeight = 2.8f;
+        float slideHeight = 1f;
+
+        
+        Vector3 slideCenter = new Vector3(0, -.46f, 0);
+        
+        isSliding = true;
+
+        playerCollider.height = slideHeight;
+        playerCollider.center = slideCenter;
+
+        AudioManager.Instance.Play("Slide");
+
+    }
+
+    private void EndSlide()
+    {
+        if (playerCollider == null) return;
+        isSliding = false;
+        Vector3 originalCenter = new Vector3(0, .33f, 0);
+        float originalHeight = 2.8f;
+        
+        playerCollider.center = originalCenter;
+        playerCollider.height = originalHeight;
+    }
     
     private IEnumerator SlideTimer()
     {
-        if(this == null) yield break;
+        if (this == null || playerCollider == null) yield break;
 
         float originalHeight = 2.8f;
         float slideHeight = 1f;
@@ -223,8 +269,9 @@ public class Movement : MonoBehaviour
         AudioManager.Instance.Play("Slide");
 
         yield return new WaitForSeconds(slideTime);
-    
-        if(this == null) yield break;
+     
+        if (this == null) yield break;
+
 
         isSliding = false;
 

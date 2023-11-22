@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    
 	public void LoadScene(string sceneName)
 	{
+		if(sceneName == "MainMenu")
+		{
+			UIManager.Instance.QuitToMenu();
+			DontDestroy.Instance.skipMainMenu = false;
+		}
+		
 		SceneManager.LoadScene(sceneName);
 	}
 

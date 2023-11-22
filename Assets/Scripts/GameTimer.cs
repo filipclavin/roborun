@@ -41,6 +41,12 @@ public class GameTimer : MonoBehaviour
                 RecoverSpeed();
             }
         }
+
+        // if (UIManager.Instance.isReloaded)
+        // {
+        //     UIManager.Instance.isReloaded = false;
+        //     goingOn = false;
+        // }
     }
 
     public void StartGame()

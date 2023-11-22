@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
         }
         controller = new PlayerController();
         mainCamera = Camera.main;
+        
     }
 
     private void Start()

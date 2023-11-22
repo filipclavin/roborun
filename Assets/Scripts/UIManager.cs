@@ -71,7 +71,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
         dontDestroy = DontDestroy.Instance;
         playedAnimation = dontDestroy.skipMainMenu;
         OpenMenu();
@@ -108,10 +107,11 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        QuitToMenu();
 		input.enabled = false;
         if (playedAnimation)
         {
-            SkipMainMenu();
+            SkipMainMenu(); 
         }
         else
         { 
@@ -260,21 +260,29 @@ public class UIManager : MonoBehaviour
         UIGame.gameObject.SetActive(false);
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
-        victoryText.text = "You saved " + score + " watthours during your game!";
+        victoryText.text = "You saved " + score + " watt-hours during your game!";
         tincanCountVictory.text = tincan.ToString();
 		pantBurkCountVictory.text = pantburk.ToString();
 		batteryCountVictory.text = battery.ToString();
 
 	}
-    public bool isReloaded = false;
-    public void ReloadScene()
+    
+    public void QuitToMenu()
     {
         AudioManager.Instance.Play("UI_Select");
         AudioManager.Instance.sounds[0].source.volume = 0.5f;
         AudioManager.Instance.StopPizzaTheme();
         AudioManager.Instance.sounds[0].source.pitch = 1;
+        Time.timeScale = 1f;
+    }
+    public bool isReloaded = false;
+    public void ReloadScene()
+    {
+        gameTimer.goingOn = false;
+        QuitToMenu();
         isReloaded = true;
         SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1f;
+        OpenMenu();
+        
     }
 }
